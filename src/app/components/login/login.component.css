@@ -1,0 +1,82 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: url(../../..//assets/img/escritorio.jpg) no-repeat center top;
+    background-size: cover;
+    font-family: sans-serif;
+    height: 100vh;
+   
+}
+
+.login .ancho{
+    width: 270px;
+    align-items:center;
+    margin-bottom: 10px;
+    
+    
+}
+
+.login li{
+    list-style: none;
+    margin-bottom: 10px;
+
+}
+.login .link{
+    color: #000000;
+    width: 250px;
+    
+    
+    
+}
+
+.login{
+    width: 340px;
+    height: 440px;
+    background:#f2f3f4;
+    color: black;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+    padding: 70px 30px;
+}
+
+.login h1{
+    margin: 0;
+    padding: 0 0 20px;
+    text-align: center;
+    font-size: 22px;
+}
+
+.login label{
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+    display: block;
+}
+
+/* .login input{
+    width: 100%;
+    margin-bottom: 20px;
+} */
+
+/* .login input[type="text"],
+.login input[type="password"]{
+    border: none;
+    border-bottom: 1px solid #fff;
+    background: transparent;
+    outline: none;
+    height: 40px;
+    font-size: 16px;
+}
+*/
+ .btn{
+     height: 30px;
+     width: 270px;
+     background-color: transparent;
+     font-size: 16px;
+     border: 2px solid;
+     line-height: 1;
+    
+}  

@@ -1,0 +1,95 @@
+.titulo{
+  font-size: 48px;
+  font-weight: bolder;
+  font-family: 'Open Sans', sans-serif;
+}
+.navbar{
+  background-color: #F8F8FF;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+mat-button-toggle-group {
+  margin-left: 12px;
+}
+.btn{
+  color: #000000;
+  font-size: 18px;
+  font-family: 'Open Sans', sans-serif;
+  padding: 10px 150px;
+  border-style: ridge;
+}
+
+.size{
+  font-size: 18px;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: bold;
+}
+
+.size-icon{
+  width: 60px;
+  height: 60px;
+}
+
+
+
+
+/* *{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body{
+  background-color: #D5D8DC;
+  color: #000000;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.container{
+  width: 100%;
+  margin: auto;
+}
+
+.top-menu{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+  padding: 20px 0;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+.container h1{
+  font-size: 48px;
+  font-weight: bolder;
+}
+
+.container img{
+  width: 60px;
+  height: 60px;
+  margin-left: auto;
+}
+.container ul{
+  display: flex;
+  list-style: none; margin: 0; padding: 0;
+  font-size: 16px;
+}
+
+
+.container ul li{
+  font-size: 16px;
+  padding-left: 10px;
+  padding-right: 20px;
+}
+.container ul li a{
+  color: #000000; display: block; text-decoration: none;
+}
+
+
+#menu{width: 100%; margin: auto; font-size: 16px; justify-content:center; background-color:transparent; }
+#menu ul{list-style: none; margin:0; padding: 0; }
+#menu ul li{ float: left;  border-style: groove; background-color: #F8F8FF;}
+#menu ul li a{color: #000000; display: block; text-decoration: none; padding: 10px 156px;}
+#menu ul li a:hover{background-color:#FFFFFF;} */
