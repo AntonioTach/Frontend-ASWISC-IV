@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
   form: FormGroup;
 
   hide = true;
-  constructor(private fb:FormBuilder, private _snackBar: MatSnackBar, private router: Router) { 
+  constructor(private fb:FormBuilder, private _snackBar: MatSnackBar, private router: Router) {
     this.form = this.fb.group({
       usuario: ['', Validators.required],
       password: ['', Validators.required]
@@ -21,11 +21,12 @@ export class LoginComponent implements OnInit {
   }
 
 
+
   ngOnInit(): void {
   }
 
   ingresar(){
-   
+
     const usuario = this.form.value.usuario;
     const password = this.form.value.password;
 

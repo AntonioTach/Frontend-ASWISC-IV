@@ -5,22 +5,28 @@
             <!-- Ingreso Usuario-->
             <mat-form-field  class="ancho" appearance="fill">
                 <mat-label>Usuario</mat-label>
-                <input matInput autocomplete="off" formControlName="usuario">
+                <input matInput autocomplete="off" formControlName="usuario" required>
               </mat-form-field>
             <!-- Ingreso Contraseña-->
               <mat-form-field class="ancho" appearance="fill">
                 <mat-label>Contraseña</mat-label>
-                <input matInput autocomplete="off" [type]="hide ? 'password' : 'text'" formControlName="password">
-                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-                  <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                <input matInput autocomplete="off" [type]="hide ? 'password' : 'text'" formControlName="password" required>
+                <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide">
+                  <mat-icon>
+                    {{hide ? 'visibility_off' : 'visibility'}}
+                  </mat-icon>
                 </button>
               </mat-form-field>
+
+
               <!-- Iniciar Sesion -->
               <!-- <input type="submit" value="Ingresar" class="btn"> -->
-              <button type="submit" mat-raised-button class="ancho btn" [disabled]="form.invalid">Ingresar</button>
+              <button  type="submit" mat-raised-button class="ancho btn" [disabled]="form.invalid">Ingresar</button>
 
               <!-- Links Registros -->
               <ul>
+                  <li><a class="link" href="#Olvidar">Haz olvidado tu contraseña?</a></li>
                   <li><a class="link" href="#RegistroEspecialista">Registrate como Especialista</a></li>
                   <li><a class="link" href="#RegistroPaciente">Registrate como Paciente</a></li>
               </ul>

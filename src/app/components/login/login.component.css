@@ -1,3 +1,6 @@
+
+
+
 body {
     margin: 0;
     padding: 0;
@@ -5,16 +8,17 @@ body {
     background-size: cover;
     font-family: sans-serif;
     height: 100vh;
-   
+
 }
 
 .login .ancho{
     width: 270px;
     align-items:center;
     margin-bottom: 10px;
-    
-    
+
+
 }
+
 
 .login li{
     list-style: none;
@@ -22,11 +26,10 @@ body {
 
 }
 .login .link{
+    text-align: start;
     color: #000000;
-    width: 250px;
-    
-    
-    
+    width: 270px;
+    font-size: 12px;
 }
 
 .login{
@@ -78,5 +81,5 @@ body {
      font-size: 16px;
      border: 2px solid;
      line-height: 1;
-    
-}  
+
+}
