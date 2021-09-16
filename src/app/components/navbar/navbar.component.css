@@ -16,6 +16,7 @@ mat-button-toggle-group {
 }
 .btn{
   color: #000000;
+  background-color: #F8F8FF;
   font-size: 18px;
   font-family: 'Open Sans', sans-serif;
   padding: 10px 150px;
