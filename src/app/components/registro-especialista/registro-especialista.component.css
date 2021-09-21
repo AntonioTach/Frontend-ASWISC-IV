@@ -26,7 +26,7 @@ h1{
 h2{
   text-align: start;
   font-size: 20px;
-  margin-top: 20px;
+  margin-top: 10px;
   margin-left: 15px;
   margin-bottom: 5px;
   color: #000000;
@@ -35,14 +35,32 @@ h2{
 .input{
   text-align: start;
   margin-left: 15px;
-  margin-right: 200px;
+  margin-right: 250px;
   width: 270px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
+
 }
 
 .div-info{
   display: flex;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 
+.div-btn{
+  text-align: center;
+}
+
+.btn{
+  height: 30px;
+  width: 270px;
+  background-color: #008000;
+  color: #FFFFFF;
+  font-size: 18px;
+  border: 2px solid;
+  line-height: 1;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+
+}

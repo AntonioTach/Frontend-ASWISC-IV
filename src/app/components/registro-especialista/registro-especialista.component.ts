@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Router } from '@angular/router'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registro-especialista',
@@ -10,28 +10,95 @@ import { Router } from '@angular/router'
 })
 export class RegistroEspecialistaComponent implements OnInit {
 
-  form!: FormGroup;
+  public formRegistro!: FormGroup;
+  private _snackBar: any;
 
-  constructor(private fb:FormBuilder, private _snackBar: MatSnackBar, private router: Router) {
-    this.form = this.fb.group({
-      nombre: new FormControl('', [Validators.required]),
-      sexo: new FormControl('', [Validators.required]),
-      direccion: new FormControl('', [Validators.required]),
-      nacimiento: new FormControl('', [Validators.required]),
-      email: new FormControl('', [Validators.email, Validators.required]),
-      profesion: new FormControl('', [Validators.required]),
-      telefono: new FormControl('', [Validators.required]),
-      estudios: new FormControl('', [Validators.required]),
-      usuario: ['', Validators.required],
-      password: ['', Validators.required]
-    });
-   }
+  constructor(private formBuilder: FormBuilder){
+
+  }
+
+  hide = true;
+
 
   ngOnInit(): void {
+    this.formRegistro = this.formBuilder.group({
+      nombre: ['',
+      [
+        Validators.required
+      ]
+   ],
+
+    //   sexo: ['',
+    //   [
+    //     Validators.required
+    //   ]
+    // ],
+
+      direccion: ['',
+      [
+        Validators.required
+      ]
+    ],
+
+      nacimiento: ['',
+      [
+        Validators.required
+      ]
+    ],
+
+      usuario: ['',
+      [
+        Validators.required
+      ]
+    ],
+      password: ['',
+      [
+        Validators.required,
+        Validators.minLength(8)
+      ]
+    ],
+
+      email: ['',
+      [
+        Validators.required,
+        Validators.email
+      ]
+    ],
+
+      telefono: ['',
+      [
+        Validators.required,
+        Validators.maxLength(10),
+        Validators.minLength(10)
+      ]
+    ],
+
+      profesion: ['',
+      [
+        Validators.required
+      ]
+    ],
+
+      estudios: ['',
+      [
+        Validators.required
+      ]
+    ]
+    });
   }
+
+
 
   RegistroEspecialista(){
-
+    if (this.formRegistro.invalid){
+      return;
+    }
+    else{
+      console.log(this.formRegistro.value);
+      alert("Valido!");
+    }
   }
+
+
 
 }

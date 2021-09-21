@@ -1,25 +1,150 @@
 <body>
   <div class="cuadro-registro">
     <h1>Registro Especialista</h1>
-    <form [formGroup]="form" (ngSubmit)="RegistroEspecialista()">
+    <form [formGroup]="formRegistro" (ngSubmit)="RegistroEspecialista()">
+
       <div class="div-info">
+        <!--          INPUTS           -->
         <div>
           <h2>Nombre</h2>
           <mat-form-field class="input" appearance="fill">
             <mat-label>Nombre Completo</mat-label>
-            <input matInput>
+            <input matInput formControlName="nombre">
+            <mat-error>
+              Por favor ingrese su nombre
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div>
+          <h2>Sexo</h2>
+          <mat-radio-group aria-label="Select an option">
+            <mat-radio-button class="input" color="primary" value="masculino">Masculino</mat-radio-button>
+            <br>
+            <mat-radio-button class="input" color="primary" value="femenino">Femenino</mat-radio-button>
+          </mat-radio-group>
+        </div>
+      </div>
+
+      <div class="div-info">
+        <div>
+          <h2>Dirección</h2>
+          <mat-form-field class="input" appearance="fill">
+            <mat-label>Dirección</mat-label>
+            <input matInput formControlName="direccion">
+            <mat-error>
+              Por favor ingrese su <strong>Dirección</strong>
+            </mat-error>
           </mat-form-field>
         </div>
         <div>
-          <h2>Sexo</h2>
+
+
+          <h2>Fecha de Nacimiento</h2>
           <mat-form-field class="input" appearance="fill">
-            <mat-label>Favorite food</mat-label>
-            <input matInput>
+            <input matInput type="date" formControlName="nacimiento">
+            <mat-error>
+              Por favor Ingrese su <strong>Fecha de Nacimiento</strong>
+            </mat-error>
           </mat-form-field>
         </div>
       </div>
+
+      <div class="div-info">
+
+
+        <div>
+          <h2>Correo electrónico</h2>
+          <mat-form-field class="input" appearance="fill">
+            <mat-label>Email</mat-label>
+            <input matInput type="email" formControlName="email" placeholder="Ex. pat@example.com">
+            <mat-error>
+              Por favor Ingrese su <strong>Correo</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+
+
+
+        <div>
+          <h2>Profesion</h2>
+          <mat-form-field class="input" appearance="fill">
+            <mat-label>Profesion</mat-label>
+            <input matInput formControlName="profesion">
+            <mat-error>
+              Por favor Ingrese su <strong>Profesion</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="div-info">
+        <div>
+          <h2>Número de Teléfono</h2>
+          <mat-form-field class="input" appearance="fill">
+            <mat-label>Teléfono</mat-label>
+            <span matPrefix>+55 &nbsp;</span>
+            <input type="tel" matInput placeholder="555-555-1234" formControlName="telefono">
+            <mat-error>
+              Por favor Ingrese su número de <strong>telefono</strong> de 10 digitos
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div>
+          <h2>Último grado de estudios</h2>
+          <mat-form-field class="input" appearance="fill">
+            <mat-label>Estudios</mat-label>
+            <input matInput formControlName="estudios">
+            <mat-error>
+              Por favor Ingrese sus <strong>Estudios</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="div-info">
+        <div>
+          <h2>Nombre de usuario</h2>
+          <mat-form-field class="input" appearance="fill">
+            <mat-label>Usuario</mat-label>
+            <input matInput formControlName="usuario">
+            <mat-error>
+              Por favor Ingrese su nombre de <strong>Usuario</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div>
+          <h2>Contraseña</h2>
+          <mat-form-field class="input" appearance="fill">
+            <mat-label>Contraseña</mat-label>
+            <input matInput autocomplete="off" [type]="hide ? 'password' : 'text'" formControlName="password">
+            <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hide">
+              <mat-icon>
+                {{hide ? 'visibility_off' : 'visibility'}}
+              </mat-icon>
+            </button>
+            <mat-error>
+              Por favor Ingrese su  <strong>Contraseña</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="div-btn">
+        <!-- <button  type="submit" mat-raised-button class="ancho btn" [disabled]="form.invalid">Ingresar</button> -->
+        <button  type="submit" mat-raised-button class="btn">Ingresar</button>
+      </div>
+
     </form>
   </div>
+  <!--Identificar si el formulario es valido-->
+  <!-- <div>
+    Valido: {{ formRegistro.valid | json }}
+  </div> -->
+
+
 </body>
 
 

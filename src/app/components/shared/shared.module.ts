@@ -15,6 +15,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatCardModule } from '@angular/material/card';
+import { MatRadioModule } from '@angular/material/radio';
+
 
 @NgModule({
   declarations: [],
@@ -30,7 +32,8 @@ import { MatCardModule } from '@angular/material/card';
     ReactiveFormsModule,
     MatToolbarModule,
     MatButtonToggleModule,
-    MatCardModule
+    MatCardModule,
+    MatRadioModule
   ],
   exports: [
     MatSliderModule,
@@ -43,7 +46,8 @@ import { MatCardModule } from '@angular/material/card';
     ReactiveFormsModule,
     MatToolbarModule,
     MatButtonToggleModule,
-    MatCardModule
+    MatCardModule,
+    MatRadioModule
   ]
 })
 export class SharedModule { }
