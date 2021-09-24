@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,6 +16,7 @@ import { RegistroPacienteComponent } from './components/registro-paciente/regist
 import { RegistroEspecialistaComponent } from './components/registro-especialista/registro-especialista.component';
 
 import { ReactiveFormsModule } from '@angular/forms';
+import { ServiceRegistroEspecialistaService } from './components/registro-especialista/service-registro-especialista.service';
 
 
 @NgModule({
@@ -39,8 +41,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     SharedModule,
     ReactiveFormsModule,
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [ServiceRegistroEspecialistaService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -3,6 +3,8 @@ import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms'
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 
+import { ServiceRegistroEspecialistaService } from '../registro-especialista/service-registro-especialista.service';
+
 @Component({
   selector: 'app-registro-especialista',
   templateUrl: './registro-especialista.component.html',
@@ -13,7 +15,7 @@ export class RegistroEspecialistaComponent implements OnInit {
   public formRegistro!: FormGroup;
   private _snackBar: any;
 
-  constructor(private formBuilder: FormBuilder){
+  constructor(private formBuilder: FormBuilder, private especialistaService : ServiceRegistroEspecialistaService){
 
   }
 
@@ -85,6 +87,8 @@ export class RegistroEspecialistaComponent implements OnInit {
       ]
     ]
     });
+
+
   }
 
 
@@ -96,6 +100,10 @@ export class RegistroEspecialistaComponent implements OnInit {
     else{
       console.log(this.formRegistro.value);
       alert("Valido!");
+
+    //Uso del servicio de Post Especialista cuando sea valido el formulario
+     this.especialistaService.postEspecialista();
+
     }
   }
 
