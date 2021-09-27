@@ -1,7 +1,7 @@
 <body>
   <div class="cuadro-registro">
     <h1>Registro Especialista</h1>
-    <form [formGroup]="formRegistro" (ngSubmit)="RegistroEspecialista()">
+    <form #especialistaForm="ngForm" [formGroup]="formRegistro" (ngSubmit)="RegistroEspecialista()">
 
       <div class="div-info">
         <!--          INPUTS           -->

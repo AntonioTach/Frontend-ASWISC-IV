@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms'
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 
+//Importar el service
 import { ServiceRegistroEspecialistaService } from '../registro-especialista/service-registro-especialista.service';
 
 @Component({
@@ -102,11 +103,10 @@ export class RegistroEspecialistaComponent implements OnInit {
       alert("Valido!");
 
     //Uso del servicio de Post Especialista cuando sea valido el formulario
-     this.especialistaService.postEspecialista();
 
+    //  this.especialistaService.postEspecialista();
     }
   }
-
 
 
 }
