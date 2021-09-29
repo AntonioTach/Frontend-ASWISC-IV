@@ -102,9 +102,12 @@ export class RegistroEspecialistaComponent implements OnInit {
       console.log(this.formRegistro.value);
       alert("Valido!");
 
-    //Uso del servicio de Post Especialista cuando sea valido el formulario
 
-    //  this.especialistaService.postEspecialista();
+    //Uso del servicio de Post Especialista cuando sea valido el formulario
+    this.especialistaService.createEspecialista(this.formRegistro.value).subscribe(
+      res => console.log(res),
+      err => console.error(err)
+    )
     }
   }
 
