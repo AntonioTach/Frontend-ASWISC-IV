@@ -17,6 +17,7 @@ import { RegistroEspecialistaComponent } from './components/registro-especialist
 
 import { ReactiveFormsModule } from '@angular/forms';
 import { ServiceRegistroEspecialistaService } from './components/registro-especialista/service-registro-especialista.service';
+import { Navbar2Component } from './components/navbar2/navbar2.component';
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import { ServiceRegistroEspecialistaService } from './components/registro-especi
     LoginComponent,
     RegistroPacienteComponent,
     RegistroEspecialistaComponent,
+    Navbar2Component,
   ],
   imports: [
     BrowserModule,

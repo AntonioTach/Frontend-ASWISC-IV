@@ -9,8 +9,8 @@ import { RegistroEspecialistaComponent } from './components/registro-especialist
 
 const routes: Routes = [
   //Ver Inicio
-  // { path: '', redirectTo: 'inicio', pathMatch: 'full' },
-  // { path: 'inicio', component: InicioComponent },
+  { path: '', redirectTo: 'inicio', pathMatch: 'full' },
+  { path: 'inicio', component: InicioComponent },
 
   //ver login
   // { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -18,8 +18,8 @@ const routes: Routes = [
   // { path: '**', redirectTo: 'inicio', pathMatch: 'full' },
 
   //ver registro Especialista
-  { path: '', redirectTo: 'registro-especialista', pathMatch:  'full'},
-  { path: 'registro-especialista', component: RegistroEspecialistaComponent },
+  // { path: '', redirectTo: 'registro-especialista', pathMatch:  'full'},
+  // { path: 'registro-especialista', component: RegistroEspecialistaComponent },
 
 ];
 
