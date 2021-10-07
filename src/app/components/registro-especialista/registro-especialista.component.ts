@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, FormControl, Validators, NgForm } from '@angular/forms';
+
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 
@@ -14,9 +15,8 @@ import { ServiceRegistroEspecialistaService } from '../registro-especialista/ser
 export class RegistroEspecialistaComponent implements OnInit {
 
   public formRegistro!: FormGroup;
-  private _snackBar: any;
 
-  constructor(private formBuilder: FormBuilder, private especialistaService : ServiceRegistroEspecialistaService){
+  constructor(private formBuilder: FormBuilder, private especialistaService : ServiceRegistroEspecialistaService, private _snackBar: MatSnackBar, private router: Router ){
 
   }
 
@@ -54,7 +54,7 @@ export class RegistroEspecialistaComponent implements OnInit {
         Validators.required
       ]
     ],
-      password: ['',
+      contrasena: ['',
       [
         Validators.required,
         Validators.minLength(8)
@@ -99,17 +99,53 @@ export class RegistroEspecialistaComponent implements OnInit {
       return;
     }
     else{
-      console.log(this.formRegistro.value);
-      alert("Valido!");
+      //Metodo POST
+      console.log(this.formRegistro?.value),
+      this.especialistaService.createEspecialista(this.formRegistro.value).subscribe(
+        res => {
+          console.log(res),
+          console.log('correcto');
+        },
+        err => {
+          console.log('ERROR que no se');
+          console.log(err);
+        }
+      )
+      //Mensaje de Registro Correcto
+      this.correcto();
+      //Timeout despues del mensaje de 3s para direccionar al Inicio
+      setTimeout(() => {
+
+        this.router.navigate(['login']);
+      }, 3000);
 
 
-    //Uso del servicio de Post Especialista cuando sea valido el formulario
-    this.especialistaService.createEspecialista(this.formRegistro.value).subscribe(
-      res => console.log(res),
-      err => console.error(err)
-    )
+
+
+      // this.CrearUsuario();
     }
   }
 
+  //Uso del servicio de Post Especialista cuando sea valido el formulario
+  // CrearUsuario(): any{
+  //   console.log(this.formRegistro?.value),
+  //   this.especialistaService.createEspecialista(this.formRegistro.value).subscribe(
+  //     res => {
+  //       console.log(res),
+  //       console.log("Correcto");
+  //     },
+  //     err => {
+  //       console.error(err);
+  //     }
+  //   )
+  // }
+
+  correcto(){
+    this._snackBar.open('Registro Correcto', '', {
+      duration: 3000, //5s
+      horizontalPosition: 'center',
+      verticalPosition: 'bottom'
+    });
+  }
 
 }

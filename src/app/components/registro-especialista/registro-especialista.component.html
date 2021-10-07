@@ -37,9 +37,8 @@
             </mat-error>
           </mat-form-field>
         </div>
+
         <div>
-
-
           <h2>Fecha de Nacimiento</h2>
           <mat-form-field class="input" appearance="fill">
             <input matInput type="date" formControlName="nacimiento">
@@ -108,7 +107,7 @@
           <h2>Nombre de usuario</h2>
           <mat-form-field class="input" appearance="fill">
             <mat-label>Usuario</mat-label>
-            <input matInput formControlName="usuario">
+            <input matInput autocomplete="off"s formControlName="usuario">
             <mat-error>
               Por favor Ingrese su nombre de <strong>Usuario</strong>
             </mat-error>
@@ -118,7 +117,7 @@
           <h2>Contraseña</h2>
           <mat-form-field class="input" appearance="fill">
             <mat-label>Contraseña</mat-label>
-            <input matInput autocomplete="off" [type]="hide ? 'password' : 'text'" formControlName="password">
+            <input matInput autocomplete="off" [type]="hide ? 'password' : 'text'" formControlName="contrasena">
             <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
             [attr.aria-pressed]="hide">
               <mat-icon>
@@ -134,7 +133,7 @@
 
       <div class="div-btn">
         <!-- <button  type="submit" mat-raised-button class="ancho btn" [disabled]="form.invalid">Ingresar</button> -->
-        <button  type="submit" mat-raised-button class="btn">Ingresar</button>
+        <button  type="submit" mat-raised-button class="btn">Registrarse</button>
       </div>
 
     </form>

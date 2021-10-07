@@ -4,19 +4,22 @@
       <span class="titulo">ASWISC-IV</span>
       <span class="example-spacer"></span>
       <button  mat-icon-button>
-        <mat-icon class="size_icon" matSuffix>account_circle</mat-icon>
+        <mat-icon class="size_icon" matSuffix (click)="btnLogin();">account_circle</mat-icon>
         <!-- <mat-icon class="size_icon">account_circle</mat-icon> -->
       </button>
-      <button mat-button class="size">Inicio de Sesion</button>
+      <button mat-button class="size" (click)="btnLogin();" >Inicio de Sesion</button>
     </mat-toolbar-row>
 
     <mat-toolbar-row>
-      <button mat-button class="btn">Inicio</button>
+      <button mat-button class="btn" (click)="btnInicio();">Inicio</button>
       <button mat-button class="btn">WISC-IV</button>
       <button mat-button class="btn">ASWISC-IV</button>
-      <button mat-button class="btn">Articulos</button>
+      <button mat-button class="btn" (click)="btnArticulos();">Articulos</button>
     </mat-toolbar-row>
   </mat-toolbar>
 </p>
+
+<!-- Routes -->
+<router-outlet></router-outlet>
 
 

@@ -1,8 +1,11 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ArticulosComponent } from './components/articulos/articulos.component';
 import { InicioComponent } from './components/inicio/inicio.component';
 import { LoginComponent } from './components/login/login.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { RegistroEspecialistaComponent } from './components/registro-especialista/registro-especialista.component';
+import { RegistroPacienteComponent } from './components/registro-paciente/registro-paciente.component';
 
 
 
@@ -11,6 +14,11 @@ const routes: Routes = [
   //Ver Inicio
   { path: '', redirectTo: 'inicio', pathMatch: 'full' },
   { path: 'inicio', component: InicioComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'registro-especialista', component: RegistroEspecialistaComponent },
+  { path: 'registro-paciente', component: RegistroPacienteComponent },
+  { path: 'articulos', component: ArticulosComponent },
+  { path: '**', component: PageNotFoundComponent }
 
   //ver login
   // { path: '', redirectTo: 'login', pathMatch: 'full' },

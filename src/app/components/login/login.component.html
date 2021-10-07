@@ -1,6 +1,6 @@
 <body>
     <div class="login">
-        <h1>Iniciar Sesion</h1>
+        <h1>Iniciar Sesión</h1>
         <form [formGroup]="form" (ngSubmit)="ingresar()">
             <!-- Ingreso Usuario-->
             <mat-form-field  class="ancho" appearance="fill">
@@ -26,10 +26,12 @@
 
               <!-- Links Registros -->
               <ul>
-                  <li><a class="link" href="#Olvidar">Haz olvidado tu contraseña?</a></li>
-                  <li><a class="link" href="../registro-especialista/registro-especialista.component.html">Registrate como Especialista</a></li>
-                  <li><a class="link" href="#RegistroPaciente">Registrate como Paciente</a></li>
+                  <li><a class="link" href="#Olvido">Haz olvidado tu contraseña?</a></li>
+                  <li><a class="link" href="/registro-especialista">Registrate como Especialista</a></li>
+                  <li><a class="link" href="/registro-paciente">Registrate como Paciente</a></li>
               </ul>
         </form>
     </div>
 </body>
+
+<router-outlet></router-outlet>

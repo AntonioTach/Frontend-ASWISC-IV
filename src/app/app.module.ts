@@ -18,6 +18,8 @@ import { RegistroEspecialistaComponent } from './components/registro-especialist
 import { ReactiveFormsModule } from '@angular/forms';
 import { ServiceRegistroEspecialistaService } from './components/registro-especialista/service-registro-especialista.service';
 import { Navbar2Component } from './components/navbar2/navbar2.component';
+import { ArticulosComponent } from './components/articulos/articulos.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 
 @NgModule({
@@ -29,6 +31,8 @@ import { Navbar2Component } from './components/navbar2/navbar2.component';
     RegistroPacienteComponent,
     RegistroEspecialistaComponent,
     Navbar2Component,
+    ArticulosComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,

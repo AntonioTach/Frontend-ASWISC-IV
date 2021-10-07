@@ -32,6 +32,7 @@ export class LoginComponent implements OnInit {
 
     if(usuario == "AntonioV18" && password == "ferrari")
     {
+      this.correcto();
       //Redireccion
       this.router.navigate(['dashboard']);
     }
@@ -44,6 +45,14 @@ export class LoginComponent implements OnInit {
   error(){
     this._snackBar.open('Usuario o contraseña Incorrecto', '', {
       duration: 5000, //5s
+      horizontalPosition: 'center',
+      verticalPosition: 'bottom'
+    });
+  }
+
+  correcto(){
+    this._snackBar.open('Ingreso Correcto', '', {
+      duration: 3000, //5s
       horizontalPosition: 'center',
       verticalPosition: 'bottom'
     });
