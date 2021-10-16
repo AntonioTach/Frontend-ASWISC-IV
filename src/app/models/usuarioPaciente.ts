@@ -1,9 +1,12 @@
 export interface usuarioPaciente{
   id?: string;
   nombre: string;
-  nacimiento: Date;
   usuario: string;
   email: string;
-  telefono: string;
+  sexo: string;
+  estudios: string;
+  telefono: number;
+  nombretutor:string;
+  telefonotutor:number;
   contrasena: string;
 };
