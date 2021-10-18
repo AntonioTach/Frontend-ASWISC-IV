@@ -4,6 +4,7 @@ export interface usuarioPaciente{
   usuario: string;
   email: string;
   sexo: string;
+  nacimiento?: Date;
   estudios: string;
   telefono: number;
   nombretutor:string;

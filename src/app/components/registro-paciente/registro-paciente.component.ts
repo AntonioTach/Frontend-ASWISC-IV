@@ -1,10 +1,11 @@
+import { ThisReceiver } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators, NgForm } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 
 //Importar servicio Usuario Paciente
-import { ServiceUsuarioPacienteService } from '../../services/usuario-paciente/service-usuario-paciente.service';
+import { ServiceRegistroPacienteService } from '../registro-paciente/service-registro-paciente.service';
 
 @Component({
   selector: 'app-registro-paciente',
@@ -15,7 +16,7 @@ export class RegistroPacienteComponent implements OnInit {
 
   public formRegistroPaciente!: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private pacienteService : ServiceUsuarioPacienteService, private _snackBar: MatSnackBar, private router: Router) { }
+  constructor(private formBuilder: FormBuilder, private pacienteService : ServiceRegistroPacienteService, private _snackBar: MatSnackBar, private router: Router) { }
 
   hide = true;
 
@@ -37,6 +38,17 @@ export class RegistroPacienteComponent implements OnInit {
     }
     else {
       console.log(this.formRegistroPaciente?.value);
+      //METODO POST Crear Paciente
+      this.pacienteService.createPaciente(this.formRegistroPaciente.value).subscribe(
+        res => {
+          console.log(res),
+          console.log('correcto');
+        },
+        err => {
+          console.log('ERROR que no se');
+          console.log(err);
+        }
+      )
     }
 
   };
