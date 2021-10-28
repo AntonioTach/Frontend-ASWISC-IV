@@ -116,7 +116,7 @@ export class RegistroEspecialistaComponent implements OnInit {
       //Timeout despues del mensaje de 3s para direccionar al Inicio
       setTimeout(() => {
 
-        this.router.navigate(['login']);
+        //this.router.navigate(['login']);
       }, 3000);
 
 
