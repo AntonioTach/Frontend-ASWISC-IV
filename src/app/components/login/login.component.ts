@@ -3,6 +3,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 
+//Importar servicio para login
+import { ServiceLoginUsuariosService } from '../login/login.service';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -13,6 +16,7 @@ export class LoginComponent implements OnInit {
   form: FormGroup;
 
   hide = true;
+
   constructor(private fb:FormBuilder, private _snackBar: MatSnackBar, private router: Router) {
     this.form = this.fb.group({
       usuario: ['', Validators.required],
@@ -34,7 +38,7 @@ export class LoginComponent implements OnInit {
     {
       this.correcto();
       //Redireccion
-      this.router.navigate(['dashboard']);
+      //this.router.navigate(['dashboard']);
     }
     else{
        this.error();

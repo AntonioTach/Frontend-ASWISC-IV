@@ -10,7 +10,7 @@ export class ServiceRegistroPacienteService {
 
     URL_API = 'http://localhost:4000/api/pacientes/registro'; //Puerto del server NODE
 
-    selectedEspecialista: usuarioPaciente = {
+    selectedPaciente: usuarioPaciente = {
         nombre: '',
         usuario: '',
         email: '',
@@ -22,7 +22,7 @@ export class ServiceRegistroPacienteService {
         contrasena: '',
     };
 
-    especialistas: usuarioPaciente[] = []; //arreglo de Pacientes
+    pacientes: usuarioPaciente[] = []; //arreglo de Pacientes
 
 
 

@@ -8,9 +8,9 @@ import {usuarioLogin} from 'src/app/models/usuarioLogin';
 
 export class ServiceLoginUsuariosService {
 
-    URL_API = 'http://localhost:4000/api/pacientes/registro'; //Puerto del server NODE
+    URL_API = 'http://localhost:4000/api/especialistas/login'; //Puerto del server
 
-    selectedEspecialista: usuarioLogin = {
+    selectedUsuario: usuarioLogin = {
         usuario:'',
         contrasena:'',
     };
@@ -24,7 +24,7 @@ export class ServiceLoginUsuariosService {
 
 
     loginUsuario(usuarios: usuarioLogin){
-      //envio del objeto paciente al server
+      //envio del objeto usuario al server
       return this.http.post<usuarioLogin[]>(this.URL_API, usuarios);
 
 
