@@ -7,7 +7,7 @@ import { usuarioEspecialista } from 'src/app/models/usuarioEspecialista';
 })
 export class ServiceRegistroEspecialistaService {
 
-  URL_API = 'http://localhost:4000/api/especialistas/registro'; //Puerto del server NODE
+  URL_API = 'http://localhost:4000/registro-especialista/'; //Puerto del server NODE
 
   selectedEspecialista: usuarioEspecialista = {
     nombre: '',

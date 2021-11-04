@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
 
   hide = true;
 
-  constructor(private fb:FormBuilder, private _snackBar: MatSnackBar, private router: Router) {
+  constructor(private fb:FormBuilder, private _snackBar: MatSnackBar, private router: Router, private loginService : ServiceLoginUsuariosService) {
     this.form = this.fb.group({
       usuario: ['', Validators.required],
       password: ['', Validators.required]
