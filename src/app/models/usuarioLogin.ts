@@ -1,4 +1,4 @@
 export interface usuarioLogin{
-    usuario: string;
+    usuario?: string;
     contrasena: string;
 }

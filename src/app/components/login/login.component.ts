@@ -19,8 +19,8 @@ export class LoginComponent implements OnInit {
 
   constructor(private fb:FormBuilder, private _snackBar: MatSnackBar, private router: Router, private loginService : ServiceLoginUsuariosService) {
     this.form = this.fb.group({
-      usuario: ['', Validators.required],
-      password: ['', Validators.required]
+      usuario: ['', [Validators.required]],
+      contrasena: ['', [Validators.required, Validators.minLength(8)]]
     })
   }
 
@@ -31,19 +31,33 @@ export class LoginComponent implements OnInit {
 
   ingresar(){
 
-    const usuario = this.form.value.usuario;
-    const password = this.form.value.password;
+    // const usuario = this.form.value.usuario;
+    // const contrasena = this.form.value.password;
 
-    if(usuario == "AntonioV18" && password == "ferrari")
-    {
-      this.correcto();
-      //Redireccion
-      //this.router.navigate(['dashboard']);
-    }
-    else{
-       this.error();
-       this.form.reset();
-    }
+    this.loginService.loginUsuario(this.form.value).subscribe(
+      res => {
+        console.log(res),
+        console.log('correcto');
+      },
+      err => {
+        console.log('ERROR que no se');
+        console.log(err);
+      }
+
+    );
+
+
+
+    // if(usuario == "AntonioV18" && contrasena == "ferrari")
+    // {
+    //   this.correcto();
+    //   //Redireccion
+    //   //this.router.navigate(['dashboard']);
+    // }
+    // else{
+    //    this.error();
+    //    this.form.reset();
+    // }
   }
 
   error(){

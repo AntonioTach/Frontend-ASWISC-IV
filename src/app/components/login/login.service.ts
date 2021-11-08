@@ -8,7 +8,7 @@ import {usuarioLogin} from 'src/app/models/usuarioLogin';
 
 export class ServiceLoginUsuariosService {
 
-    URL_API = 'http://localhost:4000/api/especialistas/login'; //Puerto del server
+    URL_API = 'http://localhost:4000/login'; //Puerto del server
 
     selectedUsuario: usuarioLogin = {
         usuario:'',
@@ -26,8 +26,6 @@ export class ServiceLoginUsuariosService {
     loginUsuario(usuarios: usuarioLogin){
       //envio del objeto usuario al server
       return this.http.post<usuarioLogin[]>(this.URL_API, usuarios);
-
-
     }
 
 
