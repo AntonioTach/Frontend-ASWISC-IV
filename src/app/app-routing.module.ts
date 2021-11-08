@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { ArticulosComponent } from './components/articulos/articulos.component';
 import { InicioComponent } from './components/inicio/inicio.component';
 import { LoginComponent } from './components/login/login.component';
+import { ModuloEspecialistasComponent } from './components/modulo-especialistas/modulo-especialistas.component';
+import { ModuloPacientesComponent } from './components/modulo-pacientes/modulo-pacientes.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { RegistroEspecialistaComponent } from './components/registro-especialista/registro-especialista.component';
 import { RegistroPacienteComponent } from './components/registro-paciente/registro-paciente.component';
@@ -18,7 +20,9 @@ const routes: Routes = [
   { path: 'registro-especialista', component: RegistroEspecialistaComponent },
   { path: 'registro-paciente', component: RegistroPacienteComponent },
   { path: 'articulos', component: ArticulosComponent },
-  { path: '**', component: PageNotFoundComponent }
+  { path: '**', component: PageNotFoundComponent },
+  { path: 'modulo-especialistas', component: ModuloEspecialistasComponent },
+  { path: 'modulo-pacientes', component: ModuloPacientesComponent }
 
   //ver login
   // { path: '', redirectTo: 'login', pathMatch: 'full' },

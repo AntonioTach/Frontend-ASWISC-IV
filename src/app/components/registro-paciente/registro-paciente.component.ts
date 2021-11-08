@@ -45,7 +45,6 @@ export class RegistroPacienteComponent implements OnInit {
           console.log('correcto');
         },
         err => {
-          console.log('ERROR que no se');
           console.log(err);
         }
       )

@@ -13,6 +13,8 @@ import { ServiceLoginUsuariosService } from '../login/login.service';
 })
 export class LoginComponent implements OnInit {
 
+  noCoinciden = true;
+
   form: FormGroup;
 
   hide = true;
@@ -25,7 +27,6 @@ export class LoginComponent implements OnInit {
   }
 
 
-
   ngOnInit(): void {
   }
 
@@ -36,12 +37,17 @@ export class LoginComponent implements OnInit {
 
     this.loginService.loginUsuario(this.form.value).subscribe(
       res => {
-        console.log(res),
-        console.log('correcto');
+        console.log(res);
+        // console.log(res.token);
+        localStorage.setItem('token', res.token); //Guardado de token en el localStorage
+
+        //this.router.navigate(['modulo-especialistas']);
+
+        //console.log('correcto');
       },
       err => {
-        console.log('ERROR que no se');
         console.log(err);
+        this.error();
       }
 
     );

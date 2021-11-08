@@ -20,6 +20,8 @@ import { ServiceRegistroEspecialistaService } from './components/registro-especi
 import { Navbar2Component } from './components/navbar2/navbar2.component';
 import { ArticulosComponent } from './components/articulos/articulos.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { ModuloEspecialistasComponent } from './components/modulo-especialistas/modulo-especialistas.component';
+import { ModuloPacientesComponent } from './components/modulo-pacientes/modulo-pacientes.component';
 
 
 @NgModule({
@@ -33,6 +35,8 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
     Navbar2Component,
     ArticulosComponent,
     PageNotFoundComponent,
+    ModuloEspecialistasComponent,
+    ModuloPacientesComponent,
   ],
   imports: [
     BrowserModule,
