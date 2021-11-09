@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Injectable, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
@@ -18,7 +18,6 @@ export class LoginComponent implements OnInit {
   form: FormGroup;
 
   hide = true;
-
   constructor(private fb:FormBuilder, private _snackBar: MatSnackBar, private router: Router, private loginService : ServiceLoginUsuariosService) {
     this.form = this.fb.group({
       usuario: ['', [Validators.required]],
@@ -29,17 +28,17 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
   ingresar(){
 
     // const usuario = this.form.value.usuario;
     // const contrasena = this.form.value.password;
 
     this.loginService.loginUsuario(this.form.value).subscribe(
-      res => {
+      (res:any) => {
+        let token = res.headers.get('Token');
         console.log(res);
         // console.log(res.token);
-        localStorage.setItem('token', res.token); //Guardado de token en el localStorage
+        localStorage.setItem('Token', token); //Guardado de token en el localStorage
 
         //this.router.navigate(['modulo-especialistas']);
 

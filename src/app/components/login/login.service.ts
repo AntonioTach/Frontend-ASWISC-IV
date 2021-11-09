@@ -24,7 +24,7 @@ export class ServiceLoginUsuariosService {
     constructor(private http : HttpClient, private router: Router) {}
 
     loginUsuario(usuario:any){
-      return this.http.post<any>(this.URL_API, usuario);
+      return this.http.post<any>(this.URL_API , usuario, { observe: 'response'});
     }
 
 
