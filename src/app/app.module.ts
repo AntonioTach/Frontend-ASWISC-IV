@@ -23,6 +23,9 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { ModuloEspecialistasComponent } from './components/modulo-especialistas/modulo-especialistas.component';
 import { ModuloPacientesComponent } from './components/modulo-pacientes/modulo-pacientes.component';
 
+//Providers
+import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
+
 
 @NgModule({
   declarations: [
@@ -53,7 +56,12 @@ import { ModuloPacientesComponent } from './components/modulo-pacientes/modulo-p
     ReactiveFormsModule,
     HttpClientModule,
   ],
-  providers: [ServiceRegistroEspecialistaService],
+  providers: [
+
+    ServiceRegistroEspecialistaService,
+    {provide: JWT_OPTIONS, useValue: JWT_OPTIONS},
+    JwtHelperService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

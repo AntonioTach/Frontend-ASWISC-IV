@@ -14,7 +14,6 @@ import { ServiceLoginUsuariosService } from '../login/login.service';
 export class LoginComponent implements OnInit {
 
   noCoinciden = true;
-
   form: FormGroup;
 
   hide = true;
@@ -34,15 +33,10 @@ export class LoginComponent implements OnInit {
     // const contrasena = this.form.value.password;
 
     this.loginService.loginUsuario(this.form.value).subscribe(
-      (res:any) => {
-        let token = res.headers.get('Token');
-        console.log(res);
-        // console.log(res.token);
-        localStorage.setItem('Token', token); //Guardado de token en el localStorage
+      res => {
+        console.log(res.token);
+        localStorage.setItem('token', res.token); //Se guarda el Token en el localStorage
 
-        //this.router.navigate(['modulo-especialistas']);
-
-        //console.log('correcto');
       },
       err => {
         console.log(err);
