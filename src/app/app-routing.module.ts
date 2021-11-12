@@ -8,7 +8,9 @@ import { ModuloPacientesComponent } from './components/modulo-pacientes/modulo-p
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { RegistroEspecialistaComponent } from './components/registro-especialista/registro-especialista.component';
 import { RegistroPacienteComponent } from './components/registro-paciente/registro-paciente.component';
+import { EspecialistaGuard } from './guards/especialista.guard';
 import { InicioGuard } from './guards/inicio.guard';
+import { PacienteGuard } from './guards/paciente.guard';
 
 
 
@@ -19,11 +21,12 @@ const routes: Routes = [
   { path: 'inicio', component: InicioComponent },
   { path: 'login', component: LoginComponent },
   { path: 'registro-especialista', component: RegistroEspecialistaComponent },
-  { path: 'registro-paciente', component: RegistroPacienteComponent, canActivate: [InicioGuard] },
+  { path: 'registro-paciente', component: RegistroPacienteComponent },
   { path: 'articulos', component: ArticulosComponent },
+  { path: 'modulo-especialistas', component: ModuloEspecialistasComponent, canActivate:[EspecialistaGuard], data: { expectedRole: 1 } },
+  { path: 'modulo-pacientes', component: ModuloPacientesComponent, canActivate:[PacienteGuard], data: { expectedRole: 2 } },
   { path: '**', component: PageNotFoundComponent },
-  { path: 'modulo-especialistas', component: ModuloEspecialistasComponent, canActivate: [InicioGuard] },
-  { path: 'modulo-pacientes', component: ModuloPacientesComponent }
+
 
   //ver login
   // { path: '', redirectTo: 'login', pathMatch: 'full' },

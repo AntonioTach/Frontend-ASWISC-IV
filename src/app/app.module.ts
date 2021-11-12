@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -25,6 +25,7 @@ import { ModuloPacientesComponent } from './components/modulo-pacientes/modulo-p
 
 //Providers
 import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
+//import { TokenInterceptorService } from './services/token-interceptor.service';
 
 
 @NgModule({
@@ -60,7 +61,9 @@ import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 
     ServiceRegistroEspecialistaService,
     {provide: JWT_OPTIONS, useValue: JWT_OPTIONS},
-    JwtHelperService
+    JwtHelperService,
+    //Token interceptor
+    //{ provide : HTTP_INTERCEPTORS, useClass : TokenInterceptorService, multi : true }
   ],
   bootstrap: [AppComponent]
 })
