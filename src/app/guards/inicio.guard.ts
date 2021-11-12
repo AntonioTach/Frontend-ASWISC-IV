@@ -10,7 +10,7 @@ export class InicioGuard implements CanActivate {
 
   constructor(
     private loginService: ServiceLoginUsuariosService,
-    private router: Router
+    public router: Router
   ) {  }
 
   canActivate():boolean{
