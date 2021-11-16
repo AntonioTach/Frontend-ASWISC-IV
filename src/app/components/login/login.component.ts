@@ -33,10 +33,9 @@ export class LoginComponent implements OnInit {
     // const contrasena = this.form.value.password;
 
     this.loginService.loginUsuario(this.form.value).subscribe(
-      res => {
+      (res:any) => {
         console.log(res.token);
         localStorage.setItem('token', res.token); //Se guarda el Token en el localStorage
-
       },
       err => {
         console.log(err);
