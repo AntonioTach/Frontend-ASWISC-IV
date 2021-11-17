@@ -6,6 +6,9 @@ import { Router } from '@angular/router';
 //Importar servicio para login
 import { ServiceLoginUsuariosService } from '../login/login.service';
 
+import decode from 'jwt-decode';
+
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -36,6 +39,20 @@ export class LoginComponent implements OnInit {
       (res:any) => {
         console.log(res.token);
         localStorage.setItem('token', res.token); //Se guarda el Token en el localStorage
+
+        //Obtener el id del token
+        const token : string | any = localStorage.getItem('token');
+        const { id_tipo } : any = decode(token);
+
+        if (id_tipo == 1){
+          this.router.navigateByUrl('/modulo-especialistas');
+        }
+        else if (id_tipo == 2){
+          this.router.navigateByUrl('/modulo-pacientes');
+        }
+        else {
+          this.error();
+        }
       },
       err => {
         console.log(err);
@@ -71,7 +88,8 @@ export class LoginComponent implements OnInit {
       duration: 3000, //5s
       horizontalPosition: 'center',
       verticalPosition: 'bottom'
-    });
+    }
+    );
   }
 
 }
