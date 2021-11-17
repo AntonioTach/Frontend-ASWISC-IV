@@ -9,6 +9,7 @@ import { MatSliderModule } from '@angular/material/slider';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
+import {MatSidenavModule} from '@angular/material/sidenav';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
@@ -33,7 +34,8 @@ import { MatRadioModule } from '@angular/material/radio';
     MatToolbarModule,
     MatButtonToggleModule,
     MatCardModule,
-    MatRadioModule
+    MatRadioModule,
+    MatSidenavModule
   ],
   exports: [
     MatSliderModule,
@@ -47,7 +49,8 @@ import { MatRadioModule } from '@angular/material/radio';
     MatToolbarModule,
     MatButtonToggleModule,
     MatCardModule,
-    MatRadioModule
+    MatRadioModule,
+    MatSidenavModule
   ]
 })
 export class SharedModule { }
