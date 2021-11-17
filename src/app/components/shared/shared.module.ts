@@ -17,6 +17,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatCardModule } from '@angular/material/card';
 import { MatRadioModule } from '@angular/material/radio';
+import { Navbar2Component } from '../navbar2/navbar2.component';
 
 
 @NgModule({
@@ -51,6 +52,7 @@ import { MatRadioModule } from '@angular/material/radio';
     MatCardModule,
     MatRadioModule,
     MatSidenavModule
+    
   ]
 })
 export class SharedModule { }

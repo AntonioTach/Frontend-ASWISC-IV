@@ -44,9 +44,8 @@ export class LoginComponent implements OnInit {
         this.direccionar();
 
       },
-      err => {
+      (err:any) => {
         console.log("usuario NO valido");
-        this.error();
       }
 
     );
@@ -71,10 +70,13 @@ export class LoginComponent implements OnInit {
     const { id_tipo } : any = decode(token);
 
       if (id_tipo == 1){
+          this.correcto();
           this.router.navigateByUrl('/modulo-especialistas');
       }
       else if (id_tipo == 2){
+          this.correcto();
           this.router.navigateByUrl('/modulo-pacientes');
+
       }
       else {
           console.log('Error de token');
@@ -91,7 +93,7 @@ export class LoginComponent implements OnInit {
 
   correcto(){
     this._snackBar.open('Ingreso Correcto', '', {
-      duration: 3000, //5s
+      duration: 2000, //5s
       horizontalPosition: 'center',
       verticalPosition: 'bottom'
     }

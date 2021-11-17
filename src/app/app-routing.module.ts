@@ -23,7 +23,7 @@ const routes: Routes = [
   { path: 'registro-especialista', component: RegistroEspecialistaComponent },
   { path: 'registro-paciente', component: RegistroPacienteComponent },
   { path: 'articulos', component: ArticulosComponent },
-  { path: 'modulo-especialistas', component: ModuloEspecialistasComponent, canActivate:[EspecialistaGuard, InicioGuard], data: { expectedRole: 1 } },
+  { path: 'modulo-especialistas', component: ModuloEspecialistasComponent, canActivate:[EspecialistaGuard, InicioGuard], data: { expectedRole: 1 } },//loadchildren corregir
   { path: 'modulo-pacientes', component: ModuloPacientesComponent, canActivate:[PacienteGuard, InicioGuard], data: { expectedRole: 2 } },
   { path: '**', component: PageNotFoundComponent },
 
