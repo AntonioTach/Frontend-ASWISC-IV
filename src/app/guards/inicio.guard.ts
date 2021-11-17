@@ -17,7 +17,7 @@ export class InicioGuard implements CanActivate {
 
     if(!this.loginService.esAutorizado()){
       console.log('Token No valido o Expirado');
-      this.router.navigateByUrl('/login');
+      this.router.navigateByUrl('/inicio');
       return false;
     }
     return true;

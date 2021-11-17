@@ -37,25 +37,15 @@ export class LoginComponent implements OnInit {
 
     this.loginService.loginUsuario(this.form.value).subscribe(
       (res:any) => {
-        console.log(res.token);
+        //console.log(res.token);
         localStorage.setItem('token', res.token); //Se guarda el Token en el localStorage
 
-        //Obtener el id del token
-        const token : string | any = localStorage.getItem('token');
-        const { id_tipo } : any = decode(token);
+        //localStorage.setItem('token', res.headers.get('token')); //Se guarda el Token en el localStorage
+        this.direccionar();
 
-        if (id_tipo == 1){
-          this.router.navigateByUrl('/modulo-especialistas');
-        }
-        else if (id_tipo == 2){
-          this.router.navigateByUrl('/modulo-pacientes');
-        }
-        else {
-          this.error();
-        }
       },
       err => {
-        console.log(err);
+        console.log("usuario NO valido");
         this.error();
       }
 
@@ -73,6 +63,22 @@ export class LoginComponent implements OnInit {
     //    this.error();
     //    this.form.reset();
     // }
+  }
+
+  direccionar(){
+    //Obtener el id del token
+    const token : string | any = localStorage.getItem('token');
+    const { id_tipo } : any = decode(token);
+
+      if (id_tipo == 1){
+          this.router.navigateByUrl('/modulo-especialistas');
+      }
+      else if (id_tipo == 2){
+          this.router.navigateByUrl('/modulo-pacientes');
+      }
+      else {
+          console.log('Error de token');
+      }
   }
 
   error(){

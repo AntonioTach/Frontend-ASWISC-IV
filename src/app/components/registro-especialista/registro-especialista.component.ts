@@ -105,18 +105,18 @@ export class RegistroEspecialistaComponent implements OnInit {
         res => {
           console.log(res),
           console.log('correcto');
+          this.correcto();
         },
         err => {
           console.log('ERROR que no se');
           console.log(err);
         }
       )
-      //Mensaje de Registro Correcto
-      this.correcto();
+
       //Timeout despues del mensaje de 3s para direccionar al Inicio
       setTimeout(() => {
 
-        //this.router.navigate(['login']);
+        this.router.navigate(['login']);
       }, 3000);
 
 
