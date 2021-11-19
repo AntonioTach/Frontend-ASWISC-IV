@@ -16,6 +16,7 @@ import { LoginComponent } from './components/login/login.component';
 import { RegistroPacienteComponent } from './components/registro-paciente/registro-paciente.component';
 import { RegistroEspecialistaComponent } from './components/registro-especialista/registro-especialista.component';
 
+
 import { ReactiveFormsModule } from '@angular/forms';
 import { ServiceRegistroEspecialistaService } from './components/registro-especialista/service-registro-especialista.service';
 
