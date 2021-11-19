@@ -27,15 +27,6 @@ import { InicioEspecialistaComponent } from './inicio-especialista/inicio-especi
     CommonModule,
     ModuloEspecialistasRoutingModule,
     SharedModule
-  ],
-  exports:[
-    ModuloEspecialistasComponent,
-    ArticulosComponent,
-    MisArticulosComponent,
-    RegistrarPacienteComponent,
-    RevisarPacienteComponent,
-    NavbarEspecialistaComponent,
-    InicioEspecialistaComponent
   ]
 })
 export class ModuloEspecialistasModule { }
