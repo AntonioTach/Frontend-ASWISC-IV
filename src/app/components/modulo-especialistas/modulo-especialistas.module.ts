@@ -8,9 +8,10 @@ import { ArticulosComponent } from './articulos/articulos.component';
 import { MisArticulosComponent } from './mis-articulos/mis-articulos.component';
 import { RegistrarPacienteComponent } from './registrar-paciente/registrar-paciente.component';
 import { RevisarPacienteComponent } from './revisar-paciente/revisar-paciente.component';
-import { SharedModule } from '../shared/shared.module';
 import { NavbarEspecialistaComponent } from './navbar-especialista/navbar-especialista.component';
 import { InicioEspecialistaComponent } from './inicio-especialista/inicio-especialista.component';
+
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -21,7 +22,7 @@ import { InicioEspecialistaComponent } from './inicio-especialista/inicio-especi
     RegistrarPacienteComponent,
     RevisarPacienteComponent,
     NavbarEspecialistaComponent,
-    InicioEspecialistaComponent
+    InicioEspecialistaComponent,
   ],
   imports: [
     CommonModule,

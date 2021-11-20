@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ModuloEspecialistasRoutingModule } from '../modulo-especialistas-routing.module';
+
+
 
 @Component({
   selector: 'app-navbar-especialista',
@@ -10,6 +13,14 @@ export class NavbarEspecialistaComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  ASWISC(){
+    console.log('xd');
+  }
+
+  btnLogout(){
+    console.log('Logout');
   }
 
 }
