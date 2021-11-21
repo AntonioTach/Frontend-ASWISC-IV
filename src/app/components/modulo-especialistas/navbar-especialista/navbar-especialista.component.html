@@ -15,51 +15,51 @@
           <a>Articulos</a>
           <i class='bx bxs-chevron-down htmlcss-arrow arrow  '></i>
           <ul class="htmlCss-sub-menu sub-menu">
-            <li><a href="#">Articulos</a></li>
-            <li><a href="#">Mis Articulos</a></li>
+            <li><a (click)="Articulos();">Articulos</a></li>
+            <li><a (click)="MisArticulos();">Mis Articulos</a></li>
             <!--<li><a href="#">Card Design</a></li>-->
           </ul>
         </li>
         <li>
-          <a href="#">Pacientes</a>
+          <a>Pacientes</a>
           <i class='bx bxs-chevron-down js-arrow arrow '></i>
           <ul class="js-sub-menu sub-menu">
-            <li><a href="#">Registrar Pacientes</a></li>
-            <li><a href="#">Revisar Pacientes</a></li>
+            <li><a (click)="RegistrarPacientes();">Registrar Pacientes</a></li>
+            <li><a (click)="RevisarPacientes();">Revisar Pacientes</a></li>
 
           </ul>
         </li>
         <li>
-          <a href="#">Pagos</a>
+          <a>Pagos</a>
           <i class='bx bxs-chevron-down js-arrow arrow '></i>
           <ul class="js-sub-menu sub-menu">
-              <li><a href="#">Pagos de Pacientes</a></li>
-              <li><a href="#">Modificación de Precios</a></li>
+              <li><a (click)="PagosPacientes();">Pagos de Pacientes</a></li>
+              <li><a (click)="ModificacionPrecios();">Modificación de Precios</a></li>
 
             </ul>
         </li>
         <li>
-          <a href="#">Pruebas</a>
+          <a>Pruebas</a>
           <i class='bx bxs-chevron-down js-arrow arrow '></i>
           <ul class="js-sub-menu sub-menu">
-              <li><a href="#">ASWISC Automatizar prueba WISC IV</a></li>
+              <li><a (click)="AswiscAutomatizacion();">ASWISC Automatizar prueba WISC-IV</a></li>
               <li class="more">
                   <span>
-                  <a href="#">Expediente Clinico</a>
+                  <a>Expediente Clinico</a>
                   <i class='bx bxs-chevron-right arrow more-arrow'></i>
                   </span>
                   <ul class="more-sub-menu sub-menu">
-                      <li><a href="#">Subir Prueba</a></li>
-                      <li><a href="#">Modificación Expediente</a></li>
+                      <li><a (click)="SubirPruebas();">Subir Prueba</a></li>
+                      <li><a (click)="ModificacionExpediente();">Modificación Expediente</a></li>
                     </ul>
               </li>
 
             </ul>
         </li>
-        <li><a href="#">Elementos de Terapia</a></li>
-        <li><a href="#">Horarios</a></li>
-        <li><a href="#">Baja</a></li>
-        <li><a href="#">Nombre</a></li>
+        <li><a (click)="ElementosTerapia();">Elementos de Terapia</a></li>
+        <li><a (click)="Horarios();">Horarios</a></li>
+        <li><a (click)="Baja();">Baja</a></li>
+        <li><a (click)="Nombre();">Nombre</a></li>
         <!-- Aqui deberia mostrar un icono de logout -->
         <li><button mat-icon-button color="primary" aria-label="icon button with a logout icon" (click)="btnLogout();">
           <mat-icon>logout</mat-icon>
