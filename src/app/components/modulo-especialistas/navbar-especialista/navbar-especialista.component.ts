@@ -27,6 +27,7 @@ export class NavbarEspecialistaComponent implements OnInit {
   }
   MisArticulos(){
     console.log('Mis Articulos');
+    this.router.navigateByUrl('/modulo-especialistas/mis-articulos')
   }
 
   RegistrarPacientes(){
@@ -42,38 +43,48 @@ export class NavbarEspecialistaComponent implements OnInit {
 
   PagosPacientes(){
     console.log('Pagos Pacientes');
+    this.router.navigateByUrl('/modulo-especialistas/pagos-de-pacientes');
+
   }
 
   ModificacionPrecios(){
     console.log('Modificacion de Precios');
+    this.router.navigateByUrl('/modulo-especialistas/modificacion-de-precios');
   }
 
   AswiscAutomatizacion(){
     console.log('ASWISC Automatizar prueba WISC-IV');
+    this.router.navigateByUrl('/modulo-especialistas/automatizacion-wisciv');
   }
 
   SubirPruebas(){
     console.log('Subir Pruebas');
+    this.router.navigateByUrl('/modulo-especialistas/subir-prueba');
   }
 
   ModificacionExpediente(){
     console.log('Modificacion Expediente');
+    this.router.navigateByUrl('/modulo-especialistas/modificacion-expediente');
   }
 
   ElementosTerapia(){
     console.log('Elementos de Terapia');
+    this.router.navigateByUrl('/modulo-especialistas/elementos-de-terapia');
   }
 
   Horarios(){
     console.log('Horarios');
+    this.router.navigateByUrl('/modulo-especialistas/horarios');
   }
 
   Baja(){
     console.log('Baja');
+    this.router.navigateByUrl('/modulo-especialistas/baja');
   }
 
   Nombre(){
     console.log('Nombre Especialista');
+    this.router.navigateByUrl('/modulo-especialistas/nombre');
   }
 
   btnLogout(){

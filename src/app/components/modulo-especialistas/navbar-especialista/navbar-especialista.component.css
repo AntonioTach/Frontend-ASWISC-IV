@@ -323,6 +323,11 @@ nav .navbar .links li .sub-menu li{
       transform: rotate(90deg);
     }
 }
+
+.logout{
+  padding-bottom: 10px;
+  align-self: auto;
+}
 @media (max-width:370px){
   nav .navbar .nav-links{
   max-width: 100%;

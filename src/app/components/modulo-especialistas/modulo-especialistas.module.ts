@@ -12,6 +12,15 @@ import { InicioEspecialistaComponent } from './inicio-especialista/inicio-especi
 
 import { SharedModule } from '../shared/shared.module';
 import { ArticulosEspecialistaComponent } from './articulos-especialista/articulos-especialista.component';
+import { PagosDePacientesComponent } from './pagos-de-pacientes/pagos-de-pacientes.component';
+import { ModificacionDePreciosComponent } from './modificacion-de-precios/modificacion-de-precios.component';
+import { AutomatizacionWiscivComponent } from './automatizacion-wisciv/automatizacion-wisciv.component';
+import { ElementosDeTerapiaComponent } from './elementos-de-terapia/elementos-de-terapia.component';
+import { HorariosComponent } from './horarios/horarios.component';
+import { BajaComponent } from './baja/baja.component';
+import { NombreComponent } from './nombre/nombre.component';
+import { SubirPruebaComponent } from './subir-prueba/subir-prueba.component';
+import { ModificacionExpedienteComponent } from './modificacion-expediente/modificacion-expediente.component';
 
 
 @NgModule({
@@ -23,6 +32,15 @@ import { ArticulosEspecialistaComponent } from './articulos-especialista/articul
     NavbarEspecialistaComponent,
     InicioEspecialistaComponent,
     ArticulosEspecialistaComponent,
+    PagosDePacientesComponent,
+    ModificacionDePreciosComponent,
+    AutomatizacionWiscivComponent,
+    ElementosDeTerapiaComponent,
+    HorariosComponent,
+    BajaComponent,
+    NombreComponent,
+    SubirPruebaComponent,
+    ModificacionExpedienteComponent,
   ],
   imports: [
     CommonModule,

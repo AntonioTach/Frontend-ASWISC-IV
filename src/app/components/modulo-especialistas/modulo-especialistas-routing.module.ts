@@ -8,15 +8,34 @@ import { EspecialistaGuard } from 'src/app/guards/especialista.guard';
 import { InicioGuard } from 'src/app/guards/inicio.guard';
 import { RevisarPacienteComponent } from './revisar-paciente/revisar-paciente.component';
 import { InicioEspecialistaComponent } from './inicio-especialista/inicio-especialista.component';
-import { ArticulosComponent } from '../articulos/articulos.component';
 import { ArticulosEspecialistaComponent } from './articulos-especialista/articulos-especialista.component';
+import { MisArticulosComponent } from './mis-articulos/mis-articulos.component';
+import { PagosDePacientesComponent } from './pagos-de-pacientes/pagos-de-pacientes.component';
+import { ModificacionDePreciosComponent } from './modificacion-de-precios/modificacion-de-precios.component';
+import { AutomatizacionWiscivComponent } from './automatizacion-wisciv/automatizacion-wisciv.component';
+import { SubirPruebaComponent } from './subir-prueba/subir-prueba.component';
+import { ModificacionExpedienteComponent } from './modificacion-expediente/modificacion-expediente.component';
+import { ElementosDeTerapiaComponent } from './elementos-de-terapia/elementos-de-terapia.component';
+import { HorariosComponent } from './horarios/horarios.component';
+import { BajaComponent } from './baja/baja.component';
+import { NombreComponent } from './nombre/nombre.component';
 
 const routes: Routes = [
   { path:'',component: ModuloEspecialistasComponent, children: [
     { path: '', component: InicioEspecialistaComponent },
     { path: 'registrar-paciente', component: RegistrarPacienteComponent },
     { path: 'revisar-pacientes', component: RevisarPacienteComponent },
-    {path: 'articulos-especialista', component: ArticulosEspecialistaComponent}
+    {path: 'articulos-especialista', component: ArticulosEspecialistaComponent},
+    {path: 'mis-articulos', component: MisArticulosComponent},
+    {path: 'pagos-de-pacientes', component: PagosDePacientesComponent},
+    {path: 'modificacion-de-precios', component:ModificacionDePreciosComponent},
+    {path: 'automatizacion-wisciv', component:AutomatizacionWiscivComponent},
+    {path: 'subir-prueba', component:SubirPruebaComponent},
+    {path: 'modificacion-expediente',component:ModificacionExpedienteComponent},
+    {path:'elementos-de-terapia', component:ElementosDeTerapiaComponent},
+    {path:'horarios', component: HorariosComponent},
+    {path:'baja', component:BajaComponent},
+    {path:'nombre', component:NombreComponent}
   ]},
 
 ];

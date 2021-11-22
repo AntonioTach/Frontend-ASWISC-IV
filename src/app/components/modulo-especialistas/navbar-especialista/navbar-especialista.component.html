@@ -1,3 +1,4 @@
+<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
 <nav>
   <div class="navbar">
     <i class='bx bx-menu'></i>
@@ -61,9 +62,12 @@
         <li><a (click)="Baja();">Baja</a></li>
         <li><a (click)="Nombre();">Nombre</a></li>
         <!-- Aqui deberia mostrar un icono de logout -->
-        <li><button mat-icon-button color="primary" aria-label="icon button with a logout icon" (click)="btnLogout();">
-          <mat-icon>logout</mat-icon>
-        </button></li>
+        
+        <li >
+          <button (click)="btnLogout(); ">
+            <i class='bx bxs-log-out' ></i>
+          </button>
+        </li>
       </ul>
     </div>
     <div class="search-box">
