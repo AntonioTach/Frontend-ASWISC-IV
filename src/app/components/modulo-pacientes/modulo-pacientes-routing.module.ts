@@ -3,7 +3,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { ModuloPacientesComponent } from './modulo-pacientes.component';
 
 const routes: Routes = [
-  {path:'', component: ModuloPacientesComponent}
+  {path:'', component: ModuloPacientesComponent,children:[
+    
+  ]}
 ];
 
 @NgModule({
