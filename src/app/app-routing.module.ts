@@ -27,7 +27,7 @@ const routes: Routes = [
   { path: 'registro-paciente', component: RegistroPacienteComponent },
   { path: 'articulos', component: ArticulosComponent },
   { path: 'modulo-especialistas', component: ModuloEspecialistasComponent, canActivate:[EspecialistaGuard, InicioGuard], data: { expectedRole: 1 },  loadChildren: () => import('./components/modulo-especialistas/modulo-especialistas.module').then(x => x.ModuloEspecialistasModule)},//loadchildren corregido
-  { path: 'modulo-pacientes', component: ModuloPacientesComponent, canActivate:[PacienteGuard, InicioGuard], data: { expectedRole: 2 } , loadChildren: () => import('./components/modulo-pacientes/modulo-pacientes.component').then(x => x.ModuloPacientesComponent)},
+  { path: 'modulo-pacientes', component: ModuloPacientesComponent, canActivate:[PacienteGuard, InicioGuard], data: { expectedRole: 2 } , loadChildren: () => import('./components/modulo-pacientes/modulo-pacientes.module').then(x => x.ModuloPacientesModule)},
   { path: '**', component: PageNotFoundComponent },
 
 

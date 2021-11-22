@@ -41,7 +41,6 @@ import { Navbar3Component } from './components/navbar3/navbar3.component';
     Navbar2Component,
     ArticulosComponent,
     PageNotFoundComponent,
-    ModuloPacientesComponent,
     Navbar3Component,
   ],
   imports: [

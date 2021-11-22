@@ -23,6 +23,7 @@ export class NavbarEspecialistaComponent implements OnInit {
 
   Articulos(){
     console.log('Articulos');
+    this.router.navigateByUrl('/modulo-especialistas/articulos-especialista');
   }
   MisArticulos(){
     console.log('Mis Articulos');
