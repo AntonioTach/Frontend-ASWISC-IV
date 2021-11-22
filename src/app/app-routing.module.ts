@@ -1,5 +1,6 @@
 import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+//Componentes de Modulo Principal
 import { ArticulosComponent } from './components/articulos/articulos.component';
 import { InicioComponent } from './components/inicio/inicio.component';
 import { LoginComponent } from './components/login/login.component';
@@ -8,10 +9,12 @@ import { ModuloPacientesComponent } from './components/modulo-pacientes/modulo-p
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { RegistroEspecialistaComponent } from './components/registro-especialista/registro-especialista.component';
 import { RegistroPacienteComponent } from './components/registro-paciente/registro-paciente.component';
+//GUARDS
 import { EspecialistaGuard } from './guards/especialista.guard';
 import { InicioGuard } from './guards/inicio.guard';
 import { PacienteGuard } from './guards/paciente.guard';
-
+//Modulo Especialistas
+import { ModuloEspecialistasRoutingModule } from './components/modulo-especialistas/modulo-especialistas-routing.module';
 
 
 

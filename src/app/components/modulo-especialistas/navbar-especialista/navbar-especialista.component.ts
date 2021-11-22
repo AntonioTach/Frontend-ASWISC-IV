@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ModuloEspecialistasRoutingModule } from '../modulo-especialistas-routing.module';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 
 
@@ -18,6 +18,7 @@ export class NavbarEspecialistaComponent implements OnInit {
 
   ASWISC(){
     console.log('ASWISC-IV');
+    this.router.navigateByUrl('/modulo-especialistas');
   }
 
   Articulos(){
@@ -29,10 +30,13 @@ export class NavbarEspecialistaComponent implements OnInit {
 
   RegistrarPacientes(){
     console.log("Registrar pacientes");
+    this.router.navigateByUrl('/modulo-especialistas/registrar-paciente');
+
   }
 
   RevisarPacientes(){
     console.log('Revisar Pacientes');
+    this.router.navigateByUrl('/modulo-especialistas/revisar-pacientes');
   }
 
   PagosPacientes(){
