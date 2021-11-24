@@ -11,17 +11,17 @@
           <mat-label>Nombre Completo</mat-label>
           <input matInput formControlName="nombre">
           <mat-error>
-            Por favor ingrese su nombre
+            Por favor ingrese su nombre completo
           </mat-error>
         </mat-form-field>
       </div>
       <!-- SEXO -->
       <div>
         <h2>Sexo</h2>
-        <mat-radio-group aria-label="Select an option">
-          <mat-radio-button class="input" color="primary" value="masculino">Masculino</mat-radio-button>
+        <mat-radio-group formControlName="sexo" aria-label="Select an option">
+          <mat-radio-button class="input" color="primary" name="Masculino" value="Masculino">Masculino</mat-radio-button>
           <br>
-          <mat-radio-button class="input" color="primary" value="femenino">Femenino</mat-radio-button>
+          <mat-radio-button class="input" color="primary" name="Femenino" value="Femenino">Femenino</mat-radio-button>
         </mat-radio-group>
       </div>
     </div>

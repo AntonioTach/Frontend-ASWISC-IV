@@ -31,11 +31,11 @@ export class RegistroEspecialistaComponent implements OnInit {
       ]
    ],
 
-    //   sexo: ['',
-    //   [
-    //     Validators.required
-    //   ]
-    // ],
+      sexo: ['',
+      [
+        Validators.required
+      ]
+    ],
 
       direccion: ['',
       [
@@ -100,7 +100,7 @@ export class RegistroEspecialistaComponent implements OnInit {
     }
     else{
       //Metodo POST
-      console.log(this.formRegistro?.value),
+      //console.log(this.formRegistro?.value),
       this.especialistaService.createEspecialista(this.formRegistro.value).subscribe(
         res => {
           console.log(res),

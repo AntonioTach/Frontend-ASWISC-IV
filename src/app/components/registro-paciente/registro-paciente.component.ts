@@ -23,6 +23,7 @@ export class RegistroPacienteComponent implements OnInit {
   ngOnInit(): void {
     this.formRegistroPaciente = this.formBuilder.group({
       nombre: ['', [Validators.required]],
+      sexo: ['', [Validators.required]],
       nacimiento: ['', [Validators.required]],
       usuario: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
@@ -37,19 +38,34 @@ export class RegistroPacienteComponent implements OnInit {
       return
     }
     else {
-      console.log(this.formRegistroPaciente?.value);
+      //console.log(this.formRegistroPaciente?.value);
       //METODO POST Crear Paciente
       this.pacienteService.createPaciente(this.formRegistroPaciente.value).subscribe(
         res => {
           console.log(res),
           console.log('correcto');
+          this.correcto();
         },
         err => {
           console.log(err);
         }
       )
+
+      setTimeout(() => {
+
+        this.router.navigate(['login']);
+      }, 3000);
+
     }
 
   };
+
+  correcto(){
+    this._snackBar.open('Registro Correcto', '', {
+      duration: 3000, //5s
+      horizontalPosition: 'center',
+      verticalPosition: 'bottom'
+    });
+  }
 
 }
