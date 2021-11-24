@@ -15,7 +15,7 @@ export class NavbarPacientesComponent implements OnInit {
 
   ASWISC(){
     console.log('ASWISC-IV');
-    this.router.navigateByUrl('/modulo-especialistas');
+    this.router.navigateByUrl('/modulo-pacientes');
   }
 
   MiEspecialista(){
