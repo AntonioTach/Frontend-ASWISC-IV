@@ -18,16 +18,16 @@ export class NavbarPacientesComponent implements OnInit {
     this.router.navigateByUrl('/modulo-especialistas');
   }
 
-  Articulos(){
-    console.log('Articulos');
-    this.router.navigateByUrl('/modulo-especialistas/articulos-especialista');
+  MiEspecialista(){
+    console.log('Mi Especialista');
+    this.router.navigateByUrl('/modulo-pacientes/mi-especialista');
   }
-  MisArticulos(){
-    console.log('Mis Articulos');
-    this.router.navigateByUrl('/modulo-especialistas/mis-articulos')
+  RegistrarseConEspecialista(){
+    console.log('Registrarse Con Especialistas');
+    this.router.navigateByUrl('/modulo-pacientes/registrarse-con-especialista')
   }
 
-  RegistrarPacientes(){
+  Articulos(){
     console.log("Registrar pacientes");
     this.router.navigateByUrl('/modulo-especialistas/registrar-paciente');
 
