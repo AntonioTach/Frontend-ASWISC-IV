@@ -8,6 +8,13 @@ import { InicioPacientesComponent } from './inicio-pacientes/inicio-pacientes.co
 import { NavbarPacientesComponent } from './navbar-pacientes/navbar-pacientes.component';
 import { MiEspecialistaComponent } from './mi-especialista/mi-especialista.component';
 import { RegistrarseConEspecialistaComponent } from './registrarse-con-especialista/registrarse-con-especialista.component';
+import { ArticulosPacientesComponent } from './articulos-pacientes/articulos-pacientes.component';
+import { HorariosDisponiblesComponent } from './horarios-disponibles/horarios-disponibles.component';
+import { PruebasPacientesComponent } from './pruebas-pacientes/pruebas-pacientes.component';
+import { ExpedientePacientesComponent } from './expediente-pacientes/expediente-pacientes.component';
+import { ElementosDeTerapiaPacientesComponent } from './elementos-de-terapia-pacientes/elementos-de-terapia-pacientes.component';
+import { BajaPacientesComponent } from './baja-pacientes/baja-pacientes.component';
+import { PagosPacientesComponent } from './pagos-pacientes/pagos-pacientes.component';
 
 
 @NgModule({
@@ -16,7 +23,14 @@ import { RegistrarseConEspecialistaComponent } from './registrarse-con-especiali
     InicioPacientesComponent,
     NavbarPacientesComponent,
     MiEspecialistaComponent,
-    RegistrarseConEspecialistaComponent
+    RegistrarseConEspecialistaComponent,
+    ArticulosPacientesComponent,
+    HorariosDisponiblesComponent,
+    PruebasPacientesComponent,
+    ExpedientePacientesComponent,
+    ElementosDeTerapiaPacientesComponent,
+    BajaPacientesComponent,
+    PagosPacientesComponent
   ],
   imports: [
     CommonModule,

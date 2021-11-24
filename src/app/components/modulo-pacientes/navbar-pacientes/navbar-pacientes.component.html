@@ -25,36 +25,17 @@
           <a (click)="Articulos();">Articulos</a>
         </li>
         <li>
-          <a>Pagos</a>
-          <i class='bx bxs-chevron-down js-arrow arrow '></i>
-          <ul class="js-sub-menu sub-menu">
-              <li><a (click)="PagosPacientes();">Pagos de Pacientes</a></li>
-              <li><a (click)="ModificacionPrecios();">Modificación de Precios</a></li>
-
-            </ul>
+          <a (click)="HorariosDisponibles();">Horarios Disponibles</a>
         </li>
         <li>
-          <a>Pruebas</a>
-          <i class='bx bxs-chevron-down js-arrow arrow '></i>
-          <ul class="js-sub-menu sub-menu">
-              <li><a (click)="AswiscAutomatizacion();">ASWISC Automatizar prueba WISC-IV</a></li>
-              <li class="more">
-                  <span>
-                  <a>Expediente Clinico</a>
-                  <i class='bx bxs-chevron-right arrow more-arrow'></i>
-                  </span>
-                  <ul class="more-sub-menu sub-menu">
-                      <li><a (click)="SubirPruebas();">Subir Prueba</a></li>
-                      <li><a (click)="ModificacionExpediente();">Modificación Expediente</a></li>
-                    </ul>
-              </li>
-
-            </ul>
+          <a (click)="Pruebas();">Pruebas</a>
         </li>
+        
+        <li><a (click)="ExpedienteClinico();">Expediente</a></li>
         <li><a (click)="ElementosTerapia();">Elementos de Terapia</a></li>
-        <li><a (click)="Horarios();">Horarios</a></li>
+        
+        <li><a (click)="Pagos();">Pagos</a></li>
         <li><a (click)="Baja();">Baja</a></li>
-        <li><a (click)="Nombre();">Nombre</a></li>
         <!-- Aqui deberia mostrar un icono de logout -->
         
         <li >

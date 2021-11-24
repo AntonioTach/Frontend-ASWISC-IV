@@ -29,59 +29,40 @@ export class NavbarPacientesComponent implements OnInit {
 
   Articulos(){
     console.log("Registrar pacientes");
-    this.router.navigateByUrl('/modulo-especialistas/registrar-paciente');
+    this.router.navigateByUrl('/modulo-pacientes/articulos-pacientes');
 
   }
 
-  RevisarPacientes(){
-    console.log('Revisar Pacientes');
-    this.router.navigateByUrl('/modulo-especialistas/revisar-pacientes');
+  HorariosDisponibles(){
+    console.log('Horarios Disponibles');
+    this.router.navigateByUrl('/modulo-pacientes/horarios-disponibles');
   }
 
-  PagosPacientes(){
-    console.log('Pagos Pacientes');
-    this.router.navigateByUrl('/modulo-especialistas/pagos-de-pacientes');
+  Pruebas(){
+    console.log('Pruebas');
+    this.router.navigateByUrl('/modulo-pacientes/pruebas-pacientes');
 
   }
 
-  ModificacionPrecios(){
-    console.log('Modificacion de Precios');
-    this.router.navigateByUrl('/modulo-especialistas/modificacion-de-precios');
+  ExpedienteClinico(){
+    console.log('Expediente Clinico');
+    this.router.navigateByUrl('/modulo-pacientes/expediente-pacientes');
   }
 
-  AswiscAutomatizacion(){
-    console.log('ASWISC Automatizar prueba WISC-IV');
-    this.router.navigateByUrl('/modulo-especialistas/automatizacion-wisciv');
-  }
-
-  SubirPruebas(){
-    console.log('Subir Pruebas');
-    this.router.navigateByUrl('/modulo-especialistas/subir-prueba');
-  }
-
-  ModificacionExpediente(){
-    console.log('Modificacion Expediente');
-    this.router.navigateByUrl('/modulo-especialistas/modificacion-expediente');
-  }
 
   ElementosTerapia(){
     console.log('Elementos de Terapia');
-    this.router.navigateByUrl('/modulo-especialistas/elementos-de-terapia');
-  }
-
-  Horarios(){
-    console.log('Horarios');
-    this.router.navigateByUrl('/modulo-especialistas/horarios');
+    this.router.navigateByUrl('/modulo-pacientes/elementos-de-terapia-pacientes');
   }
 
   Baja(){
     console.log('Baja');
-    this.router.navigateByUrl('/modulo-especialistas/baja');
+    this.router.navigateByUrl('/modulo-pacientes/baja-pacientes');
   }
 
-  Nombre(){
-    console.log('Nombre Especialista');
-    this.router.navigateByUrl('/modulo-especialistas/nombre');
+  Pagos(){
+    console.log('Pagos');
+    this.router.navigateByUrl('/modulo-pacientes/pagos-pacientes');
   }
 
   btnLogout(){
