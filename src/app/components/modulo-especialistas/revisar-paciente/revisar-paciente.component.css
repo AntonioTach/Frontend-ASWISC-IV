@@ -1,0 +1,50 @@
+body{
+  background-color: #F8F8FF ;
+  width: 100%;
+  margin: auto;
+  font-family: sans-serif;
+  padding-top: 40px;
+}
+
+.cuadro-registro{
+  background-color: #F8F8FF ;
+  width: 90%;
+  margin: auto;
+  padding-top: 50px;
+  border: 6px solid #DCDCDC;
+}
+
+
+.mat-form-field {
+  font-size: 14px;
+  width: 20%;
+  margin-left: 30px;
+
+}
+
+h1{
+  text-align: start;
+  font-size: 48px;
+  font-weight: bolder;
+  margin-top: 10px;
+  margin-left: 30px;
+  color: #000000;
+}
+
+.div-info{
+  display: flex;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.div-derecha{
+  display: flex;
+
+}
+
+table {
+  width: 100%;
+  margin-top: 5px;
+  margin-left: 30px;
+  margin-right: 30px;
+}

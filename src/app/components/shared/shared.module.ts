@@ -18,6 +18,7 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatCardModule } from '@angular/material/card';
 import { MatRadioModule } from '@angular/material/radio';
 import { Navbar2Component } from '../navbar2/navbar2.component';
+import { MatTableModule } from '@angular/material/table';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { Navbar2Component } from '../navbar2/navbar2.component';
     MatButtonToggleModule,
     MatCardModule,
     MatRadioModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatTableModule
   ],
   exports: [
     MatSliderModule,
@@ -51,8 +53,9 @@ import { Navbar2Component } from '../navbar2/navbar2.component';
     MatButtonToggleModule,
     MatCardModule,
     MatRadioModule,
-    MatSidenavModule
-    
+    MatSidenavModule,
+    MatTableModule
+
   ]
 })
 export class SharedModule { }
