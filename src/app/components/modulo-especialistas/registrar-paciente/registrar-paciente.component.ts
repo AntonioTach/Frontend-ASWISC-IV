@@ -21,15 +21,17 @@ export class RegistrarPacienteComponent implements OnInit {
   hide = true;
   sexo: string | undefined;
   sexos: string[] = ['Masculino', 'Femenino'];
+  id_usuario = localStorage.getItem('id_usuario');
 
   ngOnInit(): void {
 
 
     this.FormRegistrarPaciente = this.formBuilder.group({
+      id_usuario:this.id_usuario, //ID del ESPECIALISTA que esta registrando
       nombre: ['', [Validators.required]],
       sexo: ['', [Validators.required]],
       nacimiento: ['', [Validators.required]],
-      usuario: ['', [Validators.required]],
+      usuario: ['', [Validators.required,Validators.maxLength(12)]],
       email: ['', [Validators.required, Validators.email]],
       contrasena: ['', [Validators.required, Validators.minLength(8)]],
       telefono: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]],
@@ -41,7 +43,7 @@ export class RegistrarPacienteComponent implements OnInit {
       return
     }
     else {
-      //console.log(this.FormRegistrarPaciente?.value);
+      console.log(this.FormRegistrarPaciente?.value);
       this.registrarPacienteService.registrarPaciente(this.FormRegistrarPaciente.value).subscribe(
         res => {
           console.log(res),

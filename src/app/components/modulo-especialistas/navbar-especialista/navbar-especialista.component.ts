@@ -11,9 +11,12 @@ import { Router, RouterLink } from '@angular/router';
 })
 export class NavbarEspecialistaComponent implements OnInit {
 
+  usuario = localStorage.getItem('usuario');
+
   constructor(private router:Router) { }
 
   ngOnInit(): void {
+
   }
 
   ASWISC(){
@@ -90,6 +93,9 @@ export class NavbarEspecialistaComponent implements OnInit {
   btnLogout(){
     //console.log('Logout');
     localStorage.removeItem('token');
+    localStorage.removeItem('usuario');
+    localStorage.removeItem('id_tipo');
+    localStorage.removeItem('id_usuario');
     this.router.navigateByUrl('/login');
 
   }

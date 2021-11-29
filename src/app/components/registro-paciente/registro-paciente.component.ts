@@ -25,7 +25,7 @@ export class RegistroPacienteComponent implements OnInit {
       nombre: ['', [Validators.required]],
       sexo: ['', [Validators.required]],
       nacimiento: ['', [Validators.required]],
-      usuario: ['', [Validators.required]],
+      usuario: ['', [Validators.required, Validators.maxLength(12)]],
       email: ['', [Validators.required, Validators.email]],
       contrasena: ['', [Validators.required, Validators.minLength(8)]],
       telefono: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]],

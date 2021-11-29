@@ -1,5 +1,5 @@
 export interface usuarioPaciente{
-  id?: string;
+  id_usuario?: number;
   nombre: string;
   usuario: string;
   email: string;

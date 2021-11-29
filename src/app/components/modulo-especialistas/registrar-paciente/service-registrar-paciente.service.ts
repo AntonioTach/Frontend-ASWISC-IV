@@ -7,9 +7,10 @@ import { usuarioPaciente } from 'src/app/models/usuarioPaciente';
 })
 export class ServiceRegistrarPacienteService {
 
-  URL_API = 'http://localhost:4000/registro-paciente/'; //Puerto del server NODE
+  URL_API = 'http://localhost:4000/registrar-paciente/'; //Puerto del server NODE
 
   selectedPaciente: usuarioPaciente = {
+    id_usuario: 0,
     nombre: '',
     usuario: '',
     email: '',
@@ -27,7 +28,6 @@ export class ServiceRegistrarPacienteService {
   constructor(private http : HttpClient) { }
 
   registrarPaciente(paciente: usuarioPaciente){
-    console.log('holi');
     return this.http.post<usuarioPaciente[]>(this.URL_API, paciente);
   }
 }

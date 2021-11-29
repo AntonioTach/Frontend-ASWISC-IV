@@ -8,6 +8,8 @@ import { Router, RouterLink } from '@angular/router';
 })
 export class NavbarPacientesComponent implements OnInit {
 
+  usuario = localStorage.getItem('usuario');
+
   constructor(private router:Router) { }
 
   ngOnInit(): void {
@@ -65,9 +67,17 @@ export class NavbarPacientesComponent implements OnInit {
     this.router.navigateByUrl('/modulo-pacientes/pagos-pacientes');
   }
 
+  Nombre(){
+    console.log('Nombre');
+  }
+
   btnLogout(){
     //console.log('Logout');
+
     localStorage.removeItem('token');
+    localStorage.removeItem('usuario');
+    localStorage.removeItem('id_tipo');
+    localStorage.removeItem('id_usuario');
     this.router.navigateByUrl('/login');
 
   }

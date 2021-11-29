@@ -9,6 +9,7 @@ import { ServiceLoginUsuariosService } from '../login/login.service';
 import decode from 'jwt-decode';
 
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -39,6 +40,10 @@ export class LoginComponent implements OnInit {
       (res:any) => {
         //console.log(res.token);
         localStorage.setItem('token', res.token); //Se guarda el Token en el localStorage
+        localStorage.setItem('usuario', res.usuario); //usuario
+        localStorage.setItem('id_tipo', res.id_tipo); //id tipo
+        localStorage.setItem('id_usuario', res.id_usuario);
+
 
         //localStorage.setItem('token', res.headers.get('token')); //Se guarda el Token en el localStorage
         this.direccionar();
@@ -46,6 +51,7 @@ export class LoginComponent implements OnInit {
       },
       (err:any) => {
         console.log("usuario NO valido");
+        this.error2();
       }
 
     );
@@ -67,7 +73,7 @@ export class LoginComponent implements OnInit {
   direccionar(){
     //Obtener el id del token
     const token : string | any = localStorage.getItem('token');
-    const { id_tipo } : any = decode(token);
+    const id_tipo : string | any = localStorage.getItem('id_tipo');
 
       if (id_tipo == 1){
           this.correcto();
@@ -80,10 +86,11 @@ export class LoginComponent implements OnInit {
       }
       else {
           console.log('Error de token');
+          //this.error2();
       }
   }
 
-  error(){
+  error2(){
     this._snackBar.open('Usuario o contraseña Incorrecto', '', {
       duration: 5000, //5s
       horizontalPosition: 'center',

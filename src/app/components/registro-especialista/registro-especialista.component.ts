@@ -51,7 +51,8 @@ export class RegistroEspecialistaComponent implements OnInit {
 
       usuario: ['',
       [
-        Validators.required
+        Validators.required,
+        Validators.maxLength(12),
       ]
     ],
       contrasena: ['',
