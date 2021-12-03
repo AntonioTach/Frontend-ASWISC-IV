@@ -19,9 +19,6 @@ import { MatCardModule } from '@angular/material/card';
 import { MatRadioModule } from '@angular/material/radio';
 import { Navbar2Component } from '../navbar2/navbar2.component';
 import { MatTableModule } from '@angular/material/table';
-import {MatTooltipModule} from '@angular/material/tooltip';
-import {MatPaginatorModule} from '@angular/material/paginator';
-import {MatSortModule} from '@angular/material/sort';
 
 
 @NgModule({
@@ -41,10 +38,7 @@ import {MatSortModule} from '@angular/material/sort';
     MatCardModule,
     MatRadioModule,
     MatSidenavModule,
-    MatTableModule,
-    MatTooltipModule,
-    MatPaginatorModule,
-    MatSortModule
+    MatTableModule
   ],
   exports: [
     MatSliderModule,
@@ -60,10 +54,7 @@ import {MatSortModule} from '@angular/material/sort';
     MatCardModule,
     MatRadioModule,
     MatSidenavModule,
-    MatTableModule,
-    MatTooltipModule,
-    MatPaginatorModule,
-    MatSortModule
+    MatTableModule
 
   ]
 })

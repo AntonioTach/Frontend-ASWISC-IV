@@ -1,16 +1,33 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ServiceRevisarPacienteService } from './service-revisar-paciente.service';
 import {MatTableDataSource} from '@angular/material/table';
 import { Router } from '@angular/router';
-import {Pacientes} from 'src/app/interfaces/usuario';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
-import { MatSnackBar } from '@angular/material/snack-bar';
 
+export interface PeriodicElement {
+  name: string;
+  position: number;
+  weight: number;
+  symbol: string;
+}
 
+export interface Pacientes {
+  nombre: string,
+  nacimiento: Date,
+  sexo: string,
+}
 
-
-
+const ELEMENT_DATA: PeriodicElement[] = [
+  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
+  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
+  {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
+  {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
+  {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
+  {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
+  {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
+  {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
+  {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
+  {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
+];
 
 @Component({
   selector: 'app-revisar-paciente',
@@ -19,17 +36,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class RevisarPacienteComponent implements OnInit {
 
-  lista_pacientes:Pacientes[] = []
-
-  displayedColumns: string[] = ['usuario', 'nombre', 'nacimiento', 'sexo','acciones'];
-  dataSource = new MatTableDataSource(this.lista_pacientes);
-
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
-  @ViewChild(MatSort) sort!: MatSort;
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
-  }
+  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
+  dataSource = new MatTableDataSource(ELEMENT_DATA);
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -37,18 +45,15 @@ export class RevisarPacienteComponent implements OnInit {
   }
 
 
-  constructor(private verPacientesService: ServiceRevisarPacienteService, private router: Router, private _snackBar:MatSnackBar) { }
+
+  constructor(private verPacientesService: ServiceRevisarPacienteService, private router: Router) { }
 
   id_usuario = localStorage.getItem('id_usuario');
 
   ngOnInit(): void {
     this.verPacientes();
-    this.cargarPacientes();
   }
-  cargarPacientes(){
-    this.lista_pacientes= this.verPacientesService.getPaciente();
-    this.dataSource = new MatTableDataSource(this.lista_pacientes);
-  }
+
   verPacientes(){
 
     this.verPacientesService.Pacientes(this.id_usuario).subscribe(
@@ -60,17 +65,7 @@ export class RevisarPacienteComponent implements OnInit {
       }
     )
   }
-  eliminarPaciente(index:number){//aqui lo que abria que pasarle es el id, para borra el dato de la base de datos.
-    console.log(index);
-    this.verPacientesService.eliminarPaciente(index);
-    this.cargarPacientes();
 
-    this._snackBar.open('El usuario fue eliminado con exito', '',{
-      duration:1500,
-      horizontalPosition:'center',
-      verticalPosition:'bottom'
-    })
-  }
   ///this.reportesService.replicarReporte(this.replicaId, this.registrarForm?.value).subscribe(
 
 }
