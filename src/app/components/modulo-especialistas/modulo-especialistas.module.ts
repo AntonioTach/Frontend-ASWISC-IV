@@ -21,7 +21,6 @@ import { BajaComponent } from './baja/baja.component';
 import { NombreComponent } from './nombre/nombre.component';
 import { SubirPruebaComponent } from './subir-prueba/subir-prueba.component';
 import { ModificacionExpedienteComponent } from './modificacion-expediente/modificacion-expediente.component';
-import { DialogBorrarPacienteComponent } from './dialog-borrar-paciente/dialog-borrar-paciente.component';
 
 
 @NgModule({
@@ -42,7 +41,6 @@ import { DialogBorrarPacienteComponent } from './dialog-borrar-paciente/dialog-b
     NombreComponent,
     SubirPruebaComponent,
     ModificacionExpedienteComponent,
-    DialogBorrarPacienteComponent,
   ],
   imports: [
     CommonModule,
