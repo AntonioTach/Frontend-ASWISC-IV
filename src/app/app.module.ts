@@ -27,7 +27,6 @@ import { ModuloPacientesComponent } from './components/modulo-pacientes/modulo-p
 //Providers
 import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { Navbar3Component } from './components/navbar3/navbar3.component';
-import { DialogBorrarPacienteComponent } from './components/dialog-borrar-paciente/dialog-borrar-paciente.component';
 //import { TokenInterceptorService } from './services/token-interceptor.service';
 
 
@@ -43,7 +42,6 @@ import { DialogBorrarPacienteComponent } from './components/dialog-borrar-pacien
     ArticulosComponent,
     PageNotFoundComponent,
     Navbar3Component,
-    DialogBorrarPacienteComponent,
   ],
   imports: [
     BrowserModule,
