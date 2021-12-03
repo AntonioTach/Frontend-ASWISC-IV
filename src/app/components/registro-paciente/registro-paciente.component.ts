@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators, NgForm } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { SharedModule } from '../shared/shared.module';
 
 //Importar servicio Usuario Paciente
 import { ServiceRegistroPacienteService } from '../registro-paciente/service-registro-paciente.service';
