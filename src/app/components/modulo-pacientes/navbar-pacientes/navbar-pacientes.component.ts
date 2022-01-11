@@ -69,6 +69,7 @@ export class NavbarPacientesComponent implements OnInit {
 
   Nombre(){
     console.log('Nombre');
+    this.router.navigateByUrl('/modulo-pacientes/nombre-paciente')
   }
 
   btnLogout(){

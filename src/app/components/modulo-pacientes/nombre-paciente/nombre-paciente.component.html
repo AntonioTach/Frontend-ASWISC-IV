@@ -1,1 +1,16 @@
-<p>nombre-paciente works!</p>
+
+<app-navbar-pacientes></app-navbar-pacientes>
+<p>baja-pacientes works!</p>
+<p>baja-pacientes works!</p>
+<div class="bajacuadro">
+    <h1>Información Del Especialista</h1>
+    <br>
+    <h2>Información Personal Del Especialista</h2>
+    <br>
+    <h3>Nombre de Usuario del Especialista:</h3>
+    <h3>{{usuario}}</h3>
+    <h3>Id Usuario</h3>
+    <h3>{{id_tipo}}</h3>
+    <button class="boton" mat-raised-button color="warn" (click)="confirmarCambio()">Confirmar Cambios</button>
+    <h4>Nota: Sus datos personales se guardarán una vez que usted confirme los cambios.</h4>
+</div>

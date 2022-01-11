@@ -8,6 +8,7 @@ import { HorariosDisponiblesComponent } from './horarios-disponibles/horarios-di
 import { InicioPacientesComponent } from './inicio-pacientes/inicio-pacientes.component';
 import { MiEspecialistaComponent } from './mi-especialista/mi-especialista.component';
 import { ModuloPacientesComponent } from './modulo-pacientes.component';
+import { NombrePacienteComponent } from './nombre-paciente/nombre-paciente.component';
 import { PagosPacientesComponent } from './pagos-pacientes/pagos-pacientes.component';
 import { PruebasPacientesComponent } from './pruebas-pacientes/pruebas-pacientes.component';
 import { RegistrarseConEspecialistaComponent } from './registrarse-con-especialista/registrarse-con-especialista.component';
@@ -25,7 +26,9 @@ const routes: Routes = [
    {path:'baja-expedientes',component:BajaPacientesComponent},
    {path:'articulos-pacientes', component:ArticulosPacientesComponent},
    {path:'baja-pacientes', component: BajaPacientesComponent},
+   {path:'nombre-paciente',component:NombrePacienteComponent},
    {path:'**',component:ModuloPacientesComponent}
+  
   ]}
 ];
 

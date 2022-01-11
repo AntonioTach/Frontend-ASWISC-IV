@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NombrePacienteComponent implements OnInit {
 
+  usuario = localStorage.getItem('usuario');
+  id_tipo= localStorage.getItem('id_tipo');
   constructor() { }
 
   ngOnInit(): void {
+  }
+  confirmarCambio(){
+
   }
 
 }
