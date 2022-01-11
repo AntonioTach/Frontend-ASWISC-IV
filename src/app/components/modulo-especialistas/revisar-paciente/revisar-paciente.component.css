@@ -14,6 +14,18 @@ body{
   border: 6px solid #DCDCDC;
 }
 
+.div-junto{ /*Acomodar varios items en una alineacion*/
+  display: flex;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.input{
+  align-items: flex-end;
+  text-align: start;
+  width: 270px;
+  margin-bottom: 10px;
+}
 
 .mat-form-field {
   font-size: 14px;

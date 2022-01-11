@@ -1,17 +1,24 @@
 <app-navbar-especialista></app-navbar-especialista>
 <body>
   <div class="cuadro-registro">
-    <mat-toolbar><h1>Pacientes</h1></mat-toolbar>
-    
-    <div *ngIf="lista_pacientes.length > 0">
-    
+    <div class="div-junto">
+      <div>
+        <h1>Pacientes</h1>
+      </div>
 
-    <div class="div-derecha">
-      <mat-form-field appearance="standard" class="busqueda">
-        <mat-label>Búsqueda</mat-label>
-        <input matInput autocomplete="off" (keyup)="applyFilter($event)" #input autocomplete="off">
-      </mat-form-field>
+        <mat-form-field appearance="standard">
+          <mat-label>Búsqueda</mat-label>
+          <input matInput autocomplete="off" (keyup)="applyFilter($event)" #input autocomplete="off">
+        </mat-form-field>
+
+
+
     </div>
+
+    <div *ngIf="lista_pacientes.length > 0">
+
+
+
 
     <div class="div-info" class="mat-elevation-z5">
 
@@ -46,7 +53,7 @@
 
         <ng-container matColumnDef="acciones">
           <th mat-header-cell *matHeaderCellDef>  </th>
-          <td mat-cell *matCellDef="let element let i = index"  style="text-align: right;"> 
+          <td mat-cell *matCellDef="let element let i = index"  style="text-align: right;">
               <a class="pointer" style="color: #1878B0;"  matTooltip="Ver Información de Usuario">
                   <mat-icon>search</mat-icon>
               </a>
@@ -62,7 +69,7 @@
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
       </table>
-      
+
     </div>
     <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
   </div>

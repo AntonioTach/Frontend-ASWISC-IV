@@ -1,5 +1,16 @@
 <app-navbar-especialista></app-navbar-especialista>
 <p></p>
-<p>baja works!</p>
-<p>baja works!</p>
-<p>Desea darse de baja</p>
+<body>
+  <div class="cuadro">
+    <h1>Baja Especialista</h1>
+    <br>
+    <h2>Trámite para solicitar la baja</h2>
+    <br>
+    <h3>Usuario Especialista:</h3>
+    <h3>{{usuario}}</h3>
+    <h3>¿Desea darse de baja de la plataforma?</h3>
+    <button class="boton" mat-raised-button color="warn" (click)="confirmarBaja()">Confirmar</button>
+    <h4>Nota: Sus datos personales no se guardarán una vez que usted se dé de baja de la plataforma.</h4>
+
+  </div>
+</body>
