@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class InicioPacientesComponent implements OnInit {
 
   constructor() { }
-
+  usuario = localStorage.getItem('usuario');
   ngOnInit(): void {
   }
 
