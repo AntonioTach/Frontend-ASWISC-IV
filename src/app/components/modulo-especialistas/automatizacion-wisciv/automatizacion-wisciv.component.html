@@ -1,8 +1,232 @@
 <app-navbar-especialista></app-navbar-especialista>
 
-<p>automatizacion-wisciv works!</p>
-<p>automatizacion-wisciv works!</p>
-<p>automatizacion-wisciv works!</p>
-<p>automatizacion-wisciv works!</p>
-<p>automatizacion-wisciv works!</p>
+<p>modificacion-expediente works!</p>
+<p>modificacion-expediente works!</p>
+<br>
+<body>
+    <div class="cuadro-registro">
+      <h1>Ingreso Datos Subpruebas WISC-IV</h1>
+      <form>
+        <div class="div-info">
+            <!-- Cubos -->
+          <div>
+            <h2>Cubos</h2>
+            <mat-form-field class="input" appearance="fill">
+              <mat-label>Resultado Subprueba Cubos</mat-label>
+              <input matInput formControlName="Cubos" required>
+              <mat-error>
+                Por favor ingrese los datos de la subprueba Cubos
+              </mat-error>
+            </mat-form-field>
+          </div>
+            <!-- Semejanzas -->
+          <div>
+            <h2>Semejanzas</h2>
+            <mat-form-field class="input" appearance="fill">
+              <mat-label>Resultado Subprueba Semejanzas</mat-label>
+              <input matInput formControlName="Semejanzas" required>
+              <mat-error>
+                Por favor ingrese los datos de la subprueba Semejanzas
+              </mat-error>
+            </mat-form-field>
+          </div>
+  
+  
+          <!-- <div>
+            <h2>Sexo</h2>
+            <mat-radio-group aria-label="Select an option">
+              <mat-radio-button class="input" color="primary" id="masculino" value="masculino" name="sexo" formControlName="sexo">Masculino</mat-radio-button>
+              <br>
+              <mat-radio-button class="input" color="primary" id="femenino" value="femenino" name="sexo" formControlName="sexo">Femenino</mat-radio-button>
+            </mat-radio-group>
+          </div> -->
+  
+  
+          <!-- <div>
+            <h2>Sexo</h2>
+            <mat-radio-group aria-label="Select an option">
+              <mat-radio-button class="input" *ngFor="let sexo of sexos" [value]="sexo" color="primary">{{ sexo }}</mat-radio-button>
+            </mat-radio-group>
+          </div> -->
+  
+  
+        </div>
+  
+        <div class="div-info">
+          <!-- Digitos -->
+          <div>
+            <h2>Digitos </h2>
+            <mat-form-field class="input" appearance="fill">
+              <mat-label>Resultado Subprueba Digitos </mat-label>
+              <input matInput formControlName="Digitos" required>
+              <mat-error>
+                Por favor ingrese los datos de la subprueba Digitos 
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <!-- Conceptos -->
+          <div>
+            <h2>Conceptos</h2>
+            <mat-form-field class="input" appearance="fill">
+              <mat-label>Resultado Subprueba Conceptos </mat-label>
+              <input matInput formControlName="Conceptos" required>
+              <mat-error>
+                Por favor ingrese los datos de la subprueba Conceptos
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+  
+        <div class="div-info">
+          <!-- Claves -->
+          <div>
+            <h2>Claves</h2>
+            <mat-form-field class="input" appearance="fill">
+              <mat-label>Resultado Subprueba Claves </mat-label>
+              <input matInput formControlName="Claves" required>
+              <mat-error>
+                Por favor ingrese los datos de la subprueba Claves
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <!-- Vocabulario -->
+          <div>
+            <h2>Vocabulario</h2>
+            <mat-form-field class="input" appearance="fill">
+              <mat-label>Resultado Subprueba Vocabulario </mat-label>
+              <input matInput formControlName="Vocabulario" required>
+              <mat-error>
+                Por favor ingrese los datos de la subprueba Vocabulario
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+  
+        <div class="div-info">
+          <!-- Letras y Números -->
+          <div>
+            <h2>Letras y Números</h2>
+            <mat-form-field class="input" appearance="fill">
+              <mat-label>Resultado Subprueba Letras y Números </mat-label>
+              <input matInput formControlName="Letras y Números" required>
+              <mat-error>
+                Por favor ingrese los datos de la subprueba Letras y Números
+              </mat-error>
+            </mat-form-field>
+          </div>
+  
+          <!-- Matrices -->
+          <div>
+            <h2>Matrices</h2>
+            <mat-form-field class="input" appearance="fill">
+              <mat-label>Resultado Subprueba Matrices </mat-label>
+              <input matInput formControlName="Matrices" required>
+              <mat-error>
+                Por favor ingrese los datos de la subprueba Matrices
+              </mat-error>
+            </mat-form-field>
+          </div>
+  
+        </div>
+        <div class="div-info">
+            <!-- Comprensión -->
+            <div>
+              <h2>Comprensión</h2>
+              <mat-form-field class="input" appearance="fill">
+                <mat-label>Resultado Subprueba Comprensión </mat-label>
+                <input matInput formControlName="Letras y Números" required>
+                <mat-error>
+                  Por favor ingrese los datos de la subprueba Comprensión
+                </mat-error>
+              </mat-form-field>
+            </div>
+    
+            <!-- Busquedas de Simbolos -->
+            <div>
+              <h2>Búsquedas de Símbolos</h2>
+              <mat-form-field class="input" appearance="fill">
+                <mat-label>Búsquedas de Símbolos </mat-label>
+                <input matInput formControlName="Matrices" required>
+                <mat-error>
+                  Por favor ingrese los datos de la subprueba Búsquedas de Símbolos
+                </mat-error>
+              </mat-form-field>
+            </div>
+    
+        </div>
+        <div class="div-info">
+            <!-- (Figuras Incompletas) -->
+            <div>
+              <h2>(Figuras Incompletas)</h2>
+              <mat-form-field class="input" appearance="fill">
+                <mat-label>(Figuras Incompletas) opcional</mat-label>
+                <input matInput formControlName="Letras y Números">
+                <mat-error>
+                  Por favor ingrese los datos de la subprueba (Figuras Incompletas)
+                </mat-error>
+              </mat-form-field>
+            </div>
+    
+            <!-- (Animales) -->
+            <div>
+              <h2>(Animales)</h2>
+              <mat-form-field class="input" appearance="fill">
+                <mat-label>(Animales) opcional</mat-label>
+                <input matInput formControlName="Matrices" >
+                <mat-error>
+                  Por favor ingrese los datos de la subprueba Búsquedas de (Animales) 
+                </mat-error>
+              </mat-form-field>
+            </div>
+    
+        </div>
+        <div class="div-info">
+            <!-- (Información) -->
+            <div>
+              <h2>(Información)</h2>
+              <mat-form-field class="input" appearance="fill">
+                <mat-label>(Información) opcional</mat-label>
+                <input matInput formControlName="Letras y Números">
+                <mat-error>
+                  Por favor ingrese los datos de la subprueba (Información)
+                </mat-error>
+              </mat-form-field>
+            </div>
+    
+            <!-- (Aritmética) -->
+            <div>
+              <h2>(Aritmética)</h2>
+              <mat-form-field class="input" appearance="fill">
+                <mat-label>(Aritmética) opcional </mat-label>
+                <input matInput formControlName="Matrices">
+                <mat-error>
+                  Por favor ingrese los datos de la subprueba Búsquedas de (Aritmética) 
+                </mat-error>
+              </mat-form-field>
+            </div>
+    
+        </div>
+        <div class="div-info">
+            <!-- (Adivinanzas) -->
+            <div>
+              <h2>(Adivinanzas)</h2>
+              <mat-form-field class="input" appearance="fill">
+                <mat-label>(Adivinanzas) opcional </mat-label>
+                <input matInput formControlName="Letras y Números">
+                <mat-error>
+                  Por favor ingrese los datos de la subprueba (Adivinanzas)
+                </mat-error>
+              </mat-form-field>
+            </div>
+
+             <!-- Boton -->
+          <div class="div-btn">
+            <button  type="submit" mat-raised-button class="btn" (click)="Automatizacion();">Automatizar Resultados</button>
+          </div>
+    
+        </div>
+      </form>
+    </div>
+  </body>
+  
 

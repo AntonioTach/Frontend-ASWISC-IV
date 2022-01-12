@@ -22,6 +22,7 @@ import { NombreComponent } from './nombre/nombre.component';
 import { SubirPruebaComponent } from './subir-prueba/subir-prueba.component';
 import { ModificacionExpedienteComponent } from './modificacion-expediente/modificacion-expediente.component';
 import { DialogBorrarPacienteComponent } from './dialog-borrar-paciente/dialog-borrar-paciente.component';
+import { ResultadoAutomatizacionWiscivComponent } from './resultado-automatizacion-wisciv/resultado-automatizacion-wisciv.component';
 
 
 @NgModule({
@@ -43,6 +44,7 @@ import { DialogBorrarPacienteComponent } from './dialog-borrar-paciente/dialog-b
     SubirPruebaComponent,
     ModificacionExpedienteComponent,
     DialogBorrarPacienteComponent,
+    ResultadoAutomatizacionWiscivComponent,
   ],
   imports: [
     CommonModule,

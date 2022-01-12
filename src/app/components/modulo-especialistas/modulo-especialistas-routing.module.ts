@@ -19,6 +19,7 @@ import { ElementosDeTerapiaComponent } from './elementos-de-terapia/elementos-de
 import { HorariosComponent } from './horarios/horarios.component';
 import { BajaComponent } from './baja/baja.component';
 import { NombreComponent } from './nombre/nombre.component';
+import { ResultadoAutomatizacionWiscivComponent } from './resultado-automatizacion-wisciv/resultado-automatizacion-wisciv.component';
 
 const routes: Routes = [
   { path:'',component: ModuloEspecialistasComponent, children: [
@@ -35,7 +36,8 @@ const routes: Routes = [
     {path:'elementos-de-terapia', component:ElementosDeTerapiaComponent},
     {path:'horarios', component: HorariosComponent},
     {path:'baja', component:BajaComponent},
-    {path:'nombre', component:NombreComponent}
+    {path:'nombre', component:NombreComponent},
+    {path:'resultado-automatizacion-wisciv', component: ResultadoAutomatizacionWiscivComponent}
   ]},
 
 ];

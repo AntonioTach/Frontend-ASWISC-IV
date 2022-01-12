@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-automatizacion-wisciv',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AutomatizacionWiscivComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router:Router) { }
 
+  hide = true;
   ngOnInit(): void {
+  }
+  Automatizacion(){
+    console.log('Automatizacion Resultados');
+    this.router.navigateByUrl('/modulo-especialistas/resultado-automatizacion-wisciv');
   }
 
 }

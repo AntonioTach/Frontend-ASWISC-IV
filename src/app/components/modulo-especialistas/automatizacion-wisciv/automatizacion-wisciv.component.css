@@ -1,0 +1,66 @@
+body{
+    background-color: #F8F8FF ;
+    width: 100%;
+    margin: auto;
+    font-family: sans-serif;
+    padding-top: 40px;
+  }
+  
+  .cuadro-registro{
+    background-color: #F8F8FF ;
+    width: 90%;
+    margin: auto;
+    padding-top: 50px;
+    border: 6px solid #DCDCDC;
+  }
+  
+  h1{
+    text-align: start;
+    font-size: 48px;
+    font-weight: bolder;
+    margin-top: 10px;
+    margin-left: 100px;
+    color: #000000;
+  }
+  
+  h2{
+    text-align: start;
+    font-size: 20px;
+    margin-top: 10px;
+    margin-left: 105px;
+    margin-bottom: 5px;
+    color: #000000;
+  }
+  
+  .input{
+    text-align: start;
+    margin-left: 105px;
+    margin-right: 250px;
+    width: 270px;
+    margin-bottom: 10px;
+  
+  }
+  
+  .div-info{
+    display: flex;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+  
+  
+  
+  .btn{
+    height: 40px;
+    text-align: start;
+    margin-left: 105px;
+    margin-right: 250px;
+    margin-top: 45px;
+    width: 270px;
+    margin-bottom: 10px;
+    background-color: rgb(247, 8, 56);
+    color: #FFFFFF;
+    font-size: 18px;
+    border: 2px solid;
+    line-height: 1;
+  }
+  
