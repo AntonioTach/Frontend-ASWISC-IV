@@ -325,8 +325,9 @@ nav .navbar .links li .sub-menu li{
 }
 
 .logout{
-  padding-bottom: 10px;
+  
   align-self: auto;
+  
 }
 @media (max-width:370px){
   nav .navbar .nav-links{
