@@ -1,0 +1,26 @@
+table {
+    width: 40%;
+    border: 1px solid #000;
+ }
+ th {
+    width: 5px;
+    text-align: left;
+    vertical-align: top;
+    border: 1px solid #000;
+    border-collapse: collapse;
+    padding: 0.3em;
+    caption-side: bottom;
+ }
+
+ td {
+    width: 20px;
+    text-align: left;
+    vertical-align: top;
+    border: 1px solid #000;
+    border-collapse: collapse;
+    padding: 0.3em;
+    caption-side: bottom;
+ }
+ caption {
+    padding: 0.3em;
+ }
