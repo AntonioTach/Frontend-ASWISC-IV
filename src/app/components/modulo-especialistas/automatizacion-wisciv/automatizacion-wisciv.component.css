@@ -5,7 +5,7 @@ body{
     font-family: sans-serif;
     padding-top: 40px;
   }
-  
+
   .cuadro-registro{
     background-color: #F8F8FF ;
     width: 90%;
@@ -13,54 +13,82 @@ body{
     padding-top: 50px;
     border: 6px solid #DCDCDC;
   }
-  
+
   h1{
-    text-align: start;
-    font-size: 48px;
+    text-align: center;
+    font-size: 30px;
     font-weight: bolder;
     margin-top: 10px;
     margin-left: 100px;
-    color: #000000;
+    margin-bottom: 20px;
+    color: #C49527;
   }
-  
+
   h2{
     text-align: start;
     font-size: 20px;
     margin-top: 10px;
-    margin-left: 105px;
+    margin-left: 150px;
     margin-bottom: 5px;
     color: #000000;
   }
-  
+
+  h3{
+    text-align: center;
+    font-size: 24px;
+    color: #000000;
+    margin-top: 10px;
+  }
+
+
   .input{
     text-align: start;
-    margin-left: 105px;
+    margin-left: 150px;
     margin-right: 250px;
-    width: 270px;
+    width: 300px;
     margin-bottom: 10px;
-  
+
   }
-  
+  .input2{
+    text-align: start;
+    margin-left: 230px;
+    margin-right: 100px;
+    width: 250px;
+    margin-bottom: 10px;
+  }
+  .input3{
+    text-align: start;
+    margin-left: 80px;
+    margin-right: 100px;
+    width: 250px;
+    margin-bottom: 10px;
+  }
+
   .div-info{
     display: flex;
     padding-top: 5px;
     padding-bottom: 5px;
   }
-  
-  
-  
+  .div-info2{
+    margin-left: 150px;
+    display: flex;
+    align-items: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+
+
+
   .btn{
     height: 40px;
     text-align: start;
-    margin-left: 105px;
+    margin-left: 150px;
     margin-right: 250px;
     margin-top: 45px;
-    width: 270px;
+    width: 300px;
     margin-bottom: 10px;
-    background-color: rgb(247, 8, 56);
-    color: #FFFFFF;
+    background-color: #87CEFA;
+    color: #000000;
     font-size: 18px;
-    border: 2px solid;
-    line-height: 1;
+
   }
-  
