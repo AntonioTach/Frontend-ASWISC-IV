@@ -18,7 +18,7 @@ export class AutomatizacionWiscivComponent implements OnInit {
   ngOnInit(): void {
 
     //Validaciones buenas
-    /*
+
     this.FormASWISC = this.formBuilder.group({
       Paciente: ['', [Validators.required,]],
       Fecha: ['', [Validators.required]],
@@ -39,12 +39,12 @@ export class AutomatizacionWiscivComponent implements OnInit {
       Aritmetica: ['', [Validators.required]],
       Adivinanzas: ['', [Validators.required]],
     });
-    */
+
 
     //NO Validaciones para trabajar rapido
-    this.FormASWISC = this.formBuilder.group({
+    // this.FormASWISC = this.formBuilder.group({
 
-    });
+    // });
   }
 
   RegistrarDatos(){
@@ -59,5 +59,6 @@ export class AutomatizacionWiscivComponent implements OnInit {
     console.log('Automatizacion Resultados');
     this.router.navigateByUrl('/modulo-especialistas/resultado-automatizacion-wisciv');
   }
+
 
 }

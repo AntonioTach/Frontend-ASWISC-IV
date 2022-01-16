@@ -87,8 +87,9 @@ body{
     margin-top: 45px;
     width: 300px;
     margin-bottom: 10px;
-    background-color: #87CEFA;
-    color: #000000;
+    background-color: #008000;
+    color: #FFFFFF;
     font-size: 18px;
-
+    border: 2px solid;
+    line-height: 1;
   }
