@@ -23,6 +23,8 @@ import { SubirPruebaComponent } from './subir-prueba/subir-prueba.component';
 import { ModificacionExpedienteComponent } from './modificacion-expediente/modificacion-expediente.component';
 import { DialogBorrarPacienteComponent } from './dialog-borrar-paciente/dialog-borrar-paciente.component';
 import { ResultadoAutomatizacionWiscivComponent } from './resultado-automatizacion-wisciv/resultado-automatizacion-wisciv.component';
+import { CalendarioComponent } from './horarios/calendario/calendario.component';
+import { DialogoInfomacionComponent } from './revisar-paciente/dialogo-infomacion/dialogo-infomacion.component';
 
 
 @NgModule({
@@ -45,6 +47,8 @@ import { ResultadoAutomatizacionWiscivComponent } from './resultado-automatizaci
     ModificacionExpedienteComponent,
     DialogBorrarPacienteComponent,
     ResultadoAutomatizacionWiscivComponent,
+    CalendarioComponent,
+    DialogoInfomacionComponent,
   ],
   imports: [
     CommonModule,

@@ -21,7 +21,7 @@ export class RevisarPacienteComponent implements OnInit {
 
   lista_pacientes: any = []
 
-  displayedColumns: string[] = ['usuario', 'nombre', 'nacimiento', 'sexo', 'precio', 'acciones'];
+  displayedColumns: string[] = ['nombre', 'nacimiento', 'precio', 'acciones'];
   dataSource = new MatTableDataSource(this.lista_pacientes);
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
