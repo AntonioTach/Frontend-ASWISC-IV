@@ -28,7 +28,7 @@ import { ModuloPacientesComponent } from './components/modulo-pacientes/modulo-p
 import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { Navbar3Component } from './components/navbar3/navbar3.component';
 //import { TokenInterceptorService } from './services/token-interceptor.service';
-import { ScheduleModule, RecurrenceEditorModule, DayService, WorkWeekService, WeekService, MonthService, MonthAgendaService } from '@syncfusion/ej2-angular-schedule'
+
 
 @NgModule({
   declarations: [
@@ -41,7 +41,7 @@ import { ScheduleModule, RecurrenceEditorModule, DayService, WorkWeekService, We
     Navbar2Component,
     ArticulosComponent,
     PageNotFoundComponent,
-    Navbar3Component
+    Navbar3Component,
   ],
   imports: [
     BrowserModule,
@@ -57,17 +57,14 @@ import { ScheduleModule, RecurrenceEditorModule, DayService, WorkWeekService, We
     SharedModule,
     ReactiveFormsModule,
     HttpClientModule,
-    ScheduleModule,
-    RecurrenceEditorModule
   ],
   providers: [
 
     ServiceRegistroEspecialistaService,
-    { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
+    {provide: JWT_OPTIONS, useValue: JWT_OPTIONS},
     JwtHelperService,
     //Token interceptor
     //{ provide : HTTP_INTERCEPTORS, useClass : TokenInterceptorService, multi : true }
-    DayService, WeekService, WorkWeekService, MonthService, MonthAgendaService
   ],
   bootstrap: [AppComponent]
 })

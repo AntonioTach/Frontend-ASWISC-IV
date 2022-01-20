@@ -1,4 +1,4 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule,CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 
@@ -23,8 +23,8 @@ import { SubirPruebaComponent } from './subir-prueba/subir-prueba.component';
 import { ModificacionExpedienteComponent } from './modificacion-expediente/modificacion-expediente.component';
 import { DialogBorrarPacienteComponent } from './dialog-borrar-paciente/dialog-borrar-paciente.component';
 import { ResultadoAutomatizacionWiscivComponent } from './resultado-automatizacion-wisciv/resultado-automatizacion-wisciv.component';
-//calendar
-import { ScheduleModule, RecurrenceEditorModule, DayService, WorkWeekService, WeekService, MonthService, MonthAgendaService } from '@syncfusion/ej2-angular-schedule'
+
+
 @NgModule({
   declarations: [
     ModuloEspecialistasComponent,
@@ -49,9 +49,7 @@ import { ScheduleModule, RecurrenceEditorModule, DayService, WorkWeekService, We
   imports: [
     CommonModule,
     ModuloEspecialistasRoutingModule,
-    SharedModule, ScheduleModule,
-    RecurrenceEditorModule
-
-  ], providers: [DayService, WeekService, WorkWeekService, MonthService, MonthAgendaService]
+    SharedModule
+  ]
 })
 export class ModuloEspecialistasModule { }
