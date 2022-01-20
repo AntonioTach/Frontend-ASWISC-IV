@@ -37,6 +37,13 @@ export class RegistrarPacienteComponent implements OnInit {
       telefono: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]],
     });
   }
+  RegistradoMensaje(){
+    this._snackBar.open('Registro Correcto', '', {
+      duration: 3000, //5s
+      horizontalPosition: 'center',
+      verticalPosition: 'bottom'
+    });
+  }
 
   RegistrarPaciente(){
     if (this.FormRegistrarPaciente.invalid){
@@ -44,16 +51,16 @@ export class RegistrarPacienteComponent implements OnInit {
     }
     else {
       console.log(this.FormRegistrarPaciente?.value);
+      this.RegistradoMensaje();
+
       this.registrarPacienteService.registrarPaciente(this.FormRegistrarPaciente.value).subscribe(
         res => {
-          console.log(res),
-          console.log('correcto');
+          console.log(res)
         },
         err => {
           console.log(err);
         }
       )
-
     }
 
   };

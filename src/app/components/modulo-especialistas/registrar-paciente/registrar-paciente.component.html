@@ -3,7 +3,7 @@
 <body>
   <div class="cuadro-registro">
     <h1>Registrar Paciente</h1>
-    <form #RegistrarPacienteForm="ngForm" [formGroup]="FormRegistrarPaciente" (ngSubmit)="RegistrarPaciente();">
+    <form #RegistrarPacienteForm="ngForm" [formGroup]="FormRegistrarPaciente" (ngSubmit)="RegistrarPaciente(); RegistrarPacienteForm.reset();">
       <div class="div-info">
         <div>
           <h2>Nombre</h2>
