@@ -17,6 +17,7 @@ export class ModificacionExpedienteComponent implements OnInit {
   fecha: any;
 
   constructor(private formBuilder: FormBuilder, private modificarExpedienteService: ModificacionExpedienteServiceService, private _snackBar: MatSnackBar, private router: Router, private serviceRevisar: ServiceRevisarPacienteService) { }
+
   usuario: string = '';
   correo: string = '';
   telefono: any = null;
@@ -24,6 +25,7 @@ export class ModificacionExpedienteComponent implements OnInit {
   hide = true;
   sexo: string | undefined;
   sexos: string[] = ['Masculino', 'Femenino'];
+
   id_usuario = localStorage.getItem('id_usuario');
   id_paciente = 0
   pacientes: any = []
