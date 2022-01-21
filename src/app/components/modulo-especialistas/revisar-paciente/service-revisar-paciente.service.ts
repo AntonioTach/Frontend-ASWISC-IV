@@ -20,6 +20,7 @@ export class ServiceRevisarPacienteService {
     console.log(id)
     return this.http.get<any>('http://localhost:4000/eli-paciente/' + id);
   }
+  //aparecen los pacientes del especialista
   getPacientes() {
     var id_especialista = localStorage.getItem('id_usuario')
     return this.http.get('http://localhost:4000/Pacientes/' + id_especialista);
