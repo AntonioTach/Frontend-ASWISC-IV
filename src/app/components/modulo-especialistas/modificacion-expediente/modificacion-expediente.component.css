@@ -47,7 +47,13 @@ body{
     width: 270px;
     margin-bottom: 10px;
   }
-  
+  .textarea{
+    text-align: start;
+    margin-left: 105px;
+    margin-right: 250px;
+    width: 270px;
+    margin-bottom: 10px;
+  }
   .div-info{
     display: flex;
     padding-top: 5px;
