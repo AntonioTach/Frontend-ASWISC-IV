@@ -9,7 +9,7 @@ import { usuarioPaciente } from 'src/app/models/usuarioPaciente';
 export class ModificacionExpedienteServiceService {
 
 
-  
+
 
   URL_API = 'http://localhost:4000/registrar-paciente/'; //Puerto del server NODE
 
@@ -24,14 +24,17 @@ export class ModificacionExpedienteServiceService {
     nombretutor: '',
     telefonotutor: 0,
     contrasena: '',
-};
+  };
 
   pacientes: usuarioPaciente[] = []; //arreglo de Pacientes
 
 
-  constructor(private http : HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-  registrarPaciente(paciente: usuarioPaciente){
+  registrarPaciente(paciente: usuarioPaciente) {
     return this.http.post<usuarioPaciente[]>(this.URL_API, paciente);
+  }
+  getPaciente(id: string) {
+    return this.http.get('http://localhost:4000/' + 'buscar-paciente/' + id)
   }
 }

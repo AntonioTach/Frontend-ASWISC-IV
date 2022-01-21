@@ -11,8 +11,8 @@ export class ServiceRevisarPacienteService {
   public Pacientes(id_usuario?: string | null) {
     return this.http.get<any>('http://localhost:4000/Pacientes/' + id_usuario);
   }
-  getPaciente() {
-    //return this.lista_pacientes.slice();//slice retorna una copia del estado de usuarios
+  getPaciente(id: string) {
+    return this.http.get('http://localhost:4000/buscar-paciente/' + id);
   }
 
   eliminarPaciente(id: string) {
