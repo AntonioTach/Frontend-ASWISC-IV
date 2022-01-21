@@ -15,9 +15,10 @@ export class ServiceRevisarPacienteService {
     //return this.lista_pacientes.slice();//slice retorna una copia del estado de usuarios
   }
 
-  eliminarPaciente(index: number) {
+  eliminarPaciente(id: string) {
     //this.lista_pacientes.splice(index, 1);//hay que pasarle que elemento quiero eliminar, y cuantos
-
+    console.log(id)
+    return this.http.get<any>('http://localhost:4000/eli-paciente/' + id);
   }
   getPacientes() {
     var id_especialista = localStorage.getItem('id_usuario')

@@ -7,11 +7,6 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
-
-
-
-
-
 @Component({
   selector: 'app-revisar-paciente',
   templateUrl: './revisar-paciente.component.html',
@@ -37,18 +32,14 @@ export class RevisarPacienteComponent implements OnInit {
   }
 
 
-  constructor(private verPacientesService: ServiceRevisarPacienteService, private router: Router, private _snackBar: MatSnackBar) {
+  constructor(private pacientesService: ServiceRevisarPacienteService, private router: Router, private _snackBar: MatSnackBar) {
   }
-
-  id_usuario = localStorage.getItem('id_usuario');
-
   ngOnInit(): void {
     // this.verPacientes();
-    this.id_usuario = localStorage.getItem('id_usuario');
     this.cargarPacientes();
   }
   cargarPacientes() {
-    this.verPacientesService.getPacientes().subscribe(res => {
+    this.pacientesService.getPacientes().subscribe(res => {
       this.lista_pacientes = res;
       console.log(this.lista_pacientes);
       this.dataSource = new MatTableDataSource(this.lista_pacientes);
@@ -58,7 +49,7 @@ export class RevisarPacienteComponent implements OnInit {
   /*
   verPacientes() {
 
-    this.verPacientesService.Pacientes(this.id_usuario).subscribe(
+    this.pacientesService.Pacientes(this.id_usuario).subscribe(
       res => {
         console.log(res);
       },
@@ -67,11 +58,10 @@ export class RevisarPacienteComponent implements OnInit {
       }
     )
   }*/
-  eliminarPaciente(index: number) {//aqui lo que abria que pasarle es el id, para borra el dato de la base de datos.
-    console.log(index);
-    this.verPacientesService.eliminarPaciente(index);
-    this.cargarPacientes();
-
+  eliminarPaciente(id: any) {//aqui lo que abria que pasarle es el id, para borra el dato de la base de datos.
+    this.pacientesService.eliminarPaciente(id.toString()).subscribe(res => {
+      console.log(res)
+    }, err => console.log(err));
     this._snackBar.open('El usuario fue eliminado con exito', '', {
       duration: 1500,
       horizontalPosition: 'center',
