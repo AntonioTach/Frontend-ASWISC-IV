@@ -4,5 +4,155 @@
 <p>modificacion-expediente works!</p>
 <br>
 <body>
-    <p>Aqui va el formato del expediente clinico</p>
-</body>
+    <div class="cuadro-registro">
+      <h1>Expediente Clínico</h1>
+      <form #RegistrarPacienteForm="ngForm" [formGroup]="FormModificarExpediente" (ngSubmit)="RegistrarPaciente(); RegistrarPacienteForm.reset();">
+        <div class="div-info">
+          <div>
+            <h2>Paciente</h2>
+            <mat-form-field class="dropdown" appearance="fill">
+                <mat-label>Seleccione el paciente</mat-label>
+                    <mat-select>
+                        <mat-option *ngFor="let food of foods" [value]="food.value">
+                        {{food.viewValue}}
+                        </mat-option>
+                    </mat-select>
+            </mat-form-field>
+          </div>
+  
+          <div>
+            <h2>Sexo</h2>
+            <mat-radio-group formControlName="sexo" aria-label="Select an option">
+              <mat-radio-button class="input" color="primary"  name="Masculino" value="Masculino">Masculino</mat-radio-button>
+              <br>
+              <mat-radio-button class="input" color="primary"  name="Femenino" value="Femenino">Femenino</mat-radio-button>
+            </mat-radio-group>
+          </div>
+  
+  
+          <!-- <div>
+            <h2>Sexo</h2>
+            <mat-radio-group aria-label="Select an option">
+              <mat-radio-button class="input" color="primary" id="masculino" value="masculino" name="sexo" formControlName="sexo">Masculino</mat-radio-button>
+              <br>
+              <mat-radio-button class="input" color="primary" id="femenino" value="femenino" name="sexo" formControlName="sexo">Femenino</mat-radio-button>
+            </mat-radio-group>
+          </div> -->
+  
+  
+          <!-- <div>
+            <h2>Sexo</h2>
+            <mat-radio-group aria-label="Select an option">
+              <mat-radio-button class="input" *ngFor="let sexo of sexos" [value]="sexo" color="primary">{{ sexo }}</mat-radio-button>
+            </mat-radio-group>
+          </div> -->
+  
+  
+        </div>
+  
+        <div class="div-info">
+          <!-- Fecha de nacimiento -->
+          <div>
+            <h2>Fecha de Nacimiento</h2>
+            <mat-form-field class="input" appearance="fill">
+              <input matInput type="date" formControlName="nacimiento">
+              <mat-error>
+                Por favor Ingrese su <strong>Fecha de Nacimiento</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <!-- Usuario -->
+          <div>
+            <h2>Nombre de usuario</h2>
+            <mat-form-field class="input" appearance="fill">
+              <mat-label>Usuario</mat-label>
+              <input matInput autocomplete="off" formControlName="usuario">
+              <mat-error>
+                Por favor Ingrese su nombre de <strong>Usuario</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+  
+        <div class="div-info">
+          <!-- Email -->
+          <div>
+            <h2>Correo electrónico</h2>
+            <mat-form-field class="input" appearance="fill">
+              <mat-label>Email</mat-label>
+              <input matInput type="email" formControlName="email" placeholder="Ex. pat@example.com">
+              <mat-error>
+                Por favor Ingrese su <strong>Correo</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div>
+            <h2>Origen y Procedencia</h2>
+            <mat-form-field class="input" appearance="fill">
+              <mat-label>Origen y Procedencia</mat-label>
+              <input matInput autocomplete="off" formControlName="Origen y Procedencia">
+              <mat-error>
+                Por favor Ingrese la informacion de <strong>Origen y Procedencia</strong>
+              </mat-error>  
+            </mat-form-field>
+          </div>
+        </div>
+  
+        <div class="div-info">
+          <!-- Telefono -->
+          <div>
+            <h2>Número de Teléfono</h2>
+            <mat-form-field class="input" appearance="fill">
+              <mat-label>Teléfono</mat-label>
+              <span matPrefix>+55 &nbsp;</span>
+              <input type="tel" matInput placeholder="555-555-1234" formControlName="telefono">
+              <mat-error>
+                Por favor Ingrese su número de <strong>telefono</strong> de 10 digitos
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div>
+            <h2>Estudios</h2>
+            <mat-form-field class="input" appearance="fill">
+              <mat-label>Estudios</mat-label>
+              <input matInput autocomplete="off" formControlName="Estudios">
+              <mat-error>
+                Por favor Ingrese los <strong>Estudios</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="div-info">
+
+            <div>
+                <h2>Ocupación</h2>
+                <mat-form-field class="input" appearance="fill">
+                  <mat-label>Ocupación</mat-label>
+                  <input matInput autocomplete="off" formControlName="Ocupación">
+                  <mat-error>
+                    Por favor Ingrese la <strong>Ocupación</strong> del paciente
+                  </mat-error>
+                </mat-form-field>
+            </div>
+            
+        </div>
+        <div class="div-info-chart">
+            <h2>Observaciones</h2>
+            <mat-form-field class="textarea" appearance="outline">
+                <textarea  matInput placeholder="Observaciones del paciente" formControlName="observaciones" >
+
+                </textarea>
+            </mat-form-field>
+        </div>
+
+        <div class="div-info">
+             <!-- Boton -->
+             <div class="div-btn">
+                <button  type="submit" mat-raised-button class="btn">Guardar</button>
+              </div>
+
+        </div>
+      </form>
+    </div>
+  </body>
+  
