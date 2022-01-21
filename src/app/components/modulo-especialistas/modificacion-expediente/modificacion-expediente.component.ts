@@ -6,13 +6,22 @@ import { ThisReceiver } from '@angular/compiler';
 
 import{ModificacionExpedienteServiceService} from './modificacion-expediente-service.service'
 
+interface Food {
+  value: string;
+  viewValue: string;
+}
+
 @Component({
   selector: 'app-modificacion-expediente',
   templateUrl: './modificacion-expediente.component.html',
   styleUrls: ['./modificacion-expediente.component.css']
 })
 export class ModificacionExpedienteComponent implements OnInit {
-
+  foods: Food[] = [
+    {value: 'steak-0', viewValue: 'Steak'},
+    {value: 'pizza-1', viewValue: 'Pizza'},
+    {value: 'tacos-2', viewValue: 'Tacos'},
+  ];
  
  // public FormModificarExpediente!: FormGroup;
  public FormModificarExpediente! : FormGroup;

@@ -10,12 +10,14 @@
         <div class="div-info">
           <div>
             <h2>Paciente</h2>
-            <mat-select>
-              <input matInput formControlName="nombre">
-              <mat-error>
-                Por favor ingrese su nombre
-              </mat-error>
-            </mat-select>
+            <mat-form-field class="dropdown" appearance="fill">
+                <mat-label>Seleccione el paciente</mat-label>
+                    <mat-select>
+                        <mat-option *ngFor="let food of foods" [value]="food.value">
+                        {{food.viewValue}}
+                        </mat-option>
+                    </mat-select>
+            </mat-form-field>
           </div>
   
           <div>
