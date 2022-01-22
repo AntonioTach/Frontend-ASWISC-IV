@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators, NgForm } from '@angular/forms';
 
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -15,7 +15,9 @@ import { AngularFireStorage } from '@angular/fire/compat/storage';
   styleUrls: ['./registro-especialista.component.css']
 })
 export class RegistroEspecialistaComponent implements OnInit {
-
+  @ViewChild('cedula') cedula: ElementRef | any;
+  @ViewChild('curriculum') curriculum: ElementRef | any;
+  @ViewChild('image') image: ElementRef | any;
   public formRegistro!: FormGroup;
   uploadPercent: any;
   urlImage: any;
@@ -31,19 +33,7 @@ export class RegistroEspecialistaComponent implements OnInit {
 
   ngOnInit(): void {
     this.formRegistro = this.formBuilder.group({
-      foto_profesional: ['',
-        [
-          Validators.required
-        ]
-      ], curriculum: ['',
-        [
-          Validators.required
-        ]
-      ], cedula: ['',
-        [
-          Validators.required
-        ]
-      ],
+      foto_profesional: [''], curriculum: [''], cedula: [''],
       nombre: ['',
         [
           Validators.required
@@ -115,6 +105,13 @@ export class RegistroEspecialistaComponent implements OnInit {
 
 
   RegistroEspecialista() {
+
+    this.formRegistro.value['curriculum'] = this.curriculum.nativeElement.value;
+    this.formRegistro.value['foto_profesional'] = this.image.nativeElement.value;
+    this.formRegistro.value['cedula'] = this.cedula.nativeElement.value;
+    console.table(this.formRegistro.value)
+    this.correcto();
+    console.log(this.formRegistro.invalid)
     if (this.formRegistro.invalid) {
       return;
     }
@@ -132,14 +129,8 @@ export class RegistroEspecialistaComponent implements OnInit {
           console.log(err);
         }
       )
-
-      //Timeout despues del mensaje de 3s para direccionar al Inicio
-      setTimeout(() => {
-
-        this.router.navigate(['login']);
-      }, 3000);
-
-
+      console.table(this.formRegistro.value)
+      this.router.navigate(['login']);
 
 
       // this.CrearUsuario();
@@ -176,6 +167,7 @@ export class RegistroEspecialistaComponent implements OnInit {
     task.snapshotChanges().pipe(finalize(() => this.urlCurriculum = ref.getDownloadURL())).subscribe();
   }
   ingresarCedula(e: any) {
+    console.log(e.target.files[0])
     const id = Math.random().toString(36).substring(2);
     const file = e.target.files[0];
     const filePath = `Cedula/usuario${id}`;

@@ -88,6 +88,10 @@ export class ModificacionExpedienteComponent implements OnInit {
           console.log(err, 'eroror');
         }
       )
+      setTimeout(() => {
+
+        this.router.navigate(['modulo-especialistas']);
+      }, 3000);
     }
   }
   /*

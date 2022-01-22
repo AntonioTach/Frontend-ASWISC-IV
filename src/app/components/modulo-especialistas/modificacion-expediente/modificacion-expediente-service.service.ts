@@ -2,6 +2,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { usuarioPaciente } from 'src/app/models/usuarioPaciente';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -37,7 +38,7 @@ export class ModificacionExpedienteServiceService {
   getPaciente(id: string) {
     return this.http.get('http://localhost:4000/' + 'buscar-paciente/' + id)
   }
-  updatePaciente(id: string, objeto: any) {
+  updatePaciente(id: string, objeto: any): Observable<any> {
     console.log(id, objeto);
     return this.http.post('http://localhost:4000/' + 'editar-Paciente/' + id, objeto);
   }

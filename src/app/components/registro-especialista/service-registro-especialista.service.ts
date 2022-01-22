@@ -24,12 +24,13 @@ export class ServiceRegistroEspecialistaService {
 
 
 
-  constructor(private http : HttpClient) {}
+  constructor(private http: HttpClient) { }
 
 
 
-  createEspecialista(especialista: usuarioEspecialista){
+  createEspecialista(especialista: any) {
     //envio del objeto especialista al server
+    console.log(especialista, "hola")
     return this.http.post<usuarioEspecialista[]>(this.URL_API, especialista);
 
     //return this.http.post(this.URL_API, especialista);

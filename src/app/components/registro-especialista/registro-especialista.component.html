@@ -19,7 +19,11 @@
 
         <div>
           <h2>Sexo</h2>
-          <mat-radio-group formControlName="sexo" aria-label="Select an option">
+          <mat-radio-group
+            formControlName="sexo"
+            aria-label="Select an option"
+            formControlName="sexo"
+          >
             <mat-radio-button
               class="input"
               color="primary"
@@ -164,9 +168,10 @@
         <div>
           <h2>Ingresar foto de usuario</h2>
           <input
-            type="hidden"
+            #image
+            hidden
             formControlName="foto_profesional"
-            [value]="urlCurriculum | async"
+            [value]="urlImage | async"
           />
           <button
             type="button"
@@ -182,14 +187,14 @@
             #fileInputImage
             accept="image/*"
             type="file"
-            id="file"
             (change)="ingresarImagen($event)"
           />
         </div>
         <div>
           <h2>Ingresar curriculum</h2>
           <input
-            type="hidden"
+            hidden
+            #curriculum
             formControlName="curriculum"
             [value]="urlCurriculum | async"
           />
@@ -207,7 +212,6 @@
             #fileInputCurriculum
             accept="application/pdf"
             type="file"
-            id="file"
             (change)="ingresarCurriculum($event)"
           />
         </div>
@@ -215,11 +219,7 @@
       <div class="div-info">
         <div>
           <h2>Ingresar Cedula Profesional</h2>
-          <input
-            type="hidden"
-            formControlName="cedula"
-            [value]="urlCedula | async"
-          />
+          <input hidden #cedula [value]="urlCedula | async" />
           <button
             type="button"
             class="input text-center"
@@ -234,7 +234,6 @@
             #fileInputCedula
             accept="application/pdf"
             type="file"
-            id="file"
             (change)="ingresarCedula($event)"
           />
         </div>
