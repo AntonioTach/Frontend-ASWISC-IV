@@ -1,7 +1,48 @@
 <app-navbar-especialista></app-navbar-especialista>
+<br>
+<br>
+<br>
+<br>
+<body>
+    <div class="cuadro">
+        <h1 class="titulo">Subir prueba</h1>
+        <div class="div-info">
+            <div>
+                <h2>Paciente</h2>
+                <mat-form-field class="dropdown" appearance="fill">
+                  <mat-label>Seleccione el paciente</mat-label>
+                  <mat-select [(value)]="id_paciente">
+                    <mat-option
+                      *ngFor="let paciente of pacientes"
+                      [value]="paciente.id_usuario"
+                    >
+                      {{ paciente.nombre }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <button
+                  class="btn btn-primary"
+                  type="button"
+                  (click)="cargarInformacion()"
+                >
+                  buscar
+                </button>
+            </div>
+            <div>
+                <div class="div-info-chart">
+                    <h2>Observaciones</h2>
+                    <mat-form-field class="textarea" appearance="outline">
+                      <textarea
+                        matInput
+                        placeholder="Observaciones del paciente"
+                        formControlName="observaciones"
+                        value="{{ obsevacion }}"
+                      >
+                      </textarea>
+                    </mat-form-field>
+                  </div>
+            </div>
 
-<p>subir-prueba works!</p>
-<p>subir-prueba works!</p>
-<p>subir-prueba works!</p>
-<p>subir-prueba works!</p>
-<p>subir-prueba works!</p>
+        </div>
+    </div> 
+</body>
