@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
+import { FormGroup, FormBuilder, FormControl, Validators, NgForm } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-crear-articulos',
@@ -8,9 +11,13 @@ import { AngularEditorConfig } from '@kolkov/angular-editor';
 })
 export class CrearArticulosComponent implements OnInit {
 
-  constructor() { }
+  public FormCrearArticulo! : FormGroup;
+  constructor(private formBuilder: FormBuilder,private _snackBar: MatSnackBar, private router: Router) { }
 
   ngOnInit(): void {
+    this.FormCrearArticulo = this.formBuilder.group({
+      titulo: ['', [Validators.required]],
+    });
   }
   editorConfig: AngularEditorConfig = {
     editable: true,
@@ -23,7 +30,7 @@ export class CrearArticulosComponent implements OnInit {
       translate: 'yes',
       enableToolbar: true,
       showToolbar: true,
-      placeholder: 'Enter text here...',
+      placeholder: 'Ingrese el texto aquí',
       defaultParagraphSeparator: '',
       defaultFontName: '',
       defaultFontSize: '',

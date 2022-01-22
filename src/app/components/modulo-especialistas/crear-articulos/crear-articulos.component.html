@@ -3,5 +3,42 @@
 <br>
 <br>
 <br>
-<h2>ya jala</h2>
-<angular-editor  id="editor1" formControlName="htmlContent1" [config]="editorConfig"></angular-editor>
+<br>
+
+<body style="background-color: white;">
+<div class="cuadro">
+    <h1 class="creacion">Creación de Artículo</h1>
+    <div class="div-info">
+        
+
+        <div class="titulo">
+            <h2>Título del Artículo</h2>
+            <mat-form-field class="input" appearance="fill">
+              <mat-label>Ingrese el título </mat-label>
+              <input matInput formControlName="titulo">
+              <mat-error>
+                Por favor ingrese el título
+              </mat-error>
+            </mat-form-field>
+        </div>
+          
+          
+    </div>
+        
+        <angular-editor  id="editor1" formControlName="htmlContent1" [config]="editorConfig"></angular-editor>
+    
+    <div class="div-info">
+        <!-- Boton -->
+          <div class="div-btn">
+            <button  type="submit" mat-raised-button class="btn">Guardar</button>
+          </div>
+          
+          <!-- Boton -->
+          <div class="div-btn">
+            <button  type="submit" mat-raised-button class="btn">Publicar</button>
+          </div>
+
+    </div>
+</div>
+
+</body>
