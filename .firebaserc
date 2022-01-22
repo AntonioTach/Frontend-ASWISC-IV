@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "aswisc-iv": {
+      "hosting": {
+        "frontend": [
+          "aswisc-iv"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "aswisc-iv"
+  }
+}
