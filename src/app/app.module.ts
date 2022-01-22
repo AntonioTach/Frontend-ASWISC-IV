@@ -28,7 +28,8 @@ import { ModuloPacientesComponent } from './components/modulo-pacientes/modulo-p
 import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { Navbar3Component } from './components/navbar3/navbar3.component';
 //import { TokenInterceptorService } from './services/token-interceptor.service';
-
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireStorageModule, BUCKET } from '@angular/fire/compat/storage';
 
 @NgModule({
   declarations: [
@@ -57,11 +58,15 @@ import { Navbar3Component } from './components/navbar3/navbar3.component';
     SharedModule,
     ReactiveFormsModule,
     HttpClientModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireStorageModule
   ],
   providers: [
 
     ServiceRegistroEspecialistaService,
-    {provide: JWT_OPTIONS, useValue: JWT_OPTIONS},
+    { provide: JWT_OPTIONS, useValue: JWT_OPTIONS }, {
+      provide: BUCKET, useValue: environment.firebaseConfig.storageBucket
+    },
     JwtHelperService,
     //Token interceptor
     //{ provide : HTTP_INTERCEPTORS, useClass : TokenInterceptorService, multi : true }

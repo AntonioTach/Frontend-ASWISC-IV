@@ -1,27 +1,40 @@
 <body>
   <div class="cuadro-registro">
     <h1>Registro Especialista</h1>
-    <form #especialistaForm="ngForm" [formGroup]="formRegistro" (ngSubmit)="RegistroEspecialista()">
-
+    <form
+      #especialistaForm="ngForm"
+      [formGroup]="formRegistro"
+      (ngSubmit)="RegistroEspecialista()"
+    >
       <div class="div-info">
         <!--          INPUTS           -->
         <div>
           <h2>Nombre</h2>
           <mat-form-field class="input" appearance="fill">
             <mat-label>Nombre Completo</mat-label>
-            <input matInput formControlName="nombre">
-            <mat-error>
-              Por favor ingrese su nombre
-            </mat-error>
+            <input matInput formControlName="nombre" />
+            <mat-error> Por favor ingrese su nombre </mat-error>
           </mat-form-field>
         </div>
 
         <div>
           <h2>Sexo</h2>
           <mat-radio-group formControlName="sexo" aria-label="Select an option">
-            <mat-radio-button class="input" color="primary" name="Masculino" value="Masculino">Masculino</mat-radio-button>
-            <br>
-            <mat-radio-button class="input" color="primary" name="Femenino" value="Femenino">Femenino</mat-radio-button>
+            <mat-radio-button
+              class="input"
+              color="primary"
+              name="Masculino"
+              value="Masculino"
+              >Masculino</mat-radio-button
+            >
+            <br />
+            <mat-radio-button
+              class="input"
+              color="primary"
+              name="Femenino"
+              value="Femenino"
+              >Femenino</mat-radio-button
+            >
           </mat-radio-group>
         </div>
       </div>
@@ -31,7 +44,7 @@
           <h2>Dirección</h2>
           <mat-form-field class="input" appearance="fill">
             <mat-label>Dirección</mat-label>
-            <input matInput formControlName="direccion">
+            <input matInput formControlName="direccion" />
             <mat-error>
               Por favor ingrese su <strong>Dirección</strong>
             </mat-error>
@@ -41,7 +54,7 @@
         <div>
           <h2>Fecha de Nacimiento</h2>
           <mat-form-field class="input" appearance="fill">
-            <input matInput type="date" formControlName="nacimiento">
+            <input matInput type="date" formControlName="nacimiento" />
             <mat-error>
               Por favor Ingrese su <strong>Fecha de Nacimiento</strong>
             </mat-error>
@@ -50,27 +63,27 @@
       </div>
 
       <div class="div-info">
-
-
         <div>
           <h2>Correo electrónico</h2>
           <mat-form-field class="input" appearance="fill">
             <mat-label>Email</mat-label>
-            <input matInput type="email" formControlName="email" placeholder="Ex. pat@example.com">
+            <input
+              matInput
+              type="email"
+              formControlName="email"
+              placeholder="Ex. pat@example.com"
+            />
             <mat-error>
               Por favor Ingrese su <strong>Correo</strong>
             </mat-error>
           </mat-form-field>
         </div>
 
-
-
-
         <div>
           <h2>Profesion</h2>
           <mat-form-field class="input" appearance="fill">
             <mat-label>Profesion</mat-label>
-            <input matInput formControlName="profesion">
+            <input matInput formControlName="profesion" />
             <mat-error>
               Por favor Ingrese su <strong>Profesion</strong>
             </mat-error>
@@ -84,9 +97,15 @@
           <mat-form-field class="input" appearance="fill">
             <mat-label>Teléfono</mat-label>
             <span matPrefix>+55 &nbsp;</span>
-            <input type="tel" matInput placeholder="555-555-1234" formControlName="telefono">
+            <input
+              type="tel"
+              matInput
+              placeholder="555-555-1234"
+              formControlName="telefono"
+            />
             <mat-error>
-              Por favor Ingrese su número de <strong>telefono</strong> de 10 digitos
+              Por favor Ingrese su número de <strong>telefono</strong> de 10
+              digitos
             </mat-error>
           </mat-form-field>
         </div>
@@ -94,7 +113,7 @@
           <h2>Último grado de estudios</h2>
           <mat-form-field class="input" appearance="fill">
             <mat-label>Estudios</mat-label>
-            <input matInput formControlName="estudios">
+            <input matInput formControlName="estudios" />
             <mat-error>
               Por favor Ingrese sus <strong>Estudios</strong>
             </mat-error>
@@ -107,7 +126,7 @@
           <h2>Nombre de usuario</h2>
           <mat-form-field class="input" appearance="fill">
             <mat-label>Usuario</mat-label>
-            <input matInput autocomplete="off"s formControlName="usuario">
+            <input matInput autocomplete="off" s formControlName="usuario" />
             <mat-error>
               Por favor Ingrese su nombre de <strong>Usuario</strong>
             </mat-error>
@@ -117,35 +136,117 @@
           <h2>Contraseña</h2>
           <mat-form-field class="input" appearance="fill">
             <mat-label>Contraseña</mat-label>
-            <input matInput autocomplete="off" [type]="hide ? 'password' : 'text'" formControlName="contrasena">
-            <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
-            [attr.aria-pressed]="hide">
+            <input
+              matInput
+              autocomplete="off"
+              [type]="hide ? 'password' : 'text'"
+              formControlName="contrasena"
+            />
+            <button
+              type="button"
+              mat-icon-button
+              matSuffix
+              (click)="hide = !hide"
+              [attr.aria-label]="'Hide password'"
+              [attr.aria-pressed]="hide"
+            >
               <mat-icon>
-                {{hide ? 'visibility_off' : 'visibility'}}
+                {{ hide ? "visibility_off" : "visibility" }}
               </mat-icon>
             </button>
             <mat-error>
-              Por favor Ingrese su  <strong>Contraseña</strong>
+              Por favor Ingrese su <strong>Contraseña</strong>
             </mat-error>
           </mat-form-field>
         </div>
       </div>
-
+      <div class="div-info">
+        <div>
+          <h2>Ingresar foto de usuario</h2>
+          <input
+            type="hidden"
+            formControlName="foto_profesional"
+            [value]="urlCurriculum | async"
+          />
+          <button
+            type="button"
+            class="input text-center"
+            mat-raised-button
+            color="primary"
+            (click)="fileInputImage.click()"
+          >
+            Seleccione un documento
+          </button>
+          <input
+            hidden
+            #fileInputImage
+            accept="image/*"
+            type="file"
+            id="file"
+            (change)="ingresarImagen($event)"
+          />
+        </div>
+        <div>
+          <h2>Ingresar curriculum</h2>
+          <input
+            type="hidden"
+            formControlName="curriculum"
+            [value]="urlCurriculum | async"
+          />
+          <button
+            type="button"
+            class="input text-center"
+            mat-raised-button
+            (click)="fileInputCurriculum.click()"
+            color="primary"
+          >
+            Seleccione un documento
+          </button>
+          <input
+            hidden
+            #fileInputCurriculum
+            accept="application/pdf"
+            type="file"
+            id="file"
+            (change)="ingresarCurriculum($event)"
+          />
+        </div>
+      </div>
+      <div class="div-info">
+        <div>
+          <h2>Ingresar Cedula Profesional</h2>
+          <input
+            type="hidden"
+            formControlName="cedula"
+            [value]="urlCedula | async"
+          />
+          <button
+            type="button"
+            class="input text-center"
+            mat-raised-button
+            color="primary"
+            (click)="fileInputCedula.click()"
+          >
+            Seleccione un documento
+          </button>
+          <input
+            hidden
+            #fileInputCedula
+            accept="application/pdf"
+            type="file"
+            id="file"
+            (change)="ingresarCedula($event)"
+          />
+        </div>
+      </div>
       <div class="div-btn">
         <!-- <button  type="submit" mat-raised-button class="ancho btn" [disabled]="form.invalid">Ingresar</button> -->
-        <button  type="submit" mat-raised-button class="btn">Registrarse</button>
+        <button type="submit" mat-raised-button class="btn">Registrarse</button>
       </div>
-
     </form>
   </div>
   <!--Identificar si el formulario es valido-->
   <!-- <div>
     Valido: {{ formRegistro.valid | json }}
   </div> -->
-
-
 </body>
-
-
-
-
