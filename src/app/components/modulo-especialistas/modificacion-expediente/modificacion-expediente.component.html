@@ -6,11 +6,7 @@
 <body>
   <div class="cuadro-registro">
     <h1>Expediente Clínico</h1>
-    <form
-      #RegistrarPacienteForm="ngForm"
-      [formGroup]="FormModificarExpediente"
-      (ngSubmit)="RegistrarPaciente(); RegistrarPacienteForm.reset()"
-    >
+    <form #RegistrarPacienteForm="ngForm" [formGroup]="FormModificarExpediente">
       <div class="div-info">
         <div>
           <h2>Paciente</h2>
@@ -36,23 +32,13 @@
 
         <div>
           <h2>Sexo</h2>
-          <mat-radio-group formControlName="sexo" aria-label="Select an option">
-            <mat-radio-button
-              class="input"
-              color="primary"
-              name="Masculino"
-              value="Masculino"
-              >Masculino</mat-radio-button
-            >
-            <br />
-            <mat-radio-button
-              class="input"
-              color="primary"
-              name="Femenino"
-              value="Femenino"
-              >Femenino</mat-radio-button
-            >
-          </mat-radio-group>
+          <mat-form-field class="input" appearance="fill">
+            <mat-label>Sexo</mat-label>
+            <input matInput readonly value="{{ sexo }}" />
+            <mat-error>
+              Por favor Ingrese su <strong>Fecha de Nacimiento</strong>
+            </mat-error>
+          </mat-form-field>
         </div>
 
         <!-- <div>
@@ -78,12 +64,7 @@
           <h2>Fecha de Nacimiento</h2>
           <mat-form-field class="input" appearance="fill">
             <mat-label>Fecha de nacimiento</mat-label>
-            <input
-              matInput
-              readonly
-              formControlName="nacimiento"
-              value="{{ fecha }}"
-            />
+            <input matInput readonly value="{{ fecha }}" />
             <mat-error>
               Por favor Ingrese su <strong>Fecha de Nacimiento</strong>
             </mat-error>
@@ -94,13 +75,7 @@
           <h2>Nombre de usuario</h2>
           <mat-form-field class="input" appearance="fill">
             <mat-label>Usuario</mat-label>
-            <input
-              matInput
-              autocomplete="off"
-              formControlName="usuario"
-              value="{{ usuario }}"
-              readonly
-            />
+            <input matInput autocomplete="off" value="{{ usuario }}" readonly />
             <mat-error>
               Por favor Ingrese su nombre de <strong>Usuario</strong>
             </mat-error>
@@ -117,7 +92,6 @@
             <input
               matInput
               type="email"
-              formControlName="email"
               placeholder="Ex. pat@example.com"
               value="{{ correo }}"
               readonly
@@ -131,7 +105,12 @@
           <h2>Origen y Procedencia</h2>
           <mat-form-field class="input" appearance="fill">
             <mat-label>Origen y Procedencia</mat-label>
-            <input matInput autocomplete="off" formControlName="origen" />
+            <input
+              matInput
+              autocomplete="off"
+              formControlName="origen"
+              value="{{ origen }}"
+            />
             <mat-error>
               Por favor Ingrese la informacion de
               <strong>Origen y Procedencia</strong>
@@ -151,7 +130,6 @@
               type="tel"
               matInput
               placeholder="555-555-1234"
-              formControlName="telefono"
               value="{{ telefono }}"
               readonly
             />
@@ -165,7 +143,12 @@
           <h2>Estudios</h2>
           <mat-form-field class="input" appearance="fill">
             <mat-label>Estudios</mat-label>
-            <input matInput autocomplete="off" formControlName="estudios" />
+            <input
+              matInput
+              autocomplete="off"
+              formControlName="estudios"
+              [value]=""
+            />
             <mat-error>
               Por favor Ingrese los <strong>Estudios</strong>
             </mat-error>
@@ -177,7 +160,12 @@
           <h2>Ocupación</h2>
           <mat-form-field class="input" appearance="fill">
             <mat-label>Ocupación</mat-label>
-            <input matInput autocomplete="off" formControlName="ocupacion" />
+            <input
+              matInput
+              autocomplete="off"
+              formControlName="ocupacion"
+              value="{{ ocupacion }}"
+            />
             <mat-error>
               Por favor Ingrese la <strong>Ocupación</strong> del paciente
             </mat-error>
@@ -191,6 +179,7 @@
             matInput
             placeholder="Observaciones del paciente"
             formControlName="observaciones"
+            value="{{ obsevacion }}"
           >
           </textarea>
         </mat-form-field>
@@ -199,7 +188,9 @@
       <div class="div-info">
         <!-- Boton -->
         <div class="div-btn">
-          <button type="submit" mat-raised-button class="btn">Guardar</button>
+          <button (click)="capturar()" mat-raised-button class="btn">
+            Guardar
+          </button>
         </div>
       </div>
     </form>

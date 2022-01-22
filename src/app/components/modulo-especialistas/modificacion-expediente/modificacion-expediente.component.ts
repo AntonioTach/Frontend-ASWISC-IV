@@ -15,6 +15,10 @@ export class ModificacionExpedienteComponent implements OnInit {
   // public FormModificarExpediente!: FormGroup;
   public FormModificarExpediente!: FormGroup;
   fecha: any;
+  obsevacion: any;
+  estudios: any;
+  origen: any;
+  ocupacion: any;
 
   constructor(private formBuilder: FormBuilder, private modificarExpedienteService: ModificacionExpedienteServiceService, private _snackBar: MatSnackBar, private router: Router, private serviceRevisar: ServiceRevisarPacienteService) { }
 
@@ -34,13 +38,6 @@ export class ModificacionExpedienteComponent implements OnInit {
     this.id_paciente = 0;
     this.cargarInformacion();
     this.FormModificarExpediente = this.formBuilder.group({
-      id_usuario: this.id_usuario, //ID del ESPECIALISTA que esta registrando
-      nombre: this.pacientes.nombre,
-      sexo: this.pacientes.sexo,
-      nacimiento: this.pacientes.nacimiento,
-      usuario: this.pacientes.usuario,
-      email: this.pacientes.email,
-      telefono: this.pacientes.telefono,
       ocupacion: [this.pacientes.ocupacion, [Validators.required]],
       estudios: [this.pacientes.estudios, [Validators.required]],
       origen: [this.pacientes.origen, [Validators.required]],
@@ -56,6 +53,11 @@ export class ModificacionExpedienteComponent implements OnInit {
       this.telefono = obj.telefono;
       this.fecha = obj.nacimiento;
       this.correo = obj.email;
+      this.sexo = obj.sexo;
+      this.obsevacion = this.FormModificarExpediente.value['observaciones'];
+      this.estudios = this.FormModificarExpediente.value['estudios'];
+      this.origen = this.FormModificarExpediente.value['origen'];
+      this.ocupacion = this.FormModificarExpediente.value['ocupacion'];
     }, err => console.log(err))
   }
   cargarPacientes() {
@@ -70,9 +72,25 @@ export class ModificacionExpedienteComponent implements OnInit {
       verticalPosition: 'bottom'
     });
   }
-  capturar(id: number) {
-
+  capturar() {
+    if (this.FormModificarExpediente.invalid) {
+      return
+    }
+    else {
+      console.log(this.FormModificarExpediente?.value);
+      this.RegistradoMensaje();
+      console.log(this.FormModificarExpediente.value);
+      this.modificarExpedienteService.updatePaciente(this.id_paciente.toString(), this.FormModificarExpediente.value).subscribe(
+        res => {
+          console.log(res)
+        },
+        err => {
+          console.log(err, 'eroror');
+        }
+      )
+    }
   }
+  /*
   RegistrarPaciente() {
     if (this.FormModificarExpediente.invalid) {
       return
@@ -91,6 +109,6 @@ export class ModificacionExpedienteComponent implements OnInit {
       )
     }
 
-  };
+  };*/
 
 }

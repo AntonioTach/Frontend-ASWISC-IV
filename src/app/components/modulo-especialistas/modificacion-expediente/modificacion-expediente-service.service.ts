@@ -37,4 +37,8 @@ export class ModificacionExpedienteServiceService {
   getPaciente(id: string) {
     return this.http.get('http://localhost:4000/' + 'buscar-paciente/' + id)
   }
+  updatePaciente(id: string, objeto: any) {
+    console.log(id, objeto);
+    return this.http.post('http://localhost:4000/' + 'editar-Paciente/' + id, objeto);
+  }
 }
