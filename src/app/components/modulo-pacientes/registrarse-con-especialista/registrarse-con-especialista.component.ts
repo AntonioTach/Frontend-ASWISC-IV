@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { EspecialistasService } from './especialistas.service';
 
 @Component({
   selector: 'app-registrarse-con-especialista',
@@ -6,10 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./registrarse-con-especialista.component.css']
 })
 export class RegistrarseConEspecialistaComponent implements OnInit {
-
-  constructor() { }
+  listaEspecialistas: any = [];
+  constructor(private especialistas: EspecialistasService) { }
 
   ngOnInit(): void {
+    this.cargarEspecialistas();
   }
 
+  cargarEspecialistas() {
+    this.especialistas.getEspecialistas().subscribe(res => this.listaEspecialistas = res, err => console.log(err));
+  }
 }

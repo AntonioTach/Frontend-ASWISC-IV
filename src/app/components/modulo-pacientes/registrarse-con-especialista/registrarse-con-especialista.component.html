@@ -1,6 +1,26 @@
 <app-navbar-pacientes></app-navbar-pacientes>
 <p>registrarse-con-especialista works!</p>
 <p>registrarse-con-especialista works!</p>
-<p>registrarse-con-especialista works!</p>
-<p>registrarse-con-especialista works!</p>
-<p>registrarse-con-especialista works!</p>
+<div class="container">
+  <h1 class="h1 ml-5 mt-5">Especialistas</h1>
+</div>
+
+<div class="container col-md-12">
+  <div class="row">
+    <div class="col-md-4" *ngFor="let especialista of listaEspecialistas">
+      <div class="card mb-2">
+        <img
+          class="card-img-top"
+          src="{{ especialista.foto_profesional }}"
+          alt="Card image cap"
+        />
+        <div class="card-body">
+          <h2 class="card-title">{{ especialista.nombre }}</h2>
+          <p class="card-text">Especialida:{{ especialista.profesion }}</p>
+          <p class="card-text">Genero: {{ especialista.sexo }}</p>
+          <a href="#" class="btn btn-primary">Inscripcion</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
