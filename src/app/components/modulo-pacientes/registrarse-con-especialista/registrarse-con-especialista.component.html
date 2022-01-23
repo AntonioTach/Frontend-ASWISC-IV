@@ -19,7 +19,7 @@
           <p class="card-text">Especialida:{{ especialista.profesion }}</p>
           <p class="card-text">Genero: {{ especialista.sexo }}</p>
           <a
-            routerLink="especialista/{{ especialista.id_especialista }}"
+            (click)="vista(especialista.id_especialista)"
             class="btn btn-primary"
             >Ver mas</a
           >

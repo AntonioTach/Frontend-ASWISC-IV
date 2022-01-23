@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EspecialistasService } from './especialistas.service';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-registrarse-con-especialista',
@@ -8,7 +9,7 @@ import { EspecialistasService } from './especialistas.service';
 })
 export class RegistrarseConEspecialistaComponent implements OnInit {
   listaEspecialistas: any = [];
-  constructor(private especialistas: EspecialistasService) { }
+  constructor(private especialistas: EspecialistasService, private router: Router) { }
 
   ngOnInit(): void {
     this.cargarEspecialistas();
@@ -16,5 +17,10 @@ export class RegistrarseConEspecialistaComponent implements OnInit {
 
   cargarEspecialistas() {
     this.especialistas.getEspecialistas().subscribe(res => this.listaEspecialistas = res, err => console.log(err));
+  }
+
+  vista(id: any) {
+    console.log("Vista");
+    this.router.navigateByUrl('/modulo-pacientes/vista-especialista/' + id);
   }
 }

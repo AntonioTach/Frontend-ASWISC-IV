@@ -1,0 +1,81 @@
+<app-navbar-pacientes></app-navbar-pacientes>
+<br />
+<br />
+<br />
+<br />
+<br />
+<div class="container cuadro">
+  <h1 class="text-center">Perfil del Especialista</h1>
+  <img src="{{ this.especialista.foto_profesional }}" class="mx-auto d-block" />
+  <div class="row col-md-12 mb-5">
+    <div class="col-md-2"></div>
+    <div class="col-md-10 row mt-5 justify-content-between">
+      <div class="col-md-5">
+        <h2>Nombre</h2>
+        <mat-form-field class="input" appearance="fill">
+          <mat-label>Nombre</mat-label>
+          <input matInput readonly value="{{ this.especialista.nombre }}" />
+        </mat-form-field>
+        <h2>Correo Electronico</h2>
+        <mat-form-field class="input" appearance="fill">
+          <mat-label>Correo electronico</mat-label>
+          <input matInput readonly value="{{ this.especialista.email }}" />
+        </mat-form-field>
+        <h2>Telefono</h2>
+        <mat-form-field class="input" appearance="fill">
+          <mat-label>Telefono</mat-label>
+          <input matInput readonly value="{{ this.especialista.telefono }}" />
+        </mat-form-field>
+        <h2>Ultimo grado de estudios</h2>
+        <mat-form-field class="input" appearance="fill">
+          <mat-label>Ultimo grado de estudios</mat-label>
+          <input matInput readonly value="{{ this.especialista.estudios }}" />
+        </mat-form-field>
+      </div>
+      <div class="col-md-5">
+        <h2>Sexo</h2>
+        <mat-form-field class="input" appearance="fill">
+          <mat-label>Sexo</mat-label>
+          <input matInput readonly value="{{ this.especialista.sexo }}" />
+        </mat-form-field>
+        <h2>Fecha de Nacimiento</h2>
+        <mat-form-field class="input" appearance="fill">
+          <mat-label>Fecha de nacimiento</mat-label>
+          <input matInput readonly value="{{ this.especialista.nacimiento }}" />
+        </mat-form-field>
+        <h2>Profesion</h2>
+        <mat-form-field class="input" appearance="fill">
+          <mat-label>Profesion</mat-label>
+          <input matInput readonly value="{{ this.especialista.profesion }}" />
+        </mat-form-field>
+        <br />
+        <button
+          mat-raised-button
+          (click)="goToLink(this.especialista.curriculum)"
+          color="primary"
+          class="text-center"
+        >
+          Curriculum
+        </button>
+        <br />
+        <button
+          mat-raised-button
+          (click)="goToLink(this.especialista.cedula)"
+          color="primary"
+          class="text-center mt-3"
+        >
+          Cedula Profesional
+        </button>
+        <br />
+        <button
+          mat-raised-button
+          (click)="updatePaciente()"
+          color="accent"
+          class="col-md-6 ml-5 mt-3"
+        >
+          Inscribirme
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
