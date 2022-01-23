@@ -96,6 +96,12 @@ export class RegistroEspecialistaComponent implements OnInit {
         [
           Validators.required
         ]
+      ],
+
+      precio: ['',
+        [
+          Validators.required
+        ]
       ]
     });
 

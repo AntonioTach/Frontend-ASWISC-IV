@@ -166,6 +166,18 @@
       </div>
       <div class="div-info">
         <div>
+          <h2>Precio Por Consulta</h2>
+          <mat-form-field class="input" appearance="fill">
+            <mat-label>Este puede ser modificado</mat-label>
+            <input matInput autocomplete="off" s formControlName="precio" />
+            <mat-error>
+              Por favor Ingrese su <strong>Precio</strong> de consulta
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="div-info">
+        <div>
           <h2>Ingresar foto de usuario</h2>
           <input
             #image
@@ -216,6 +228,7 @@
           />
         </div>
       </div>
+      
       <div class="div-info">
         <div>
           <h2>Ingresar Cedula Profesional</h2>
