@@ -12,6 +12,7 @@ import { NombrePacienteComponent } from './nombre-paciente/nombre-paciente.compo
 import { PagosPacientesComponent } from './pagos-pacientes/pagos-pacientes.component';
 import { PruebasPacientesComponent } from './pruebas-pacientes/pruebas-pacientes.component';
 import { RegistrarseConEspecialistaComponent } from './registrarse-con-especialista/registrarse-con-especialista.component';
+import { VistaEspecialistaComponent } from './vista-especialista/vista-especialista.component';
 
 const routes: Routes = [
   {path:'', component: ModuloPacientesComponent,children:[
@@ -27,8 +28,8 @@ const routes: Routes = [
    {path:'articulos-pacientes', component:ArticulosPacientesComponent},
    {path:'baja-pacientes', component: BajaPacientesComponent},
    {path:'nombre-paciente',component:NombrePacienteComponent},
-   {path:'**',component:ModuloPacientesComponent}
-  
+   {path:'vista-especialista', component:VistaEspecialistaComponent},
+   {path:'**',component:ModuloPacientesComponent},
   ]}
 ];
 
