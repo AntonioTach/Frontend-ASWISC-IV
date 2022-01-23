@@ -13,88 +13,89 @@ export class NavbarEspecialistaComponent implements OnInit {
 
   usuario = localStorage.getItem('usuario');
 
-  constructor(private router:Router) { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
 
   }
 
-  ASWISC(){
+  ASWISC() {
     console.log('ASWISC-IV');
     this.router.navigateByUrl('/modulo-especialistas');
   }
 
-  Articulos(){
+  Articulos() {
     console.log('Articulos');
     this.router.navigateByUrl('/modulo-especialistas/articulos-especialista');
   }
-  MisArticulos(){
+  MisArticulos() {
     console.log('Mis Articulos');
     this.router.navigateByUrl('/modulo-especialistas/mis-articulos')
   }
 
-  RegistrarPacientes(){
+  RegistrarPacientes() {
     console.log("Registrar pacientes");
     this.router.navigateByUrl('/modulo-especialistas/registrar-paciente');
 
   }
 
-  RevisarPacientes(){
+  RevisarPacientes() {
     console.log('Revisar Pacientes');
     this.router.navigateByUrl('/modulo-especialistas/revisar-pacientes');
   }
 
-  PagosPacientes(){
+  PagosPacientes() {
     console.log('Pagos Pacientes');
     this.router.navigateByUrl('/modulo-especialistas/pagos-de-pacientes');
 
   }
 
-  ModificacionPrecios(){
+  ModificacionPrecios() {
     console.log('Modificacion de Precios');
     this.router.navigateByUrl('/modulo-especialistas/modificacion-de-precios');
   }
 
-  AswiscAutomatizacion(){
+  AswiscAutomatizacion() {
     console.log('ASWISC Automatizar prueba WISC-IV');
     this.router.navigateByUrl('/modulo-especialistas/automatizacion-wisciv');
   }
 
-  SubirPruebas(){
+  SubirPruebas() {
     console.log('Subir Pruebas');
     this.router.navigateByUrl('/modulo-especialistas/subir-prueba');
   }
 
-  ModificacionExpediente(){
+  ModificacionExpediente() {
     console.log('Modificacion Expediente');
     this.router.navigateByUrl('/modulo-especialistas/modificacion-expediente');
   }
 
-  ElementosTerapia(){
+  ElementosTerapia() {
     console.log('Elementos de Terapia');
     this.router.navigateByUrl('/modulo-especialistas/elementos-de-terapia');
   }
 
-  Horarios(){
+  Horarios() {
     console.log('Horarios');
     this.router.navigateByUrl('/modulo-especialistas/horarios');
   }
 
-  Baja(){
+  Baja() {
     console.log('Baja');
     this.router.navigateByUrl('/modulo-especialistas/baja');
   }
 
-  Nombre(){
+  Nombre() {
     console.log('Nombre Especialista');
     this.router.navigateByUrl('/modulo-especialistas/nombre');
   }
 
-  btnLogout(){
+  btnLogout() {
     //console.log('Logout');
     localStorage.removeItem('token');
     localStorage.removeItem('usuario');
     localStorage.removeItem('id_tipo');
+    localStorage.removeItem('id_especialista')
     localStorage.removeItem('id_usuario');
     this.router.navigateByUrl('/login');
 

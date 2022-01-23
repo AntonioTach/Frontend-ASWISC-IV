@@ -11,36 +11,32 @@ import { Router } from '@angular/router';
 })
 export class CrearArticulosComponent implements OnInit {
 
-  public FormCrearArticulo! : FormGroup;
-  constructor(private formBuilder: FormBuilder,private _snackBar: MatSnackBar, private router: Router) { }
+  constructor(private formBuilder: FormBuilder, private _snackBar: MatSnackBar, private router: Router) { }
 
   ngOnInit(): void {
-    this.FormCrearArticulo = this.formBuilder.group({
-      titulo: ['', [Validators.required]],
-    });
   }
   editorConfig: AngularEditorConfig = {
     editable: true,
-      spellcheck: true,
-      height: 'auto',
-      minHeight: '0',
-      maxHeight: 'auto',
-      width: 'auto',
-      minWidth: '0',
-      translate: 'yes',
-      enableToolbar: true,
-      showToolbar: true,
-      placeholder: 'Ingrese el texto aquí',
-      defaultParagraphSeparator: '',
-      defaultFontName: '',
-      defaultFontSize: '',
-      fonts: [
-        {class: 'arial', name: 'Arial'},
-        {class: 'times-new-roman', name: 'Times New Roman'},
-        {class: 'calibri', name: 'Calibri'},
-        {class: 'comic-sans-ms', name: 'Comic Sans MS'}
-      ],
-      customClasses: [
+    spellcheck: true,
+    height: 'auto',
+    minHeight: '0',
+    maxHeight: 'auto',
+    width: 'auto',
+    minWidth: '0',
+    translate: 'yes',
+    enableToolbar: true,
+    showToolbar: true,
+    placeholder: 'Ingrese el texto aquí',
+    defaultParagraphSeparator: '',
+    defaultFontName: '',
+    defaultFontSize: '',
+    fonts: [
+      { class: 'arial', name: 'Arial' },
+      { class: 'times-new-roman', name: 'Times New Roman' },
+      { class: 'calibri', name: 'Calibri' },
+      { class: 'comic-sans-ms', name: 'Comic Sans MS' }
+    ],
+    customClasses: [
       {
         name: 'quote',
         class: 'quote',
@@ -67,6 +63,6 @@ export class CrearArticulosComponent implements OnInit {
       ['InsertVideo', ''],
       ['']
     ]
-};
+  };
 
 }
