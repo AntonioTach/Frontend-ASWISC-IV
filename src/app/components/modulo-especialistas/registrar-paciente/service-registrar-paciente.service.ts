@@ -8,6 +8,7 @@ import { usuarioPaciente } from 'src/app/models/usuarioPaciente';
 export class ServiceRegistrarPacienteService {
 
   URL_API = 'http://localhost:4000/registro-paciente/'; //Puerto del server NODE
+  //URL_API = 'http://localhost:4000/registrar-paciente'; //Puerto del server NODE
 
   selectedPaciente: usuarioPaciente = {
     id_usuario: 0,
