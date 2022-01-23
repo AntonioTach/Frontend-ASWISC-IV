@@ -16,6 +16,7 @@ import { ElementosDeTerapiaPacientesComponent } from './elementos-de-terapia-pac
 import { BajaPacientesComponent } from './baja-pacientes/baja-pacientes.component';
 import { PagosPacientesComponent } from './pagos-pacientes/pagos-pacientes.component';
 import { NombrePacienteComponent } from './nombre-paciente/nombre-paciente.component';
+import { EspecialistaComponent } from './registrarse-con-especialista/especialista/especialista.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { NombrePacienteComponent } from './nombre-paciente/nombre-paciente.compo
     ElementosDeTerapiaPacientesComponent,
     BajaPacientesComponent,
     PagosPacientesComponent,
-    NombrePacienteComponent
+    NombrePacienteComponent,
+    EspecialistaComponent
   ],
   imports: [
     CommonModule,

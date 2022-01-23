@@ -12,24 +12,27 @@ import { NombrePacienteComponent } from './nombre-paciente/nombre-paciente.compo
 import { PagosPacientesComponent } from './pagos-pacientes/pagos-pacientes.component';
 import { PruebasPacientesComponent } from './pruebas-pacientes/pruebas-pacientes.component';
 import { RegistrarseConEspecialistaComponent } from './registrarse-con-especialista/registrarse-con-especialista.component';
-
+import { EspecialistaComponent } from '../modulo-pacientes/registrarse-con-especialista/especialista/especialista.component';
 const routes: Routes = [
-  {path:'', component: ModuloPacientesComponent,children:[
-   {path:'', component:InicioPacientesComponent},
-   {path:'registrarse-con-especialista', component:RegistrarseConEspecialistaComponent},
-   {path:'pruebas-pacientes', component:PruebasPacientesComponent},
-   {path:'pagos-pacientes',component:PagosPacientesComponent},
-   {path:'mi-especialista', component:MiEspecialistaComponent},
-   {path:'horarios-disponibles', component:HorariosDisponiblesComponent},
-   {path:'expediente-pacientes',component:ExpedientePacientesComponent},
-   {path:'elementos-de-terapia-pacientes', component:ElementosDeTerapiaPacientesComponent},
-   {path:'baja-expedientes',component:BajaPacientesComponent},
-   {path:'articulos-pacientes', component:ArticulosPacientesComponent},
-   {path:'baja-pacientes', component: BajaPacientesComponent},
-   {path:'nombre-paciente',component:NombrePacienteComponent},
-   {path:'**',component:ModuloPacientesComponent}
-  
-  ]}
+  {
+    path: '', component: ModuloPacientesComponent, children: [
+      { path: '', component: InicioPacientesComponent },
+      { path: 'registrarse-con-especialista', component: RegistrarseConEspecialistaComponent },
+      { path: 'pruebas-pacientes', component: PruebasPacientesComponent },
+      { path: 'pagos-pacientes', component: PagosPacientesComponent },
+      { path: 'mi-especialista', component: MiEspecialistaComponent },
+      { path: 'horarios-disponibles', component: HorariosDisponiblesComponent },
+      { path: 'expediente-pacientes', component: ExpedientePacientesComponent },
+      { path: 'elementos-de-terapia-pacientes', component: ElementosDeTerapiaPacientesComponent },
+      { path: 'baja-expedientes', component: BajaPacientesComponent },
+      { path: 'articulos-pacientes', component: ArticulosPacientesComponent },
+      { path: 'baja-pacientes', component: BajaPacientesComponent },
+      { path: 'nombre-paciente', component: NombrePacienteComponent },
+      { path: 'especialista', component: EspecialistaComponent },
+      { path: '**', component: ModuloPacientesComponent }
+
+    ]
+  }
 ];
 
 @NgModule({

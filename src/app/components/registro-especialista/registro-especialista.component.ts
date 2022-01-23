@@ -17,7 +17,7 @@ import { AngularFireStorage } from '@angular/fire/compat/storage';
 export class RegistroEspecialistaComponent implements OnInit {
   @ViewChild('cedula') cedula: ElementRef | any;
   @ViewChild('curriculum') curriculum: ElementRef | any;
-  @ViewChild('image') image: ElementRef | any;
+  @ViewChild('image') image: ElementRef | any;//toma la url de la pantalla
   public formRegistro!: FormGroup;
   uploadPercent: any;
   urlImage: any;
@@ -107,7 +107,7 @@ export class RegistroEspecialistaComponent implements OnInit {
   RegistroEspecialista() {
 
     this.formRegistro.value['curriculum'] = this.curriculum.nativeElement.value;
-    this.formRegistro.value['foto_profesional'] = this.image.nativeElement.value;
+    this.formRegistro.value['foto_profesional'] = this.image.nativeElement.value;//asar la url de lafoto 
     this.formRegistro.value['cedula'] = this.cedula.nativeElement.value;
     console.table(this.formRegistro.value)
     this.correcto();
@@ -150,13 +150,14 @@ export class RegistroEspecialistaComponent implements OnInit {
   //     }
   //   )
   // }
-  ingresarImagen(e: any) {
-    const id = Math.random().toString(36).substring(2);
-    const file = e.target.files[0];
-    const filePath = `Imagen/usuario${id}`;
-    const ref = this.storage.ref(filePath);
-    const task = this.storage.upload(filePath, file);
-    task.snapshotChanges().pipe(finalize(() => this.urlImage = ref.getDownloadURL())).subscribe();
+  //subir documentos
+  ingresarImagen(e: any) {//se recibe el evento
+    const id = Math.random().toString(36).substring(2);//se genera un id random
+    const file = e.target.files[0];//toma el primer archivo que encuentre
+    const filePath = `Imagen/usuario${id}`;////se genera la ruta
+    const ref = this.storage.ref(filePath);//le mando la ruta al servidor
+    const task = this.storage.upload(filePath, file);//mandar la imagen al servidor 
+    task.snapshotChanges().pipe(finalize(() => this.urlImage = ref.getDownloadURL())).subscribe();//tomar la url
   }
   ingresarCurriculum(e: any) {
     const id = Math.random().toString(36).substring(2);
@@ -166,6 +167,7 @@ export class RegistroEspecialistaComponent implements OnInit {
     const task = this.storage.upload(filePath, file);
     task.snapshotChanges().pipe(finalize(() => this.urlCurriculum = ref.getDownloadURL())).subscribe();
   }
+
   ingresarCedula(e: any) {
     console.log(e.target.files[0])
     const id = Math.random().toString(36).substring(2);
