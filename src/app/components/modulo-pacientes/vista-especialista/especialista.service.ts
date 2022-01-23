@@ -12,4 +12,12 @@ export class EspecialistaService {
   updatePaciente(idPaciente: any, informacion: any) {
     return this.http.put('http://localhost:4000/' + 'nuevo-cliente/' + idPaciente, informacion);
   }
+  getPaciente(id: any) {
+    return this.http.get('http://localhost:4000/buscar-paciente/' + id);
+
+  }
+  unsubscribePaciente(idPaciente: any) {
+    console.log(idPaciente);
+    return this.http.get('http://localhost:4000/' + 'desuscribirme/' + idPaciente);
+  }
 }
