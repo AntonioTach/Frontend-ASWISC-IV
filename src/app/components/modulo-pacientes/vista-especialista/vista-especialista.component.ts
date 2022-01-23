@@ -30,7 +30,8 @@ export class VistaEspecialistaComponent implements OnInit {
   updatePaciente() {
     this.id_usuario = localStorage.getItem('id_usuario')
     const idEspecialista = {
-      id_especialista: this.id
+      id_especialista: this.id,
+      precio_consulta_general: this.especialista.precio_consulta_general
     }
     this.especialistaService.updatePaciente(this.id_usuario, idEspecialista).subscribe((res: any) => {
       console.log(res);
