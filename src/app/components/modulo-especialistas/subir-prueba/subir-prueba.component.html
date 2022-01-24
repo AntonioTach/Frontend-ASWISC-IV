@@ -57,7 +57,7 @@
           <input type="file" class="file" (change)="getFile($event)" >
       </div>
       <div *ngIf="file" class="guardar">
-        File name: {{file.name}} <br>
+        Nombre del Archivo: {{file.name}} <br>
         <button  mat-raised-button color="warn"(click)="file=undefined">Limpiar Documento</button>
       </div><br>
       <button  mat-raised-button color="primary" class="guardar" (click)="uploadFile()">Cargar Archivo</button>
