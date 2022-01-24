@@ -29,6 +29,7 @@ import { CalendarioComponent } from './horarios/calendario/calendario.component'
 import { DialogoInfomacionComponent } from './revisar-paciente/dialogo-infomacion/dialogo-infomacion.component';
 import { CrearArticulosComponent } from './crear-articulos/crear-articulos.component';
 import { FormsModule } from '@angular/forms';
+import { TarjetaComponent } from './tarjeta/tarjeta.component';
 
 
 @NgModule({
@@ -54,6 +55,7 @@ import { FormsModule } from '@angular/forms';
     CalendarioComponent,
     DialogoInfomacionComponent,
     CrearArticulosComponent,
+    TarjetaComponent,
 
   ],
   imports: [
