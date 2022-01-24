@@ -22,27 +22,31 @@ import { NombreComponent } from './nombre/nombre.component';
 import { ResultadoAutomatizacionWiscivComponent } from './resultado-automatizacion-wisciv/resultado-automatizacion-wisciv.component';
 import { CrearArticulosComponent } from './crear-articulos/crear-articulos.component';
 import { TarjetaComponent } from './tarjeta/tarjeta.component';
+import { ModificarArticuloComponent } from './modificar-articulo/modificar-articulo.component';
 
 const routes: Routes = [
-  { path:'',component: ModuloEspecialistasComponent, children: [
-    { path: '', component: InicioEspecialistaComponent },
-    { path: 'registrar-paciente', component: RegistrarPacienteComponent },
-    { path: 'revisar-pacientes', component: RevisarPacienteComponent },
-    {path: 'articulos-especialista', component: ArticulosEspecialistaComponent},
-    {path: 'mis-articulos', component: MisArticulosComponent},
-    {path: 'pagos-de-pacientes', component: PagosDePacientesComponent},
-    {path: 'modificacion-de-precios', component:ModificacionDePreciosComponent},
-    {path: 'automatizacion-wisciv', component:AutomatizacionWiscivComponent},
-    {path: 'subir-prueba', component:SubirPruebaComponent},
-    {path: 'modificacion-expediente',component:ModificacionExpedienteComponent},
-    {path:'elementos-de-terapia', component:ElementosDeTerapiaComponent},
-    {path:'horarios', component: HorariosComponent},
-    {path:'baja', component:BajaComponent},
-    {path:'nombre', component:NombreComponent},
-    {path:'resultado-automatizacion-wisciv', component: ResultadoAutomatizacionWiscivComponent},
-    {path:'crear-articulos', component: CrearArticulosComponent},
-    {path:'tarjeta', component:TarjetaComponent}
-  ]},
+  {
+    path: '', component: ModuloEspecialistasComponent, children: [
+      { path: '', component: InicioEspecialistaComponent },
+      { path: 'registrar-paciente', component: RegistrarPacienteComponent },
+      { path: 'revisar-pacientes', component: RevisarPacienteComponent },
+      { path: 'articulos-especialista', component: ArticulosEspecialistaComponent },
+      { path: 'mis-articulos', component: MisArticulosComponent },
+      { path: 'pagos-de-pacientes', component: PagosDePacientesComponent },
+      { path: 'modificacion-de-precios', component: ModificacionDePreciosComponent },
+      { path: 'automatizacion-wisciv', component: AutomatizacionWiscivComponent },
+      { path: 'subir-prueba', component: SubirPruebaComponent },
+      { path: 'modificacion-expediente', component: ModificacionExpedienteComponent },
+      { path: 'elementos-de-terapia', component: ElementosDeTerapiaComponent },
+      { path: 'horarios', component: HorariosComponent },
+      { path: 'baja', component: BajaComponent },
+      { path: 'nombre', component: NombreComponent },
+      { path: 'resultado-automatizacion-wisciv', component: ResultadoAutomatizacionWiscivComponent },
+      { path: 'modificar-articulo/:id', component: ModificarArticuloComponent },
+      { path: 'crear-articulos', component: CrearArticulosComponent },
+      { path: 'tarjeta', component: TarjetaComponent }
+    ]
+  },
 
 ];
 

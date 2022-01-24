@@ -24,4 +24,14 @@ export class ArticulosService {
     const id = localStorage.getItem('id_especialista');
     return this.HttpClient.get('http://localhost:4000/mis-articulos/' + id)
   }
+  //tomar un articulo
+  getArticulo(id: any) {
+    return this.HttpClient.get('http://localhost:4000/articulo/' + id)
+  }
+  updateArticuloGuardar(id: any, object: any) {
+    return this.HttpClient.put('http://localhost:4000/guardar-articulo/' + id, object);
+  }
+  updateArticuloPublicar(id: any, object: any) {
+    return this.HttpClient.put('http://localhost:4000/publicar-articulo/' + id, object);
+  }
 }

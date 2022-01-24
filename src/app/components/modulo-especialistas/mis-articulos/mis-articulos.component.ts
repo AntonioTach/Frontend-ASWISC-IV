@@ -30,5 +30,7 @@ export class MisArticulosComponent implements OnInit {
     console.log('Crear Artículos');
     this.router.navigateByUrl('/modulo-especialistas/crear-articulos')
   }
-
+  modificar(id: any) {
+    this.router.navigate(['/modulo-especialistas/modificar-articulo/' + id])
+  }
 }

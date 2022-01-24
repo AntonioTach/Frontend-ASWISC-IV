@@ -30,6 +30,7 @@ import { DialogoInfomacionComponent } from './revisar-paciente/dialogo-infomacio
 import { CrearArticulosComponent } from './crear-articulos/crear-articulos.component';
 import { FormsModule } from '@angular/forms';
 import { TarjetaComponent } from './tarjeta/tarjeta.component';
+import { ModificarArticuloComponent } from './modificar-articulo/modificar-articulo.component';
 
 
 @NgModule({
@@ -56,6 +57,7 @@ import { TarjetaComponent } from './tarjeta/tarjeta.component';
     DialogoInfomacionComponent,
     CrearArticulosComponent,
     TarjetaComponent,
+    ModificarArticuloComponent,
 
   ],
   imports: [
