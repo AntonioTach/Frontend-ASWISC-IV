@@ -13,31 +13,31 @@ import { ServiceRegistrarPacienteService } from './service-registrar-paciente.se
 })
 export class RegistrarPacienteComponent implements OnInit {
 
- // public FormRegistrarPaciente!: FormGroup;
- public FormRegistrarPaciente! : FormGroup;
+  // public FormRegistrarPaciente!: FormGroup;
+  public FormRegistrarPaciente!: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private registrarPacienteService: ServiceRegistrarPacienteService ,private _snackBar: MatSnackBar, private router: Router) { }
+  constructor(private formBuilder: FormBuilder, private registrarPacienteService: ServiceRegistrarPacienteService, private _snackBar: MatSnackBar, private router: Router) { }
 
   hide = true;
   sexo: string | undefined;
   sexos: string[] = ['Masculino', 'Femenino'];
-  id_usuario = localStorage.getItem('id_especialista');
+  id_usuario = localStorage.getItem('id_usuario');
 
   ngOnInit(): void {
 
 
     this.FormRegistrarPaciente = this.formBuilder.group({
-      id_usuario:this.id_usuario, //ID del ESPECIALISTA que esta registrando
+      id_usuario: this.id_usuario, //ID del ESPECIALISTA que esta registrando
       nombre: ['', [Validators.required]],
       sexo: ['', [Validators.required]],
       nacimiento: ['', [Validators.required]],
-      usuario: ['', [Validators.required,Validators.maxLength(12)]],
+      usuario: ['', [Validators.required, Validators.maxLength(12)]],
       email: ['', [Validators.required, Validators.email]],
       contrasena: ['', [Validators.required, Validators.minLength(8)]],
       telefono: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]],
     });
   }
-  RegistradoMensaje(){
+  RegistradoMensaje() {
     this._snackBar.open('Registro Correcto', '', {
       duration: 3000, //5s
       horizontalPosition: 'center',
@@ -45,8 +45,8 @@ export class RegistrarPacienteComponent implements OnInit {
     });
   }
 
-  RegistrarPaciente(){
-    if (this.FormRegistrarPaciente.invalid){
+  RegistrarPaciente() {
+    if (this.FormRegistrarPaciente.invalid) {
       return
     }
     else {
