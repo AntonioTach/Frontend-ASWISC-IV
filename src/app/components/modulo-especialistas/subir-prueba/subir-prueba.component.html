@@ -20,29 +20,44 @@
                     </mat-option>
                   </mat-select>
                 </mat-form-field>
-                <button
-                  class="btn btn-primary"
-                  type="button"
-                  (click)="cargarInformacion()"
-                >
-                  buscar
-                </button>
+                
             </div>
             <div>
-                <div class="div-info-chart">
-                    <h2>Observaciones</h2>
-                    <mat-form-field class="textarea" appearance="outline">
-                      <textarea
-                        matInput
-                        placeholder="Observaciones del paciente"
-                        formControlName="observaciones"
-                        value="{{ obsevacion }}"
-                      >
-                      </textarea>
-                    </mat-form-field>
-                  </div>
+              <h2 style="margin-left: 400px;">Titulo de la Prueba</h2>
+              <mat-form-field class="titulop" appearance="fill">
+                <mat-label>Titulo</mat-label>
+                <input matInput formControlName="titulo">
+                <mat-error>
+                  Ingrese el Título
+                </mat-error>
+              </mat-form-field>
             </div>
+            
+
 
         </div>
+        <div>
+          <div class="div-info-chart">
+              <h2>Observaciones</h2>
+              <mat-form-field class="textarea" appearance="outline">
+                <textarea
+                  matInput
+                  placeholder="Comentarios de la Prueba"
+                  formControlName="observaciones"
+                  value="{{ obsevacion }}"
+                >
+                </textarea>
+              </mat-form-field>
+            </div>
+      </div>
+      <h2 style="margin-left: 40px;">Subir Documentos de Resultados</h2>
+      <div class="file-container" *ngIf="!file">
+          <input type="file" class="file" (change)="getFile($event)" >
+      </div>
+      <div *ngIf="file" class="guardar">
+        File name: {{file.name}} <br>
+        <button  (click)="file=undefined">Limpiar Documento</button>
+      </div><br>
+      <button  class="guardar" (click)="uploadFile()">Cargar Archivo</button>
     </div> 
 </body>

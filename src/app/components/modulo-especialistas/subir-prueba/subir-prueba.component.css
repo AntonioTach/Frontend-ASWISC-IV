@@ -21,6 +21,33 @@
 }
 
 .div-info-chart{
-    margin-left: 400px;
+    margin-left: 40px;
+
 }
   
+.titulop{
+    margin-left: 400px;
+}
+
+.textarea{
+    width: 87%;
+}
+
+.file-container{
+    width: 84%;
+    border: 4px dotted black;
+    margin-left: 40px;
+    margin-bottom: 50px;
+}
+
+.file{
+    opacity: 0;
+    padding: 5rem;
+    width: auto;
+    height: 5rem;
+
+}
+
+.guardar{
+    margin-left: 888px;
+}
