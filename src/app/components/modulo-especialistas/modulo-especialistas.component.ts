@@ -15,6 +15,7 @@ export class ModuloEspecialistasComponent implements OnInit {
   ngOnInit(): void {
     this.especialistaService.getIdEspecialista().subscribe((res) => {
       localStorage.setItem('id_especialista', res.id_especialista);
+      localStorage.setItem('precio', res.precio_consulta_general)
     })
   }
 
