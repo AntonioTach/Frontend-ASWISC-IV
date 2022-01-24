@@ -52,8 +52,8 @@
             </div>
       </div>
       <h2 style="margin-left: 40px;">Subir Documentos de Resultados</h2>
+      <mat-label class="label">Arrastre y suelte su documento AQUÍ</mat-label>
       <div class="file-container" *ngIf="!file">
-          <mat-label class="label">Arrastre y suelte su documento AQUÍ</mat-label>
           <input type="file" class="file" (change)="getFile($event)" >
       </div>
       <div *ngIf="file" class="guardar">
