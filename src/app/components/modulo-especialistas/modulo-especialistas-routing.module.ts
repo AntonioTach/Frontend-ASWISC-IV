@@ -23,7 +23,7 @@ import { ResultadoAutomatizacionWiscivComponent } from './resultado-automatizaci
 import { CrearArticulosComponent } from './crear-articulos/crear-articulos.component';
 import { TarjetaComponent } from './tarjeta/tarjeta.component';
 import { ModificarArticuloComponent } from './modificar-articulo/modificar-articulo.component';
-
+import { DescargarExpedienteComponent } from './descargar-expediente/descargar-expediente.component';
 const routes: Routes = [
   {
     path: '', component: ModuloEspecialistasComponent, children: [
@@ -42,9 +42,9 @@ const routes: Routes = [
       { path: 'baja', component: BajaComponent },
       { path: 'nombre', component: NombreComponent },
       { path: 'resultado-automatizacion-wisciv', component: ResultadoAutomatizacionWiscivComponent },
-      { path: 'modificar-articulo/:id', component: ModificarArticuloComponent },
       { path: 'crear-articulos', component: CrearArticulosComponent },
-      { path: 'tarjeta', component: TarjetaComponent }
+      { path: 'tarjeta', component: TarjetaComponent },
+      { path: 'descargar-expediente', component: DescargarExpedienteComponent }
     ]
   },
 

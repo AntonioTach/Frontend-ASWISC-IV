@@ -31,6 +31,7 @@ import { CrearArticulosComponent } from './crear-articulos/crear-articulos.compo
 import { FormsModule } from '@angular/forms';
 import { TarjetaComponent } from './tarjeta/tarjeta.component';
 import { ModificarArticuloComponent } from './modificar-articulo/modificar-articulo.component';
+import { DescargarExpedienteComponent } from './descargar-expediente/descargar-expediente.component';
 
 
 @NgModule({
@@ -58,6 +59,7 @@ import { ModificarArticuloComponent } from './modificar-articulo/modificar-artic
     CrearArticulosComponent,
     TarjetaComponent,
     ModificarArticuloComponent,
+    DescargarExpedienteComponent,
 
   ],
   imports: [

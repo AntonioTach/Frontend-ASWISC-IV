@@ -55,15 +55,11 @@ h1{
 }
 
 table {
-  width: 100%;
+  width: 95%;
   margin-top: 5px;
   margin-left: 30px;
-  margin-right: 30px;
+  
 }
-th{
-  width: 20%;
-}
-
 .pointer{
   cursor: pointer;
 }

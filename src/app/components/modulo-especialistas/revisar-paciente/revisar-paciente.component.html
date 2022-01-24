@@ -1,4 +1,9 @@
 <app-navbar-especialista></app-navbar-especialista>
+<br>
+<br>
+<br>
+<br>
+
 <body>
   <div class="cuadro-registro">
     <div class="div-junto">
@@ -19,7 +24,7 @@
     </div>
 
     <div *ngIf="lista_pacientes.length > 0">
-      <div class="div-info" class="mat-elevation-z5">
+      <div  class="mat-elevation-z5">
         <table mat-table [dataSource]="dataSource" matSort>
           <!--- Note that these columns can be defined in any order.
               The actual rendered columns are set as a property on the row definition" -->
@@ -49,26 +54,18 @@
               style="text-align: right"
             >
               <a
-                class="pointer"
+                (click)="descargarexpediente()"
                 style="color: #1878b0"
-                matTooltip="Ver Información de Usuario"
+                matTooltip="Ver Expediente Clínico"
               >
-                <mat-icon>search</mat-icon>
+                <mat-icon class="pointer">folder_shared</mat-icon>
               </a>
               <a
-                class="pointer"
-                style="color: #1f516f"
-                matTooltip="Editar Usuario"
-              >
-                <mat-icon>edit</mat-icon>
-              </a>
-              <a
-                class="pointer"
                 (click)="eliminarPaciente(element.id_paciente)"
                 style="color: #e15639"
                 matTooltip="Eliminar Usuario"
               >
-                <mat-icon>delete</mat-icon>
+                <mat-icon class="pointer">delete</mat-icon>
               </a>
             </td>
           </ng-container>

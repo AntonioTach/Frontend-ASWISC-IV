@@ -6,6 +6,7 @@ import { Pacientes } from 'src/app/interfaces/usuario';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { threadId } from 'worker_threads';
 
 @Component({
   selector: 'app-revisar-paciente',
@@ -67,6 +68,11 @@ export class RevisarPacienteComponent implements OnInit {
       horizontalPosition: 'center',
       verticalPosition: 'bottom'
     })
+  }
+
+  descargarexpediente(){
+    console.log('Descargar Expediente');
+    this.router.navigateByUrl('/modulo-especialistas/descargar-expediente');
   }
   ///this.reportesService.replicarReporte(this.replicaId, this.registrarForm?.value).subscribe(
 
