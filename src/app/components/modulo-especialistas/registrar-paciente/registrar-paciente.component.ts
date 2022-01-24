@@ -21,7 +21,7 @@ export class RegistrarPacienteComponent implements OnInit {
   hide = true;
   sexo: string | undefined;
   sexos: string[] = ['Masculino', 'Femenino'];
-  id_usuario = localStorage.getItem('id_usuario');
+  id_usuario = localStorage.getItem('id_especialista');
 
   ngOnInit(): void {
 
