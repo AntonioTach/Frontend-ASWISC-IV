@@ -1,20 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { articulo } from 'src/app/interfaces/articulo';
 import { Router, RouterLink } from '@angular/router';
+import { ArticulosService } from '../crear-articulos/articulos.service';
 
-export interface PeriodicElement {//interfaz
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-}
 
-const ELEMENT_DATA: articulo[] = [//array de elementos
-  {titulo:'Hydrogen', nombre: 'Hydrogen', fecha: 'Hydrogen'},
-  {titulo:'Hydrogen', nombre: 'Hydrogen', fecha: 'Hydrogen'},
-  {titulo:'Hydrogen', nombre: 'Hydrogen', fecha: 'Hydrogen'},
-  
-];
+
 
 @Component({
   selector: 'app-articulos-especialista',
@@ -24,19 +14,22 @@ const ELEMENT_DATA: articulo[] = [//array de elementos
 export class ArticulosEspecialistaComponent implements OnInit {
 
   displayedColumns: string[] = ['titulo', 'nombre', 'fecha', 'acciones'];//columnas
-  dataSource = ELEMENT_DATA;
+  dataSource: any = [];
 
 
   applyFilter(event: Event) {
-    
+
   }
 
-  constructor(private router:Router) { }
+  constructor(private router: Router, private articulos: ArticulosService) { }
 
   ngOnInit(): void {
+    this.articulos.getArticulos().subscribe(res => {
+      this.dataSource = res;
+    })
   }
 
-  ModificacionExpediente(){
+  ModificacionExpediente() {
     console.log('Crear Artículos');
     this.router.navigateByUrl('/modulo-especialistas/crear-articulos')
   }

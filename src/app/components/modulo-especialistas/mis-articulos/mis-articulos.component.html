@@ -1,8 +1,45 @@
 <app-navbar-especialista></app-navbar-especialista>
-<p>mis-articulos works!</p>
-<p>mis-articulos works!</p>
-<p>mis-articulos works!</p>
-<p>mis-articulos works!</p>
-<p>mis-articulos works!</p>
-<p>mis-articulos works!</p>
+<p>articulos-especialista works!</p>
+<p>articulos-especialista works!</p>
+<br />
+<br />
+<div class="cuadro-registro">
+  <h1 class="titulo">Mis Articulos</h1>
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
 
+    <!-- titulo Column -->
+    <ng-container matColumnDef="titulo">
+      <th mat-header-cell *matHeaderCellDef>Titulo del Artículo</th>
+      <td mat-cell *matCellDef="let element">{{ element.titulo }}</td>
+    </ng-container>
+
+    <!-- nombre Column -->
+    <ng-container matColumnDef="nombre">
+      <th mat-header-cell *matHeaderCellDef>Nombre del Autor</th>
+      <td mat-cell *matCellDef="let element">{{ element.nombre }}</td>
+    </ng-container>
+
+    <!--  fecha Column -->
+    <ng-container matColumnDef="fecha">
+      <th mat-header-cell *matHeaderCellDef>Fecha de publicación</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.fecha_publicacion | date: "dd/MM/yyyy" }}
+      </td>
+    </ng-container>
+
+    <!--  acciones Column -->
+    <ng-container matColumnDef="acciones">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let element">
+        <a>
+          <mat-icon class="pointer">folder_shared</mat-icon>
+        </a>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+</div>

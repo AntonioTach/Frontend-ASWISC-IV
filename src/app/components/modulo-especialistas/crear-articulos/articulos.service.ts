@@ -15,4 +15,13 @@ export class ArticulosService {
   publicarArticulo(articulo: any) {
     return this.HttpClient.post('http://localhost:4000/publicar-articulo', articulo);
   }
+  //tomar todos los articulos
+  getArticulos() {
+    return this.HttpClient.get('http://localhost:4000/articulos')
+  }
+  //tomar los articulos personales
+  getMisArticulos() {
+    const id = localStorage.getItem('id_especialista');
+    return this.HttpClient.get('http://localhost:4000/mis-articulos/' + id)
+  }
 }
