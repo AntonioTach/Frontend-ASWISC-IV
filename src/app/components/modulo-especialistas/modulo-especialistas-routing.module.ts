@@ -22,6 +22,7 @@ import { NombreComponent } from './nombre/nombre.component';
 import { ResultadoAutomatizacionWiscivComponent } from './resultado-automatizacion-wisciv/resultado-automatizacion-wisciv.component';
 import { CrearArticulosComponent } from './crear-articulos/crear-articulos.component';
 import { TarjetaComponent } from './tarjeta/tarjeta.component';
+import { DescargarExpedienteComponent } from './descargar-expediente/descargar-expediente.component';
 
 const routes: Routes = [
   { path:'',component: ModuloEspecialistasComponent, children: [
@@ -41,7 +42,8 @@ const routes: Routes = [
     {path:'nombre', component:NombreComponent},
     {path:'resultado-automatizacion-wisciv', component: ResultadoAutomatizacionWiscivComponent},
     {path:'crear-articulos', component: CrearArticulosComponent},
-    {path:'tarjeta', component:TarjetaComponent}
+    {path:'tarjeta', component:TarjetaComponent},
+    {path:'descargar-expediente', component:DescargarExpedienteComponent}
   ]},
 
 ];
