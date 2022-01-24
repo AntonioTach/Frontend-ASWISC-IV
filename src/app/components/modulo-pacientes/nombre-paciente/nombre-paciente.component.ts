@@ -3,7 +3,9 @@ import { FormGroup, FormBuilder, FormControl, Validators, NgForm } from '@angula
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { ThisReceiver } from '@angular/compiler';
-import { NombrePacienteService } from './nombre-paciente.service';
+
+import { MyServiceNombrePacienteService } from './my-service-NombrePaciente.service';
+
 @Component({
   selector: 'app-nombre-paciente',
   templateUrl: './nombre-paciente.component.html',
@@ -11,51 +13,57 @@ import { NombrePacienteService } from './nombre-paciente.service';
 })
 export class NombrePacienteComponent implements OnInit {
 
-  usuario = localStorage.getItem('usuario');
+
   id_usuario= localStorage.getItem('id_usuario');
    // public FormRegistrarPaciente!: FormGroup;
- public FormRegistrarPaciente! : FormGroup;
+ public FormModificarNombre! : FormGroup;
+ nombre: any;
+ nacimiento: any;
+ email: any;
+ contrasena: any;
+ usuario: any;
+ paciente: any = [];
+ constructor(private NombrePService: MyServiceNombrePacienteService ,private formBuilder: FormBuilder,private _snackBar: MatSnackBar, private router: Router) { }
 
- constructor(private formBuilder: FormBuilder, private nombrePacienteService:NombrePacienteService  ,private _snackBar: MatSnackBar, private router: Router) { }
-
+ telefono: any = null;
  hide = true;
  sexo: string | undefined;
  sexos: string[] = ['Masculino', 'Femenino'];
- 
+
 
  ngOnInit(): void {
-
-
-   this.FormRegistrarPaciente = this.formBuilder.group({
-     id_usuario:this.id_usuario, //ID del ESPECIALISTA que esta registrando
-     nombre: ['', [Validators.required]],
-     sexo: ['', [Validators.required]],
-     nacimiento: ['', [Validators.required]],
-     usuario: ['', [Validators.required,Validators.maxLength(12)]],
-     email: ['', [Validators.required, Validators.email]],
-     contrasena: ['', [Validators.required, Validators.minLength(8)]],
-     telefono: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]],
+   this.cargarPaciente();
+   this.FormModificarNombre = this.formBuilder.group({
+    usuario: [this.paciente.usuario, [Validators.required]],
+    nombre: [this.paciente.nombre, [Validators.required]],
+    nacimiento: [this.paciente.nacimiento, [Validators.required]],
+    email: [this.paciente.email, [Validators.required]],
+    contrasena: [this.paciente.contrasena, [Validators.required]],
+    telefono: [this.paciente.telefono, [Validators.required]]
    });
  }
 
- RegistrarPaciente(){
-   if (this.FormRegistrarPaciente.invalid){
-     return
-   }
-   else {
-     console.log(this.FormRegistrarPaciente?.value);
-     this.nombrePacienteService.registrarPaciente(this.FormRegistrarPaciente.value).subscribe(
-       res => {
-         console.log(res),
-         console.log('correcto');
-       },
-       err => {
-         console.log(err);
-       }
-     )
+ cargarPaciente(){
+  this.NombrePService.getPaciente(this.id_usuario).subscribe((res:any) => {
+    var obj = res[0]
+    console.log(obj);
+    this.sexo = obj.sexo;
+    this.usuario = obj.usuario;
+    this.nombre = obj.nombre;
+    this.nacimiento = obj.nacimiento;
+    this.email = obj.email;
+    this.telefono = obj.telefono;
+    // this.usuario = this.FormModificarNombre.value['usuario'];
+    // this.nombre = this.FormModificarNombre.value['nombre'];
+    // this.nacimiento = this.FormModificarNombre.value['nacimiento'];
+    // this.correo = this.FormModificarNombre.value['correo'];
+    // this.contrasena = this.FormModificarNombre.value['contrasena'];
+    // this.telefono = this.FormModificarNombre.value['telefono'];
+  }, err => console.log(err)
+  )
+ }
 
-   }
 
- };
+
 
 }
