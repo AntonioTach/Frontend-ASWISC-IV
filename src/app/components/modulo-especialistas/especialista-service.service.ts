@@ -12,6 +12,6 @@ export class EspecialistaServiceService {
   getIdEspecialista() {
     var id_usuario = localStorage.getItem('id_usuario');
     console.log(id_usuario);
-    return this.HttpClient.get<any>('http://localhost:4000/buscar-Especialistas/' + id_usuario)
+    return this.HttpClient.get<any>('http://localhost:4000/buscar-Especialista/' + id_usuario)
   }
 }

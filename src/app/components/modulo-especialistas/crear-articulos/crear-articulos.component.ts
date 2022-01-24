@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
 import { FormGroup, FormBuilder, FormControl, Validators, NgForm } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { ArticulosService } from './articulos.service';
 
 @Component({
   selector: 'app-crear-articulos',
@@ -11,15 +12,19 @@ import { Router } from '@angular/router';
 })
 export class CrearArticulosComponent implements OnInit {
 
-  constructor(private formBuilder: FormBuilder, private _snackBar: MatSnackBar, private router: Router) { }
-
+  constructor(private formBuilder: FormBuilder, private _snackBar: MatSnackBar, private router: Router, private servicio: ArticulosService) { }
+  html: any = '';
+  titulo: any = '';
+  @ViewChild('view') lucas: ElementRef | any;
+  @ViewChild('image') image: ElementRef | any;
   ngOnInit(): void {
+    console.log(new Date());
   }
   editorConfig: AngularEditorConfig = {
     editable: true,
     spellcheck: true,
     height: 'auto',
-    minHeight: '0',
+    minHeight: '10',
     maxHeight: 'auto',
     width: 'auto',
     minWidth: '0',
@@ -64,5 +69,23 @@ export class CrearArticulosComponent implements OnInit {
       ['']
     ]
   };
+  click(numero: number) {
+    console.log(this.titulo.length);
+    const articulo = {
+      titulo: this.titulo,
+      descripcion: this.html,
+      fecha_publicacion: new Date(),
+      id_especialista: localStorage.getItem('id_especialista'),
+    }
+    if (this.html.length == 0 || this.titulo.length == 0) {
+      window.alert('Inserte titulo y/o descurpcion');
+    } else {
+      if (numero == 1) {
+        this.servicio.guardarArticulo(articulo).subscribe(res => { console.log(res) }, err => { console.log(err) })
+      } else {
+        console.log(this.titulo, this.html);
+      }
+    }
+  }
 
 }
