@@ -9,13 +9,13 @@ import { EspecialistaServiceService } from './especialista-service.service';
 export class ModuloEspecialistasComponent implements OnInit {
 
   constructor(private especialistaService: EspecialistaServiceService) {
-    especialistaService.getIdEspecialista().subscribe((res) => {
-      localStorage.setItem('id_especialista', res.id_especialista);
-    })
+
   }
 
   ngOnInit(): void {
-
+    this.especialistaService.getIdEspecialista().subscribe((res) => {
+      localStorage.setItem('id_especialista', res.id_especialista);
+    })
   }
 
 }
