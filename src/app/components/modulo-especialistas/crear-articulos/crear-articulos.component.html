@@ -13,23 +13,35 @@
         <h2>Título del Artículo</h2>
         <mat-form-field class="input" appearance="fill">
           <mat-label>Ingrese el título </mat-label>
-          <input matInput />
+          <input matInput [(ngModel)]="titulo" />
           <mat-error> Por favor ingrese el título </mat-error>
         </mat-form-field>
       </div>
     </div>
 
-    <angular-editor id="editor1" [config]="editorConfig"></angular-editor>
-
+    <angular-editor
+      id="editor1"
+      [(ngModel)]="html"
+      [config]="editorConfig"
+    ></angular-editor>
     <div class="div-info">
       <!-- Boton -->
       <div class="div-btn">
-        <button type="submit" mat-raised-button class="btn">Guardar</button>
+        <button type="submit" (click)="click(1)" mat-raised-button class="btn">
+          Guardar
+        </button>
       </div>
 
       <!-- Boton -->
       <div class="div-btn">
-        <button type="submit" mat-raised-button class="btn">Publicar</button>
+        <button
+          type="submit"
+          (click)="publicar()"
+          mat-raised-button
+          class="btn"
+        >
+          Publicar
+        </button>
       </div>
     </div>
   </div>

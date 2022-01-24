@@ -1,6 +1,6 @@
-import { NgModule,CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HttpClientModule} from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { AngularEditorModule } from '@kolkov/angular-editor';
 
 
@@ -28,6 +28,7 @@ import { ResultadoAutomatizacionWiscivComponent } from './resultado-automatizaci
 import { CalendarioComponent } from './horarios/calendario/calendario.component';
 import { DialogoInfomacionComponent } from './revisar-paciente/dialogo-infomacion/dialogo-infomacion.component';
 import { CrearArticulosComponent } from './crear-articulos/crear-articulos.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -53,13 +54,15 @@ import { CrearArticulosComponent } from './crear-articulos/crear-articulos.compo
     CalendarioComponent,
     DialogoInfomacionComponent,
     CrearArticulosComponent,
+
   ],
   imports: [
     CommonModule,
     ModuloEspecialistasRoutingModule,
     SharedModule,
-    HttpClientModule, 
-    AngularEditorModule
+    HttpClientModule,
+    AngularEditorModule,
+    FormsModule
   ]
 })
 export class ModuloEspecialistasModule { }
