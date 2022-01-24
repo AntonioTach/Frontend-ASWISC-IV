@@ -44,7 +44,7 @@ const routes: Routes = [
       { path: 'resultado-automatizacion-wisciv', component: ResultadoAutomatizacionWiscivComponent },
       { path: 'crear-articulos', component: CrearArticulosComponent },
       { path: 'tarjeta', component: TarjetaComponent },
-      { path: 'descargar-expediente', component: DescargarExpedienteComponent },
+      { path: 'descargar-expediente/:id', component: DescargarExpedienteComponent },
       { path: 'modificar-articulo/:id', component: ModificarArticuloComponent },
     ]
   },

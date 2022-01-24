@@ -60,19 +60,23 @@ export class RevisarPacienteComponent implements OnInit {
     )
   }*/
   eliminarPaciente(id: any) {//aqui lo que abria que pasarle es el id, para borra el dato de la base de datos.
-    this.pacientesService.eliminarPaciente(id.toString()).subscribe(res => {
-      console.log(res)
-    }, err => console.log(err));
-    this._snackBar.open('El usuario fue eliminado con exito', '', {
-      duration: 1500,
-      horizontalPosition: 'center',
-      verticalPosition: 'bottom'
-    })
+    if (confirm('Seguro que desea eliminar este pasiente?') == true) {
+      this.pacientesService.eliminarPaciente(id.toString()).subscribe(res => {
+        console.log(res)
+      }, err => console.log(err));
+      this._snackBar.open('El usuario fue eliminado con exito', '', {
+        duration: 1500,
+        horizontalPosition: 'center',
+        verticalPosition: 'bottom'
+      })
+    }
+
   }
 
-  descargarexpediente(){
+
+  descargarexpediente(id: number) {
     console.log('Descargar Expediente');
-    this.router.navigateByUrl('/modulo-especialistas/descargar-expediente');
+    this.router.navigateByUrl('/modulo-especialistas/descargar-expediente/' + id.toString());
   }
   ///this.reportesService.replicarReporte(this.replicaId, this.registrarForm?.value).subscribe(
 
