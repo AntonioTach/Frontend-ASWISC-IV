@@ -4,5 +4,43 @@
 <br>
 <br>
 <div class="cuadro-registro">
+    <h1 class="titulo">Pagos de Pacientes</h1>
+    <div class="div-info">
+        
+        
+            
+        <!-- Boton -->
+          <div class="div-btn">
+            <button  type="submit" mat-raised-button class="btn" (click)="agregartarjeta();">Agregar Tarjeta</button>
+          </div>
 
+    </div>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+  
+    <!-- nombre Column -->
+    <ng-container matColumnDef="nombre">
+      <th mat-header-cell *matHeaderCellDef> Nombre Completo</th>
+      <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+    </ng-container>
+  
+    <!-- monto Column -->
+    <ng-container matColumnDef="monto">
+      <th mat-header-cell *matHeaderCellDef>  Monto</th>
+      <td mat-cell *matCellDef="let element"> {{element.monto}} </td>
+    </ng-container>
+  
+    <!-- fecha Column -->
+    <ng-container matColumnDef="fecha">
+      <th mat-header-cell *matHeaderCellDef> Fecha de Pago </th>
+      <td mat-cell *matCellDef="let element"> {{element.fecha}} </td>
+    </ng-container>
+
+  
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
 </div>
