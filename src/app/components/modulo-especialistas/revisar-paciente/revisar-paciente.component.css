@@ -63,3 +63,8 @@ table {
 .pointer{
   cursor: pointer;
 }
+.error{
+  margin-left: 60px;
+  margin-top: 40px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
