@@ -8,6 +8,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { threadId } from 'worker_threads';
 
+
 @Component({
   selector: 'app-revisar-paciente',
   templateUrl: './revisar-paciente.component.html',
