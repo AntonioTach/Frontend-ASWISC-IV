@@ -38,7 +38,7 @@
     <ng-container matColumnDef="fecha">
       <th mat-header-cell *matHeaderCellDef>Fecha de publicación</th>
       <td mat-cell *matCellDef="let element">
-        {{ element.fecha_publicacion }}
+        {{ element.fecha_publicacion | date: "dd/MM/yyyy" }}
       </td>
     </ng-container>
 
