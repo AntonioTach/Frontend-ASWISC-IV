@@ -4,6 +4,7 @@ import { FormGroup, FormBuilder, FormControl, Validators, NgForm } from '@angula
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { ArticulosService } from './articulos.service';
+import { clearScreenDown } from 'readline';
 
 @Component({
   selector: 'app-crear-articulos',
@@ -76,16 +77,29 @@ export class CrearArticulosComponent implements OnInit {
       descripcion: this.html,
       fecha_publicacion: new Date(),
       id_especialista: localStorage.getItem('id_especialista'),
-    }
+    };
     if (this.html.length == 0 || this.titulo.length == 0) {
       window.alert('Inserte titulo y/o descurpcion');
     } else {
       if (numero == 1) {
         this.servicio.guardarArticulo(articulo).subscribe(res => { console.log(res) }, err => { console.log(err) })
-      } else {
-        console.log(this.titulo, this.html);
+        this.router.navigate(['/modulo-especialistas']);
+      } else if (numero == 2) {
+        console.log('object');
+        this.servicio.publicarArticulo(articulo).subscribe(res => { console.log(res) }, err => { console.log(err) })
+        this.router.navigate(['/modulo-especialistas']);
       }
     }
+  }
+  publicar() {
+    const articulo = {
+      titulo: this.titulo,
+      descripcion: this.html,
+      fecha_publicacion: new Date(),
+      id_especialista: localStorage.getItem('id_especialista'),
+    };
+    this.servicio.publicarArticulo(articulo).subscribe(res => { console.log(res) }, err => { console.log(err) })
+    this.router.navigate(['/modulo-especialistas']);
   }
 
 }

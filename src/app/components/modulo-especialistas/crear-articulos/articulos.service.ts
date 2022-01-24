@@ -9,7 +9,10 @@ export class ArticulosService {
 
   //guardar articulo
   guardarArticulo(articulo: any) {
-    return this.HttpClient.post('http://localhost:4000/guardar-articulo', articulo)
-
+    return this.HttpClient.post('http://localhost:4000/guardar-articulo', articulo);
+  }
+  //guardarArticulo
+  publicarArticulo(articulo: any) {
+    return this.HttpClient.post('http://localhost:4000/publicar-articulo', articulo);
   }
 }
