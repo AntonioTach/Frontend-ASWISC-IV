@@ -29,6 +29,9 @@ import { Navbar3Component } from './components/navbar3/navbar3.component';
 //import { TokenInterceptorService } from './services/token-interceptor.service';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireStorageModule, BUCKET } from '@angular/fire/compat/storage';
+import { WiscIvComponent } from './components/wisc-iv/wisc-iv.component';
+import { AswiscIvComponent } from './components/aswisc-iv/aswisc-iv.component';
+
 
 @NgModule({
   declarations: [
@@ -42,6 +45,9 @@ import { AngularFireStorageModule, BUCKET } from '@angular/fire/compat/storage';
     ArticulosComponent,
     PageNotFoundComponent,
     Navbar3Component,
+    WiscIvComponent,
+    AswiscIvComponent,
+
 
   ],
   imports: [

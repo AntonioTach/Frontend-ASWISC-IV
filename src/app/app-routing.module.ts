@@ -15,6 +15,8 @@ import { InicioGuard } from './guards/inicio.guard';
 import { PacienteGuard } from './guards/paciente.guard';
 //Modulo Especialistas
 import { ModuloEspecialistasRoutingModule } from './components/modulo-especialistas/modulo-especialistas-routing.module';
+import { WiscIvComponent } from './components/wisc-iv/wisc-iv.component';
+import { AswiscIvComponent } from './components/aswisc-iv/aswisc-iv.component';
 
 
 
@@ -28,7 +30,9 @@ const routes: Routes = [
   { path: 'articulos', component: ArticulosComponent },
   { path: 'modulo-especialistas', component: ModuloEspecialistasComponent, canActivate:[EspecialistaGuard, InicioGuard], data: { expectedRole: 1 },  loadChildren: () => import('./components/modulo-especialistas/modulo-especialistas.module').then(x => x.ModuloEspecialistasModule)},//loadchildren corregido
   { path: 'modulo-pacientes', component: ModuloPacientesComponent, canActivate:[PacienteGuard, InicioGuard], data: { expectedRole: 2 } , loadChildren: () => import('./components/modulo-pacientes/modulo-pacientes.module').then(x => x.ModuloPacientesModule)},
-  { path: '**', component: PageNotFoundComponent },
+  { path:'wisc-iv', component:WiscIvComponent},
+  { path:'aswisc-iv', component:AswiscIvComponent},
+  { path: '**', component: PageNotFoundComponent }
 
 
   //ver login

@@ -4,11 +4,10 @@
 body {
     margin: 0;
     padding: 0;
-    background: url(../../..//assets/img/escritorio.jpg) no-repeat center top;
+    background: url(../../..//assets/img/gi.gif) no-repeat center top;
     background-size: cover;
     font-family: sans-serif;
     height: 100vh;
-
 }
 
 .login .ancho{

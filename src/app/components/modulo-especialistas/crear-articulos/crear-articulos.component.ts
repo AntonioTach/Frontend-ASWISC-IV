@@ -81,10 +81,10 @@ export class CrearArticulosComponent implements OnInit {
     if (this.html.length == 0 || this.titulo.length == 0) {
       window.alert('Inserte titulo y/o descurpcion');
     } else {
-      if (numero == 1) {
+      if (numero == 1) {//sin publicar
         this.servicio.guardarArticulo(articulo).subscribe(res => { console.log(res) }, err => { console.log(err) })
         this.router.navigate(['/modulo-especialistas']);
-      } else if (numero == 2) {
+      } else if (numero == 2) {//publicado
         console.log('object');
         this.servicio.publicarArticulo(articulo).subscribe(res => { console.log(res) }, err => { console.log(err) })
         this.router.navigate(['/modulo-especialistas']);

@@ -14,13 +14,24 @@ export class NavbarComponent implements OnInit {
   }
 
   btnInicio(){
+    console.log('Inicio');
     this.router.navigateByUrl('/inicio');
   }
   btnLogin(){
+    console.log('Inicio');
     this.router.navigateByUrl('/login');
   }
   btnArticulos(){
+    console.log('Inicio');
     this.router.navigateByUrl('/articulos');
+  }
+  aswisciv(){
+    console.log('Inicio');
+    this.router.navigateByUrl('/aswisc-iv');
+  }
+  wisciv(){
+    console.log('Inicio');
+    this.router.navigateByUrl('/wisc-iv');
   }
 
 }
