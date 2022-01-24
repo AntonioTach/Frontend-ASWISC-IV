@@ -3,7 +3,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ModificacionExpedienteServiceService } from '../modificacion-expediente/modificacion-expediente-service.service';
 import { ServiceRevisarPacienteService } from '../revisar-paciente/service-revisar-paciente.service';
-//import * as html2canvas from 'html2pdf.js';
+import html2canvas from 'html2canvas';
+
 @Component({
   selector: 'app-descargar-expediente',
   templateUrl: './descargar-expediente.component.html',

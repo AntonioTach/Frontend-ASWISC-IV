@@ -49,7 +49,7 @@ import { MatSelectModule } from '@angular/material/select';
     MatPaginatorModule,
     MatSortModule,
     MatSelectModule,
-    FormsModule
+    FormsModule,
 
   ],
   exports: [
@@ -71,7 +71,6 @@ import { MatSelectModule } from '@angular/material/select';
     MatPaginatorModule,
     MatSortModule,
     MatSelectModule,
-
 
   ]
 })
