@@ -21,8 +21,8 @@ export class RegistrarPacienteComponent implements OnInit {
   hide = true;
   sexo: string | undefined;
   sexos: string[] = ['Masculino', 'Femenino'];
-  id_usuario = localStorage.getItem('id_usuario');
-
+  id_usuario = localStorage.getItem('id_especialista');
+  precio = localStorage.getItem('precio')
   ngOnInit(): void {
 
 
@@ -35,6 +35,7 @@ export class RegistrarPacienteComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       contrasena: ['', [Validators.required, Validators.minLength(8)]],
       telefono: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]],
+      precio_consulta: this.precio
     });
   }
   RegistradoMensaje() {
