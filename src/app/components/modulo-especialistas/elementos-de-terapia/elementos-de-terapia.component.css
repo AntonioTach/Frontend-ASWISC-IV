@@ -1,0 +1,50 @@
+table {
+  width: 100%;
+  margin-top: 0px;
+}
+.cuadro-registro {
+  background-color: #f8f8ff;
+  width: 90%;
+  margin: auto;
+  padding-top: 50px;
+  border: 6px solid #dcdcdc;
+}
+.div-junto{ /*Acomodar varios items en una alineacion*/
+  display: flex;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.div-info {
+  display: flex;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-left: 100px;
+}
+.btn {
+  height: 40px;
+  text-align: start;
+  margin-left: 100px;
+  margin-right: 250px;
+  margin-top: 30px;
+  width: 300px;
+  margin-bottom: 10px;
+  background-color: #D5D8DC;
+  color: #000000;
+  font-size: 18px;
+  border: 2px solid;
+  line-height: 1;
+}
+
+th {
+  width: 20px;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.titulo {
+  margin-left: 60px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-size: 40px;
+}
