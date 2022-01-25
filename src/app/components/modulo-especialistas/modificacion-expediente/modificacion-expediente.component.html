@@ -64,7 +64,7 @@
           <h2>Fecha de Nacimiento</h2>
           <mat-form-field class="input" appearance="fill">
             <mat-label>Fecha de nacimiento</mat-label>
-            <input matInput readonly value="{{ fecha }}" />
+            <input matInput readonly value="{{ fecha|date:'dd/MM/yyyy' }}" />
             <mat-error>
               Por favor Ingrese su <strong>Fecha de Nacimiento</strong>
             </mat-error>
