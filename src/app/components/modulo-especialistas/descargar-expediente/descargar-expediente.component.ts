@@ -3,8 +3,10 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ModificacionExpedienteServiceService } from '../modificacion-expediente/modificacion-expediente-service.service';
 import { ServiceRevisarPacienteService } from '../revisar-paciente/service-revisar-paciente.service';
-
-import html2canvas from 'html2canvas';
+import * as jspdf from 'jspdf-autotable';
+import jsPDF from 'jspdf'
+import * as html2pdf from 'html2pdf.js'
+import html2canvas from 'html2canvas'
 
 @Component({
   selector: 'app-descargar-expediente',
@@ -66,21 +68,29 @@ export class DescargarExpedienteComponent implements OnInit {
     });
   }
   capturar() {
-
-    
-    /*
+    // Extraemos el
+    console.log('si sirvo');
+    const DATA = document.getElementById('registro');
+    const doc = new jsPDF('p', 'pt', 'a2');
     const options = {
-      name: `${this.usuario}.pdf `,
-      image:        { type: 'jpeg', quality: 0.98 },
-      html2canvas:  { scale: 2 },
-      jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
-    }
-    html2canvas().from(element).set(opt).save();
-  }*/
+      background: 'white',
+      scale: 3
+    };
+    html2canvas(DATA, options).then((canvas) => {
+      const img = canvas.toDataURL('image/PNG');
+      // Add image Canvas to PDF
+      const bufferX = 40;
+      const bufferY = 40;
+      const imgProps = (doc as any).getImageProperties(img);
+      const pdfWidth = doc.internal.pageSize.getWidth() - 2 * bufferX;
+      const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+      doc.addImage(img, 'PNG', bufferX, bufferY, pdfWidth, pdfHeight, undefined, 'FAST');
+      return doc;
+    }).then((docResult) => {
+      docResult.save(`${this.usuario}.pdf`);
+    });
   }
 
 }
-function html2pdf() {
-  throw new Error('Function not implemented.');
-}
+
 
