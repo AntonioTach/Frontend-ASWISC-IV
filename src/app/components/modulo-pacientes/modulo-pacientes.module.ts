@@ -18,6 +18,7 @@ import { PagosPacientesComponent } from './pagos-pacientes/pagos-pacientes.compo
 import { NombrePacienteComponent } from './nombre-paciente/nombre-paciente.component';
 import { EspecialistaComponent } from './registrarse-con-especialista/especialista/especialista.component';
 import { VistaEspecialistaComponent } from './vista-especialista/vista-especialista.component';
+import { DescargarPruebaPacientesComponent } from './descargar-prueba-pacientes/descargar-prueba-pacientes.component';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { VistaEspecialistaComponent } from './vista-especialista/vista-especiali
     PagosPacientesComponent,
     NombrePacienteComponent,
     EspecialistaComponent,
-    VistaEspecialistaComponent
+    VistaEspecialistaComponent,
+    DescargarPruebaPacientesComponent
   ],
   imports: [
     CommonModule,

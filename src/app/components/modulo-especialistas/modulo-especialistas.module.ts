@@ -32,7 +32,7 @@ import { FormsModule } from '@angular/forms';
 import { TarjetaComponent } from './tarjeta/tarjeta.component';
 import { ModificarArticuloComponent } from './modificar-articulo/modificar-articulo.component';
 import { DescargarExpedienteComponent } from './descargar-expediente/descargar-expediente.component';
-
+import {AsignarTareaComponent} from './asignar-tarea/asignar-tarea.component'
 
 @NgModule({
   declarations: [
@@ -60,6 +60,7 @@ import { DescargarExpedienteComponent } from './descargar-expediente/descargar-e
     TarjetaComponent,
     ModificarArticuloComponent,
     DescargarExpedienteComponent,
+    AsignarTareaComponent
 
   ],
   imports: [
