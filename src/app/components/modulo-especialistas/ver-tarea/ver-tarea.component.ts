@@ -10,7 +10,7 @@ import { SubirPruebaService } from '../subir-prueba/subir-prueba.service';
 export class VerTareaComponent implements OnInit {
   titulo: any;
   comentarios: any;
-  url: any;
+  url: any = null;
 
   constructor(private service: SubirPruebaService, private router: ActivatedRoute) { }
 

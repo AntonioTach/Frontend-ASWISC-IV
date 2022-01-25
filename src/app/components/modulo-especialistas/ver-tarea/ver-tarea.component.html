@@ -10,7 +10,12 @@
       comentarios
     }}</textarea>
   </div>
-  <button mat-raised-button (click)="goto_url()" color="primary">
-    descargar
+  <button
+    mat-raised-button
+    *ngIf="url != null"
+    (click)="goto_url()"
+    color="primary"
+  >
+    Ver achivo
   </button>
 </div>
