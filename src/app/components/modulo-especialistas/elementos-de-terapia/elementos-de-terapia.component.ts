@@ -41,4 +41,8 @@ export class ElementosDeTerapiaComponent implements OnInit {
     this.router.navigateByUrl('/modulo-especialistas/asignar-tarea');
   }
 
+  verTarea(id: number){
+
+  }
+
 }
