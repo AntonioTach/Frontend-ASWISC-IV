@@ -3,7 +3,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ModificacionExpedienteServiceService } from '../modificacion-expediente/modificacion-expediente-service.service';
 import { ServiceRevisarPacienteService } from '../revisar-paciente/service-revisar-paciente.service';
-//import jsPDF from 'jspdf';
+
 import html2canvas from 'html2canvas';
 
 @Component({
