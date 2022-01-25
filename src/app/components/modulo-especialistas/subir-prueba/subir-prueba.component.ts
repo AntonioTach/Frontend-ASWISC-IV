@@ -28,11 +28,7 @@ export class SubirPruebaComponent implements OnInit {
 
   usuario: string = '';
   correo: string = '';
-  telefono: any = null;
-
-  hide = true;
-  sexo: string | undefined;
-  sexos: string[] = ['Masculino', 'Femenino'];
+  telefono: any = null;//este seria la id des paciente 
 
   id_usuario = localStorage.getItem('id_usuario');
   id_paciente;
@@ -53,9 +49,6 @@ export class SubirPruebaComponent implements OnInit {
       console.log(obj);
       this.usuario = obj.usuario;
       this.telefono = obj.id_paciente;
-      this.fecha = obj.nacimiento;
-      this.correo = obj.email;
-      this.sexo = obj.sexo;
     }, err => console.log(err))
   }
   cargarPacientes() {
@@ -91,11 +84,13 @@ export class SubirPruebaComponent implements OnInit {
     }
   }
   file: any;
+  //tomar el archivo
   getFile(event: any) {
     this.file = event.target.files[0];
 
     console.log('Archivo', this.file)
   }
+  //subir el archivo
   uploadFile() {
     const id = Math.random().toString(36).substring(2);//se genera un id random
     const file = this.file;//toma el primer archivo que encuentre
