@@ -101,4 +101,5 @@ export class SubirPruebaComponent implements OnInit {
   }
 
   //ya solo falta llamar a la api
+  
 }
