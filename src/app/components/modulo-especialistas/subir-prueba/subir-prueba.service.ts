@@ -6,6 +6,7 @@ import { HttpClient } from '@angular/common/http';
 export class SubirPruebaService {
 
   constructor(private http: HttpClient) { }
+  //subir prueba
   postPrueba(prueba: any) {
     return this.http.post('http://localhost:4000/prueba', prueba);
 
@@ -14,7 +15,12 @@ export class SubirPruebaService {
   postTarea(tarea: any) { //POST DE ASIGNAR TAREA
     return this.http.post('http://localhost:4000/tarea', tarea);
   }
+  //tomar las tareas que asigno el especialista
   getTareasEspecialista(id: any) {
     return this.http.get('http://localhost:4000/tareas/' + id);
+  }
+  // tomar una sola tarea
+  getTarea(id: any) {
+    return this.http.get('http://localhost:4000/tarea/' + id)
   }
 }

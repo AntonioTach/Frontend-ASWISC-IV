@@ -25,6 +25,7 @@ import { TarjetaComponent } from './tarjeta/tarjeta.component';
 import { ModificarArticuloComponent } from './modificar-articulo/modificar-articulo.component';
 import { DescargarExpedienteComponent } from './descargar-expediente/descargar-expediente.component';
 import { AsignarTareaComponent } from './asignar-tarea/asignar-tarea.component';
+import { VerTareaComponent } from './ver-tarea/ver-tarea.component';
 const routes: Routes = [
   {
     path: '', component: ModuloEspecialistasComponent, children: [
@@ -47,6 +48,7 @@ const routes: Routes = [
       { path: 'tarjeta', component: TarjetaComponent },
       { path: 'descargar-expediente/:id', component: DescargarExpedienteComponent },
       { path: 'modificar-articulo/:id', component: ModificarArticuloComponent },
+      { path: 'ver-tarea/:id', component: VerTareaComponent },
       { path: 'asignar-tarea', component: AsignarTareaComponent },
     ]
   },

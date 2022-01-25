@@ -49,7 +49,7 @@ export class ElementosDeTerapiaComponent implements OnInit {
   }
 
   verTarea(id: number) {
-    console.log(id);
+    this.router.navigate(['/modulo-especialistas/ver-tarea/' + id.toString()]);
   }
 
 }
