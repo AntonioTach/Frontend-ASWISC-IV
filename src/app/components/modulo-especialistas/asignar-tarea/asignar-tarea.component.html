@@ -7,7 +7,6 @@
   <div class="cuadro container" [formGroup]="FormTarea">
     <h1 class="titulo">Tareas Especialista</h1>
     <div class="div-info">
-
       <div>
         <h2>Paciente</h2>
         <mat-form-field class="dropdown" appearance="fill">
@@ -30,20 +29,15 @@
         <h2>Título de la Tarea</h2>
         <mat-form-field class="input" appearance="fill">
           <mat-label>Titulo</mat-label>
-          <input matInput formControlName="nombre_prueba" />
+          <input matInput formControlName="titulo" />
           <mat-error> Ingrese el Título </mat-error>
         </mat-form-field>
       </div>
-
     </div>
 
-
-
-
-
-<!--
+    <!--
     descripcion de tarea -->
-     <div class="div-info-chart">
+    <div class="div-info-chart">
       <h2>Descripción de Tarea</h2>
       <mat-form-field class="textarea" appearance="outline">
         <textarea
@@ -55,9 +49,9 @@
         >
         </textarea>
       </mat-form-field>
-      </div>
+    </div>
 
-      <h2 style="margin-left: 40px">Subir Documentos de Resultados</h2>
+    <h2 style="margin-left: 40px">Subir Documentos de Resultados</h2>
     <mat-label class="label"
       >Arrastre y suelte su documento AQUÍ
       <mat-icon>arrow_downward</mat-icon></mat-label
@@ -91,7 +85,5 @@
     >
       Subir
     </button>
-
-
   </div>
 </body>

@@ -42,8 +42,8 @@ export class AsignarTareaComponent implements OnInit {
 
   }
 
-  cargarInformacion(){
-    this.modificarExpedienteService.getPaciente(this.id_paciente.toString()).subscribe((res:any) => {
+  cargarInformacion() {
+    this.modificarExpedienteService.getPaciente(this.id_paciente.toString()).subscribe((res: any) => {
       var obj = res[0]
       console.log(obj);
       this.usuario = obj.usuario;
@@ -52,7 +52,7 @@ export class AsignarTareaComponent implements OnInit {
 
   }
 
-  cargarPacientes(){
+  cargarPacientes() {
     this.serviceRevisar.getPacientes().subscribe((res) => {
       this.pacientes = res;
     }, err => console.log(err))
@@ -69,7 +69,7 @@ export class AsignarTareaComponent implements OnInit {
   uploadFile() {
     const id = Math.random().toString(36).substring(2);//se genera un id random
     const file = this.file;//toma el primer archivo que encuentre
-    const filePath = `pruebas/${id}`;////se genera la ruta
+    const filePath = `Tareas/${id}`;////se genera la ruta
     const ref = this.firebase.ref(filePath);//le mando la ruta al servidor
     const task = this.firebase.upload(filePath, file);//mandar la imagen al servidor
     task.snapshotChanges().pipe(finalize(() => this.urlImage = ref.getDownloadURL())).subscribe();//tomar la url
@@ -78,7 +78,6 @@ export class AsignarTareaComponent implements OnInit {
   capturar() {
     this.FormTarea.value['documento'] = this.document.nativeElement.value;
     this.FormTarea.value['id_paciente'] = this.id;
-
     console.log(this.FormTarea.invalid || this.document.nativeElement.value == undefined || this.id == null);
     if (this.FormTarea.invalid) {
       this.RegistradoMensaje2();
