@@ -1,6 +1,57 @@
 <app-navbar-pacientes></app-navbar-pacientes>
-<p>pruebas-pacientes works!</p>
-<p>pruebas-pacientes works!</p>
-<p>pruebas-pacientes works!</p>
-<p>pruebas-pacientes works!</p>
-<p>pruebas-pacientes works!</p>
+<br />
+<br />
+<br />
+<br />
+
+<body>
+  <div class="cuadro-registro">
+    <div class="div-junto">
+      <div>
+        <h1>Pruebas</h1>
+      </div>
+    </div>
+
+    <div *ngIf="pruebas.length > 0">
+      <div class="mat-elevation-z5">
+        <table mat-table [dataSource]="dataSource" matSort>
+          <!--- Note that these columns can be defined in any order.
+              The actual rendered columns are set as a property on the row definition" -->
+
+          <!-- Name Column -->
+          <ng-container matColumnDef="titulo">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Nombre</th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.nombre_prueba }}
+            </td>
+          </ng-container>
+
+          <!-- Weight Column -->
+          <ng-container matColumnDef="descargar">
+            <th mat-header-cell *matHeaderCellDef>descargar</th>
+            <td mat-cell *matCellDef="let element; let i = index">
+              <button
+                mat-button
+                (click)="verPrueba(element.id_pruebas)"
+                style="color: #1878b0"
+                matTooltip="Ver Prueba"
+              >
+                <mat-icon> folder_open </mat-icon>
+              </button>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        </table>
+      </div>
+      <mat-paginator
+        [pageSizeOptions]="[5, 10, 25, 100]"
+        aria-label="Select page of users"
+      ></mat-paginator>
+    </div>
+    <h2 class="error" *ngIf="pruebas.length == 0">
+      No hay usuarios para mostrar
+    </h2>
+  </div>
+</body>
