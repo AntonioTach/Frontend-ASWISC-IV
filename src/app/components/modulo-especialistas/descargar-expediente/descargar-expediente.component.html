@@ -1,3 +1,5 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.0/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" integrity="sha512-BNaRQnYJYiPSqHHDb58B0yaPfCu+Wgds8Gp/gU33kqBtgNS4tSPHuGibyoeqMV/TJlSKda6FXzoEyYGjTe+vXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <app-navbar-especialista></app-navbar-especialista>
 
 <p>modificacion-expediente works!</p>
@@ -123,10 +125,17 @@
     <div class="div-info">
       <!-- Boton -->
       <div class="div-btn">
-        <button (click)="capturar()" mat-raised-button class="btn">
+        <button onclick="screenshot()" mat-raised-button class="btn">
           Descargar
         </button>
       </div>
     </div>
   </div>
 </body>
+<!-- <script>
+  function screenshot(){
+    html2canvas(document.getElementById('registro')).then(function(canvas){
+      document.body.appendChild(canvas)
+    })
+  }
+</script> -->

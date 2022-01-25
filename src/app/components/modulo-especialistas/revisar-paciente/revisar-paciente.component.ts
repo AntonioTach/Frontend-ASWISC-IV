@@ -61,7 +61,7 @@ export class RevisarPacienteComponent implements OnInit {
     )
   }*/
   eliminarPaciente(id: any) {//aqui lo que abria que pasarle es el id, para borra el dato de la base de datos.
-    if (confirm('Seguro que desea eliminar este pasiente?') == true) {
+    if (confirm('Seguro que desea eliminar al paciente?. Dejará de pertenecer a su lista de pacientes.') == true) {
       this.pacientesService.eliminarPaciente(id.toString()).subscribe(res => {
         console.log(res)
       }, err => console.log(err));

@@ -51,7 +51,7 @@ body{
     text-align: start;
     margin-left: 105px;
     margin-right: 250px;
-    width: 270px;
+    width: 78%;
     margin-bottom: 10px;
   }
   .div-info{
@@ -76,3 +76,5 @@ body{
     border: 2px solid;
     line-height: 1;
   }
+
+ 

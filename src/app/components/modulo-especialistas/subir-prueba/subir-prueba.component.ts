@@ -89,5 +89,16 @@ export class SubirPruebaComponent implements OnInit {
       )
     }
   }
+  file:any;
+  getFile(event : any){
+    this.file = event.target.files[0];
 
+    console.log('Archivo',this.file)
+  }
+  uploadFile(){
+    let formData = new FormData();
+    formData.set("file", this.file); 
+  }
+
+  //ya solo falta llamar a la api
 }

@@ -66,6 +66,8 @@ export class DescargarExpedienteComponent implements OnInit {
     });
   }
   capturar() {
+
+    
     /*
     const options = {
       name: `${this.usuario}.pdf `,
