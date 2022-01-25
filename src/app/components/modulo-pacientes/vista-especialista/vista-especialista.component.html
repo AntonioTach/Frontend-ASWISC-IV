@@ -41,7 +41,7 @@
         <h2>Fecha de Nacimiento</h2>
         <mat-form-field class="input" appearance="fill">
           <mat-label>Fecha de nacimiento</mat-label>
-          <input matInput readonly value="{{ this.especialista.nacimiento }}" />
+          <input matInput readonly value="{{ this.especialista.nacimiento|date:'dd/MM/yyyy' }}" />
         </mat-form-field>
         <h2>Profesion</h2>
         <mat-form-field class="input" appearance="fill">
