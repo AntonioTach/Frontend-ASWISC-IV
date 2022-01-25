@@ -60,7 +60,7 @@
             <h2>Fecha de Nacimiento</h2>
           <mat-form-field class="input" appearance="fill">
             <mat-label>Fecha de nacimiento</mat-label>
-            <input matInput readonly value="{{ nacimiento }}" />
+            <input matInput readonly value="{{ nacimiento|date:'dd/MM/yyyy' }}" />
             <mat-error>
               Por favor Ingrese su <strong>Fecha de Nacimiento</strong>
             </mat-error>
@@ -144,7 +144,7 @@
 
           <!-- Boton -->
             <div class="div-btn">
-              <button  type="submit" mat-raised-button class="btn">Actualizar</button>
+              <button (click)="capturar()" type="submit" mat-raised-button class="btn">Actualizar</button>
             </div>
         </div>
         <h4>Nota: Sus datos personales se actualizarán una vez que seleccione el botón de "Actualizar" y no podrán ser recuperados.</h4>

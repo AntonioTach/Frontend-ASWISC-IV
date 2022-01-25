@@ -23,6 +23,8 @@ export class NombrePacienteComponent implements OnInit {
  contrasena: any;
  usuario: any;
  paciente: any = [];
+
+ edit: boolean = false;
  constructor(private NombrePService: MyServiceNombrePacienteService ,private formBuilder: FormBuilder,private _snackBar: MatSnackBar, private router: Router) { }
 
  telefono: any = null;
@@ -53,6 +55,7 @@ export class NombrePacienteComponent implements OnInit {
     this.nacimiento = obj.nacimiento;
     this.email = obj.email;
     this.telefono = obj.telefono;
+    this.contrasena = obj.contrasena;
     // this.usuario = this.FormModificarNombre.value['usuario'];
     // this.nombre = this.FormModificarNombre.value['nombre'];
     // this.nacimiento = this.FormModificarNombre.value['nacimiento'];
@@ -62,6 +65,25 @@ export class NombrePacienteComponent implements OnInit {
   }, err => console.log(err)
   )
  }
+
+ capturar() {
+  if (this.FormModificarNombre.invalid) {
+    return
+  }
+  else {
+    console.log(this.FormModificarNombre?.value);
+    // this.RegistradoMensaje();
+    console.log(this.FormModificarNombre.value);
+    this.NombrePService.updatePaciente(this.id_usuario, this.FormModificarNombre.value).subscribe(
+      res => {
+        console.log(res);
+      },
+      err => {
+        console.log(err)
+      }
+    )
+  }
+}
 
 
 
