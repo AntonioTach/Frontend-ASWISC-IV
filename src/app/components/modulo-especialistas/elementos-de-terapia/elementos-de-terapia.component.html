@@ -2,5 +2,81 @@
 
 <p>elementos-de-terapia works!</p>
 <p>elementos-de-terapia works!</p>
-<p>elementos-de-terapia works!</p>
-<p>elementos-de-terapia works!</p>
+<br />
+<br />
+
+<body>
+  <div class="cuadro-registro">
+
+    <div class="div-junto">
+      <div>
+        <h1 class="titulo">Elementos de Terapia</h1>
+      </div>
+       <!-- Boton -->
+      <div class="div-btn">
+      <button
+        type="submit"
+        mat-raised-button
+        class="btn"
+        (click)="CrearTarea()"
+      >
+        Asignar Seguimiento de Pacientes
+      </button>
+      </div>
+      <mat-form-field appearance="standard">
+        <mat-label>Búsqueda</mat-label>
+        <input
+          matInput
+          autocomplete="off"
+          (keyup)="applyFilter($event)"
+          #input
+          autocomplete="off"
+        />
+      </mat-form-field>
+
+    </div>
+
+    <!-- Tabla -->
+    <!-- <div *ngIf="lista_tareas.length > 0"> -->
+      <div>
+      <div class="mat-elevation-z5">
+        <table mat-table [dataSource]="dataSource" matSort>
+          <!--- Note that these columns can be defined in any order.
+              The actual rendered columns are set as a property on the row definition" -->
+
+          <!-- Name Column -->
+          <ng-container matColumnDef="titulo">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Título de Tarea</th>
+            <td mat-cell *matCellDef="let element">{{ element.titulo }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="nombre">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Nombre del Paciente</th>
+            <td mat-cell *matCellDef="let element">{{ element.nombre }}</td>
+          </ng-container>
+
+          <!-- Icono creo -->
+          <!-- <ng-container matColumnDef="nombre">
+            <th mat-header-cell *matHeaderCellDef> Ver Tarea</th>
+            <td mat-cell *matCellDef="let element">
+             <a
+              matTooltip="PUBLICADO"
+             >
+            <mat-icon class="pointer">done_all</mat-icon>
+            </a>
+            </td>
+          </ng-container> -->
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        </table>
+      </div>
+      <mat-paginator
+        [pageSizeOptions]="[5, 10, 25, 100]"
+        aria-label="Selecciona página de Tareas"
+      ></mat-paginator>
+    </div>
+    <!-- <h2 class="error" *ngIf="lista_tareas.length == 0">No hay Tareas para mostrar</h2> -->
+
+  </div>
+</body>
