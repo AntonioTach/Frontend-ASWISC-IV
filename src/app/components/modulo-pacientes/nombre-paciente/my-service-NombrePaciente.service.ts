@@ -14,8 +14,8 @@ constructor(private http: HttpClient) { }
     return this.http.get('http://localhost:4000/buscar-PacienteNombre/' + id_usuario);
   }
 
-  updatePaciente(id: string, objeto: any): Observable<any> {
+  updatePaciente(id: string | null, objeto: any): Observable<any> {
     console.log(id, objeto);
-    return this.http.post('http://localhost:4000/' + 'editar-Paciente/' + id, objeto);
+    return this.http.post('http://localhost:4000/editar-PacienteNombre/' + id, objeto);
   }
 }

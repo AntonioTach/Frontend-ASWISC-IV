@@ -53,6 +53,7 @@ export class NombrePacienteComponent implements OnInit {
     this.nacimiento = obj.nacimiento;
     this.email = obj.email;
     this.telefono = obj.telefono;
+    this.contrasena = obj.contrasena;
     // this.usuario = this.FormModificarNombre.value['usuario'];
     // this.nombre = this.FormModificarNombre.value['nombre'];
     // this.nacimiento = this.FormModificarNombre.value['nacimiento'];
@@ -61,6 +62,21 @@ export class NombrePacienteComponent implements OnInit {
     // this.telefono = this.FormModificarNombre.value['telefono'];
   }, err => console.log(err)
   )
+ }
+
+ actualizar(){
+  if (this.FormModificarNombre.invalid){
+    return
+  }
+  else{
+    console.log(this.FormModificarNombre?.value);
+    this.NombrePService.updatePaciente(this.id_usuario, this.FormModificarNombre.value).subscribe(
+      res => {
+        console.log(res);
+      },
+      err => console.log(err)
+    )
+  }
  }
 
 
