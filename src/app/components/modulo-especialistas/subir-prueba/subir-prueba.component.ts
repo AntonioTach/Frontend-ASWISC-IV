@@ -1,10 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ServiceRevisarPacienteService } from '../revisar-paciente/service-revisar-paciente.service'
 import { ModificacionExpedienteServiceService } from 'src/app/components/modulo-especialistas/modificacion-expediente/modificacion-expediente-service.service'
 import { FormGroup, FormBuilder, FormControl, Validators, NgForm } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router, RouterLink } from '@angular/router';
-
+import { AngularFireStorage } from '@angular/fire/compat/storage';
+import { finalize } from 'rxjs/operators';
+import { SubirPruebaService } from './subir-prueba.service';
+import { ThrowStmt } from '@angular/compiler';
 @Component({
   selector: 'app-subir-prueba',
   templateUrl: './subir-prueba.component.html',
@@ -18,8 +21,10 @@ export class SubirPruebaComponent implements OnInit {
   estudios: any;
   origen: any;
   ocupacion: any;
+  urlImage: any;
+  @ViewChild('document') document: ElementRef;
 
-  constructor(private formBuilder: FormBuilder, private modificarExpedienteService: ModificacionExpedienteServiceService, private _snackBar: MatSnackBar, private router: Router, private serviceRevisar: ServiceRevisarPacienteService) { }
+  constructor(private formBuilder: FormBuilder, private modificarExpedienteService: ModificacionExpedienteServiceService, private _snackBar: MatSnackBar, private router: Router, private serviceRevisar: ServiceRevisarPacienteService, private firebase: AngularFireStorage, private subirservice: SubirPruebaService) { }
 
   usuario: string = '';
   correo: string = '';
@@ -30,17 +35,15 @@ export class SubirPruebaComponent implements OnInit {
   sexos: string[] = ['Masculino', 'Femenino'];
 
   id_usuario = localStorage.getItem('id_usuario');
-  id_paciente = 0
+  id_paciente;
   pacientes: any = []
   ngOnInit(): void {
     this.cargarPacientes();
-    this.id_paciente = 0;
-    this.cargarInformacion();
     this.FormModificarExpediente = this.formBuilder.group({
-      ocupacion: [this.pacientes.ocupacion, [Validators.required]],
-      estudios: [this.pacientes.estudios, [Validators.required]],
-      origen: [this.pacientes.origen, [Validators.required]],
-      observaciones: [this.pacientes.observaciones, [Validators.required]],
+      id_paciente: [''],
+      nombre_prueba: ['', [Validators.required]],
+      comentarios: ['', [Validators.required]],
+      documento: [''],
     });
   }
   cargarInformacion() {
@@ -49,14 +52,10 @@ export class SubirPruebaComponent implements OnInit {
       var obj = res[0]
       console.log(obj);
       this.usuario = obj.usuario;
-      this.telefono = obj.telefono;
+      this.telefono = obj.id_paciente;
       this.fecha = obj.nacimiento;
       this.correo = obj.email;
       this.sexo = obj.sexo;
-      this.obsevacion = this.FormModificarExpediente.value['observaciones'];
-      this.estudios = this.FormModificarExpediente.value['estudios'];
-      this.origen = this.FormModificarExpediente.value['origen'];
-      this.ocupacion = this.FormModificarExpediente.value['ocupacion'];
     }, err => console.log(err))
   }
   cargarPacientes() {
@@ -71,35 +70,41 @@ export class SubirPruebaComponent implements OnInit {
       verticalPosition: 'bottom'
     });
   }
+  RegistradoMensaje2() {
+    this._snackBar.open('Registro Incompleto', '', {
+      duration: 3000, //5s
+      horizontalPosition: 'center',
+      verticalPosition: 'bottom'
+    });
+  }
   capturar() {
+    this.FormModificarExpediente.value['documento'] = this.document.nativeElement.value;
+    this.FormModificarExpediente.value['id_paciente'] = this.telefono;
+
+    console.log(this.FormModificarExpediente.invalid || this.document.nativeElement.value == undefined || this.telefono == null);
     if (this.FormModificarExpediente.invalid) {
-      return
+      this.RegistradoMensaje2();
     }
     else {
-      console.log(this.FormModificarExpediente?.value);
+      this.subirservice.postPrueba(this.FormModificarExpediente.value).subscribe(res => { console.log(res); }, err => { console.log(err); });
       this.RegistradoMensaje();
-      console.log(this.FormModificarExpediente.value);
-      this.modificarExpedienteService.updatePaciente(this.id_paciente.toString(), this.FormModificarExpediente.value).subscribe(
-        res => {
-          console.log(res)
-        },
-        err => {
-          console.log(err, 'eroror');
-        }
-      )
     }
   }
-  file:any;
-  getFile(event : any){
+  file: any;
+  getFile(event: any) {
     this.file = event.target.files[0];
 
-    console.log('Archivo',this.file)
+    console.log('Archivo', this.file)
   }
-  uploadFile(){
-    let formData = new FormData();
-    formData.set("file", this.file); 
+  uploadFile() {
+    const id = Math.random().toString(36).substring(2);//se genera un id random
+    const file = this.file;//toma el primer archivo que encuentre
+    const filePath = `pruebas/${id}`;////se genera la ruta
+    const ref = this.firebase.ref(filePath);//le mando la ruta al servidor
+    const task = this.firebase.upload(filePath, file);//mandar la imagen al servidor 
+    task.snapshotChanges().pipe(finalize(() => this.urlImage = ref.getDownloadURL())).subscribe();//tomar la url
   }
 
   //ya solo falta llamar a la api
-  
+
 }

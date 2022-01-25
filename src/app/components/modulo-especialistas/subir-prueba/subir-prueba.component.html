@@ -1,65 +1,86 @@
 <app-navbar-especialista></app-navbar-especialista>
-<br>
-<br>
-<br>
-<br>
+<br />
+<br />
+<br />
+<br />
 <body>
-    <div class="cuadro">
-        <h1 class="titulo">Subir prueba</h1>
-        <div class="div-info">
-            <div>
-                <h2>Paciente</h2>
-                <mat-form-field class="dropdown" appearance="fill">
-                  <mat-label>Seleccione el paciente</mat-label>
-                  <mat-select [(value)]="id_paciente">
-                    <mat-option
-                      *ngFor="let paciente of pacientes"
-                      [value]="paciente.id_usuario"
-                    >
-                      {{ paciente.nombre }}
-                    </mat-option>
-                  </mat-select>
-                </mat-form-field>
-                
-            </div>
-            <div>
-              <h2 style="margin-left: 400px;">Titulo de la Prueba</h2>
-              <mat-form-field class="titulop" appearance="fill">
-                <mat-label>Titulo</mat-label>
-                <input matInput formControlName="titulo">
-                <mat-error>
-                  Ingrese el Título
-                </mat-error>
-              </mat-form-field>
-            </div>
-            
-
-
-        </div>
-        <div>
-          <div class="div-info-chart">
-              <h2>Observaciones</h2>
-              <mat-form-field class="textarea" appearance="outline">
-                <textarea
-                  rows="10" cols="50"
-                  matInput
-                  placeholder="Comentarios de la Prueba"
-                  formControlName="observaciones"
-                  value="{{ obsevacion }}"
-                >
-                </textarea>
-              </mat-form-field>
-            </div>
+  <div class="cuadro container" [formGroup]="FormModificarExpediente">
+    <h1 class="titulo">Subir prueba</h1>
+    <div class="div-info">
+      <div>
+        <h2>Paciente</h2>
+        <mat-form-field class="dropdown" appearance="fill">
+          <mat-label>Seleccione el paciente</mat-label>
+          <mat-select
+            [(value)]="id_paciente"
+            (valueChange)="cargarInformacion()"
+          >
+            <mat-option
+              *ngFor="let paciente of pacientes"
+              [value]="paciente.id_usuario"
+            >
+              {{ paciente.nombre }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
       </div>
-      <h2 style="margin-left: 40px;">Subir Documentos de Resultados</h2>
-      <mat-label class="label">Arrastre y suelte su documento AQUÍ <mat-icon>arrow_downward</mat-icon></mat-label>
-      <div class="file-container" *ngIf="!file">
-          <input type="file" class="file" (change)="getFile($event)" >
+      <div>
+        <h2 style="margin-left: 400px">Titulo de la Prueba</h2>
+        <mat-form-field class="titulop" appearance="fill">
+          <mat-label>Titulo</mat-label>
+          <input matInput formControlName="nombre_prueba" />
+          <mat-error> Ingrese el Título </mat-error>
+        </mat-form-field>
       </div>
-      <div *ngIf="file" class="guardar">
-        Nombre del Archivo: {{file.name}} <br>
-        <button  mat-raised-button color="warn"(click)="file=undefined">Limpiar Documento</button>
-      </div><br>
-      <button  mat-raised-button color="primary" class="guardar" (click)="uploadFile()">Cargar Archivo</button>
-    </div> 
+    </div>
+    <div>
+      <div class="div-info-chart">
+        <h2>Comentarios</h2>
+        <mat-form-field class="textarea" appearance="outline">
+          <textarea
+            rows="10"
+            cols="50"
+            matInput
+            placeholder="Comentarios de la Prueba"
+            formControlName="comentarios"
+          >
+          </textarea>
+        </mat-form-field>
+      </div>
+    </div>
+    <h2 style="margin-left: 40px">Subir Documentos de Resultados</h2>
+    <mat-label class="label"
+      >Arrastre y suelte su documento AQUÍ
+      <mat-icon>arrow_downward</mat-icon></mat-label
+    >
+    <div class="file-container" *ngIf="!file">
+      <input type="file" class="file" (change)="getFile($event)" />
+    </div>
+    <div *ngIf="file" class="guardar">
+      Nombre del Archivo: {{ file.name }} <br />
+      <button mat-raised-button color="warn" (click)="file = undefined">
+        Limpiar Documento
+      </button>
+    </div>
+    <input #document hidden [value]="urlImage | async" />
+    <br />
+    <button
+      mat-raised-button
+      color="primary"
+      class="guardar"
+      (click)="uploadFile()"
+    >
+      Cargar Archivo
+    </button>
+    <br />
+    <br />
+    <button
+      mat-raised-button
+      color="accent"
+      class="guardar"
+      (click)="capturar()"
+    >
+      Subir
+    </button>
+  </div>
 </body>
