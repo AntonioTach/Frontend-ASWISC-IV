@@ -10,4 +10,7 @@ export class PruebasService {
   getPruebas(id: any) {
     return this.http.get('http://localhost:4000/pruebas-paciente/' + id)
   }
+  getPrueba(id: any) {
+    return this.http.get('http://localhost:4000/prueba/' + id)
+  }
 }

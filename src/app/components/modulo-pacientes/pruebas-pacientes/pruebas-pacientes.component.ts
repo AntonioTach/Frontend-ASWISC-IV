@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
 import { PruebasService } from './pruebas.service';
 
 @Component({
@@ -22,7 +23,7 @@ export class PruebasPacientesComponent implements OnInit {
     this.dataSource.sort = this.sort;
   }
 
-  constructor(private pruebasService: PruebasService) { }
+  constructor(private pruebasService: PruebasService, private router: Router) { }
 
   ngOnInit(): void {
     this.pruebasService.getPruebas(this.id_usuario.toString()).subscribe(res => {
@@ -33,5 +34,6 @@ export class PruebasPacientesComponent implements OnInit {
   }
   verPrueba(id_prueba) {
     console.log(id_prueba);
+    this.router.navigate(['modulo-pacientes/ver-prueba/' + id_prueba])
   }
 }
