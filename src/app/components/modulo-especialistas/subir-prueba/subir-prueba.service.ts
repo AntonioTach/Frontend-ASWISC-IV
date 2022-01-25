@@ -11,4 +11,8 @@ export class SubirPruebaService {
 
   }
 
+  postTarea(tarea: any) { //POST DE ASIGNAR TAREA
+    return this.http.post('http://localhost:4000/tarea', tarea);
+  }
+
 }
