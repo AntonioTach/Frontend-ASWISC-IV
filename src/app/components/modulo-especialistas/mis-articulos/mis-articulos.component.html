@@ -4,14 +4,14 @@
 <br />
 <br />
 <div class="cuadro-registro">
-  <h1 class="titulo">Mis Articulos</h1>
+  <h1 class="titulo">Mis Artículos</h1>
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
     <!--- Note that these columns can be defined in any order.
           The actual rendered columns are set as a property on the row definition" -->
 
     <!-- titulo Column -->
     <ng-container matColumnDef="titulo">
-      <th mat-header-cell *matHeaderCellDef>Titulo del Artículo</th>
+      <th mat-header-cell *matHeaderCellDef>Título del Artículo</th>
       <td mat-cell *matCellDef="let element">{{ element.titulo }}</td>
     </ng-container>
 

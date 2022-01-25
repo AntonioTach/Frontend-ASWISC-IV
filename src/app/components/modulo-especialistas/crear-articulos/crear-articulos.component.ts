@@ -58,7 +58,7 @@ export class CrearArticulosComponent implements OnInit {
       },
     ],
     //no se bien que onda con eso
-    /* 
+    /*
     uploadUrl: 'v1/image',
     upload: (file: File) => { ... }
     uploadWithCredentials: false,
@@ -79,7 +79,7 @@ export class CrearArticulosComponent implements OnInit {
       id_especialista: localStorage.getItem('id_especialista'),
     };
     if (this.html.length == 0 || this.titulo.length == 0) {
-      window.alert('Inserte titulo y/o descurpcion');
+      window.alert('Inserte titulo y/o descripción');
     } else {
       if (numero == 1) {//sin publicar
         this.servicio.guardarArticulo(articulo).subscribe(res => { console.log(res) }, err => { console.log(err) })
