@@ -70,14 +70,28 @@ export class NombrePacienteComponent implements OnInit {
   }
   else{
     console.log(this.FormModificarNombre?.value);
+    this.RegistradoMensaje();
+    console.log(this.FormModificarNombre.value);
     this.NombrePService.updatePaciente(this.id_usuario, this.FormModificarNombre.value).subscribe(
       res => {
         console.log(res);
       },
       err => console.log(err)
     )
+    setTimeout(() => {
+
+      this.router.navigate(['modulo-pacientes']);
+    }, 3000);
   }
  }
+
+ RegistradoMensaje() {
+  this._snackBar.open('Registro Correcto', '', {
+    duration: 3000, //5s
+    horizontalPosition: 'center',
+    verticalPosition: 'bottom'
+  });
+}
 
 
 
