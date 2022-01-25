@@ -49,6 +49,15 @@
         [pageSizeOptions]="[5, 10, 25, 100]"
         aria-label="Select page of users"
       ></mat-paginator>
+      <button
+        mat-raised-button
+        class="div-junto"
+        *ngIf="pruebas.length != 0"
+        (click)="descargarTodo()"
+        color="primary"
+      >
+        descargar Todo
+      </button>
     </div>
     <h2 class="error" *ngIf="pruebas.length == 0">
       No hay usuarios para mostrar

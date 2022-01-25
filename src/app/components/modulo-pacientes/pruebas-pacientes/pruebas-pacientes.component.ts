@@ -36,4 +36,9 @@ export class PruebasPacientesComponent implements OnInit {
     console.log(id_prueba);
     this.router.navigate(['modulo-pacientes/ver-prueba/' + id_prueba])
   }
+  descargarTodo() {
+    for (var i = 0; i < this.pruebas.length; i++) {
+      window.open(this.pruebas[i].documento, "_blank");
+    }
+  }
 }
