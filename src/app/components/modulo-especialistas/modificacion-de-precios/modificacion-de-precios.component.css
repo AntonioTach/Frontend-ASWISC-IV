@@ -5,3 +5,116 @@
     padding-top: 50px;
     border: 6px solid #dcdcdc;
   }
+
+  .cuadro{
+    background-color: #ffffff ;
+    width: 90%;
+    margin: auto;
+    padding-top: 50px;
+    border: 6px solid #DCDCDC;
+  }
+
+  .titulo{
+    margin-left: 30px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 40px;
+  }
+
+  .div-info{
+    display: flex;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-left: 35px;
+    margin-top: 50px;
+  }
+
+  .div-info-chart{
+    margin-left: 40px;
+
+  }
+
+  .titulop{
+    margin-left: 135px;
+    text-align: start;
+  }
+
+  .textarea{
+    width: 87%;
+  }
+
+  .file-container{
+    width: 84%;
+    border: 4px dotted black;
+    margin-left: 40px;
+    margin-bottom: 50px;
+    margin-top: 15px;
+  }
+
+  .file{
+    opacity: 0;
+    padding: 5rem;
+    width: auto;
+    height: 5rem;
+
+  }
+
+  .guardar{
+    margin-left: 888px;
+  }
+
+  .label{
+    margin-left: 40px;
+    opacity: 0.7;
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+
+  h1{
+    text-align: start;
+    font-size: 48px;
+    font-weight: bolder;
+    margin-top: 10px;
+    margin-left: 100px;
+    color: #000000;
+  }
+
+  h2{
+    text-align: start;
+    font-size: 20px;
+    margin-top: 10px;
+    margin-left: 105px;
+    margin-bottom: 5px;
+    color: #000000;
+  }
+
+  .input{
+    text-align: start;
+    margin-left: 100px;
+    margin-right: 250px;
+    width: 270px;
+    margin-bottom: 10px;
+  }
+  .btn{
+    text-align: start;
+    margin-left: 100px;
+    margin-right: 250px;
+    width: 270px;
+    margin-bottom: 10px;
+    background-color: #D5D8DC;
+    color: #000000;
+  }
+
+  .btn2{
+    background-color: #90EE90;
+    width: 270px;
+    margin-top: 50px;
+    margin-left: 105px;
+  }
+
+  .dropdown{
+    text-align: start;
+    margin-left: 105px;
+    margin-right: 250px;
+    width: 270px;
+    margin-bottom: 10px;
+  }
