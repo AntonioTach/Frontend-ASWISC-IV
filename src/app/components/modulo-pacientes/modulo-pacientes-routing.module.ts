@@ -13,6 +13,7 @@ import { NombrePacienteComponent } from './nombre-paciente/nombre-paciente.compo
 import { PagosPacientesComponent } from './pagos-pacientes/pagos-pacientes.component';
 import { PruebasPacientesComponent } from './pruebas-pacientes/pruebas-pacientes.component';
 import { RegistrarseConEspecialistaComponent } from './registrarse-con-especialista/registrarse-con-especialista.component';
+import { TareaComponent } from './tarea/tarea.component';
 import { VerPruebaComponent } from './ver-prueba/ver-prueba.component';
 import { VistaEspecialistaComponent } from './vista-especialista/vista-especialista.component';
 
@@ -34,6 +35,7 @@ const routes: Routes = [
       { path: 'vista-especialista/:id', component: VistaEspecialistaComponent },
       { path: 'ver-prueba/:id', component: VerPruebaComponent },
       { path: 'carrito', component: CarritoComponent },
+      { path: 'ver-tarea/:id', component: TareaComponent },
       { path: '**', component: ModuloPacientesComponent },
     ]
   }

@@ -21,6 +21,7 @@ import { VistaEspecialistaComponent } from './vista-especialista/vista-especiali
 import { DescargarPruebaPacientesComponent } from './descargar-prueba-pacientes/descargar-prueba-pacientes.component';
 import { VerPruebaComponent } from './ver-prueba/ver-prueba.component';
 import { CarritoComponent } from './carrito/carrito.component';
+import { TareaComponent } from './tarea/tarea.component';
 
 
 @NgModule({
@@ -42,7 +43,8 @@ import { CarritoComponent } from './carrito/carrito.component';
     VistaEspecialistaComponent,
     DescargarPruebaPacientesComponent,
     VerPruebaComponent,
-    CarritoComponent
+    CarritoComponent,
+    TareaComponent
   ],
   imports: [
     CommonModule,

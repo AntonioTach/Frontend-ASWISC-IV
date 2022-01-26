@@ -1,0 +1,21 @@
+<app-navbar-pacientes></app-navbar-pacientes>
+<br />
+<br />
+<br />
+<br />
+<div class="container cuadro">
+  <div class="col-md-12">
+    <h2>Titulo de la Tarea: {{ titulo }}</h2>
+    <textarea name="" id="" cols="150" rows="10" readonly>{{
+      comentarios
+    }}</textarea>
+  </div>
+  <button
+    mat-raised-button
+    *ngIf="url != null"
+    (click)="goto_url()"
+    color="primary"
+  >
+    Ver achivo
+  </button>
+</div>
