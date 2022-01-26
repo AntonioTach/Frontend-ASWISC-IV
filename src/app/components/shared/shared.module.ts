@@ -26,7 +26,6 @@ import { MatSelectModule } from '@angular/material/select';
 
 
 
-
 @NgModule({
   declarations: [],
   imports: [
@@ -50,7 +49,6 @@ import { MatSelectModule } from '@angular/material/select';
     MatSortModule,
     MatSelectModule,
     FormsModule,
-
   ],
   exports: [
     MatSliderModule,
@@ -71,6 +69,7 @@ import { MatSelectModule } from '@angular/material/select';
     MatPaginatorModule,
     MatSortModule,
     MatSelectModule,
+
 
   ]
 })
