@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ArticulosPacientesComponent } from './articulos-pacientes/articulos-pacientes.component';
 import { BajaPacientesComponent } from './baja-pacientes/baja-pacientes.component';
+import { CarritoComponent } from './carrito/carrito.component';
 import { ElementosDeTerapiaPacientesComponent } from './elementos-de-terapia-pacientes/elementos-de-terapia-pacientes.component';
 import { ExpedientePacientesComponent } from './expediente-pacientes/expediente-pacientes.component';
 import { HorariosDisponiblesComponent } from './horarios-disponibles/horarios-disponibles.component';
@@ -32,6 +33,7 @@ const routes: Routes = [
       { path: 'nombre-paciente', component: NombrePacienteComponent },
       { path: 'vista-especialista/:id', component: VistaEspecialistaComponent },
       { path: 'ver-prueba/:id', component: VerPruebaComponent },
+      { path: 'carrito', component: CarritoComponent },
       { path: '**', component: ModuloPacientesComponent },
     ]
   }

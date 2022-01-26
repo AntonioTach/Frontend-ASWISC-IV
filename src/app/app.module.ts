@@ -47,6 +47,7 @@ import { AswiscIvComponent } from './components/aswisc-iv/aswisc-iv.component';
     Navbar3Component,
     WiscIvComponent,
     AswiscIvComponent,
+
   ],
   imports: [
     BrowserModule,
