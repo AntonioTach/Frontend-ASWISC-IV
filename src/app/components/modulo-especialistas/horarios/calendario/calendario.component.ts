@@ -8,7 +8,7 @@ import * as moment from 'moment';
 })
 export class CalendarioComponent implements OnInit {
 
-  week:any = [
+  week: any = [
     "Lunes",
     "Martes",
     "Miercoles",
@@ -18,33 +18,57 @@ export class CalendarioComponent implements OnInit {
     "Domingo"
   ];
 
-  monthSelect : any [];
-  dateSelect : any;
 
-  constructor() { }
+  monthSelect: any[];
+  dateSelect: any;
+  dateValue: any;
 
-  ngOnInit(): void {
-    this.getDaysFromDate(11,2022)
+
+  constructor() {
+
   }
 
-  getDaysFromDate(month,year){ //le pasamos la información que va a recibir la función
+  ngOnInit(): void {
+    this.getDaysFromDate(11, 2022)
+  }
 
-    const startDate =  moment.utc(`${year}/${month}/01`);//objeto tipo day cuando inicia el mes
-    const endDate = startDate.clone().endOf('month')//el objeto de la fecha cuando finaliza
-    this.dateSelect = startDate; // se guardar
+  getDaysFromDate(month, year) {
 
-    const diffDays = endDate.diff(startDate,'days', true); //con diff se trae la cantidad de días que existen entre las fechas de inicio y final de mes
-    //esto nos arroja un numero sin redondear, en decimal, así que hay que redondearlo
-    const numberDays = Math.round(diffDays); //redondea
+    const startDate = moment.utc(`${year}/${month}/01`)
+    const endDate = startDate.clone().endOf('month')
+    this.dateSelect = startDate;
 
-    //falta crear un array con el número de días
-    const arrayDays = Object.keys([...Array(numberDays)]).map((a:any) =>{
-      a = parseInt(a)+1;
+    const diffDays = endDate.diff(startDate, 'days', true)
+    const numberDays = Math.round(diffDays);
 
-    })
+    const arrayDays = Object.keys([...Array(numberDays)]).map((a: any) => {
+      a = parseInt(a) + 1;
+      const dayObject = moment(`${year}-${month}-${a}`);
+      return {
+        name: dayObject.format("dddd"),
+        value: a,
+        indexWeek: dayObject.isoWeekday()
+      };
+    });
 
+    this.monthSelect = arrayDays;
+  }
 
+  changeMonth(flag) {
+    if (flag < 0) {
+      const prevDate = this.dateSelect.clone().subtract(1, "month");
+      this.getDaysFromDate(prevDate.format("MM"), prevDate.format("YYYY"));
+    } else {
+      const nextDate = this.dateSelect.clone().add(1, "month");
+      this.getDaysFromDate(nextDate.format("MM"), nextDate.format("YYYY"));
+    }
+  }
 
+  clickDay(day) {
+    const monthYear = this.dateSelect.format('YYYY-MM')
+    const parse = `${monthYear}-${day.value}`
+    const objectDate = moment(parse)
+    this.dateValue = objectDate;
 
 
   }
