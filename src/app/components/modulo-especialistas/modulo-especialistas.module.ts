@@ -33,7 +33,8 @@ import { TarjetaComponent } from './tarjeta/tarjeta.component';
 import { ModificarArticuloComponent } from './modificar-articulo/modificar-articulo.component';
 import { DescargarExpedienteComponent } from './descargar-expediente/descargar-expediente.component';
 import {AsignarTareaComponent} from './asignar-tarea/asignar-tarea.component';
-import { VerTareaComponent } from './ver-tarea/ver-tarea.component'
+import { VerTareaComponent } from './ver-tarea/ver-tarea.component';
+import { ArticuloComponent } from './articulo/articulo.component'
 
 @NgModule({
   declarations: [
@@ -62,7 +63,8 @@ import { VerTareaComponent } from './ver-tarea/ver-tarea.component'
     ModificarArticuloComponent,
     DescargarExpedienteComponent,
     AsignarTareaComponent,
-    VerTareaComponent
+    VerTareaComponent,
+    ArticuloComponent
 
   ],
   imports: [

@@ -75,14 +75,19 @@ export class ModificacionDePreciosComponent implements OnInit {
       })
       console.log("precio_general");
       console.log('object');
-    } else {
-      this.serviceModificacionPrecion.capturar(paquete).subscribe((res: any) => {
+    } else if (this.FormModificarPrecio.value['precio_general'] == "") {
 
-        console.log(res);
-      })
       this.serviceModificacionPrecion.paciente(paquete).subscribe((res: any) => {
         console.log(res);
       }, err => { console.log(err); })
+    } else {
+      this.serviceModificacionPrecion.capturar(paquete).subscribe((res: any) => {
+        this.serviceModificacionPrecion.paciente(paquete).subscribe((res: any) => {
+          console.log(res);
+        }, err => { console.log(err); })
+        console.log(res);
+      })
+
       console.log("precio de todo");
     }
   }

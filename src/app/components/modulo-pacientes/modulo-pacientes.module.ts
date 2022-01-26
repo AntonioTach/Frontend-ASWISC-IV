@@ -22,6 +22,7 @@ import { DescargarPruebaPacientesComponent } from './descargar-prueba-pacientes/
 import { VerPruebaComponent } from './ver-prueba/ver-prueba.component';
 import { CarritoComponent } from './carrito/carrito.component';
 import { TareaComponent } from './tarea/tarea.component';
+import { ArticuloComponent } from './articulo/articulo.component';
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import { TareaComponent } from './tarea/tarea.component';
     DescargarPruebaPacientesComponent,
     VerPruebaComponent,
     CarritoComponent,
-    TareaComponent
+    TareaComponent,
+    ArticuloComponent
   ],
   imports: [
     CommonModule,
