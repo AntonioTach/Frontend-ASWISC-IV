@@ -1,44 +1,24 @@
-<table>
-  <colgroup>
-    <col />
-    <col />
-    <col />
-    <col />
-  </colgroup>
-  <tr>
-    <th>País</th>
-    <th>Capital</th>
-    <th>Superficie</th>
-    <th>Habitantes</th>
-  </tr>
-  <tr>
-    <td>España</td>
-    <td>Madrid</td>
-    <td>504.645 km<sup>2</sup></td>
-    <td>46,6 M</td>
-  </tr>
-  <tr>
-    <td>Italia</td>
-    <td>Roma</td>
-    <td>301.338 km<sup>2</sup></td>
-    <td>60,7 M</td>
-  </tr>
-  <tr>
-    <td>Francia</td>
-    <td>París</td>
-    <td>675.417 km<sup>2</sup></td>
-    <td>66 M</td>
-  </tr>
-  <tr>
-    <td>Grecia</td>
-    <td>Atenas</td>
-    <td>131.990 km<sup>2</sup></td>
-    <td>10,7 M</td>
-  </tr>
-  <tr>
-    <td>Alemania</td>
-    <td>Berlin</td>
-    <td>357.168 km<sup>2</sup></td>
-    <td>81,2 M</td>
-  </tr>
-</table>
+
+<br>
+<div class="cuadro">
+  <div class="header-calendar">
+    <div>
+			<button (click)="changeMonth(-1)" class="btn-prev">Antes</button>
+		</div>
+		<h1>{{dateSelect | date:'MMMM, yyyy'}}</h1>
+		<div>
+			<button (click)="changeMonth(1)" class="btn-next">Siguiente</button>
+		</div>
+  </div>
+  <ol>
+    <li *ngFor="let day of week" class="day-name">{{day| slice :0:3}}</li>
+    <li (click)="clickDay(day)" [style.gridColumnStart]="first ? day?.indexWeek : 'auto'"
+         *ngFor="let day of monthSelect;let first = first">
+			<span>{{day?.value}}</span>
+		</li>
+  </ol>
+  <hr>
+<div>
+	Fecha: {{dateValue | date}}
+</div>
+</div>
