@@ -32,10 +32,10 @@ import { FormsModule } from '@angular/forms';
 import { TarjetaComponent } from './tarjeta/tarjeta.component';
 import { ModificarArticuloComponent } from './modificar-articulo/modificar-articulo.component';
 import { DescargarExpedienteComponent } from './descargar-expediente/descargar-expediente.component';
-import {AsignarTareaComponent} from './asignar-tarea/asignar-tarea.component';
+import { AsignarTareaComponent } from './asignar-tarea/asignar-tarea.component';
 import { VerTareaComponent } from './ver-tarea/ver-tarea.component';
 import { ArticuloComponent } from './articulo/articulo.component'
-
+import { ScheduleModule, AgendaService, DayService, WeekService, WorkWeekService, MonthService } from '@syncfusion/ej2-angular-schedule';
 @NgModule({
   declarations: [
     ModuloEspecialistasComponent,
@@ -73,7 +73,8 @@ import { ArticuloComponent } from './articulo/articulo.component'
     SharedModule,
     HttpClientModule,
     AngularEditorModule,
-    FormsModule
-  ]
+    FormsModule,
+    ScheduleModule
+  ], providers: [AgendaService, DayService, WeekService, WorkWeekService, MonthService]
 })
 export class ModuloEspecialistasModule { }

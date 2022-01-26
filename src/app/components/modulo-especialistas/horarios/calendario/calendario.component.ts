@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { EventSettingsModel } from '@syncfusion/ej2-angular-schedule';
 import * as moment from 'moment';
 
 @Component({
@@ -6,70 +7,46 @@ import * as moment from 'moment';
   templateUrl: './calendario.component.html',
   styleUrls: ['./calendario.component.css']
 })
-export class CalendarioComponent implements OnInit {
-
-  week: any = [
-    "Lunes",
-    "Martes",
-    "Miercoles",
-    "Jueves",
-    "Viernes",
-    "Sabado",
-    "Domingo"
-  ];
+export class CalendarioComponent {
 
 
-  monthSelect: any[];
-  dateSelect: any;
-  dateValue: any;
+  public eventData: EventSettingsModel = {
 
+    dataSource: [{
 
-  constructor() {
+      Id: 1,
 
-  }
+      Subject: 'Board Meeting',
 
-  ngOnInit(): void {
-    this.getDaysFromDate(11, 2022)
-  }
+      StartTime: new Date(2018, 10, 30, 9, 0),
 
-  getDaysFromDate(month, year) {
+      EndTime: new Date(2018, 10, 30, 11, 0)
 
-    const startDate = moment.utc(`${year}/${month}/01`)
-    const endDate = startDate.clone().endOf('month')
-    this.dateSelect = startDate;
+    },
 
-    const diffDays = endDate.diff(startDate, 'days', true)
-    const numberDays = Math.round(diffDays);
+    {
 
-    const arrayDays = Object.keys([...Array(numberDays)]).map((a: any) => {
-      a = parseInt(a) + 1;
-      const dayObject = moment(`${year}-${month}-${a}`);
-      return {
-        name: dayObject.format("dddd"),
-        value: a,
-        indexWeek: dayObject.isoWeekday()
-      };
-    });
+      Id: 2,
 
-    this.monthSelect = arrayDays;
-  }
+      Subject: 'Training session on JSP',
 
-  changeMonth(flag) {
-    if (flag < 0) {
-      const prevDate = this.dateSelect.clone().subtract(1, "month");
-      this.getDaysFromDate(prevDate.format("MM"), prevDate.format("YYYY"));
-    } else {
-      const nextDate = this.dateSelect.clone().add(1, "month");
-      this.getDaysFromDate(nextDate.format("MM"), nextDate.format("YYYY"));
-    }
-  }
+      StartTime: new Date(2018, 10, 30, 15, 0),
 
-  clickDay(day) {
-    const monthYear = this.dateSelect.format('YYYY-MM')
-    const parse = `${monthYear}-${day.value}`
-    const objectDate = moment(parse)
-    this.dateValue = objectDate;
+      EndTime: new Date(2018, 10, 30, 17, 0)
 
+    },
+
+    {
+
+      Id: 3,
+
+      Subject: 'Sprint Planning with Team members',
+
+      StartTime: new Date(2018, 10, 30, 9, 30),
+
+      EndTime: new Date(2018, 10, 30, 11, 0)
+
+    }]
 
   }
 
