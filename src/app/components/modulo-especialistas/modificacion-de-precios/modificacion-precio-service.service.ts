@@ -7,14 +7,18 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ModificacionPrecioServiceService {
 
-constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-getPrecioGeneral(id: string){
-  return this.http.get('http://localhost:4000/' + 'buscar-EspecialistaAll/' + id)
-}
+  getPrecioGeneral(id: string) {
+    return this.http.get('http://localhost:4000/' + 'buscar-EspecialistaAll/' + id)
+  }
 
-capturar(id: string, id_paciente: string){
-
-}
+  paciente(informacion: any) {
+    return this.http.put('http://localhost:4000/precio-paciente/' + informacion.id_paciente.toString(), informacion);
+  }
+  capturar(informacion: any) {
+    const id = localStorage.getItem('id_especialista')
+    return this.http.put('http://localhost:4000/precio-consulta-general/' + id, informacion);
+  }
 
 }

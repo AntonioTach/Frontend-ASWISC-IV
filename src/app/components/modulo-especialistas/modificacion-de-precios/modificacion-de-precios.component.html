@@ -1,21 +1,18 @@
 <app-navbar-especialista></app-navbar-especialista>
-<br>
-<br>
-<br>
-<br>
+<br />
+<br />
+<br />
+<br />
 
 <div class="cuadro-registro">
-    <h1 class="titulop">Modificación de precios </h1>
-    <form #RegistrarPacienteForm="ngForm" [formGroup]="FormModificarPrecio">
+  <h1 class="titulop">Modificación de precios</h1>
+  <form #RegistrarPacienteForm="ngForm" [formGroup]="FormModificarPrecio">
     <div class="div-info">
       <div>
         <h2>Paciente</h2>
         <mat-form-field class="dropdown" appearance="fill">
           <mat-label>Seleccione el paciente</mat-label>
-          <mat-select
-            [(value)]="id_paciente"
-            (valueChange)="cargarPrecio()"
-          >
+          <mat-select [(value)]="id_paciente" (valueChange)="cargarPrecio()">
             <mat-option
               *ngFor="let paciente of pacientes"
               [value]="paciente.id_usuario"
@@ -38,13 +35,17 @@
         <h2>Consulta General $</h2>
         <mat-form-field class="input" appearance="fill">
           <mat-label>Precio General</mat-label>
-          <input matInput autocomplete="off" value="{{ precio_general }}"  />
+          <input
+            matInput
+            autocomplete="off"
+            formControlName="precio_general"
+            value="{{ precio_general }}"
+          />
           <mat-error>
             Ingrese un Precio númerico no mayor a 6 dígitos
           </mat-error>
         </mat-form-field>
       </div>
-
     </div>
 
     <div class="div-info">
@@ -52,7 +53,12 @@
         <h2>Consulta Paciente $</h2>
         <mat-form-field class="input" appearance="fill">
           <mat-label>Precio Paciente</mat-label>
-          <input matInput autocomplete="off" value="{{ precio_paciente }}"  />
+          <input
+            matInput
+            autocomplete="off"
+            formControlName="precio_paciente"
+            value="{{ precio_paciente }}"
+          />
           <mat-error>
             Ingrese un Precio númerico no mayor a 6 dígitos
           </mat-error>
@@ -60,14 +66,10 @@
       </div>
 
       <div>
-
-          <button (click)="capturar()" mat-raised-button class="btn2 btn-primary">
-            Guardar Cambios
-          </button>
+        <button (click)="capturar()" mat-raised-button class="btn2 btn-primary">
+          Guardar Cambios
+        </button>
       </div>
     </div>
-
-
   </form>
-
 </div>

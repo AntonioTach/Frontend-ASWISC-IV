@@ -36,34 +36,54 @@ export class ModificacionDePreciosComponent implements OnInit {
     })
   }
 
-  cargarPrecioEspecialista(){ //Cargar Precio general del Especialista
+  cargarPrecioEspecialista() { //Cargar Precio general del Especialista
     this.serviceModificacionPrecion.getPrecioGeneral(this.id_usuario.toString()).subscribe((res: any) => {
       var obj = res[0]
       this.precio_general = obj.precio_consulta_general;
     }, err => console.log(err))
   }
 
-  cargarPrecio(){ //Cargar Precio General del Paciente
-    this.modificarExpedienteService.getPaciente(this.id_paciente.toString()).subscribe((res:any) => {
+  cargarPrecio() { //Cargar Precio General del Paciente
+    this.modificarExpedienteService.getPaciente(this.id_paciente.toString()).subscribe((res: any) => {
       var obj = res[0];
       this.precio_paciente = obj.precio_consulta;
     }, err => console.log(err))
   }
 
-  cargarPacientes(){
-      this.serviceRevisar.getPacientes().subscribe((res) => {
+  cargarPacientes() {
+    this.serviceRevisar.getPacientes().subscribe((res) => {
       this.pacientes = res;
     }, err => console.log(err))
   }
 
-  capturar(){
-    if(this.FormModificarPrecio.invalid){
+  capturar() {
+    console.table(this.FormModificarPrecio.value);
+    console.log(this.id_paciente);
+    const paquete = {
+      precio_consulta_general: this.FormModificarPrecio.value['precio_general'],
+      precio_consulta: this.FormModificarPrecio.value['precio_paciente'],
+      id_paciente: this.id_paciente
+    }
+    if (this.FormModificarPrecio.value['precio_general'] == '' && this.FormModificarPrecio.value['precio_paciente'] == '' && this.id_paciente == 0) {
+      window.alert('Falta campos por llenar')
       return
     }
-    else {
-      // this.serviceModificacionPrecion.capturar(this.id_usuario.toString(), this.id_paciente.toString()).subscribe((res:any) => {
+    else if (this.FormModificarPrecio.value['precio_paciente'] == '' && this.id_paciente == 0) {
+      this.serviceModificacionPrecion.capturar(paquete).subscribe((res: any) => {
 
-      // })
+        console.log(res);
+      })
+      console.log("precio_general");
+      console.log('object');
+    } else {
+      this.serviceModificacionPrecion.capturar(paquete).subscribe((res: any) => {
+
+        console.log(res);
+      })
+      this.serviceModificacionPrecion.paciente(paquete).subscribe((res: any) => {
+        console.log(res);
+      }, err => { console.log(err); })
+      console.log("precio de todo");
     }
   }
 
