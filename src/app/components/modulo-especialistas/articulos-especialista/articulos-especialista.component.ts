@@ -34,4 +34,8 @@ export class ArticulosEspecialistaComponent implements OnInit {
     this.router.navigateByUrl('/modulo-especialistas/crear-articulos')
   }
 
+  Ver(id:any){
+    this.router.navigate(['/modulo-especialistas/ver-articulo/' + id])
+  }
+
 }

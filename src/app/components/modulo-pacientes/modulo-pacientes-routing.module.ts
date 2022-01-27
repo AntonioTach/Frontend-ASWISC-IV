@@ -16,6 +16,7 @@ import { RegistrarseConEspecialistaComponent } from './registrarse-con-especiali
 import { TareaComponent } from './tarea/tarea.component';
 import { VerPruebaComponent } from './ver-prueba/ver-prueba.component';
 import { VistaEspecialistaComponent } from './vista-especialista/vista-especialista.component';
+import { ArticuloComponent } from './articulo/articulo.component';
 
 const routes: Routes = [
   {
@@ -34,6 +35,7 @@ const routes: Routes = [
       { path: 'nombre-paciente', component: NombrePacienteComponent },
       { path: 'vista-especialista/:id', component: VistaEspecialistaComponent },
       { path: 'ver-prueba/:id', component: VerPruebaComponent },
+      { path: 'ver-articulo/:id', component: ArticuloComponent },
       { path: 'carrito', component: CarritoComponent },
       { path: 'ver-tarea/:id', component: TareaComponent },
       { path: '**', component: ModuloPacientesComponent },

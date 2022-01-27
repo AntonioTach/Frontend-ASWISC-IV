@@ -1,1 +1,29 @@
-<p>articulo works!</p>
+<app-navbar-especialista></app-navbar-especialista>
+<br />
+<br />
+<br />
+<br />
+<br />
+
+<body style="background-color: white">
+  <div class="cuadro">
+    <h1 class="creacion">Artículo</h1>
+    <div class="div-info">
+      <div class="titulo">
+        <h2>Título del Artículo</h2>
+        <mat-form-field class="input" appearance="fill">
+          <mat-label>Ingrese el título </mat-label>
+          <input matInput [(ngModel)]="titulo" readonly />
+          <mat-error> Por favor ingrese el título </mat-error>
+        </mat-form-field>
+      </div>
+
+
+    </div>
+    <angular-editor
+      id="editor1"
+      [(ngModel)]="html"
+      [config]="editorConfig"
+    ></angular-editor>
+  </div>
+</body>

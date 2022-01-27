@@ -26,6 +26,10 @@ export class ArticulosPacientesComponent implements OnInit {
     })
   }
 
+  Ver(id: any){
+    this.router.navigate(['/modulo-pacientes/ver-articulo/' + id])
+  }
+
 
 
 }

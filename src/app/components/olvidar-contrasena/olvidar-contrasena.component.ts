@@ -74,6 +74,7 @@ export class OlvidarContrasenaComponent implements OnInit {
 
   EnvioCorreo(){
     const id = Math.random().toString(36).substring(2);
+    console.log(id); //Mostrar token
     localStorage.setItem('id', id);
     let email = localStorage.getItem("email");
     let token = localStorage.getItem("id");
