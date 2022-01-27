@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { ThisReceiver } from '@angular/compiler';
 
 import { MyServiceNombrePacienteService } from './my-service-NombrePaciente.service';
+import { finalize } from 'rxjs/operators';
 
 @Component({
   selector: 'app-nombre-paciente',
@@ -25,7 +26,12 @@ export class NombrePacienteComponent implements OnInit {
  paciente: any = [];
 
  edit: boolean = false;
- constructor(private NombrePService: MyServiceNombrePacienteService ,private formBuilder: FormBuilder,private _snackBar: MatSnackBar, private router: Router) { }
+ constructor(
+   private NombrePService: MyServiceNombrePacienteService ,
+   private formBuilder: FormBuilder,
+   private _snackBar: MatSnackBar, 
+   private router: Router
+  ) { }
 
  telefono: any = null;
  hide = true;
@@ -36,12 +42,13 @@ export class NombrePacienteComponent implements OnInit {
  ngOnInit(): void {
    this.cargarPaciente();
    this.FormModificarNombre = this.formBuilder.group({
-    usuario: [this.paciente.usuario, [Validators.required]],
-    nombre: [this.paciente.nombre, [Validators.required]],
-    nacimiento: [this.paciente.nacimiento, [Validators.required]],
-    email: [this.paciente.email, [Validators.required]],
-    contrasena: [this.paciente.contrasena, [Validators.required]],
-    telefono: [this.paciente.telefono, [Validators.required]]
+    usuario: [{value: '', }, [Validators.required]],
+    nombre: [{value: '',},[Validators.required]],
+    nacimiento: [{value: '', disabled: true}, [Validators.required]],
+    email: [{value: '',},[Validators.required]],
+    contrasena: [{value: '',}, [Validators.required]],
+    telefono: [{value: '',}, [Validators.required]],
+    sexo: [{value: '', disabled: true}, [Validators.required]],
    });
  }
 
@@ -56,6 +63,7 @@ export class NombrePacienteComponent implements OnInit {
     this.email = obj.email;
     this.telefono = obj.telefono;
     this.contrasena = obj.contrasena;
+    this.FormModificarNombre.patchValue(obj)
     // this.usuario = this.FormModificarNombre.value['usuario'];
     // this.nombre = this.FormModificarNombre.value['nombre'];
     // this.nacimiento = this.FormModificarNombre.value['nacimiento'];
@@ -74,12 +82,20 @@ export class NombrePacienteComponent implements OnInit {
     console.log(this.FormModificarNombre?.value);
     // this.RegistradoMensaje();
     console.log(this.FormModificarNombre.value);
-    this.NombrePService.updatePaciente(this.id_usuario, this.FormModificarNombre.value).subscribe(
+    this.NombrePService.updatePaciente(this.id_usuario, this.FormModificarNombre.getRawValue())
+    .pipe(
+      finalize(() => {
+        this.cargarPaciente()
+        this._snackBar.open('Actulizado correctamente.', '', { duration: 3000 })
+      })
+    )
+    .subscribe(
       res => {
         console.log(res);
       },
       err => {
         console.log(err)
+        this._snackBar.open('Ha habio un error.', '', { duration: 3000 })
       }
     )
   }
