@@ -1,7 +1,143 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.0/jspdf.umd.min.js"></script>
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"
+  integrity="sha512-BNaRQnYJYiPSqHHDb58B0yaPfCu+Wgds8Gp/gU33kqBtgNS4tSPHuGibyoeqMV/TJlSKda6FXzoEyYGjTe+vXA=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+></script>
 <app-navbar-pacientes></app-navbar-pacientes>
-<p>expediente-pacientes works!</p>
-<p>expediente-pacientes works!</p>
-<p>expediente-pacientes works!</p>
-<p>expediente-pacientes works!</p>
-<p>expediente-pacientes works!</p>
-<p>expediente-pacientes works!</p>
+<br />
+<body>
+  <form [formGroup]="formulario">
+    <div class="cuadro-registro">
+      <div id="registro">
+        <h1>Expediente Clínico</h1>
+        <div class="div-info">
+          <!-- Fecha de nacimiento -->
+          <div>
+            <h2>Fecha de Nacimiento</h2>
+            <mat-form-field class="input" appearance="fill">
+              <mat-label>Fecha de nacimiento</mat-label>
+              <input
+                matInput
+                formControlName="nacimiento"
+              />
+              <mat-error>
+                Por favor Ingrese su <strong>Fecha de Nacimiento</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <!-- Usuario -->
+          <div>
+            <h2>Nombre de usuario</h2>
+            <mat-form-field class="input" appearance="fill">
+              <mat-label>Nombre</mat-label>
+              <input
+                matInput
+                formControlName="usuario"
+              />
+              <mat-error>
+                Por favor Ingrese su nombre de <strong>Usuario</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="div-info">
+          <!-- Email -->
+          <div>
+            <h2>Correo electrónico</h2>
+            <mat-form-field class="input" appearance="fill">
+              <mat-label>Email</mat-label>
+              <input
+                matInput
+                type="email"
+                placeholder="Ex. pat@example.com"
+                formControlName="email"
+              />
+            </mat-form-field>
+          </div>
+          <div>
+            <h2>Origen y Procedencia</h2>
+            <mat-form-field class="input" appearance="fill">
+              <mat-label>Origen y Procedencia</mat-label>
+              <input matInput formControlName="origen"/>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="div-info">
+          <!-- Telefono -->
+          <div>
+            <h2>Número de Teléfono</h2>
+            <mat-form-field class="input" appearance="fill">
+              <mat-label>Teléfono</mat-label>
+              <span matPrefix>+55 &nbsp;</span>
+              <input
+                type="tel"
+                matInput
+                placeholder="555-555-1234"
+                formControlName="telefono"
+              />
+              <mat-error>
+                Por favor Ingrese su número de <strong>telefono</strong> de 10
+                digitos
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div>
+            <h2>Estudios</h2>
+            <mat-form-field class="input" appearance="fill">
+              <mat-label>Estudios</mat-label>
+              <input matInput autocomplete="off" formControlName="estudios" />
+              <mat-error>
+                Por favor Ingrese los <strong>Estudios</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="div-info">
+          <div>
+            <h2>Ocupación</h2>
+            <mat-form-field class="input" appearance="fill">
+              <mat-label>Ocupación</mat-label>
+              <input matInput autocomplete="off" formControlName="ocupacion" />
+              <mat-error>
+                Por favor Ingrese la <strong>Ocupación</strong> del paciente
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div>
+            <h2>Sexo</h2>
+            <mat-form-field class="input" appearance="fill">
+              <mat-label>Sexo</mat-label>
+              <input matInput readonly formControlName="sexo" />
+              <mat-error>
+                Por favor Ingrese su <strong>Fecha de Nacimiento</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="div-info-chart">
+          <h2>Observaciones</h2>
+          <mat-form-field class="textarea" appearance="outline">
+            <textarea
+              matInput
+              placeholder="Observaciones del paciente"
+							formControlName="obsevacion"
+            >
+            </textarea>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="div-info">
+        <!-- Boton -->
+        <div class="div-btn">
+          <button (click)="capturar()" mat-raised-button class="btn">
+            Descargar Expediente Clínico
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+</body>
