@@ -1,40 +1,35 @@
-
 <app-navbar-pacientes></app-navbar-pacientes>
 <body>
-    <div class="cuadro-registro">
-      <h1>Información Personal</h1>
-      <form #ModificarNombrePaciente="ngForm" [formGroup]="FormModificarNombre">
+  <div class="cuadro-registro">
+    <h1>Información Personal</h1>
+    <form #ModificarNombrePaciente="ngForm" [formGroup]="FormModificarNombre">
+      <div class="div-info">
+        <div>
+          <h2>Nombre</h2>
+          <mat-form-field class="input" appearance="fill">
+            <mat-label>Nombre Completo</mat-label>
+            <input
+              matInput
+              autocomplete="off"
+              formControlName="nombre"
+              value="{{ nombre }}"
+            />
+            <mat-error> Por favor ingrese su nombre </mat-error>
+          </mat-form-field>
+        </div>
 
-        <div class="div-info">
-          <div>
-            <h2>Nombre</h2>
-            <mat-form-field class="input" appearance="fill">
-              <mat-label>Nombre Completo</mat-label>
-              <input
-               matInput
-               autocomplete="off"
-               formControlName="nombre"
-               value="{{ nombre }}"
-               >
-              <mat-error>
-                Por favor ingrese su nombre
-              </mat-error>
-            </mat-form-field>
-          </div>
+        <div>
+          <h2>Sexo</h2>
+          <mat-form-field class="input" appearance="fill">
+            <mat-label>Sexo</mat-label>
+            <input matInput formControlName="sexo" />
+            <mat-error>
+              Por favor Ingrese su <strong>Fecha de Nacimiento</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
 
-          <div>
-            <h2>Sexo</h2>
-            <mat-form-field class="input" appearance="fill">
-              <mat-label>Sexo</mat-label>
-              <input matInput formControlName="sexo" />
-              <mat-error>
-                Por favor Ingrese su <strong>Fecha de Nacimiento</strong>
-              </mat-error>
-            </mat-form-field>
-          </div>
-
-
-          <!-- <div>
+        <!-- <div>
             <h2>Sexo</h2>
             <mat-radio-group aria-label="Select an option">
               <mat-radio-button class="input" color="primary" id="masculino" value="masculino" name="sexo" formControlName="sexo">Masculino</mat-radio-button>
@@ -43,50 +38,52 @@
             </mat-radio-group>
           </div> -->
 
-
-          <!-- <div>
+        <!-- <div>
             <h2>Sexo</h2>
             <mat-radio-group aria-label="Select an option">
               <mat-radio-button class="input" *ngFor="let sexo of sexos" [value]="sexo" color="primary">{{ sexo }}</mat-radio-button>
             </mat-radio-group>
           </div> -->
+      </div>
 
-
-        </div>
-
-        <div class="div-info">
-          <!-- Fecha de nacimiento -->
-          <div>
-            <h2>Fecha de Nacimiento</h2>
+      <div class="div-info">
+        <!-- Fecha de nacimiento -->
+        <div>
+          <h2>Fecha de Nacimiento</h2>
           <mat-form-field class="input" appearance="fill">
             <mat-label>Fecha de nacimiento</mat-label>
-            <input matInput readonly value="{{ nacimiento|date:'dd/MM/yyyy' }}" />
+            <input
+              matInput
+              readonly
+              value="{{ nacimiento | date: 'dd/MM/yyyy' }}"
+            />
             <mat-error>
               Por favor Ingrese su <strong>Fecha de Nacimiento</strong>
             </mat-error>
           </mat-form-field>
-          </div>
-          <!-- Usuario -->
-          <div>
-            <h2>Nombre de usuario</h2>
-            <mat-form-field class="input" appearance="fill">
-              <mat-label>Usuario</mat-label>
-              <input
+        </div>
+        <!-- Usuario -->
+        <div>
+          <h2>Nombre de usuario</h2>
+          <mat-form-field class="input" appearance="fill">
+            <mat-label>Usuario</mat-label>
+            <input
               matInput
               autocomplete="off"
               formControlName="usuario"
-              value="{{ usuario }}"  />
-              <mat-error>
-                Por favor Ingrese su nombre de <strong>Usuario</strong>
-              </mat-error>
-            </mat-form-field>
-          </div>
+              value="{{ usuario }}"
+            />
+            <mat-error>
+              Por favor Ingrese su nombre de <strong>Usuario</strong>
+            </mat-error>
+          </mat-form-field>
         </div>
+      </div>
 
-        <div class="div-info">
-          <!-- Email -->
-          <div>
-            <h2>Correo electrónico</h2>
+      <div class="div-info">
+        <!-- Email -->
+        <div>
+          <h2>Correo electrónico</h2>
           <mat-form-field class="input" appearance="fill">
             <mat-label>Email</mat-label>
             <input
@@ -100,53 +97,75 @@
               Por favor Ingrese su <strong>Correo</strong>
             </mat-error>
           </mat-form-field>
-          </div>
-          <!-- Contrasena -->
-          <div>
-            <h2>Contraseña</h2>
-            <mat-form-field class="input" appearance="fill">
-              <mat-label>Contraseña</mat-label>
-              <input matInput
-               autocomplete="off"
-               value="{{ contrasena }}"
-                [type]="hide ? 'password' : 'text'"
-                 formControlName="contrasena">
-              <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
-              [attr.aria-pressed]="hide">
-                <mat-icon>
-                  {{hide ? 'visibility_off' : 'visibility'}}
-                </mat-icon>
-              </button>
-              <mat-error>
-                Por favor Ingrese su  <strong>Contraseña</strong>
-              </mat-error>
-            </mat-form-field>
-          </div>
         </div>
+        <!-- Contrasena -->
+        <div>
+          <h2>Contraseña</h2>
+          <mat-form-field class="input" appearance="fill">
+            <mat-label>Contraseña</mat-label>
+            <input
+              matInput
+              autocomplete="off"
+              value="{{ contrasena }}"
+              [type]="hide ? 'password' : 'text'"
+              formControlName="contrasena"
+            />
+            <button
+              type="button"
+              mat-icon-button
+              matSuffix
+              (click)="hide = !hide"
+              [attr.aria-label]="'Hide password'"
+              [attr.aria-pressed]="hide"
+            >
+              <mat-icon>
+                {{ hide ? "visibility_off" : "visibility" }}
+              </mat-icon>
+            </button>
+            <mat-error>
+              Por favor Ingrese su <strong>Contraseña</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
 
-        <div class="div-info">
-          <!-- Telefono -->
-          <div>
-            <h2>Número de Teléfono</h2>
-            <mat-form-field class="input" appearance="fill">
-              <mat-label>Teléfono</mat-label>
-              <span matPrefix>+55 &nbsp;</span>
-              <input type="tel"
-              matInput placeholder="555-555-1234"
+      <div class="div-info">
+        <!-- Telefono -->
+        <div>
+          <h2>Número de Teléfono</h2>
+          <mat-form-field class="input" appearance="fill">
+            <mat-label>Teléfono</mat-label>
+            <span matPrefix>+55 &nbsp;</span>
+            <input
+              type="tel"
+              matInput
+              placeholder="555-555-1234"
               formControlName="telefono"
-              >
-              <mat-error>
-                Por favor Ingrese su número de <strong>telefono</strong> de 10 digitos
-              </mat-error>
-            </mat-form-field>
-          </div>
-
-          <!-- Boton -->
-            <div class="div-btn">
-              <button [disabled]="FormModificarNombre.invalid" (click)="capturar()" type="submit" mat-raised-button class="btn">Actualizar</button>
-            </div>
+            />
+            <mat-error>
+              Por favor Ingrese su número de <strong>telefono</strong> de 10
+              digitos
+            </mat-error>
+          </mat-form-field>
         </div>
-        <h4>Nota: Sus datos personales se actualizarán una vez que seleccione el botón de "Actualizar" y no podrán ser recuperados.</h4>
-      </form>
-    </div>
-  </body>
+
+        <!-- Boton -->
+        <div class="div-btn">
+          <button
+            [disabled]="FormModificarNombre.invalid"
+            (click)="capturar()"
+            type="submit"
+            mat-raised-button
+            class="btn"
+          >
+            Actualizar
+          </button>
+        </div>
+      </div>
+      <h4>
+        Nota: Sus datos personales se actualizarán una vez que seleccione el
+        botón de "Actualizar" y no podrán ser recuperados.
+      </h4>
+    </form>
+  </div>
+</body>
