@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
-import { pagos } from 'src/app/interfaces/pagos';
 import { render } from 'creditcardpayments/creditCardPayments';
 import { PagosDePacientesService } from './pagos-de-pacientes.service';
 
@@ -29,7 +27,6 @@ export class PagosDePacientesComponent implements OnInit {
     let id_especialista = localStorage.getItem('id_especialista')
     this.carrito.getPagos2(id_especialista).subscribe((res: any) => {
       this.pagos = res;
-      console.log('data pagos: ', res)
       if (res.length == 0) {
         this.id = 0
       } else {
@@ -38,10 +35,8 @@ export class PagosDePacientesComponent implements OnInit {
       console.log(this.pagos);
       for (let i = 0; i < this.pagos.length; i++) {
         this.total = this.total + this.pagos[i].precio;
-        console.log(this.pagos[i].precio);
       }
       this.total = this.total -1;
-      console.log(this.total);
       render(
         {
           id: "#payments",

@@ -1,6 +1,19 @@
 <app-navbar-pacientes></app-navbar-pacientes>
-<p>pagos-pacientes works!</p>
-<p>pagos-pacientes works!</p>
-<p>pagos-pacientes works!</p>
-<p>pagos-pacientes works!</p>
-<p>pagos-pacientes works!</p>
+<br>
+<br>
+<br>
+<br>
+<div class="cuadro-registro">
+    <h1 class="titulo">Pagos de Pacientes</h1>
+    <div class="container col-md-12">
+      <div class="row">
+        <div class="col-md-12 cuadro mt-2" *ngFor="let pago of pagos">
+          <h1>Facturacion {{ pago.id_pago }}</h1>
+          <h1>Fecha: {{ pago.fecha | date: "dd/MM/yyyy HH:mm:ss" }}</h1>
+          <h2>Monto: {{ pago.precio }} pesos</h2>
+          <hr>
+        </div>
+      </div>
+      <h1 class="mt-2" *ngIf="total > 1">Total pagado: {{ total }} pesos</h1>
+    </div>
+</div>
