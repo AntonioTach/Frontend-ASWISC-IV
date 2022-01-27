@@ -52,4 +52,8 @@ export class ElementosDeTerapiaComponent implements OnInit {
     this.router.navigate(['/modulo-especialistas/ver-tarea/' + id.toString()]);
   }
 
+  eliminarTarea(id:number){
+    
+  }
+
 }

@@ -80,7 +80,7 @@ export class RevisarPacienteComponent implements OnInit {
     this.router.navigateByUrl('/modulo-especialistas/descargar-expediente/' + id.toString());
   }
   ///this.reportesService.replicarReporte(this.replicaId, this.registrarForm?.value).subscribe(
-    eliminarArticulo(id:any){
+  eliminarExpediente(id:any){
 
-    }
+  }
 }
