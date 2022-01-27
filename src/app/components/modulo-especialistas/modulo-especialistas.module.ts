@@ -35,7 +35,7 @@ import { DescargarExpedienteComponent } from './descargar-expediente/descargar-e
 import { AsignarTareaComponent } from './asignar-tarea/asignar-tarea.component';
 import { VerTareaComponent } from './ver-tarea/ver-tarea.component';
 import { ArticuloComponent } from './articulo/articulo.component'
-import { ScheduleModule, AgendaService, DayService, DragAndDropService, ResizeService, WeekService, WorkWeekService, MonthService } from '@syncfusion/ej2-angular-schedule';
+//import { ScheduleModule, AgendaService, DayService, DragAndDropService, ResizeService, WeekService, WorkWeekService, MonthService } from '@syncfusion/ej2-angular-schedule';
 @NgModule({
   declarations: [
     ModuloEspecialistasComponent,
@@ -74,7 +74,8 @@ import { ScheduleModule, AgendaService, DayService, DragAndDropService, ResizeSe
     HttpClientModule,
     AngularEditorModule,
     FormsModule,
-    ScheduleModule
-  ], providers: [AgendaService, DayService, WeekService, WorkWeekService, MonthService, DragAndDropService, ResizeService]
+   //ScheduleModule
+  ] 
+  //,providers: [AgendaService, DayService, WeekService, WorkWeekService, MonthService, DragAndDropService, ResizeService]
 })
 export class ModuloEspecialistasModule { }
