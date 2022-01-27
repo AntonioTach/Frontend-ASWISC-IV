@@ -24,6 +24,7 @@ export class CarritoComponent implements OnInit {
         this.total = this.total + this.pagos[i].precio;
         console.log(this.pagos[i].precio);
       }
+      this.total = this.total -1;
       console.log(this.total);
       render(
         {
