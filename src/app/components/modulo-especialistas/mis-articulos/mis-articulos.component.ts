@@ -1,39 +1,60 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { ArticulosService } from '../crear-articulos/articulos.service';
+import { MisArticulosService } from './mis-articulos.service';
 
 @Component({
   selector: 'app-mis-articulos',
   templateUrl: './mis-articulos.component.html',
-  styleUrls: ['./mis-articulos.component.css']
+  styleUrls: ['./mis-articulos.component.css'],
 })
 export class MisArticulosComponent implements OnInit {
-
-
-  displayedColumns: string[] = ['titulo', 'nombre', 'fecha', 'acciones'];//columnas
+  displayedColumns: string[] = ['titulo', 'nombre', 'fecha', 'acciones']; //columnas
   dataSource: any = [];
 
-
-  applyFilter(event: Event) {
-
-  }
-
-  constructor(private router: Router, private articulos: ArticulosService) { }
+  constructor(
+    private router: Router,
+    private articulos: ArticulosService,
+    private articulosService: MisArticulosService,
+    private _snackBar: MatSnackBar
+  ) {}
 
   ngOnInit(): void {
-    this.articulos.getMisArticulos().subscribe(res => {
+    this.traerArticulos()
+  }
+
+  traerArticulos(): void {
+    this.articulos.getMisArticulos().subscribe((res) => {
       this.dataSource = res;
-    })
+    }); 
   }
 
   ModificacionExpediente() {
     console.log('Crear Artículos');
-    this.router.navigateByUrl('/modulo-especialistas/crear-articulos')
+    this.router.navigateByUrl('/modulo-especialistas/crear-articulos');
   }
   modificar(id: any) {
-    this.router.navigate(['/modulo-especialistas/modificar-articulo/' + id])
+    this.router.navigate(['/modulo-especialistas/modificar-articulo/' + id]);
   }
-  eliminarArticulo(){
-    
+  eliminarArticulo(id: string): void {
+    if (
+      confirm(
+        'Seguro que desea eliminar el articulo?. Dejará de pertenecer a su lista de articulos.'
+      ) == true
+    ) {
+      this.articulosService.eliminarArticulo(id).subscribe(
+        (res) => {
+          console.log(res);
+          this.traerArticulos()
+        },
+        (err) => console.log(err)
+      );
+      this._snackBar.open('El atiuculo fue eliminado con exito', '', {
+        duration: 1500,
+        horizontalPosition: 'center',
+        verticalPosition: 'bottom',
+      });
+    }
   }
 }
