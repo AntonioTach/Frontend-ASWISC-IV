@@ -11,6 +11,11 @@ export class PagosDePacientesService {
     const id = localStorage.getItem('id_usuario')
     return this.http.get('http://localhost:4000/carrito/' + id);
   }
+
+  getPagos2(id: string){
+
+    return this.http.get('http://localhost:4000/carrito2/' + id);
+  }
   subirPagos(id) {
     const p = {
       estatus: 2

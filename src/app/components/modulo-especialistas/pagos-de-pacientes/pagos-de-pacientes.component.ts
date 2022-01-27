@@ -9,7 +9,7 @@ import { PagosDePacientesService } from './pagos-de-pacientes.service';
 //   {nombre:'Hydrogen', monto: 'Hydrogen', fecha: 'Hydrogen'},
 //   {nombre:'Hydrogen', monto: 'Hydrogen', fecha: 'Hydrogen'},
 //   {nombre:'Hydrogen', monto: 'Hydrogen', fecha: 'Hydrogen'},
-  
+
 // ];
 @Component({
   selector: 'app-pagos-de-pacientes',
@@ -22,6 +22,7 @@ export class PagosDePacientesComponent implements OnInit {
   pagos: any;
   total: any = 1;
 
+  id2 = localStorage.getItem('id_especialista');
   constructor(private carrito: PagosDePacientesService) {
     this.carrito.getPagos().subscribe((res: any) => {
       this.pagos = res;
@@ -68,6 +69,14 @@ export class PagosDePacientesComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getPagosCarrito2();
+  }
 
+  getPagosCarrito2(){
+    // console.log(this.id2);
+    this.carrito.getPagos2(this.id2.toString()).subscribe((res: any) => {
+      var obj = res[0]
+      console.log(obj)
+    }, err => console.log(err))
   }
 }
