@@ -5,42 +5,22 @@
 <br>
 <div class="cuadro-registro">
     <h1 class="titulo">Pagos de Pacientes</h1>
-    <div class="div-info">
-        
-        
-            
-        <!-- Boton -->
-          <div class="div-btn">
-            <button  type="submit" mat-raised-button class="btn" (click)="agregartarjeta();">Agregar Tarjeta</button>
-          </div>
-
+    <div class="container col-md-12">
+      <h1 class="ml-5">Carrito</h1>
+      <div class="row">
+        <div class="col-md-12 cuadro mt-2" *ngFor="let pago of pagos">
+          <h1>Facturacion {{ pago.id_pago }}</h1>
+          <h1>Fecha: {{ pago.fecha | date: "dd/MM/yyyy HH:mm:ss" }}</h1>
+          <h2>Monto: {{ pago.precio }} pesos</h2>
+        </div>
+      </div>
+      <h1 class="mt-2" *ngIf="total == 1">Carrito vacio</h1>
+      <h1 class="mt-2" *ngIf="total > 1">Monto a pagar: {{ total }} pesos</h1>
     </div>
-    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-
-    <!--- Note that these columns can be defined in any order.
-          The actual rendered columns are set as a property on the row definition" -->
-  
-    <!-- nombre Column -->
-    <ng-container matColumnDef="nombre">
-      <th mat-header-cell *matHeaderCellDef> Nombre Completo</th>
-      <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
-    </ng-container>
-  
-    <!-- monto Column -->
-    <ng-container matColumnDef="monto">
-      <th mat-header-cell *matHeaderCellDef>  Monto</th>
-      <td mat-cell *matCellDef="let element"> {{element.monto}} </td>
-    </ng-container>
-  
-    <!-- fecha Column -->
-    <ng-container matColumnDef="fecha">
-      <th mat-header-cell *matHeaderCellDef> Fecha de Pago </th>
-      <td mat-cell *matCellDef="let element"> {{element.fecha}} </td>
-    </ng-container>
-
-  
-  
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  </table>
+    <div *ngIf="total > 1" class="container row mt-5">
+      <div class="col-md-12" class="mx-auto" style="width: 200px">
+        <div id="payments" class="col-md-5"></div>
+      </div>
+    </div>
+    
 </div>
