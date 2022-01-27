@@ -1,0 +1,83 @@
+body {
+	background-color: #f8f8ff;
+	width: 100%;
+	margin: auto;
+	font-family: sans-serif;
+	padding-top: 40px;
+  }
+  
+  .cuadro-registro {
+	background-color: #f8f8ff;
+	width: 90%;
+	margin: auto;
+	padding-top: 50px;
+	border: 6px solid #dcdcdc;
+  }
+  
+  h1 {
+	text-align: start;
+	font-size: 48px;
+	font-weight: bolder;
+	margin-top: 10px;
+	margin-left: 100px;
+	color: #000000;
+  }
+  
+  h2 {
+	text-align: start;
+	font-size: 20px;
+	margin-top: 10px;
+	margin-left: 105px;
+	margin-bottom: 5px;
+	color: #000000;
+  }
+  
+  .input {
+	text-align: start;
+	margin-left: 105px;
+	margin-right: 250px;
+	width: 270px;
+	margin-bottom: 10px;
+  }
+  .dropdown {
+	text-align: start;
+	margin-left: 105px;
+	margin-right: 250px;
+	width: 270px;
+	margin-bottom: 10px;
+  }
+  .textarea {
+	text-align: start;
+	margin-left: 105px;
+	margin-right: 250px;
+	width: 270px;
+	margin-bottom: 10px;
+  }
+  .div-info {
+	display: flex;
+	padding-top: 5px;
+	padding-bottom: 5px;
+  }
+  
+  .btn {
+	height: 40px;
+	text-align: start;
+	margin-left: 105px;
+	margin-right: 250px;
+	margin-top: 45px;
+	width: 270px;
+	margin-bottom: 10px;
+	background-color: #008000;
+	color: #ffffff;
+	font-size: 18px;
+	border: 2px solid;
+	line-height: 1;
+  }
+  .textarea {
+	text-align: start;
+	margin-left: 105px;
+	margin-right: 250px;
+	width: 78%;
+	margin-bottom: 10px;
+  }
+  
