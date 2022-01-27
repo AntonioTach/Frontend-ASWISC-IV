@@ -41,5 +41,8 @@ export class ArticulosEspecialistaComponent implements OnInit {
   Ver(id:any){
     this.router.navigate(['/modulo-especialistas/ver-articulo/' + id])
   }
+  eliminarArticulo(){
+    
+  }
 
 }
