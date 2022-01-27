@@ -1,0 +1,36 @@
+<body>
+  <div class="cuadro-registro">
+    <h1>Recuperación de Contraseña</h1>
+    <form
+      #recuperacionForm="ngForm"
+      [formGroup]="formRecuperacion"
+      (ngSubmit)="BuscarCorreo()"
+    >
+    <div class="div-info">
+      <div>
+        <h2>Ingrese su correo para recuperar su Contraseña</h2>
+          <mat-form-field class="input" appearance="fill">
+            <mat-label>Email</mat-label>
+            <input
+              matInput
+              type="email"
+              formControlName="email"
+              placeholder="Ex. pat@example.com"
+            />
+            <mat-error>
+              Por favor Ingrese su <strong>Correo</strong>
+            </mat-error>
+          </mat-form-field>
+      </div>
+    </div>
+    <div class="div-info">
+      <div class="div-btn">
+        <!-- <button  type="submit" mat-raised-button class="ancho btn" [disabled]="form.invalid">Ingresar</button> -->
+        <button type="submit" mat-stroked-button color="primary" class="btn">Búscar</button>
+      </div>
+    </div>
+
+
+    </form>
+  </div>
+</body>

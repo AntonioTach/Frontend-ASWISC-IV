@@ -1,0 +1,61 @@
+body{
+  background-color: #F8F8FF ;
+  width: 100%;
+  margin: auto;
+  font-family: sans-serif;
+  padding-top: 40px;
+}
+
+.cuadro-registro{
+  background-color: #F8F8FF ;
+  width: 90%;
+  margin: auto;
+  padding-top: 10px;
+  border: 6px solid #DCDCDC;
+}
+
+h1{
+  text-align: center;
+  font-size: 48px;
+  font-weight: bolder;
+  margin-top: 10px;
+  margin-left: 10px;
+  color: #000000;
+}
+
+h2{
+  text-align: start;
+  font-size: 20px;
+  margin-top: 10px;
+  margin-left: 15px;
+  margin-bottom: 5px;
+  color: #000000;
+}
+
+.input{
+  text-align: start;
+  margin-left: 15px;
+  margin-right: 250px;
+  width: 270px;
+  margin-bottom: 10px;
+
+}
+
+.div-info{
+  display: flex;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.div-btn{
+  text-align: center;
+}
+
+.btn{
+  height: 30px;
+  width: 270px;
+  margin-left: 15px;
+  margin-bottom: 20px;
+  font-size: 18px;
+
+}

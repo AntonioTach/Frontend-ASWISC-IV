@@ -48,6 +48,10 @@ export class LoginComponent implements OnInit {
         //localStorage.setItem('token', res.headers.get('token')); //Se guarda el Token en el localStorage
         this.direccionar();
 
+        if(res == false){
+          this.error2();
+        }
+
       },
       (err:any) => {
         console.log("usuario NO valido");

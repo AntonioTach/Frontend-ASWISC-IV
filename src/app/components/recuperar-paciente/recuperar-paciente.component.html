@@ -1,0 +1,67 @@
+<body>
+  <div class="cuadro-registro">
+    <h1>Recuperación de Contraseña Usuario Paciente</h1>
+    <form
+      #recuperacionForm="ngForm"
+      [formGroup]="formActualizar"
+      (ngSubmit)="Actualizar()"
+    >
+    <div class="div-info">
+      <div>
+        <h2>El token ha sido enviado a su correo electrónico</h2>
+        <h2>Ingrese el token de 11 dígitos</h2>
+          <mat-form-field class="input" appearance="fill">
+            <mat-label>Token</mat-label>
+            <input
+              matInput
+              formControlName="token"
+              placeholder="Token de 11 dígitos"
+            />
+            <mat-error>
+              Por favor Ingrese su <strong>Token</strong>
+            </mat-error>
+          </mat-form-field>
+      </div>
+    </div>
+
+    <div class="div-info">
+      <div>
+        <h2>Contraseña</h2>
+          <mat-form-field class="input" appearance="fill">
+            <mat-label>Contraseña</mat-label>
+            <input
+              matInput
+              autocomplete="off"
+              [type]="hide ? 'password' : 'text'"
+              formControlName="contrasena"
+            />
+            <button
+              type="button"
+              mat-icon-button
+              matSuffix
+              (click)="hide = !hide"
+              [attr.aria-label]="'Hide password'"
+              [attr.aria-pressed]="hide"
+            >
+              <mat-icon>
+                {{ hide ? "visibility_off" : "visibility" }}
+              </mat-icon>
+            </button>
+            <mat-error>
+              Por favor Ingrese su <strong>Contraseña</strong>
+            </mat-error>
+          </mat-form-field>
+      </div>
+    </div>
+
+    <div class="div-info">
+      <div class="div-btn">
+        <!-- <button  type="submit" mat-raised-button class="ancho btn" [disabled]="form.invalid">Ingresar</button> -->
+        <button type="submit" mat-stroked-button color="primary" class="btn">Actualizar</button>
+      </div>
+    </div>
+
+
+    </form>
+  </div>
+</body>

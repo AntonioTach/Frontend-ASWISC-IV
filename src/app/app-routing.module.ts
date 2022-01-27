@@ -9,6 +9,9 @@ import { ModuloPacientesComponent } from './components/modulo-pacientes/modulo-p
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { RegistroEspecialistaComponent } from './components/registro-especialista/registro-especialista.component';
 import { RegistroPacienteComponent } from './components/registro-paciente/registro-paciente.component';
+import { OlvidarContrasenaComponent } from './components/olvidar-contrasena/olvidar-contrasena.component';
+import { RecuperarPacienteComponent } from './components/recuperar-paciente/recuperar-paciente.component';
+import { RecuperarEspecialistaComponent } from './components/recuperar-especialista/recuperar-especialista.component';
 //GUARDS
 import { EspecialistaGuard } from './guards/especialista.guard';
 import { InicioGuard } from './guards/inicio.guard';
@@ -28,6 +31,9 @@ const routes: Routes = [
   { path: 'registro-especialista', component: RegistroEspecialistaComponent },
   { path: 'registro-paciente', component: RegistroPacienteComponent },
   { path: 'articulos', component: ArticulosComponent },
+  { path: 'olvido-contrasena', component: OlvidarContrasenaComponent },
+  { path: 'recuperar-paciente', component: RecuperarPacienteComponent },
+  {  path: 'recuperar-especialista', component: RecuperarEspecialistaComponent},
   { path: 'modulo-especialistas', component: ModuloEspecialistasComponent, canActivate:[EspecialistaGuard, InicioGuard], data: { expectedRole: 1 },  loadChildren: () => import('./components/modulo-especialistas/modulo-especialistas.module').then(x => x.ModuloEspecialistasModule)},//loadchildren corregido
   { path: 'modulo-pacientes', component: ModuloPacientesComponent, canActivate:[PacienteGuard, InicioGuard], data: { expectedRole: 2 } , loadChildren: () => import('./components/modulo-pacientes/modulo-pacientes.module').then(x => x.ModuloPacientesModule)},
   { path:'wisc-iv', component:WiscIvComponent},

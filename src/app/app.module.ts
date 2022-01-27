@@ -14,7 +14,9 @@ import { Navbar2Component } from './components/navbar2/navbar2.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegistroPacienteComponent } from './components/registro-paciente/registro-paciente.component';
 import { RegistroEspecialistaComponent } from './components/registro-especialista/registro-especialista.component';
-
+import { OlvidarContrasenaComponent } from './components/olvidar-contrasena/olvidar-contrasena.component';
+import { RecuperarPacienteComponent } from './components/recuperar-paciente/recuperar-paciente.component';
+import { RecuperarEspecialistaComponent } from './components/recuperar-especialista/recuperar-especialista.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { ServiceRegistroEspecialistaService } from './components/registro-especialista/service-registro-especialista.service';
@@ -47,7 +49,9 @@ import { AswiscIvComponent } from './components/aswisc-iv/aswisc-iv.component';
     Navbar3Component,
     WiscIvComponent,
     AswiscIvComponent,
-
+    OlvidarContrasenaComponent,
+    RecuperarPacienteComponent,
+    RecuperarEspecialistaComponent,
   ],
   imports: [
     BrowserModule,
