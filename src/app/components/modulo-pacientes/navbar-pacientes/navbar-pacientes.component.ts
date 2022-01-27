@@ -10,69 +10,73 @@ export class NavbarPacientesComponent implements OnInit {
 
   usuario = localStorage.getItem('usuario');
 
-  constructor(private router:Router) { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
 
-  ASWISC(){
+  ASWISC() {
     console.log('ASWISC-IV');
     this.router.navigateByUrl('/modulo-pacientes');
   }
 
-  MiEspecialista(){
+  MiEspecialista() {
     console.log('Mi Especialista');
     this.router.navigateByUrl('/modulo-pacientes/mi-especialista');
   }
-  RegistrarseConEspecialista(){
+  RegistrarseConEspecialista() {
     console.log('Registrarse Con Especialistas');
     this.router.navigateByUrl('/modulo-pacientes/registrarse-con-especialista')
   }
 
-  Articulos(){
+  Articulos() {
     console.log("Registrar pacientes");
     this.router.navigateByUrl('/modulo-pacientes/articulos-pacientes');
 
   }
 
-  HorariosDisponibles(){
+  HorariosDisponibles() {
     console.log('Horarios Disponibles');
     this.router.navigateByUrl('/modulo-pacientes/horarios-disponibles');
   }
 
-  Pruebas(){
+  Pruebas() {
     console.log('Pruebas');
     this.router.navigateByUrl('/modulo-pacientes/pruebas-pacientes');
 
   }
 
-  ExpedienteClinico(){
+  ExpedienteClinico() {
     console.log('Expediente Clinico');
     this.router.navigateByUrl('/modulo-pacientes/expediente-pacientes');
   }
 
 
-  ElementosTerapia(){
+  ElementosTerapia() {
     console.log('Elementos de Terapia');
     this.router.navigateByUrl('/modulo-pacientes/elementos-de-terapia-pacientes');
   }
 
-  Baja(){
+  Baja() {
     console.log('Baja');
     this.router.navigateByUrl('/modulo-pacientes/baja-pacientes');
   }
 
-  Pagos(){
+  Pagos() {
     console.log('Pagos');
     this.router.navigateByUrl('/modulo-pacientes/pagos-pacientes');
   }
 
-  Nombre(){
+  Nombre() {
     console.log('Nombre');
     this.router.navigateByUrl('/modulo-pacientes/nombre-paciente')
   }
+  Carrito() {
+    console.log("carrito");
+    this.router.navigateByUrl('/modulo-pacientes/carrito')
+  }
 
-  btnLogout(){
+  btnLogout() {
     //console.log('Logout');
 
     localStorage.removeItem('token');

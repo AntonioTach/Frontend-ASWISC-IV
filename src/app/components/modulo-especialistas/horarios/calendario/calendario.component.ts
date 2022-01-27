@@ -18,9 +18,10 @@ export class CalendarioComponent {
 
       Subject: 'Board Meeting',
 
-      StartTime: new Date(1643235032),
+      StartTime: new Date(2022, 0, 26, 3, 24, 0),
 
-      EndTime: new Date(1643235032 + 90 * 6000)
+      EndTime: new Date(2022, 0, 26, 4, 24, 0),
+      description: "holasd"
 
     },
 
@@ -32,7 +33,7 @@ export class CalendarioComponent {
 
       StartTime: new Date(),
 
-      EndTime: new Date(2022, 10, 30, 17, 0)
+      EndTime: new Date(1643236363)
 
     },
 
