@@ -23,7 +23,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatSelectModule } from '@angular/material/select';
-
+//import { ScheduleModule, AgendaService, DayService, DragAndDropService, ResizeService, WeekService, WorkWeekService, MonthService } from '@syncfusion/ej2-angular-schedule';
 
 
 @NgModule({
@@ -49,6 +49,7 @@ import { MatSelectModule } from '@angular/material/select';
     MatSortModule,
     MatSelectModule,
     FormsModule,
+    //ScheduleModule
   ],
   exports: [
     MatSliderModule,
@@ -69,8 +70,8 @@ import { MatSelectModule } from '@angular/material/select';
     MatPaginatorModule,
     MatSortModule,
     MatSelectModule,
+   // ScheduleModule
 
-
-  ]
+  ]//,providers: [AgendaService, DayService, WeekService, WorkWeekService, MonthService, DragAndDropService, ResizeService]
 })
 export class SharedModule { }

@@ -1,51 +1,59 @@
-<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+<link
+  href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css"
+  rel="stylesheet"
+/>
 <nav>
   <div class="navbar">
-    <i class='bx bx-menu'></i>
+    <i class="bx bx-menu"></i>
     <!-- <div class="logo"><a href="#">ASWISC IV</a></div> -->
     <div class="logo"><a>ASWISCIV</a></div>
     <div class="nav-links">
       <div class="sidebar-logo">
         <span class="logo-name">ASWISC IV</span>
-        <i class='bx bx-x' ></i>
+        <i class="bx bx-x"></i>
       </div>
       <ul class="links">
-
-        <li><a (click)="ASWISC();">ASWISC-IV</a></li>
+        <li><a (click)="ASWISC()">ASWISC-IV</a></li>
         <li>
           <a>Especialista</a>
-          <i class='bx bxs-chevron-down htmlcss-arrow arrow  '></i>
+          <i class="bx bxs-chevron-down htmlcss-arrow arrow"></i>
           <ul class="htmlCss-sub-menu sub-menu">
-            <li><a (click)="MiEspecialista();">Mi Especialista</a></li>
-            <li><a (click)="RegistrarseConEspecialista();">Registrarse con Especialista</a></li>
+            <li><a (click)="MiEspecialista()">Mi Especialista</a></li>
+            <li>
+              <a (click)="RegistrarseConEspecialista()"
+                >Registrarse con Especialista</a
+              >
+            </li>
             <!--<li><a href="#">Card Design</a></li>-->
           </ul>
         </li>
         <li>
-          <a (click)="Articulos();">Artículos</a>
+          <a (click)="Articulos()">Artículos</a>
         </li>
         <li>
-          <a (click)="HorariosDisponibles();">Horarios</a>
+          <a (click)="HorariosDisponibles()">Horarios</a>
         </li>
         <li>
-          <a (click)="Pruebas();">Pruebas</a>
+          <a (click)="Pruebas()">Pruebas</a>
         </li>
 
-        <li><a (click)="ExpedienteClinico();">Expediente</a></li>
-        <li><a (click)="ElementosTerapia();">Elementos</a></li>
+        <li><a (click)="ExpedienteClinico()">Expediente</a></li>
+        <li><a (click)="ElementosTerapia()">Elementos</a></li>
 
-        <li><a (click)="Pagos();">Pagos</a></li>
-        <li><a (click)="Baja();">Baja</a></li>
-        <li><a (click)="Nombre();">{{usuario}}</a></li>
+        <li><a (click)="Pagos()">Pagos</a></li>
+        <li><a (click)="Baja()">Baja</a></li>
+        <li><a (click)="Carrito()">Carrito</a></li>
+        <li>
+          <a (click)="Nombre()">{{ usuario }}</a>
+        </li>
         <!-- Aqui deberia mostrar un icono de logout -->
 
-        <li >
-          <button (click)="btnLogout(); ">
-            <i class='bx bxs-log-out' ></i>
+        <li>
+          <button (click)="btnLogout()">
+            <i class="bx bxs-log-out"></i>
           </button>
         </li>
       </ul>
     </div>
   </div>
 </nav>
-

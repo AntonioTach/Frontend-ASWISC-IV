@@ -18,9 +18,10 @@ export class CalendarioComponent {
 
       Subject: 'Board Meeting',
 
-      StartTime: new Date(2018, 10, 30, 9, 0),
+      StartTime: new Date(2022, 0, 26, 3, 24, 0),
 
-      EndTime: new Date(2018, 10, 30, 11, 0)
+      EndTime: new Date(2022, 0, 26, 4, 24, 0),
+      description: "holasd"
 
     },
 
@@ -30,9 +31,9 @@ export class CalendarioComponent {
 
       Subject: 'Training session on JSP',
 
-      StartTime: new Date(2018, 10, 30, 15, 0),
+      StartTime: new Date(),
 
-      EndTime: new Date(2018, 10, 30, 17, 0)
+      EndTime: new Date(1643236363)
 
     },
 
@@ -42,9 +43,9 @@ export class CalendarioComponent {
 
       Subject: 'Sprint Planning with Team members',
 
-      StartTime: new Date(2018, 10, 30, 9, 30),
+      StartTime: new Date(2022, 10, 30, 9, 30),
 
-      EndTime: new Date(2018, 10, 30, 11, 0)
+      EndTime: new Date(2022, 10, 30, 11, 0)
 
     }]
 
