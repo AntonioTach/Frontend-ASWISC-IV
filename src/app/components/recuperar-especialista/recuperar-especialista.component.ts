@@ -39,6 +39,10 @@ export class RecuperarEspecialistaComponent implements OnInit {
     });
   }
 
+  regresaHome(){
+    this.router.navigateByUrl('/login');
+  }
+
   Actualizar(){
     if(this.formActualizar.invalid){
       return
