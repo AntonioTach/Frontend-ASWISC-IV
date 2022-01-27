@@ -16,6 +16,17 @@
       >
         Crear un nuevo Artículo
       </button>
+
+      <mat-form-field appearance="standard">
+        <mat-label>Búsqueda</mat-label>
+        <input
+          matInput
+          autocomplete="off"
+          (keyup)="applyFilter($event)"
+          #input
+          autocomplete="off"
+        />
+      </mat-form-field>
     </div>
   </div>
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
