@@ -33,4 +33,7 @@ export class MisArticulosComponent implements OnInit {
   modificar(id: any) {
     this.router.navigate(['/modulo-especialistas/modificar-articulo/' + id])
   }
+  eliminarArticulo(){
+    
+  }
 }
