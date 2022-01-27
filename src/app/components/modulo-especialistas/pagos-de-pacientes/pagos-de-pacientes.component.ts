@@ -23,9 +23,13 @@ export class PagosDePacientesComponent implements OnInit {
   total: any = 1;
 
   id2 = localStorage.getItem('id_especialista');
-  constructor(private carrito: PagosDePacientesService) {
-    this.carrito.getPagos().subscribe((res: any) => {
+  constructor(
+    private carrito: PagosDePacientesService
+  ) {
+    let id_especialista = localStorage.getItem('id_especialista')
+    this.carrito.getPagos2(id_especialista).subscribe((res: any) => {
       this.pagos = res;
+      console.log('data pagos: ', res)
       if (res.length == 0) {
         this.id = 0
       } else {

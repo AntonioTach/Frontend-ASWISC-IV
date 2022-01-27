@@ -6,21 +6,14 @@
 <div class="cuadro-registro">
     <h1 class="titulo">Pagos de Pacientes</h1>
     <div class="container col-md-12">
-      <h1 class="ml-5">Carrito</h1>
       <div class="row">
         <div class="col-md-12 cuadro mt-2" *ngFor="let pago of pagos">
           <h1>Facturacion {{ pago.id_pago }}</h1>
           <h1>Fecha: {{ pago.fecha | date: "dd/MM/yyyy HH:mm:ss" }}</h1>
           <h2>Monto: {{ pago.precio }} pesos</h2>
+          <hr>
         </div>
       </div>
-      <h1 class="mt-2" *ngIf="total == 1">Carrito vacio</h1>
-      <h1 class="mt-2" *ngIf="total > 1">Monto a pagar: {{ total }} pesos</h1>
+      <h1 class="mt-2" *ngIf="total >= 1">Total recibido: {{ total }} pesos</h1>
     </div>
-    <div *ngIf="total > 1" class="container row mt-5">
-      <div class="col-md-12" class="mx-auto" style="width: 200px">
-        <div id="payments" class="col-md-5"></div>
-      </div>
-    </div>
-    
 </div>

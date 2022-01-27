@@ -23,6 +23,8 @@ import { VerPruebaComponent } from './ver-prueba/ver-prueba.component';
 import { CarritoComponent } from './carrito/carrito.component';
 import { TareaComponent } from './tarea/tarea.component';
 import { ArticuloComponent } from './articulo/articulo.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AngularEditorModule } from '@kolkov/angular-editor';
 
 
 @NgModule({
@@ -51,7 +53,10 @@ import { ArticuloComponent } from './articulo/articulo.component';
   imports: [
     CommonModule,
     ModuloPacientesRoutingModule,
-    SharedModule
+    SharedModule,
+    FormsModule,
+    ReactiveFormsModule,
+    AngularEditorModule
   ]
 })
 export class ModuloPacientesModule { }
