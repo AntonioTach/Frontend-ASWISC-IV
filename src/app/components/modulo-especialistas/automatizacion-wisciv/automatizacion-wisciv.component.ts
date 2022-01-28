@@ -65,7 +65,7 @@ export class AutomatizacionWiscivComponent implements OnInit {
     else{
       this.automatizacion.envioDatos(this.FormASWISC.value).subscribe(
         (res:any) => {
-
+          console.log(res)
         },
         err => {
           console.log(err);

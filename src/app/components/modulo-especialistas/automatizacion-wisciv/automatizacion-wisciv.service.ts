@@ -9,7 +9,7 @@ export class AutomatizacionWiscivService {
 constructor(private http: HttpClient) { }
 
   envioDatos(datos: any){
-    return this.http.post('http://localhost:4000/aswisc', datos);
+    return this.http.post('http://localhost:4000/aswisc/', datos);
   }
 
 }
