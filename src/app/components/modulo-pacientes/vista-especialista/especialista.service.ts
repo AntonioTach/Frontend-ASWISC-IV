@@ -20,4 +20,7 @@ export class EspecialistaService {
     console.log(idPaciente);
     return this.http.get('http://localhost:4000/' + 'desuscribirme/' + idPaciente);
   }
+  getEspecialista2(id: string) {
+    return this.http.get('http://localhost:4000/buscar-Especialista2/' + id);
+  }
 }

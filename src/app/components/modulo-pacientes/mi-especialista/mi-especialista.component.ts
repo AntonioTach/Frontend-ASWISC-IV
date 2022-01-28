@@ -25,12 +25,12 @@ export class MiEspecialistaComponent implements OnInit {
         this.Router.navigateByUrl('/modulo-pacientes/registrarse-con-especialista');
 
       } else {
-        this.especialistaService.getEspecialista(this.obj.id_especialista).subscribe((res: any) => {
+        this.especialistaService.getEspecialista2(this.obj.id_especialista).subscribe((res: any) => {
           console.log(res);
           this.especialista = res;
         })
       }
-
+      console.log(this.obj.id_especialista);
       console.log(this.vista);
 
     })

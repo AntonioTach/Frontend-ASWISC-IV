@@ -49,6 +49,12 @@
           <input matInput readonly value="{{ this.especialista.profesion }}" />
         </mat-form-field>
         <br />
+        <h2>Tiempo en Consulta</h2>
+        <mat-form-field class="input" appearance="fill">
+          <mat-label>Tiempo en Consulta</mat-label>
+          <input matInput readonly value="{{ this.especialista.tiempo_consulta }}" />
+        </mat-form-field>
+        <br />
         <button
           mat-raised-button
           (click)="goToLink(this.especialista.curriculum)"

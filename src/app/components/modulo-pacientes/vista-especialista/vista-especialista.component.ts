@@ -10,6 +10,7 @@ export class VistaEspecialistaComponent implements OnInit {
   id: string = '';
   especialista: any;
   id_usuario: any;
+  id_especialista: any;
 
   constructor(private especialistaService: EspecialistaService, private router: ActivatedRoute, private Router: Router) { }
 
@@ -20,7 +21,8 @@ export class VistaEspecialistaComponent implements OnInit {
     })
     console.log(this.id);
     this.especialistaService.getEspecialista(this.id).subscribe(res => {
-      this.especialista = res;
+      this.especialista =  res;
+      this.id_especialista = this.especialista.id_especialista;
       console.log(this.especialista)
     }, err => console.log(err));
   }
@@ -30,7 +32,7 @@ export class VistaEspecialistaComponent implements OnInit {
   updatePaciente() {
     this.id_usuario = localStorage.getItem('id_usuario')
     const idEspecialista = {
-      id_especialista: this.id,
+      id_especialista: this.id_especialista,
       precio_consulta_general: this.especialista.precio_consulta_general
     }
     this.especialistaService.updatePaciente(this.id_usuario, idEspecialista).subscribe((res: any) => {
