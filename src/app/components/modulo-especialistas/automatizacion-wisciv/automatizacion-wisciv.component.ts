@@ -12,50 +12,37 @@ import { AutomatizacionWiscivService } from './automatizacion-wisciv.service';
 })
 export class AutomatizacionWiscivComponent implements OnInit {
 
-  public FormASWISC! : FormGroup; //Formulario de envio de datos prueba WISC-IV
+  FormASWISC: FormGroup = new FormGroup({
+    id_usuario: new FormControl(''),
+    Fecha:  new FormControl(['', [Validators.required]]),
+
+    Cubos:  new FormControl('', [Validators.required, Validators.min(0), Validators.max(68)]),
+    Semejanzas:  new FormControl('', [Validators.required, Validators.min(0), Validators.max(44)]),
+    Digitos:  new FormControl('', [Validators.required, Validators.min(0), Validators.max(32)]),
+    Conceptos:  new FormControl('', [Validators.required, Validators.min(0), Validators.max(28)]),
+    Claves:  new FormControl('', [Validators.required, Validators.min(0), Validators.max(119)]),
+    Vocabulario:  new FormControl('', [Validators.required, Validators.min(0), Validators.max(68)]),
+    LetrasNumeros:  new FormControl('', [Validators.required, Validators.min(0), Validators.max(30)]),
+    Matrices:  new FormControl('', [Validators.required, Validators.min(0), Validators.max(35)]),
+    Comprension:  new FormControl('', [Validators.required, Validators.min(0), Validators.max(42)]),
+    BusquedaSimbolos:  new FormControl('', [Validators.required, Validators.min(0), Validators.max(60)]),
+    FigurasIncompletas:  new FormControl('', [Validators.min(0), Validators.max(38)]),
+    Registros:  new FormControl('', [Validators.min(0), Validators.max(136)]),
+    Informacion:  new FormControl('', [ Validators.min(0), Validators.max(33)]),
+    Aritmetica:  new FormControl('', [Validators.min(0), Validators.max(34)]),
+    Pistas: new FormControl('', [Validators.min(0), Validators.max(24)]),
+  }); //Formulario de envio de datos prueba WISC-IV
   //falta service cuando se agregue tambien al constructor
   constructor(private router:Router, private formBuilder: FormBuilder, private _snackBar: MatSnackBar, private serviceRevisar: ServiceRevisarPacienteService, private modificarExpedienteService: ModificacionExpedienteServiceService, private automatizacion: AutomatizacionWiscivService) { }
 
   hide = true;
-  id_paciente;
   pacientes: any = []
 
   usuario: string = '';
   id: any = null;//este seria la id del paciente
 
   ngOnInit(): void {
-
     this.cargarPacientes(); //obtener los pacientes del especialista
-
-    //Validaciones buenas
-
-    this.FormASWISC = this.formBuilder.group({
-      id_paciente: [''],
-      Paciente: ['', [Validators.required,]],
-      Fecha: ['', [Validators.required]],
-
-      Cubos: ['', [Validators.required, Validators.min(0), Validators.max(68)]],
-      Semejanzas: ['', [Validators.required, Validators.min(0), Validators.max(44)]],
-      Digitos: ['', [Validators.required, Validators.min(0), Validators.max(32)]],
-      Conceptos: ['', [Validators.required, Validators.min(0), Validators.max(28)]],
-      Claves: ['', [Validators.required, Validators.min(0), Validators.max(119)]],
-      Vocabulario: ['', [Validators.required, Validators.min(0), Validators.max(68)]],
-      LetrasNumeros: ['', [Validators.required, Validators.min(0), Validators.max(30)]],
-      Matrices: ['', [Validators.required, Validators.min(0), Validators.max(35)]],
-      Comprension: ['', [Validators.required, Validators.min(0), Validators.max(42)]],
-      BusquedaSimbolos: ['', [Validators.required, Validators.min(0), Validators.max(60)]],
-      FigurasIncompletas: ['', [Validators.min(0), Validators.max(38)]],
-      Registros: ['', [Validators.min(0), Validators.max(136)]],
-      Informacion: ['', [ Validators.min(0), Validators.max(33)]],
-      Aritmetica: ['', [Validators.min(0), Validators.max(34)]],
-      Pistas: ['', [Validators.min(0), Validators.max(24)]],
-    });
-
-
-    //NO Validaciones para trabajar rapido
-    // this.FormASWISC = this.formBuilder.group({
-
-    // });
   }
 
   RegistrarDatos(){
@@ -64,8 +51,16 @@ export class AutomatizacionWiscivComponent implements OnInit {
     }
     else{
       this.automatizacion.envioDatos(this.FormASWISC.value).subscribe(
-        (res:any) => {
-          console.log(res)
+        (res: {
+          success: boolean,
+          message: string,
+          data: any
+        }) => {
+          console.log('Resultados prueba: ', res.data.escalaTotal)
+          console.log('Resultados prueba: ', res.data.memoriaDeTrabajo)
+          // @TODO: Descomentar cuando quieras que te mande a la tabla
+          // if (res.success)
+            // this.Automatizacion()
         },
         err => {
           console.log(err);
@@ -74,7 +69,6 @@ export class AutomatizacionWiscivComponent implements OnInit {
     }
   }
   Automatizacion(){
-    console.log('Automatizacion Resultados');
     this.router.navigateByUrl('/modulo-especialistas/resultado-automatizacion-wisciv');
   }
 

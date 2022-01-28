@@ -28,7 +28,7 @@ import { ResultadoAutomatizacionWiscivComponent } from './resultado-automatizaci
 import { CalendarioComponent } from './horarios/calendario/calendario.component';
 import { DialogoInfomacionComponent } from './revisar-paciente/dialogo-infomacion/dialogo-infomacion.component';
 import { CrearArticulosComponent } from './crear-articulos/crear-articulos.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TarjetaComponent } from './tarjeta/tarjeta.component';
 import { ModificarArticuloComponent } from './modificar-articulo/modificar-articulo.component';
 import { DescargarExpedienteComponent } from './descargar-expediente/descargar-expediente.component';
@@ -74,6 +74,7 @@ import { ArticuloComponent } from './articulo/articulo.component'
     HttpClientModule,
     AngularEditorModule,
     FormsModule,
+    ReactiveFormsModule
    //ScheduleModule
   ] 
   //,providers: [AgendaService, DayService, WeekService, WorkWeekService, MonthService, DragAndDropService, ResizeService]

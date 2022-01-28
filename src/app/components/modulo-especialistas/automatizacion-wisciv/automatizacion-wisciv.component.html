@@ -2,249 +2,331 @@
 <p></p>
 
 <body>
-    <div class="cuadro-registro">
-      <h1>ASWISC-IV (Solución Automatizada WISC-IV)</h1>
-      <form #RegistroDatosForm="ngForm" [formGroup]="FormASWISC" (ngSubmit)="RegistrarDatos()">
+  <div class="cuadro-registro">
+    <h1>ASWISC-IV (Solución Automatizada WISC-IV)</h1>
+    <form [formGroup]="FormASWISC" (ngSubmit)="RegistrarDatos()">
+      <div class="div-info2">
+        <div><h2>Paciente:</h2></div>
+        <div>
+          <!-- Esto debe ser un dropdown de los pacientes del especialista -->
 
-        <div class="div-info2">
-          <div><h2>Paciente:</h2></div>
-          <div>
-            <!-- Esto debe ser un dropdown de los pacientes del especialista -->
-
-            <mat-form-field class="input2" appearance="fill">
-              <mat-label>Seleccione el paciente</mat-label>
-              <mat-select
-                [(value)]="id_paciente"
+          <mat-form-field class="input2" appearance="fill">
+            <mat-label>Seleccione el paciente</mat-label>
+            <mat-select formControlName="id_usuario">
+              <mat-option
+                *ngFor="let paciente of pacientes"
+                [value]="paciente.id_usuario"
               >
-                <mat-option
-                  *ngFor="let paciente of pacientes"
-                  [value]="paciente.id_usuario"
-                >
-                  {{ paciente.nombre }}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
-          </div>
+                {{ paciente.nombre }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
         </div>
+      </div>
 
-        <div class="div-info2">
-          <div><h2>Fecha Realización Prueba:</h2></div>
-          <div>
-            <mat-form-field class="input3" appearance="fill">
-              <input matInput type="date" autocomplete="off" formControlName="Fecha" required>
-              <mat-error>
-                Por favor seleccione Fecha de Realización Prueba
-              </mat-error>
-            </mat-form-field>
-          </div>
+      <div class="div-info2">
+        <div><h2>Fecha Realización Prueba:</h2></div>
+        <div>
+          <mat-form-field class="input3" appearance="fill">
+            <input
+              matInput
+              type="date"
+              autocomplete="off"
+              formControlName="Fecha"
+              required
+            />
+            <mat-error>
+              Por favor seleccione Fecha de Realización Prueba
+            </mat-error>
+          </mat-form-field>
         </div>
-
-
+      </div>
 
       <h3>Resultados Naturales</h3>
 
+      <div class="div-info">
+        <!-- Cubos -->
+        <div>
+          <h2>Cubos</h2>
+          <mat-form-field class="input" appearance="fill">
+            <mat-label>Resultado Subprueba Diseño con Cubos</mat-label>
+            <input
+              matInput
+              type="number"
+              autocomplete="off"
+              formControlName="Cubos"
+              required
+            />
+            <mat-error>
+              Por favor ingrese los datos de la subprueba Cubos
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <!-- Semejanzas -->
+        <div>
+          <h2>Semejanzas</h2>
+          <mat-form-field class="input" appearance="fill">
+            <mat-label>Resultado Subprueba Semejanzas</mat-label>
+            <input
+              matInput
+              type="number"
+              autocomplete="off"
+              formControlName="Semejanzas"
+              required
+            />
+            <mat-error>
+              Por favor ingrese los datos de la subprueba Semejanzas
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
 
-        <div class="div-info">
-            <!-- Cubos -->
-          <div>
-            <h2>Cubos</h2>
-            <mat-form-field class="input" appearance="fill">
-              <mat-label>Resultado Subprueba Diseño con Cubos</mat-label>
-              <input matInput type="number" autocomplete="off" formControlName="Cubos" required>
-              <mat-error>
-                Por favor ingrese los datos de la subprueba Cubos
-              </mat-error>
-            </mat-form-field>
-          </div>
-            <!-- Semejanzas -->
-          <div>
-            <h2>Semejanzas</h2>
-            <mat-form-field class="input" appearance="fill">
-              <mat-label>Resultado Subprueba Semejanzas</mat-label>
-              <input matInput type="number" autocomplete="off" formControlName="Semejanzas" required>
-              <mat-error>
-                Por favor ingrese los datos de la subprueba Semejanzas
-              </mat-error>
-            </mat-form-field>
-          </div>
+      <div class="div-info">
+        <!-- Digitos -->
+        <div>
+          <h2>Digitos</h2>
+          <mat-form-field class="input" appearance="fill">
+            <mat-label>Resultado Subprueba Dígitos </mat-label>
+            <input
+              matInput
+              type="number"
+              autocomplete="off"
+              formControlName="Digitos"
+              required
+            />
+            <mat-error>
+              Por favor ingrese los datos de la subprueba Digitos
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <!-- Conceptos -->
+        <div>
+          <h2>Conceptos</h2>
+          <mat-form-field class="input" appearance="fill">
+            <mat-label>Resultado Subprueba Conceptos </mat-label>
+            <input
+              matInput
+              type="number"
+              autocomplete="off"
+              formControlName="Conceptos"
+              required
+            />
+            <mat-error>
+              Por favor ingrese los datos de la subprueba Conceptos
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
 
+      <div class="div-info">
+        <!-- Claves -->
+        <div>
+          <h2>Claves</h2>
+          <mat-form-field class="input" appearance="fill">
+            <mat-label>Resultado Subprueba Claves </mat-label>
+            <input
+              matInput
+              type="number"
+              autocomplete="off"
+              formControlName="Claves"
+              required
+            />
+            <mat-error>
+              Por favor ingrese los datos de la subprueba Claves
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <!-- Vocabulario -->
+        <div>
+          <h2>Vocabulario</h2>
+          <mat-form-field class="input" appearance="fill">
+            <mat-label>Resultado Subprueba Vocabulario </mat-label>
+            <input
+              matInput
+              type="number"
+              autocomplete="off"
+              formControlName="Vocabulario"
+              required
+            />
+            <mat-error>
+              Por favor ingrese los datos de la subprueba Vocabulario
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="div-info">
+        <!-- Letras y Números -->
+        <div>
+          <h2>Letras y Números</h2>
+          <mat-form-field class="input" appearance="fill">
+            <mat-label>Resultado Subprueba Letras y Números </mat-label>
+            <input
+              matInput
+              type="number"
+              autocomplete="off"
+              formControlName="LetrasNumeros"
+              required
+            />
+            <mat-error>
+              Por favor ingrese los datos de la subprueba Letras y Números
+            </mat-error>
+          </mat-form-field>
         </div>
 
-        <div class="div-info">
-          <!-- Digitos -->
-          <div>
-            <h2>Digitos </h2>
-            <mat-form-field class="input" appearance="fill">
-              <mat-label>Resultado Subprueba Dígitos </mat-label>
-              <input matInput type="number" autocomplete="off" formControlName="Digitos" required>
-              <mat-error>
-                Por favor ingrese los datos de la subprueba Digitos
-              </mat-error>
-            </mat-form-field>
-          </div>
-          <!-- Conceptos -->
-          <div>
-            <h2>Conceptos</h2>
-            <mat-form-field class="input" appearance="fill">
-              <mat-label>Resultado Subprueba Conceptos </mat-label>
-              <input matInput type="number" autocomplete="off" formControlName="Conceptos" required>
-              <mat-error>
-                Por favor ingrese los datos de la subprueba Conceptos
-              </mat-error>
-            </mat-form-field>
-          </div>
+        <!-- Matrices -->
+        <div>
+          <h2>Matrices</h2>
+          <mat-form-field class="input" appearance="fill">
+            <mat-label>Resultado Subprueba Matrices </mat-label>
+            <input
+              matInput
+              type="number"
+              autocomplete="off"
+              formControlName="Matrices"
+              required
+            />
+            <mat-error>
+              Por favor ingrese los datos de la subprueba Matrices
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="div-info">
+        <!-- Comprensión -->
+        <div>
+          <h2>Comprensión</h2>
+          <mat-form-field class="input" appearance="fill">
+            <mat-label>Resultado Subprueba Comprensión </mat-label>
+            <input
+              matInput
+              type="number"
+              autocomplete="off"
+              formControlName="Comprension"
+              required
+            />
+            <mat-error>
+              Por favor ingrese los datos de la subprueba Comprensión
+            </mat-error>
+          </mat-form-field>
         </div>
 
-        <div class="div-info">
-          <!-- Claves -->
-          <div>
-            <h2>Claves</h2>
-            <mat-form-field class="input" appearance="fill">
-              <mat-label>Resultado Subprueba Claves </mat-label>
-              <input matInput type="number" autocomplete="off" formControlName="Claves" required>
-              <mat-error>
-                Por favor ingrese los datos de la subprueba Claves
-              </mat-error>
-            </mat-form-field>
-          </div>
-          <!-- Vocabulario -->
-          <div>
-            <h2>Vocabulario</h2>
-            <mat-form-field class="input" appearance="fill">
-              <mat-label>Resultado Subprueba Vocabulario </mat-label>
-              <input matInput type="number" autocomplete="off" formControlName="Vocabulario" required>
-              <mat-error>
-                Por favor ingrese los datos de la subprueba Vocabulario
-              </mat-error>
-            </mat-form-field>
-          </div>
+        <!-- Busquedas de Simbolos -->
+        <div>
+          <h2>Búsquedas de Símbolos</h2>
+          <mat-form-field class="input" appearance="fill">
+            <mat-label>Búsquedas de Símbolos </mat-label>
+            <input
+              matInput
+              type="number"
+              autocomplete="off"
+              formControlName="BusquedaSimbolos"
+              required
+            />
+            <mat-error>
+              Por favor ingrese los datos de la subprueba Búsquedas de Símbolos
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="div-info">
+        <!-- (Figuras Incompletas) -->
+        <div>
+          <h2>(Figuras Incompletas)</h2>
+          <mat-form-field class="input" appearance="fill">
+            <mat-label>(Figuras Incompletas) opcional</mat-label>
+            <input
+              matInput
+              type="number"
+              autocomplete="off"
+              formControlName="FigurasIncompletas"
+            />
+            <mat-error>
+              Por favor ingrese los datos de la subprueba (Figuras Incompletas)
+            </mat-error>
+          </mat-form-field>
         </div>
 
-        <div class="div-info">
-          <!-- Letras y Números -->
-          <div>
-            <h2>Letras y Números</h2>
-            <mat-form-field class="input" appearance="fill">
-              <mat-label>Resultado Subprueba Letras y Números </mat-label>
-              <input matInput type="number" autocomplete="off" formControlName="LetrasNumeros" required>
-              <mat-error>
-                Por favor ingrese los datos de la subprueba Letras y Números
-              </mat-error>
-            </mat-form-field>
-          </div>
-
-          <!-- Matrices -->
-          <div>
-            <h2>Matrices</h2>
-            <mat-form-field class="input" appearance="fill">
-              <mat-label>Resultado Subprueba Matrices </mat-label>
-              <input matInput type="number" autocomplete="off" formControlName="Matrices" required>
-              <mat-error>
-                Por favor ingrese los datos de la subprueba Matrices
-              </mat-error>
-            </mat-form-field>
-          </div>
-
+        <!-- (Animales) -->
+        <div>
+          <h2>(Registros)</h2>
+          <mat-form-field class="input" appearance="fill">
+            <mat-label>(Registros) opcional</mat-label>
+            <input
+              matInput
+              type="number"
+              autocomplete="off"
+              formControlName="Registros"
+            />
+            <mat-error>
+              Por favor ingrese los datos de la subprueba Búsquedas de
+              (Registros)
+            </mat-error>
+          </mat-form-field>
         </div>
-        <div class="div-info">
-            <!-- Comprensión -->
-            <div>
-              <h2>Comprensión</h2>
-              <mat-form-field class="input" appearance="fill">
-                <mat-label>Resultado Subprueba Comprensión </mat-label>
-                <input matInput type="number" autocomplete="off" formControlName="Comprension" required>
-                <mat-error>
-                  Por favor ingrese los datos de la subprueba Comprensión
-                </mat-error>
-              </mat-form-field>
-            </div>
-
-            <!-- Busquedas de Simbolos -->
-            <div>
-              <h2>Búsquedas de Símbolos</h2>
-              <mat-form-field class="input" appearance="fill">
-                <mat-label>Búsquedas de Símbolos </mat-label>
-                <input matInput type="number" autocomplete="off" formControlName="BusquedaSimbolos" required>
-                <mat-error>
-                  Por favor ingrese los datos de la subprueba Búsquedas de Símbolos
-                </mat-error>
-              </mat-form-field>
-            </div>
-
+      </div>
+      <div class="div-info">
+        <!-- (Información) -->
+        <div>
+          <h2>(Información)</h2>
+          <mat-form-field class="input" appearance="fill">
+            <mat-label>(Información) opcional</mat-label>
+            <input
+              matInput
+              type="number"
+              autocomplete="off"
+              formControlName="Informacion"
+            />
+            <mat-error>
+              Por favor ingrese los datos de la subprueba (Información)
+            </mat-error>
+          </mat-form-field>
         </div>
-        <div class="div-info">
-            <!-- (Figuras Incompletas) -->
-            <div>
-              <h2>(Figuras Incompletas)</h2>
-              <mat-form-field class="input" appearance="fill">
-                <mat-label>(Figuras Incompletas) opcional</mat-label>
-                <input matInput type="number" autocomplete="off" formControlName="FigurasIncompletas">
-                <mat-error>
-                  Por favor ingrese los datos de la subprueba (Figuras Incompletas)
-                </mat-error>
-              </mat-form-field>
-            </div>
 
-            <!-- (Animales) -->
-            <div>
-              <h2>(Registros)</h2>
-              <mat-form-field class="input" appearance="fill">
-                <mat-label>(Registros) opcional</mat-label>
-                <input matInput type="number" autocomplete="off" formControlName="Registros" >
-                <mat-error>
-                  Por favor ingrese los datos de la subprueba Búsquedas de (Registros)
-                </mat-error>
-              </mat-form-field>
-            </div>
-
+        <!-- (Aritmética) -->
+        <div>
+          <h2>(Aritmética)</h2>
+          <mat-form-field class="input" appearance="fill">
+            <mat-label>(Aritmética) opcional </mat-label>
+            <input
+              matInput
+              type="number"
+              autocomplete="off"
+              formControlName="Aritmetica"
+            />
+            <mat-error>
+              Por favor ingrese los datos de la subprueba Búsquedas de
+              (Aritmética)
+            </mat-error>
+          </mat-form-field>
         </div>
-        <div class="div-info">
-            <!-- (Información) -->
-            <div>
-              <h2>(Información)</h2>
-              <mat-form-field class="input" appearance="fill">
-                <mat-label>(Información) opcional</mat-label>
-                <input matInput type="number" autocomplete="off" formControlName="Informacion">
-                <mat-error>
-                  Por favor ingrese los datos de la subprueba (Información)
-                </mat-error>
-              </mat-form-field>
-            </div>
-
-            <!-- (Aritmética) -->
-            <div>
-              <h2>(Aritmética)</h2>
-              <mat-form-field class="input" appearance="fill">
-                <mat-label>(Aritmética) opcional </mat-label>
-                <input matInput type="number" autocomplete="off" formControlName="Aritmetica">
-                <mat-error>
-                  Por favor ingrese los datos de la subprueba Búsquedas de (Aritmética)
-                </mat-error>
-              </mat-form-field>
-            </div>
-
+      </div>
+      <div class="div-info">
+        <!-- (Adivinanzas) -->
+        <div>
+          <h2>(Palabras en contexto (pistas))</h2>
+          <mat-form-field class="input" appearance="fill">
+            <mat-label>(Palabras en contexto (pistas)) opcional </mat-label>
+            <input
+              matInput
+              type="number"
+              autocomplete="off"
+              formControlName="Pistas"
+            />
+            <mat-error>
+              Por favor ingrese los datos de la subprueba (Palabras en contexto
+              (pistas))
+            </mat-error>
+          </mat-form-field>
         </div>
-        <div class="div-info">
-            <!-- (Adivinanzas) -->
-            <div>
-              <h2>(Palabras en contexto (pistas))</h2>
-              <mat-form-field class="input" appearance="fill">
-                <mat-label>(Palabras en contexto (pistas)) opcional </mat-label>
-                <input matInput type="number" autocomplete="off" formControlName="Pistas">
-                <mat-error>
-                  Por favor ingrese los datos de la subprueba (Palabras en contexto (pistas))
-                </mat-error>
-              </mat-form-field>
-            </div>
 
-             <!-- Boton -->
-          <div class="div-btn">
-            <button  type="submit" mat-raised-button class="btn">Automatizar Resultados</button>
-          </div>
-
+        <!-- Boton -->
+        <div class="div-btn">
+          <button type="submit" mat-raised-button class="btn">
+            Automatizar Resultados
+          </button>
         </div>
-      </form>
-    </div>
-  </body>
-
-
+      </div>
+    </form>
+  </div>
+</body>
