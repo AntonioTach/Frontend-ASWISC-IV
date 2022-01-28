@@ -4,7 +4,7 @@ import { FormGroup, FormBuilder, FormControl, Validators, NgForm } from '@angula
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ServiceRevisarPacienteService } from '../revisar-paciente/service-revisar-paciente.service'
 import { ModificacionExpedienteServiceService } from 'src/app/components/modulo-especialistas/modificacion-expediente/modificacion-expediente-service.service'
-
+import { AutomatizacionWiscivService } from './automatizacion-wisciv.service';
 @Component({
   selector: 'app-automatizacion-wisciv',
   templateUrl: './automatizacion-wisciv.component.html',
@@ -14,7 +14,7 @@ export class AutomatizacionWiscivComponent implements OnInit {
 
   public FormASWISC! : FormGroup; //Formulario de envio de datos prueba WISC-IV
   //falta service cuando se agregue tambien al constructor
-  constructor(private router:Router, private formBuilder: FormBuilder, private _snackBar: MatSnackBar, private serviceRevisar: ServiceRevisarPacienteService, private modificarExpedienteService: ModificacionExpedienteServiceService) { }
+  constructor(private router:Router, private formBuilder: FormBuilder, private _snackBar: MatSnackBar, private serviceRevisar: ServiceRevisarPacienteService, private modificarExpedienteService: ModificacionExpedienteServiceService, private automatizacion: AutomatizacionWiscivService) { }
 
   hide = true;
   id_paciente;
@@ -30,10 +30,11 @@ export class AutomatizacionWiscivComponent implements OnInit {
     //Validaciones buenas
 
     this.FormASWISC = this.formBuilder.group({
+      id_paciente: [''],
       Paciente: ['', [Validators.required,]],
       Fecha: ['', [Validators.required]],
 
-      Cubos: ['', [Validators.required,Validators.min(1), Validators.max(4)]],
+      Cubos: ['', [Validators.required,Validators.min(1), Validators.max(15)]],
       Semejanzas: ['', [Validators.required]],
       Digitos: ['', [Validators.required]],
       Conceptos: ['', [Validators.required]],
@@ -62,7 +63,14 @@ export class AutomatizacionWiscivComponent implements OnInit {
       return;
     }
     else{
-      this.Automatizacion();
+      this.automatizacion.envioDatos(this.FormASWISC.value).subscribe(
+        (res:any) => {
+
+        },
+        err => {
+          console.log(err);
+        }
+      )
     }
   }
   Automatizacion(){
