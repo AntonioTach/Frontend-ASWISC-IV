@@ -12,11 +12,17 @@
             <!-- Esto debe ser un dropdown de los pacientes del especialista -->
 
             <mat-form-field class="input2" appearance="fill">
-              <mat-label>Seleccione un Paciente</mat-label>
-              <input matInput autocomplete="off" formControlName="Paciente" required>
-              <mat-error>
-                Por favor seleccione un Paciente
-              </mat-error>
+              <mat-label>Seleccione el paciente</mat-label>
+              <mat-select
+                [(value)]="id_paciente"
+              >
+                <mat-option
+                  *ngFor="let paciente of pacientes"
+                  [value]="paciente.id_usuario"
+                >
+                  {{ paciente.nombre }}
+                </mat-option>
+              </mat-select>
             </mat-form-field>
           </div>
         </div>
