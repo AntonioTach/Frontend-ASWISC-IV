@@ -9,7 +9,10 @@ export class MyServiceBajaEspecialistaService {
 constructor(private http : HttpClient) { }
 
 public DeleteEspecialista(id_usuario?: string | null){
-  return this.http.delete('http://localhost:4000/eliminar-Especialista/' + id_usuario);
+  const especialista={
+    id_especialista:localStorage.getItem('id_especialista')
+    }
+  return this.http.put('http://localhost:4000/eliminar-Especialista/' + id_usuario, especialista);
 }
 
 }
