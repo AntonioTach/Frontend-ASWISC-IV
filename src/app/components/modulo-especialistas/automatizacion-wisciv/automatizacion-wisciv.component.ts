@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { FormGroup, FormBuilder, FormControl, Validators, NgForm } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { ServiceRevisarPacienteService } from '../revisar-paciente/service-revisar-paciente.service'
+import { ModificacionExpedienteServiceService } from 'src/app/components/modulo-especialistas/modificacion-expediente/modificacion-expediente-service.service'
 
 @Component({
   selector: 'app-automatizacion-wisciv',
@@ -12,10 +14,18 @@ export class AutomatizacionWiscivComponent implements OnInit {
 
   public FormASWISC! : FormGroup; //Formulario de envio de datos prueba WISC-IV
   //falta service cuando se agregue tambien al constructor
-  constructor(private router:Router, private formBuilder: FormBuilder, private _snackBar: MatSnackBar) { }
+  constructor(private router:Router, private formBuilder: FormBuilder, private _snackBar: MatSnackBar, private serviceRevisar: ServiceRevisarPacienteService, private modificarExpedienteService: ModificacionExpedienteServiceService) { }
 
   hide = true;
+  id_paciente;
+  pacientes: any = []
+
+  usuario: string = '';
+  id: any = null;//este seria la id del paciente
+
   ngOnInit(): void {
+
+    this.cargarPacientes(); //obtener los pacientes del especialista
 
     //Validaciones buenas
 
@@ -59,6 +69,15 @@ export class AutomatizacionWiscivComponent implements OnInit {
     console.log('Automatizacion Resultados');
     this.router.navigateByUrl('/modulo-especialistas/resultado-automatizacion-wisciv');
   }
+
+  cargarPacientes() { //Obtener los pacientes del Especialista en el dropdown
+    this.serviceRevisar.getPacientes().subscribe((res) => {
+      this.pacientes = res;
+    }, err => console.log(err))
+  }
+
+
+
 
 
 }
