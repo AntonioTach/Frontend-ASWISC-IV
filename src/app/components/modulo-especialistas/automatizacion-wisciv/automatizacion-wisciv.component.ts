@@ -34,7 +34,7 @@ export class AutomatizacionWiscivComponent implements OnInit {
       Paciente: ['', [Validators.required,]],
       Fecha: ['', [Validators.required]],
 
-      Cubos: ['', [Validators.required,Validators.min(1), Validators.max(15)]],
+      Cubos: ['', [Validators.required,Validators.min(1), Validators.max(19)]],
       Semejanzas: ['', [Validators.required]],
       Digitos: ['', [Validators.required]],
       Conceptos: ['', [Validators.required]],
