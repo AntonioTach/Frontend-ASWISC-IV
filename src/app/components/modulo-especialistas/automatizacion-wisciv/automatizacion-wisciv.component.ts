@@ -56,11 +56,15 @@ export class AutomatizacionWiscivComponent implements OnInit {
           message: string,
           data: any
         }) => {
-          console.log('Resultados prueba: ', res.data.escalaTotal)
-          console.log('Resultados prueba: ', res.data.memoriaDeTrabajo)
+          console.log('Resultados prueba Comprension Verbal: ', res.data.comprensionVerbal)
+          console.log('Resultados prueba Escala total: ', res.data.escalaTotal)
+          console.log('Resultados prueba Razonamiento Perceptual: ', res.data.razonamientoPerceptual)
+          console.log('Resultados prueba Velocidad de Procesamiento: ', res.data.velociedadDeProcesamiento)
+          console.log('Resultados prueba memoria de trabajo: ', res.data.memoriaDeTrabajo)
+          console.log('Fecha de nacimiento del Paciente: ', res.data.nacimiento)
           // @TODO: Descomentar cuando quieras que te mande a la tabla
-          // if (res.success)
-            // this.Automatizacion()
+          if (res.success)
+            this.Automatizacion()
         },
         err => {
           console.log(err);
