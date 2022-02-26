@@ -87,7 +87,7 @@
           <h2>Estudios</h2>
           <mat-form-field class="input" appearance="fill">
             <mat-label>Estudios</mat-label>
-            <input matInput autocomplete="off" [value]="estudios" />
+            <input matInput autocomplete="off" [value]="estudios" readonly />
             <mat-error>
               Por favor Ingrese los <strong>Estudios</strong>
             </mat-error>
@@ -99,7 +99,7 @@
           <h2>Ocupación</h2>
           <mat-form-field class="input" appearance="fill">
             <mat-label>Ocupación</mat-label>
-            <input matInput autocomplete="off" value="{{ ocupacion }}" />
+            <input matInput autocomplete="off" value="{{ ocupacion }}" readonly />
             <mat-error>
               Por favor Ingrese la <strong>Ocupación</strong> del paciente
             </mat-error>
@@ -123,6 +123,7 @@
             matInput
             placeholder="Observaciones del paciente"
             value="{{ obsevacion }}"
+            readonly
           >
           </textarea>
         </mat-form-field>
