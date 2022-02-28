@@ -85,11 +85,12 @@ export class AsignarTareaComponent implements OnInit {
     else {
       this.subirservice.postTarea(this.FormTarea.value).subscribe(res => { console.log(res); }, err => { console.log(err); });
       this.RegistradoMensaje();
+      this.router.navigateByUrl('/modulo-especialistas/elementos-de-terapia');
     }
   }
 
   RegistradoMensaje() {
-    this._snackBar.open('Registro Correcto', '', {
+    this._snackBar.open('Tarea Registrada Correctamente', '', {
       duration: 3000, //5s
       horizontalPosition: 'center',
       verticalPosition: 'bottom'

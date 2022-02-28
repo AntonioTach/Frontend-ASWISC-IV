@@ -22,7 +22,7 @@ export class ServiceRevisarPacienteService {
   }
   //aparecen los pacientes del especialista
   getPacientes() {
-    var id_especialista = localStorage.getItem('id_usuario')
+    var id_especialista = localStorage.getItem('id_especialista')
     return this.http.get('http://localhost:4000/Pacientes/' + id_especialista);
   }
 }

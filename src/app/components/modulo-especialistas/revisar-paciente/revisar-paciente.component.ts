@@ -70,6 +70,7 @@ export class RevisarPacienteComponent implements OnInit {
         horizontalPosition: 'center',
         verticalPosition: 'bottom'
       })
+      this.cargarPacientes();
     }
 
   }

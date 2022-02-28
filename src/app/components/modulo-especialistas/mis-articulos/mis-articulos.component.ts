@@ -27,7 +27,7 @@ export class MisArticulosComponent implements OnInit {
   traerArticulos(): void {
     this.articulos.getMisArticulos().subscribe((res) => {
       this.dataSource = res;
-    }); 
+    });
   }
 
   ModificacionExpediente() {

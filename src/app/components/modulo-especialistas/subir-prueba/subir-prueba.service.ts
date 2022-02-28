@@ -23,4 +23,6 @@ export class SubirPruebaService {
   getTarea(id: any) {
     return this.http.get('http://localhost:4000/tarea/' + id)
   }
+
+
 }

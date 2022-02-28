@@ -46,6 +46,10 @@ export class RegistrarPacienteComponent implements OnInit {
     });
   }
 
+  direccionamiento(){
+    this.router.navigateByUrl('/modulo-especialistas');
+  }
+
   RegistrarPaciente() {
     if (this.FormRegistrarPaciente.invalid) {
       return
@@ -53,10 +57,11 @@ export class RegistrarPacienteComponent implements OnInit {
     else {
       console.log(this.FormRegistrarPaciente?.value);
       this.RegistradoMensaje();
-
+      this.direccionamiento();
       this.registrarPacienteService.registrarPaciente(this.FormRegistrarPaciente.value).subscribe(
         res => {
           console.log(res)
+
         },
         err => {
           console.log(err);

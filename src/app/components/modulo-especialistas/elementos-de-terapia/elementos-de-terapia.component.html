@@ -35,8 +35,7 @@
     </div>
 
     <!-- Tabla -->
-    <!-- <div *ngIf="lista_tareas.length > 0"> -->
-    <div>
+    <div *ngIf="lista_tareas.length > 0">
       <div class="mat-elevation-z5">
         <table mat-table [dataSource]="dataSource" matSort>
           <!--- Note that these columns can be defined in any order.
@@ -98,6 +97,6 @@
         aria-label="Selecciona página de Tareas"
       ></mat-paginator>
     </div>
-    <!-- <h2 class="error" *ngIf="lista_tareas.length == 0">No hay Tareas para mostrar</h2> -->
+    <h2 class="error" *ngIf="lista_tareas.length == 0">No hay Tareas para mostrar</h2>
   </div>
 </body>
