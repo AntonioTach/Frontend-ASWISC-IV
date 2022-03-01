@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { FormGroup, FormBuilder, FormControl, Validators, NgForm } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -11,6 +11,8 @@ import { AutomatizacionWiscivService } from './automatizacion-wisciv.service';
   styleUrls: ['./automatizacion-wisciv.component.css']
 })
 export class AutomatizacionWiscivComponent implements OnInit {
+
+  @Input() dataEntrante: any; //Datos que se enviaran al otro componente de resultados
 
   FormASWISC: FormGroup = new FormGroup({
     id_usuario: new FormControl(''),
@@ -66,9 +68,25 @@ export class AutomatizacionWiscivComponent implements OnInit {
           console.log('Puntuacion Media Comprension Verbal: ', res.data.puntuacionMediaCompresionVerbal)
           console.log('Puntuacion Media Subprueba: ', res.data.puntuacionMediaSubprueba)
           console.log('Puntuacion Media Comprension Verbal 2: ', res.data.puntuacionMediaComprensionVerbal2)
+
+          this.dataEntrante = [
+            this.FormASWISC.value,
+            res.data.comprensionVerbal,
+            res.data.escalaTotal,
+            res.data.razonamientoPerceptual,
+            res.data.velociedadDeProcesamiento,
+            res.data.memoriaDeTrabajo,
+            res.data.nacimiento,
+            res.data.fechaEvaluacion,
+            res.data.puntuacionMediaCompresionVerbal,
+            res.data.puntuacionMediaSubprueba,
+            res.data.puntuacionMediaComprensionVerbal2
+          ];
+          //console.log(this.dataEntrante)
           // @TODO: Descomentar cuando quieras que te mande a la tabla
           if (res.success)
-            this.Automatizacion()
+            console.log(this.dataEntrante);
+            //this.Automatizacion()
         },
         err => {
           console.log(err);

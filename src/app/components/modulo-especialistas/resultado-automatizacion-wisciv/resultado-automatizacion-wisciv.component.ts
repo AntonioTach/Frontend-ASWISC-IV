@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AutomatizacionWiscivService } from '../automatizacion-wisciv/automatizacion-wisciv.service';
 //import { Chart } from 'node_modules/chart.js'
 
 @Component({
@@ -8,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ResultadoAutomatizacionWiscivComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router : Router, private automatizacion : AutomatizacionWiscivService) { }
 
   ngOnInit(): void {
 //     var myChart = new Chart("myChart", {
