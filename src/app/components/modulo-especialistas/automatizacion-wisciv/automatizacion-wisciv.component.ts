@@ -58,35 +58,55 @@ export class AutomatizacionWiscivComponent implements OnInit {
           message: string,
           data: any
         }) => {
-          console.log('Resultados prueba Comprension Verbal: ', res.data.comprensionVerbal)
-          console.log('Resultados prueba Escala total: ', res.data.escalaTotal)
-          console.log('Resultados prueba Razonamiento Perceptual: ', res.data.razonamientoPerceptual)
-          console.log('Resultados prueba Velocidad de Procesamiento: ', res.data.velociedadDeProcesamiento)
-          console.log('Resultados prueba memoria de trabajo: ', res.data.memoriaDeTrabajo)
-          console.log('Fecha de nacimiento del Paciente: ', res.data.nacimiento)
-          console.log('Fecha de evaluacion del Paciente: ', res.data.fechaEvaluacion)
-          console.log('Puntuacion Media Comprension Verbal: ', res.data.puntuacionMediaCompresionVerbal)
-          console.log('Puntuacion Media Subprueba: ', res.data.puntuacionMediaSubprueba)
-          console.log('Puntuacion Media Comprension Verbal 2: ', res.data.puntuacionMediaComprensionVerbal2)
+          // console.log('Resultados prueba Comprension Verbal: ', res.data.comprensionVerbal)
+          // console.log('Resultados prueba Escala total: ', res.data.escalaTotal)
+          // console.log('Resultados prueba Razonamiento Perceptual: ', res.data.razonamientoPerceptual)
+          // console.log('Resultados prueba Velocidad de Procesamiento: ', res.data.velociedadDeProcesamiento)
+          // console.log('Resultados prueba memoria de trabajo: ', res.data.memoriaDeTrabajo)
+          // console.log('Fecha de nacimiento del Paciente: ', res.data.nacimiento)
+          // console.log('Fecha de evaluacion del Paciente: ', res.data.fechaEvaluacion)
+          // console.log('Puntuacion Media Comprension Verbal: ', res.data.puntuacionMediaCompresionVerbal)
+          // console.log('Puntuacion Media Subprueba: ', res.data.puntuacionMediaSubprueba)
+          // console.log('Puntuacion Media Comprension Verbal 2: ', res.data.puntuacionMediaComprensionVerbal2)
 
-          this.dataEntrante = [
-            this.FormASWISC.value,
-            res.data.comprensionVerbal,
-            res.data.escalaTotal,
-            res.data.razonamientoPerceptual,
-            res.data.velociedadDeProcesamiento,
-            res.data.memoriaDeTrabajo,
-            res.data.nacimiento,
-            res.data.fechaEvaluacion,
-            res.data.puntuacionMediaCompresionVerbal,
-            res.data.puntuacionMediaSubprueba,
-            res.data.puntuacionMediaComprensionVerbal2
-          ];
+          this.dataEntrante = { //Envio de Datos al componente de resultados
+            Cubos: this.FormASWISC.value.Cubos,
+            Semenjanzas: this.FormASWISC.value.Semejanzas,
+            Digitos: this.FormASWISC.value.Digitos,
+            Conceptos: this.FormASWISC.value.Conceptos,
+            Claves: this.FormASWISC.value.Claves,
+            Vocabulario: this.FormASWISC.value.Vocabulario,
+            LetrasNumeros: this.FormASWISC.value.LetrasNumeros,
+            Matrices: this.FormASWISC.value.Matrices,
+            Comprension: this.FormASWISC.value.Comprension,
+            BusquedaSimbolos: this.FormASWISC.value.BusquedaSimbolos,
+            FigurasIncompletas: this.FormASWISC.value.FigurasIncompletas,
+            Registros: this.FormASWISC.value.Registros,
+            Informacion: this.FormASWISC.value.Informacion,
+            Aritmetica: this.FormASWISC.value.Aritmetica,
+            Pistas: this.FormASWISC.value.Pistas,
+
+            comprensionVerbal: res.data.comprensionVerbal,
+            escalaTotal: res.data.escalaTotal,
+            razonamientoPerceptual: res.data.razonamientoPerceptual,
+            velociedadDeProcesamiento: res.data.velociedadDeProcesamiento,
+            memoriaDeTrabajo: res.data.memoriaDeTrabajo,
+            puntuacionMediaCompresionVerbal: res.data.puntuacionMediaCompresionVerbal,
+            puntuacionMediaSubprueba: res.data.puntuacionMediaSubprueba,
+            puntuacionMediaComprensionVerbal2: res.data.puntuacionMediaComprensionVerbal2,
+            nacimiento: res.data.nacimiento,
+            fechaEvaluacion: res.data.fechaEvaluacion
+          };
+
           //console.log(this.dataEntrante)
           // @TODO: Descomentar cuando quieras que te mande a la tabla
           if (res.success)
-            console.log(this.dataEntrante);
-            //this.Automatizacion()
+            //console.log(this.dataEntrante);
+            //Envio de Datos a componente de resultados
+            this.automatizacion.disparadorDatos.emit({ //service de envio datos
+              data:this.dataEntrante
+            })
+            this.Automatizacion()
         },
         err => {
           console.log(err);
@@ -102,6 +122,10 @@ export class AutomatizacionWiscivComponent implements OnInit {
     this.serviceRevisar.getPacientes().subscribe((res) => {
       this.pacientes = res;
     }, err => console.log(err))
+  }
+
+  envioDatosComponente(){
+
   }
 
 

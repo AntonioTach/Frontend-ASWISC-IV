@@ -11,8 +11,16 @@ import { AutomatizacionWiscivService } from '../automatizacion-wisciv/automatiza
 export class ResultadoAutomatizacionWiscivComponent implements OnInit {
 
   constructor(private router : Router, private automatizacion : AutomatizacionWiscivService) { }
-
+  public data:Array<any> = [];
   ngOnInit(): void {
+    //Recibiento de informacion de ASWISC-IV, componente de automatizacion
+    this.automatizacion.disparadorDatos.subscribe(
+      dataEntrante => {
+        console.log("Recibiendo data", dataEntrante);
+      }
+    )
+
+
 //     var myChart = new Chart("myChart", {
 //       type: 'bar',
 //       data: {
