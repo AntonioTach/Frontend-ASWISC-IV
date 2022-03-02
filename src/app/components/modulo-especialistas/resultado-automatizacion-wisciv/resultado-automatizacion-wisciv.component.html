@@ -6,10 +6,29 @@
 <br>
 <div class="cuadro-registro">
 
+<h1>WISC-IV</h1>
+<h2>Escala Wechsler de inteligencia para Niños-IV</h2>
 
-<table class="estimacion-edad" >
+<table class="datos">
+ <tbody>
+   <tr>
+     <td>Nombre del niño</td>
+     <td></td>
+   </tr>
+   <tr>
+     <td>Examinador</td>
+     <td></td>
+   </tr>
+   <!-- <tr>
+     <td> <iframe src="https://www.educima.com/wordsearches/programas_para_manejo_de_image-b296ffe473f164e126f63b13dd1b3901/embed" title="wordsearch - Programas para manejo de imáge" height="500px" width="100%"></iframe></td>
+   </tr> -->
+ </tbody>
+</table>
+<br>
+<br>
+<table class="estimacion-edad"  >
   <thead>
-    <tr>
+    <tr >
       <th colspan="4" style="text-align: center;" >Estimación de la Edad del Niño</th>
     </tr>
     <tr>
@@ -21,11 +40,13 @@
 
   </thead>
   <tbody>
-    <tr>
-      <th>Fecha de evaluación</th>
-      <th></th>
-      <th></th>
-      <th></th>
+    <!-- *ngFor="let key in keys" -->
+    <!-- {{dataWISC[key]}}  -->
+    <tr *ngFor="let key in keys" >
+      <td>Fecha de evaluación</td>
+      <td> {{dataWISC[key]}}</td>
+      <td></td>
+      <td></td>
     </tr>
 
     <tr>
@@ -75,11 +96,11 @@
       <td></td>
 
       <td style="background-color: rgb(85, 3, 3);"></td>
-      
+
       <td></td>
 
       <td style="background-color: rgb(85, 3, 3);"></td>
-      
+
       <td style="background-color: rgb(85, 3, 3);"></td>
 
       <td></td>
@@ -95,11 +116,11 @@
       <td></td>
 
       <td></td>
-      
+
       <td style="background-color: rgb(85, 3, 3);"></td>
 
       <td style="background-color: rgb(85, 3, 3);"></td>
-      
+
       <td style="background-color: rgb(85, 3, 3);" ></td>
 
       <td></td>
@@ -115,11 +136,11 @@
       <td></td>
 
       <td style="background-color: rgb(85, 3, 3);"></td>
-      
+
       <td style="background-color: rgb(85, 3, 3);"></td>
 
       <td></td>
-      
+
       <td style="background-color: rgb(85, 3, 3);"></td>
 
       <td></td>
@@ -136,11 +157,11 @@
       <td></td>
 
       <td style="background-color: rgb(85, 3, 3);"></td>
-      
+
       <td></td>
 
       <td style="background-color: rgb(85, 3, 3);"></td>
-      
+
       <td style="background-color: rgb(85, 3, 3);"></td>
 
       <td></td>
@@ -157,11 +178,11 @@
       <td></td>
 
       <td style="background-color: rgb(85, 3, 3);"></td>
-      
+
       <td style="background-color: rgb(85, 3, 3);"></td>
 
       <td style="background-color: rgb(85, 3, 3);"></td>
-      
+
       <td></td>
 
       <td></td>
@@ -178,11 +199,11 @@
       <td></td>
 
       <td></td>
-      
+
       <td style="background-color: rgb(85, 3, 3);"></td>
 
       <td style="background-color: rgb(85, 3, 3);"></td>
-      
+
       <td style="background-color: rgb(85, 3, 3);"></td>
 
       <td></td>
@@ -198,11 +219,11 @@
       <td></td>
 
       <td style="background-color: rgb(85, 3, 3);"></td>
-      
+
       <td style="background-color: rgb(85, 3, 3);"></td>
 
       <td></td>
-      
+
       <td style="background-color: rgb(85, 3, 3);"></td>
 
       <td></td>
@@ -217,11 +238,11 @@
       <td></td>
 
       <td style="background-color: rgb(85, 3, 3);"></td>
-      
+
       <td></td>
 
       <td style="background-color: rgb(85, 3, 3);"></td>
-      
+
       <td style="background-color: rgb(85, 3, 3);"></td>
 
       <td></td>
@@ -237,11 +258,11 @@
       <td></td>
 
       <td></td>
-      
+
       <td style="background-color: rgb(85, 3, 3);"></td>
 
       <td style="background-color: rgb(85, 3, 3);"></td>
-      
+
       <td style="background-color: rgb(85, 3, 3);" ></td>
 
       <td></td>
@@ -257,11 +278,11 @@
       <td></td>
 
       <td style="background-color: rgb(85, 3, 3);"></td>
-      
+
       <td style="background-color: rgb(85, 3, 3);"></td>
 
       <td style="background-color: rgb(85, 3, 3);"></td>
-      
+
       <td></td>
 
       <td></td>
@@ -276,11 +297,11 @@
       <td style="background-color: rgb(190, 121, 121);"></td>
 
       <td style="background-color: rgb(85, 3, 3);"></td>
-      
+
       <td></td>
 
       <td style="background-color: rgb(85, 3, 3);"></td>
-      
+
       <td style="background-color: rgb(85, 3, 3);"></td>
 
       <td style="background-color: rgb(85, 3, 3);"></td>
@@ -295,11 +316,11 @@
       <td style="background-color: rgb(190, 121, 121);"></td>
 
       <td style="background-color: rgb(85, 3, 3);"></td>
-      
+
       <td style="background-color: rgb(85, 3, 3);"></td>
 
       <td style="background-color: rgb(85, 3, 3);"  ></td>
-      
+
       <td></td>
 
       <td style="background-color: rgb(85, 3, 3);"></td>
@@ -314,11 +335,11 @@
       <td style="background-color: rgb(190, 121, 121);"></td>
 
       <td></td>
-      
+
       <td style="background-color: rgb(85, 3, 3);"></td>
 
       <td style="background-color: rgb(85, 3, 3);"></td>
-      
+
       <td style="background-color: rgb(85, 3, 3);"></td>
 
       <td style="background-color: rgb(85, 3, 3);"></td>
@@ -333,11 +354,11 @@
       <td style="background-color: rgb(190, 121, 121);"></td>
 
       <td style="background-color: rgb(85, 3, 3);"></td>
-      
+
       <td style="background-color: rgb(85, 3, 3);"></td>
 
       <td></td>
-      
+
       <td style="background-color: rgb(85, 3, 3);"></td>
 
       <td style="background-color: rgb(85, 3, 3);"></td>
@@ -352,11 +373,11 @@
       <td style="background-color: rgb(190, 121, 121);"></td>
 
       <td></td>
-      
+
       <td style="background-color: rgb(85, 3, 3);"></td>
 
       <td style="background-color: rgb(85, 3, 3);"></td>
-      
+
       <td style="background-color: rgb(85, 3, 3);"></td>
 
       <td style="background-color: rgb(85, 3, 3);"></td>
@@ -376,11 +397,11 @@
       <td style="background-color: rgb(190, 121, 121);"></td>
 
       <td style="background-color: rgb(190, 121, 121);"></td>
-      
+
       <td style="background-color: rgb(190, 121, 121);"></td>
 
       <td style="background-color: rgb(190, 121, 121);"></td>
-      
+
     </tr>
 
     <tr>
@@ -392,11 +413,11 @@
       <td></td>
 
       <td></td>
-      
+
       <td></td>
 
       <td></td>
-      
+
     </tr>
 
   </tfoot>
@@ -408,7 +429,7 @@
 <br>
 <br>
 <table>
-  
+
 </table>
 
 <div class="divChart">

@@ -11,12 +11,19 @@ import { AutomatizacionWiscivService } from '../automatizacion-wisciv/automatiza
 export class ResultadoAutomatizacionWiscivComponent implements OnInit {
 
   constructor(private router : Router, private automatizacion : AutomatizacionWiscivService) { }
-  public data:Array<any> = [];
+  public dataWISC:Array<any> = [];
+  keys: any;
   ngOnInit(): void {
     //Recibiento de informacion de ASWISC-IV, componente de automatizacion
     this.automatizacion.disparadorDatos.subscribe(
-      dataEntrante => {
+        dataEntrante => {
         console.log("Recibiendo data", dataEntrante);
+        this.dataWISC=dataEntrante;
+        console.log(this.dataWISC);
+        this.keys=Object.keys(dataEntrante.data);
+        // this.dataWISC=dataEntrante.data;
+        // this.keys=Object.keys(dataEntrante.data);
+        // console.log("keys",this.keys);
       }
     )
 
