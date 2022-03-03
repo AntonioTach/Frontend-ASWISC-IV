@@ -1,5 +1,9 @@
+import { ConfigurableFocusTrap } from '@angular/cdk/a11y';
+import { ThisReceiver } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import intervalToDuration from 'date-fns/intervalToDuration';
+import { da } from 'date-fns/locale';
 import { AutomatizacionWiscivService } from '../automatizacion-wisciv/automatizacion-wisciv.service';
 //import { Chart } from 'node_modules/chart.js'
 
@@ -11,21 +15,34 @@ import { AutomatizacionWiscivService } from '../automatizacion-wisciv/automatiza
 export class ResultadoAutomatizacionWiscivComponent implements OnInit {
 
   constructor(private router : Router, private automatizacion : AutomatizacionWiscivService) { }
-  public dataWISC:Array<any> = [];
+  public dataWISC: any;
   keys: any;
+  public Cubos2:Array<any> = [];
+  public Cubos?: string;
   ngOnInit(): void {
     //Recibiento de informacion de ASWISC-IV, componente de automatizacion
     this.automatizacion.disparadorDatos.subscribe(
         dataEntrante => {
         console.log("Recibiendo data", dataEntrante);
         this.dataWISC=dataEntrante;
-        console.log(this.dataWISC);
-        this.keys=Object.keys(dataEntrante.data);
+        // console.log(this.dataWISC);
+        console.log("Cubos", dataEntrante.data.Cubos);
+        //this.Cubos = dataEntrante.data.Cubos;
+        this.Cubos2.push(dataEntrante.data.Cubos);
+        this.Cubos = this.dataWISC.data.Cubos
+        console.log("Dentro de scope", this.Cubos);
+        //this.keys=Object.keys(dataEntrante.data);
         // this.dataWISC=dataEntrante.data;
         // this.keys=Object.keys(dataEntrante.data);
         // console.log("keys",this.keys);
-      }
-    )
+        console.log("Arreglo Cubos", this.Cubos)
+      });
+
+    console.log("Cubos out scope", this.Cubos)
+    //console.log("Cubos dataWISC", this.dataWISC.data.Cubos);
+    console.log("Array de data out scope", this.Cubos2);
+
+
 
 
 //     var myChart = new Chart("myChart", {

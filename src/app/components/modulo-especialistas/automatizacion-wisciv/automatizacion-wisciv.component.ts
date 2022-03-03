@@ -10,8 +10,9 @@ import { AutomatizacionWiscivService } from './automatizacion-wisciv.service';
   templateUrl: './automatizacion-wisciv.component.html',
   styleUrls: ['./automatizacion-wisciv.component.css']
 })
-export class AutomatizacionWiscivComponent implements OnInit {
 
+export class AutomatizacionWiscivComponent implements OnInit {
+  id_especialista = localStorage.getItem('id_especialista');
   @Input() dataEntrante: any; //Datos que se enviaran al otro componente de resultados
 
   FormASWISC: FormGroup = new FormGroup({
@@ -33,6 +34,7 @@ export class AutomatizacionWiscivComponent implements OnInit {
     Informacion:  new FormControl('', [ Validators.min(0), Validators.max(33)]),
     Aritmetica:  new FormControl('', [Validators.min(0), Validators.max(34)]),
     Pistas: new FormControl('', [Validators.min(0), Validators.max(24)]),
+    id_especialista: new FormControl(this.id_especialista),
   }); //Formulario de envio de datos prueba WISC-IV
   //falta service cuando se agregue tambien al constructor
   constructor(private router:Router, private formBuilder: FormBuilder, private _snackBar: MatSnackBar, private serviceRevisar: ServiceRevisarPacienteService, private modificarExpedienteService: ModificacionExpedienteServiceService, private automatizacion: AutomatizacionWiscivService) { }
@@ -95,7 +97,11 @@ export class AutomatizacionWiscivComponent implements OnInit {
             puntuacionMediaSubprueba: res.data.puntuacionMediaSubprueba,
             puntuacionMediaComprensionVerbal2: res.data.puntuacionMediaComprensionVerbal2,
             nacimiento: res.data.nacimiento,
-            fechaEvaluacion: res.data.fechaEvaluacion
+            nombrePaciente: res.data.nombrePaciente,
+            nombreEspecialista: res.data.nombreEspecialista,
+            fechaEvaluacion: res.data.fechaEvaluacion,
+
+            ///nombrePaciente: res.data.nombrePaciente,
           };
 
           //console.log(this.dataEntrante)
