@@ -42,9 +42,9 @@
   <tbody>
     <!-- *ngFor="let key in keys" -->
     <!-- {{dataWISC[key]}}  -->
-    <tr>
+    <tr *ngFor="let key in keys" >
       <td>Fecha de evaluación</td>
-      <td>  </td>
+      <td> {{dataWISC[key]}}</td>
       <td></td>
       <td></td>
     </tr>
