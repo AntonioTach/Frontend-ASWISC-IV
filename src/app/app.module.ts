@@ -34,6 +34,8 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireStorageModule, BUCKET } from '@angular/fire/compat/storage';
 import { WiscIvComponent } from './components/wisc-iv/wisc-iv.component';
 import { AswiscIvComponent } from './components/aswisc-iv/aswisc-iv.component';
+// Horarios
+///import { ScheduleModule, RecurrenceEditorModule, DayService, WeekService, WorkWeekService, MonthService, MonthAgendaService } from '@syncfusion/ej2-angular-schedule';
 
 
 @NgModule({
@@ -70,11 +72,14 @@ import { AswiscIvComponent } from './components/aswisc-iv/aswisc-iv.component';
     HttpClientModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireStorageModule,
-    AngularEditorModule
+    AngularEditorModule,
+    // ScheduleModule,
+    // RecurrenceEditorModule,
   ],
   providers: [
 
     ServiceRegistroEspecialistaService,
+    // DayService, WeekService, WorkWeekService, MonthService, MonthAgendaService,
     { provide: JWT_OPTIONS, useValue: JWT_OPTIONS }, {
       provide: BUCKET, useValue: environment.firebaseConfig.storageBucket
     },
