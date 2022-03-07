@@ -8,4 +8,22 @@
 @import '../../../../../node_modules/@syncfusion/ej2-navigations/styles/material.css';
 @import '../../../../../node_modules/@syncfusion/ej2-angular-schedule/styles/material.css'; */
 
-/* @import url("https://cdn.syncfusion.com/ej2/material.css"); */
+.cuadro{
+  background-color: #ffffff ;
+  width: 90%;
+  margin: auto;
+  padding-top: 50px;
+  border: 6px solid #DCDCDC;
+}
+
+.div-info{
+  display: flex;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.creacion{
+  margin-left: 30px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 40px;
+}

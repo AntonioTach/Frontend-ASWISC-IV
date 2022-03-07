@@ -4,7 +4,8 @@ import * as moment from 'moment';
 
 @Component({
   selector: 'app-calendario',
-  templateUrl: './calendario.component.html',
+  template: '<ejs-schedule></ejs-schedule>',
+  //templateUrl: './calendario.component.html',
   styleUrls: ['./calendario.component.css']
 })
 export class CalendarioComponent {

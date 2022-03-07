@@ -73,6 +73,6 @@ import { ScheduleModule, RecurrenceEditorModule, DayService, WeekService, WorkWe
     ScheduleModule,
     RecurrenceEditorModule
 
-  ],providers: [DayService, WeekService, WorkWeekService, MonthService, MonthAgendaService]
+  ], providers: [DayService, WeekService, WorkWeekService, MonthService, MonthAgendaService]
 })
 export class SharedModule { }
