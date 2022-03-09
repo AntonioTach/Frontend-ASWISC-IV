@@ -21,6 +21,7 @@ export class ResultadoAutomatizacionWiscivComponent implements OnInit {
         this.dataWISC=dataEntrante;
         console.log(this.dataWISC);
         this.keys=Object.keys(dataEntrante.data);
+        //Promesas
         // this.dataWISC=dataEntrante.data;
         // this.keys=Object.keys(dataEntrante.data);
         // console.log("keys",this.keys);
