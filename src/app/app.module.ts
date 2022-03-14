@@ -34,6 +34,7 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireStorageModule, BUCKET } from '@angular/fire/compat/storage';
 import { WiscIvComponent } from './components/wisc-iv/wisc-iv.component';
 import { AswiscIvComponent } from './components/aswisc-iv/aswisc-iv.component';
+import { VerArticuloComponent } from './components/ver-articulo/ver-articulo.component';
 // Horarios
 ///import { ScheduleModule, RecurrenceEditorModule, DayService, WeekService, WorkWeekService, MonthService, MonthAgendaService } from '@syncfusion/ej2-angular-schedule';
 
@@ -55,6 +56,7 @@ import { AswiscIvComponent } from './components/aswisc-iv/aswisc-iv.component';
     OlvidarContrasenaComponent,
     RecuperarPacienteComponent,
     RecuperarEspecialistaComponent,
+    VerArticuloComponent,
   ],
   imports: [
     BrowserModule,

@@ -35,8 +35,8 @@ export class AsignarTareaComponent implements OnInit {
     this.cargarPacientes(); //obtener los pacientes del especialista
     this.FormTarea = this.formBuilder.group({
       id_paciente: [''],
-      titulo: ['', [Validators.required]],
-      descripcion: ['', [Validators.required]],
+      titulo: ['', [Validators.required, Validators.maxLength(20)]],
+      descripcion: ['', [Validators.required, Validators.maxLength(100)]],
       documento: [''],
     })
 

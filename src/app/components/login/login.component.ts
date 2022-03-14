@@ -2,6 +2,7 @@ import { Component, Injectable, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 //Importar servicio para login
 import { ServiceLoginUsuariosService } from '../login/login.service';
@@ -97,8 +98,9 @@ export class LoginComponent implements OnInit {
   error2(){
     this._snackBar.open('Usuario o contraseña Incorrecto', '', {
       duration: 5000, //5s
+      panelClass: "red",
       horizontalPosition: 'center',
-      verticalPosition: 'bottom'
+      verticalPosition: 'bottom',
     });
   }
 

@@ -59,7 +59,7 @@ export class ElementosDeTerapiaComponent implements OnInit {
   eliminarTarea(id: number): void{
     if(
       confirm(
-        'Seguro que desea eliminar el articulo?. Dejará de pertenecer a su lista de articulos.'
+        'Seguro que desea eliminar la tarea?. Dejará de pertenecer a su lista de Tareas.'
       ) == true
     ) {
       this.DeleteTarea.eliminarTarea(id).subscribe(

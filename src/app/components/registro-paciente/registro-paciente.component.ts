@@ -23,7 +23,7 @@ export class RegistroPacienteComponent implements OnInit {
 
   ngOnInit(): void {
     this.formRegistroPaciente = this.formBuilder.group({
-      nombre: ['', [Validators.required]],
+      nombre: ['', [Validators.required, Validators.maxLength(70)]],
       sexo: ['', [Validators.required]],
       nacimiento: ['', [Validators.required]],
       usuario: ['', [Validators.required, Validators.maxLength(12)]],

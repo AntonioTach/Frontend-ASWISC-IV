@@ -36,7 +36,7 @@ export class RegistroEspecialistaComponent implements OnInit {
       foto_profesional: [''], curriculum: [''], cedula: [''],
       nombre: ['',
         [
-          Validators.required
+          Validators.required, Validators.maxLength(70)
         ]
       ],
 
@@ -113,7 +113,7 @@ export class RegistroEspecialistaComponent implements OnInit {
   RegistroEspecialista() {
 
     this.formRegistro.value['curriculum'] = this.curriculum.nativeElement.value;
-    this.formRegistro.value['foto_profesional'] = this.image.nativeElement.value;//asar la url de lafoto 
+    this.formRegistro.value['foto_profesional'] = this.image.nativeElement.value;//asar la url de lafoto
     this.formRegistro.value['cedula'] = this.cedula.nativeElement.value;
     console.table(this.formRegistro.value)
     this.correcto();
@@ -162,7 +162,7 @@ export class RegistroEspecialistaComponent implements OnInit {
     const file = e.target.files[0];//toma el primer archivo que encuentre
     const filePath = `Imagen/usuario${id}`;////se genera la ruta
     const ref = this.storage.ref(filePath);//le mando la ruta al servidor
-    const task = this.storage.upload(filePath, file);//mandar la imagen al servidor 
+    const task = this.storage.upload(filePath, file);//mandar la imagen al servidor
     task.snapshotChanges().pipe(finalize(() => this.urlImage = ref.getDownloadURL())).subscribe();//tomar la url
   }
   ingresarCurriculum(e: any) {
