@@ -3,11 +3,135 @@
 <br />
 <br />
 <br />
-<br />
 <body style="background-color: white">
   <div class="cuadro">
     <h1 class="creacion">Horarios Especialista</h1>
-    <app-calendario></app-calendario>
+    <div class="contenedor-h">
+      <div class="contenedor-calendario">
+        <app-calendario></app-calendario>
+      </div>
+        <div class="simbologia">
+          <p>Cada espacio es una hora de sesión, cada color representa un estado en el cual se encuentra esta hora.</p>
+          <div class="contenedor-color">
+            <h3>Verde</h3><span class="circulo-verde"></span>
+          </div>
+          <p>La hora esta disponible para agendar un paciente.</p>
+          <div class="contenedor-color">
+            <h3>Rojo</h3><span class="circulo-rojo"></span>
+          </div>
+          <p>Durante esa hora no trabaja el especialista.</p>
+          <div class="contenedor-color">
+            <h3>Gris</h3><span class="circulo-gris"></span>
+          </div>
+          <p>Esa hora ya ha sido asignado a un paciente.</p>
+          <button type="button" class="btn btn-outline-danger" (click)="openM(contenido)">Modificar horarios laborales</button>
+        </div>
+    </div>
   </div>
+
+
+  <!-- este elemento es la ventana que se abre para modificar los horarios -->
+  <ng-template #contenido let-modal>
+
+      <div class="modal-header">
+        <h2 class="modal-title">Horarios de trabajo</h2>
+        <button class="close" aria-label="close" type="button" (click)="modal.dismiss()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <h4>Día completo (24hrs)</h4>
+        <div class="dias-completos">
+          <!-- <form action=""> -->
+            <select name="" id="" class="select-css">
+              <option value="lunes">Lunes</option>
+              <option value="martes">Martes</option>
+              <option value="miercoles">Miercoles</option>
+              <option value="jueves">Jueves</option>
+              <option value="viernes">Viernes</option>
+              <option value="sabado">Sabado</option>
+              <option value="dominto">Domingo</option>
+            </select>
+            <button class="btn-actualizar">Actualizar día(s) completos</button>
+          <!-- </form> -->
+        </div>
+
+        <h4>Horas especificas por día</h4>
+        <div class="horas-especificas" >
+          <select name="" id="" class="select-css">
+            <option value="lunes">Lunes</option>
+            <option value="martes">Martes</option>
+            <option value="miercoles">Miercoles</option>
+            <option value="jueves">Jueves</option>
+            <option value="viernes">Viernes</option>
+            <option value="sabado">Sabado</option>
+            <option value="dominto">Domingo</option>
+          </select>
+          <select name="" id="" class="select-css">
+            <option value="00:00">00:00</option>
+            <option value="01:00">01:00</option>
+            <option value="02:00">02:00</option>
+            <option value="03:00">03:00</option>
+            <option value="04:00">04:00</option>
+            <option value="05:00">05:00</option>
+            <option value="06:00">06:00</option>
+            <option value="07:00">07:00</option>
+            <option value="08:00">08:00</option>
+            <option value="09:00">09:00</option>
+            <option value="10:00">10:00</option>
+            <option value="11:00">11:00</option>
+            <option value="12:00">12:00</option>
+            <option value="13:00">13:00</option>
+            <option value="14:00">14:00</option>
+            <option value="15:00">15:00</option>
+            <option value="16:00">16:00</option>
+            <option value="17:00">17:00</option>
+            <option value="18:00">18:00</option>
+            <option value="19:00">19:00</option>
+            <option value="20:00">20:00</option>
+            <option value="21:00">21:00</option>
+            <option value="22:00">22:00</option>
+            <option value="23:00">23:00</option>
+            <option value="24:00">24:00</option>
+          </select>
+
+          <select name="" id="" class="select-css">
+            <option value="01:00">01:00</option>
+            <option value="02:00">02:00</option>
+            <option value="03:00">03:00</option>
+            <option value="04:00">04:00</option>
+            <option value="05:00">05:00</option>
+            <option value="06:00">06:00</option>
+            <option value="07:00">07:00</option>
+            <option value="08:00">08:00</option>
+            <option value="09:00">09:00</option>
+            <option value="10:00">10:00</option>
+            <option value="11:00">11:00</option>
+            <option value="12:00">12:00</option>
+            <option value="13:00">13:00</option>
+            <option value="14:00">14:00</option>
+            <option value="15:00">15:00</option>
+            <option value="16:00">16:00</option>
+            <option value="17:00">17:00</option>
+            <option value="18:00">18:00</option>
+            <option value="19:00">19:00</option>
+            <option value="20:00">20:00</option>
+            <option value="21:00">21:00</option>
+            <option value="22:00">22:00</option>
+            <option value="23:00">23:00</option>
+            <option value="24:00">24:00</option>
+          </select>
+
+          <button class="btn-actualizar">Actualizar horas especificas</button>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" (click)="modal.close()">ok!</button>
+      </div>
+      
+  </ng-template>
+
 </body>
 

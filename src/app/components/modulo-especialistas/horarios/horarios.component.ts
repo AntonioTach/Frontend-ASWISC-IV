@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+
 @Component({
   selector: 'app-horarios',
   //template: '<ejs-schedule></ejs-schedule>',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HorariosComponent implements OnInit {
 
-  constructor() { }
+  constructor(private modal: NgbModal) { }
 
   ngOnInit(): void {
+
+  }
+
+  openM(contenido){
+    this.modal.open(contenido, {size:'lg', centered:true});
   }
 
 }

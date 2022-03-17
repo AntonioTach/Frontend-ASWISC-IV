@@ -1,1 +1,19 @@
 @import url("https://cdn.syncfusion.com/ej2/material.css");
+
+.e-schedule .e-appointment-details{
+    padding: 0 !important;
+}
+.schedule-event-template.e-schedule .e-vertical-view .e-content-wrap .e-appointment {
+    border-radius: 8px;
+  }
+  
+  .schedule-event-template.e-schedule .e-vertical-view .e-content-wrap .e-appointment .e-appointment-details {
+    padding: 0;
+    height: 100%;
+  }
+.elemento-gris{
+    background: rgb(207, 205, 199);
+    height: 100%;
+    width: 100%;
+    color: black;
+}

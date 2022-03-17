@@ -1,1 +1,76 @@
 <!-- <ejs-schedule [eventSettings]="eventData"> </ejs-schedule> -->
+<ejs-schedule #scheduleObj cssClass='schedule-group-custom-work-days' width='100%' height='500px'
+[currentView]="currentView" [timeScale]="timeScale" [selectedDate]="selectedDate"
+(renderCell)="onRenderCell($event)" [eventSettings]='eventSettings' [allowResizing]="allowResizing"
+[allowDragAndDrop]="allowDragDrop" >
+<!-- [group]="group" -->
+<!-- (actionBegin)="onActionBegin($event)" (popupClose)="onPopupClose()" [showQuickInfo]="showQuickInfo" -->
+<!-- <ejs-schedule height="500" width="100%" [selectedDate]="selectedDate" [currentView]="currentView" (renderCell)="onRenderCell($event)" [eventSettings]='eventSettings'> -->
+    <ng-template #timeScaleMajorSlotTemplate let-data>
+        <div class="majorTime">{{getMajorTime(data.date)}}</div>
+    </ng-template>
+
+    <ng-template #timeScaleMinorSlotTemplate let-data>
+        <div class="minorTime">{{getMinorTime(data.date)}}</div>
+    </ng-template>
+
+    <ng-template #eventSettingsTemplate let-data>
+        <!-- <div class="elemento-gris" >{{data.Subject}}</div>  -->
+        <div class="elemento-gris" [style.background]="data.color">
+            <div>{{data.Subject}}</div>
+        </div> 
+    </ng-template>
+
+    <!-- <ng-template #editorTemplate let-data>
+        <table *ngIf="data != undefined" class="custom-event-editor" width="100%" cellpadding="5">
+          <tbody>
+            <tr>
+              <td class="e-textlabel">Summary</td>
+              <td colspan="4">
+                <input id="Subject" class="e-field e-input" type="text" value="{{data.Subject}}" name="Subject"
+                  style="width: 100%" />
+              </td>
+            </tr>
+            <tr>
+              <td class="e-textlabel">Status</td>
+              <td colspan="4">
+                <ejs-dropdownlist id='EventType' class="e-field" data-name="EventType" placeholder='Choose Status'
+                  [dataSource]='statusData' value="{{data.EventType}}">
+                </ejs-dropdownlist>
+              </td>
+            </tr>
+            <tr>
+              <td class="e-textlabel">From</td>
+              <td colspan="4">
+                <ejs-datetimepicker id="StartTime" class="e-field" data-name="StartTime" format="M/dd/yy h:mm a"
+                  (change)="onDateChange($event)" [value]="startDateParser(data.startTime || data.StartTime)">
+                </ejs-datetimepicker>
+              </td>
+            </tr>
+            <tr>
+              <td class="e-textlabel">To</td>
+              <td colspan="4">
+                <ejs-datetimepicker id="EndTime" class="e-field" data-name="EndTime" format="M/dd/yy h:mm a"
+                  (change)="onDateChange($event)" [value]="endDateParser(data.endTime || data.EndTime)">
+                </ejs-datetimepicker>
+              </td>
+            </tr>
+            <tr>
+              <td class="e-textlabel">Reason</td>
+              <td colspan="4">
+                <textarea id="Description" class="e-field e-input" name="Description" rows="3" cols="50"
+                  value="{{data.Description}}" style="width: 100%; height: 60px !important; resize: vertical"></textarea>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </ng-template> -->
+    <!-- que se guarden las rojas y grises, las que no sean de este color se pinten de verde con el renderCell -->
+
+    <!-- <e-resources>
+        <e-resource field='DoctorId' title='Doctor Name' name='Doctors' [dataSource]='resourceDataSource'
+          idField='id' colorField='color' workDaysField='workDays' startHourField='startHour' endHourField='endHour'>
+        </e-resource>
+    </e-resources> -->
+
+</ejs-schedule>

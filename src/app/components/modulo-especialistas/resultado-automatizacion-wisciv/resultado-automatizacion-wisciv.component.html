@@ -9,431 +9,439 @@
 <h1>WISC-IV</h1>
 <h2>Escala Wechsler de inteligencia para Niños-IV</h2>
 
-<table class="datos">
- <tbody>
-   <tr>
-     <td>Nombre del niño</td>
-     <td></td>
-   </tr>
-   <tr>
-     <td>Examinador</td>
-     <td></td>
-   </tr>
-   <!-- <tr>
-     <td> <iframe src="https://www.educima.com/wordsearches/programas_para_manejo_de_image-b296ffe473f164e126f63b13dd1b3901/embed" title="wordsearch - Programas para manejo de imáge" height="500px" width="100%"></iframe></td>
-   </tr> -->
- </tbody>
-</table>
-<br>
-<br>
-<table class="estimacion-edad"  >
-  <thead>
-    <tr >
-      <th colspan="4" style="text-align: center;" >Estimación de la Edad del Niño</th>
-    </tr>
-    <tr>
-      <th  style="border: white;"></th>
-      <th scope="col">Año</th>
-      <th scope="col">Mes</th>
-      <th scope="col">Día</th>
-    </tr>
+  <div class="contenedor">
+
+      <div class="bloque-izquierda">
+
+          <table class="datos">
+          <tbody>
+            <tr>
+              <td>Nombre del niño</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>Examinador</td>
+              <td></td>
+            </tr>
+            <!-- <tr>
+              <td> <iframe src="https://www.educima.com/wordsearches/programas_para_manejo_de_image-b296ffe473f164e126f63b13dd1b3901/embed" title="wordsearch - Programas para manejo de imáge" height="500px" width="100%"></iframe></td>
+            </tr> -->
+          </tbody>
+          </table>
+          <br>
+          <br>
+          <table class="estimacion-edad"  >
+            <thead>
+              <tr >
+                <th colspan="4" style="text-align: center;" >Estimación de la Edad del Niño</th>
+              </tr>
+              <tr>
+                <th  style="border: white;"></th>
+                <th scope="col">Año</th>
+                <th scope="col">Mes</th>
+                <th scope="col">Día</th>
+              </tr>
+          
+            </thead>
+            <tbody>
+              <!-- *ngFor="let key in keys" -->
+              <!-- {{dataWISC[key]}}  -->
+              <tr *ngFor="let key in keys" >
+                <td>Fecha de evaluación</td>
+                <td> {{dataWISC[key]}}</td>
+                <td></td>
+                <td></td>
+              </tr>
+          
+              <tr>
+                <th>Fecha de nacimiento</th>
+                <th></th>
+                <th></th>
+                <th></th>
+              </tr>
+          
+              <tr>
+                <th>Edad de evaluación</th>
+                <th style="background-color: rgb(190, 121, 121);"></th>
+                <th style="background-color: rgb(190, 121, 121);"></th>
+                <th style="background-color: rgb(190, 121, 121);"></th>
+              </tr>
+            </tbody>
+            <tfoot>
+          
+            </tfoot>
+          </table>
+          <br>
+          <br>
+          <br>
+          
+          <table class="puntuaciones-escalares">
+          
+            <thead>
+          
+              <tr>
+          
+                <th scope="col">Subprueba</th>
+          
+                <th scope="col">PN</th>
+          
+                <th colspan="6"  scope="col">Puntuaciones Escalares</th>
+          
+              </tr>
+            </thead>
+          
+            <tbody>
+              <tr>
+          
+                <th>Cubos</th>
+          
+                <td></td>
+          
+                <td></td>
+          
+                <td style="background-color: rgb(85, 3, 3);"></td>
+          
+                <td></td>
+          
+                <td style="background-color: rgb(85, 3, 3);"></td>
+          
+                <td style="background-color: rgb(85, 3, 3);"></td>
+          
+                <td></td>
+          
+              </tr>
+          
+              <tr>
+          
+                <th>Semejanzas</th>
+          
+                <td></td>
+          
+                <td></td>
+          
+                <td></td>
+          
+                <td style="background-color: rgb(85, 3, 3);"></td>
+          
+                <td style="background-color: rgb(85, 3, 3);"></td>
+          
+                <td style="background-color: rgb(85, 3, 3);" ></td>
+          
+                <td></td>
+          
+              </tr>
+          
+              <tr>
+          
+                <th>Retención de Dígitos</th>
+          
+                <td></td>
+          
+                <td></td>
+          
+                <td style="background-color: rgb(85, 3, 3);"></td>
+          
+                <td style="background-color: rgb(85, 3, 3);"></td>
+          
+                <td></td>
+          
+                <td style="background-color: rgb(85, 3, 3);"></td>
+          
+                <td></td>
+          
+          
+              </tr>
+          
+              <tr>
+          
+                <th>Conceptos con dibujos</th>
+          
+                <td></td>
+          
+                <td></td>
+          
+                <td style="background-color: rgb(85, 3, 3);"></td>
+          
+                <td></td>
+          
+                <td style="background-color: rgb(85, 3, 3);"></td>
+          
+                <td style="background-color: rgb(85, 3, 3);"></td>
+          
+                <td></td>
+          
+          
+              </tr>
+          
+              <tr>
+          
+                <th>Claves</th>
+          
+                <td></td>
+          
+                <td></td>
+          
+                <td style="background-color: rgb(85, 3, 3);"></td>
+          
+                <td style="background-color: rgb(85, 3, 3);"></td>
+          
+                <td style="background-color: rgb(85, 3, 3);"></td>
+          
+                <td></td>
+          
+                <td></td>
+          
+          
+              </tr>
+          
+              <tr>
+          
+                <th>Vocabulario</th>
+          
+                <td></td>
+          
+                <td></td>
+          
+                <td></td>
+          
+                <td style="background-color: rgb(85, 3, 3);"></td>
+          
+                <td style="background-color: rgb(85, 3, 3);"></td>
+          
+                <td style="background-color: rgb(85, 3, 3);"></td>
+          
+                <td></td>
+          
+          
+              </tr>
+              <tr>
+          
+                <th>Sucesión de números y letras</th>
+          
+                <td></td>
+          
+                <td></td>
+          
+                <td style="background-color: rgb(85, 3, 3);"></td>
+          
+                <td style="background-color: rgb(85, 3, 3);"></td>
+          
+                <td></td>
+          
+                <td style="background-color: rgb(85, 3, 3);"></td>
+          
+                <td></td>
+          
+              </tr>
+              <tr>
+          
+                <th>Matrices</th>
+          
+                <td></td>
+          
+                <td></td>
+          
+                <td style="background-color: rgb(85, 3, 3);"></td>
+          
+                <td></td>
+          
+                <td style="background-color: rgb(85, 3, 3);"></td>
+          
+                <td style="background-color: rgb(85, 3, 3);"></td>
+          
+                <td></td>
+          
+              </tr>
+          
+              <tr>
+          
+                <th>Comprensión</th>
+          
+                <td></td>
+          
+                <td></td>
+          
+                <td></td>
+          
+                <td style="background-color: rgb(85, 3, 3);"></td>
+          
+                <td style="background-color: rgb(85, 3, 3);"></td>
+          
+                <td style="background-color: rgb(85, 3, 3);" ></td>
+          
+                <td></td>
+          
+              </tr>
+          
+              <tr>
+          
+                <th>Búsqueda de Símbolos</th>
+          
+                <td></td>
+          
+                <td></td>
+          
+                <td style="background-color: rgb(85, 3, 3);"></td>
+          
+                <td style="background-color: rgb(85, 3, 3);"></td>
+          
+                <td style="background-color: rgb(85, 3, 3);"></td>
+          
+                <td></td>
+          
+                <td></td>
+          
+              </tr>
+              <tr>
+          
+                <th style="background-color: rgb(190, 121, 121);">(Figuras Incompletas)</th>
+          
+                <td style="background-color: rgb(190, 121, 121);"></td>
+          
+                <td style="background-color: rgb(190, 121, 121);"></td>
+          
+                <td style="background-color: rgb(85, 3, 3);"></td>
+          
+                <td></td>
+          
+                <td style="background-color: rgb(85, 3, 3);"></td>
+          
+                <td style="background-color: rgb(85, 3, 3);"></td>
+          
+                <td style="background-color: rgb(85, 3, 3);"></td>
+          
+              </tr>
+              <tr>
+          
+                <th style="background-color: rgb(190, 121, 121);">(Registros)</th>
+          
+                <td style="background-color: rgb(190, 121, 121);"></td>
+          
+                <td style="background-color: rgb(190, 121, 121);"></td>
+          
+                <td style="background-color: rgb(85, 3, 3);"></td>
+          
+                <td style="background-color: rgb(85, 3, 3);"></td>
+          
+                <td style="background-color: rgb(85, 3, 3);"  ></td>
+          
+                <td></td>
+          
+                <td style="background-color: rgb(85, 3, 3);"></td>
+          
+              </tr>
+              <tr>
+          
+                <th style="background-color: rgb(190, 121, 121);">(Información)</th>
+          
+                <td style="background-color: rgb(190, 121, 121);"></td>
+          
+                <td style="background-color: rgb(190, 121, 121);"></td>
+          
+                <td></td>
+          
+                <td style="background-color: rgb(85, 3, 3);"></td>
+          
+                <td style="background-color: rgb(85, 3, 3);"></td>
+          
+                <td style="background-color: rgb(85, 3, 3);"></td>
+          
+                <td style="background-color: rgb(85, 3, 3);"></td>
+          
+              </tr>
+              <tr>
+          
+                <th style="background-color: rgb(190, 121, 121);">(Aritmética)</th>
+          
+                <td style="background-color: rgb(190, 121, 121);"></td>
+          
+                <td style="background-color: rgb(190, 121, 121);"></td>
+          
+                <td style="background-color: rgb(85, 3, 3);"></td>
+          
+                <td style="background-color: rgb(85, 3, 3);"></td>
+          
+                <td></td>
+          
+                <td style="background-color: rgb(85, 3, 3);"></td>
+          
+                <td style="background-color: rgb(85, 3, 3);"></td>
+          
+              </tr>
+              <tr>
+          
+                <th style="background-color: rgb(190, 121, 121);">Palabras en contexto (Pistas)</th>
+          
+                <td style="background-color: rgb(190, 121, 121);"></td>
+          
+                <td style="background-color: rgb(190, 121, 121);"></td>
+          
+                <td></td>
+          
+                <td style="background-color: rgb(85, 3, 3);"></td>
+          
+                <td style="background-color: rgb(85, 3, 3);"></td>
+          
+                <td style="background-color: rgb(85, 3, 3);"></td>
+          
+                <td style="background-color: rgb(85, 3, 3);"></td>
+          
+              </tr>
+          
+            </tbody>
+          
+            <tfoot>
+          
+              <tr>
+          
+                <th style="border: white;" colspan="3">Suma de Puntuaciones Escalares</th>
+          
+                <td style="background-color: rgb(190, 121, 121);"></td>
+          
+                <td style="background-color: rgb(190, 121, 121);"></td>
+          
+                <td style="background-color: rgb(190, 121, 121);"></td>
+          
+                <td style="background-color: rgb(190, 121, 121);"></td>
+          
+                <td style="background-color: rgb(190, 121, 121);"></td>
+          
+              </tr>
+          
+              <tr>
+          
+                <th style="border: white;" colspan="3">texto extra</th>
+          
+                <td></td>
+          
+                <td></td>
+          
+                <td></td>
+          
+                <td></td>
+          
+                <td></td>
+          
+              </tr>
+          
+            </tfoot>
+          
+          </table>
+          
+          <br>
+          <br>
+          <br>
+          <br>
+          <table>
+          
+          </table>
+        </div>
+      
+    <div class="graficas">
+      <div id="grafica1" class="grafica"></div>
+      <div id="grafica2" class="grafica"></div>
+    </div>
+
+  </div>
 
-  </thead>
-  <tbody>
-    <!-- *ngFor="let key in keys" -->
-    <!-- {{dataWISC[key]}}  -->
-    <tr *ngFor="let key in keys" >
-      <td>Fecha de evaluación</td>
-      <td> {{dataWISC[key]}}</td>
-      <td></td>
-      <td></td>
-    </tr>
-
-    <tr>
-      <th>Fecha de nacimiento</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-
-    <tr>
-      <th>Edad de evaluación</th>
-      <th style="background-color: rgb(190, 121, 121);"></th>
-      <th style="background-color: rgb(190, 121, 121);"></th>
-      <th style="background-color: rgb(190, 121, 121);"></th>
-    </tr>
-  </tbody>
-  <tfoot>
-
-  </tfoot>
-</table>
-<br>
-<br>
-<br>
-
-<table class="puntuaciones-escalares">
-
-  <thead>
-
-    <tr>
-
-      <th scope="col">Subprueba</th>
-
-      <th scope="col">PN</th>
-
-      <th colspan="6"  scope="col">Puntuaciones Escalares</th>
-
-    </tr>
-  </thead>
-
-  <tbody>
-    <tr>
-
-      <th>Cubos</th>
-
-      <td></td>
-
-      <td></td>
-
-      <td style="background-color: rgb(85, 3, 3);"></td>
-
-      <td></td>
-
-      <td style="background-color: rgb(85, 3, 3);"></td>
-
-      <td style="background-color: rgb(85, 3, 3);"></td>
-
-      <td></td>
-
-    </tr>
-
-    <tr>
-
-      <th>Semejanzas</th>
-
-      <td></td>
-
-      <td></td>
-
-      <td></td>
-
-      <td style="background-color: rgb(85, 3, 3);"></td>
-
-      <td style="background-color: rgb(85, 3, 3);"></td>
-
-      <td style="background-color: rgb(85, 3, 3);" ></td>
-
-      <td></td>
-
-    </tr>
-
-    <tr>
-
-      <th>Retención de Dígitos</th>
-
-      <td></td>
-
-      <td></td>
-
-      <td style="background-color: rgb(85, 3, 3);"></td>
-
-      <td style="background-color: rgb(85, 3, 3);"></td>
-
-      <td></td>
-
-      <td style="background-color: rgb(85, 3, 3);"></td>
-
-      <td></td>
-
-
-    </tr>
-
-    <tr>
-
-      <th>Conceptos con dibujos</th>
-
-      <td></td>
-
-      <td></td>
-
-      <td style="background-color: rgb(85, 3, 3);"></td>
-
-      <td></td>
-
-      <td style="background-color: rgb(85, 3, 3);"></td>
-
-      <td style="background-color: rgb(85, 3, 3);"></td>
-
-      <td></td>
-
-
-    </tr>
-
-    <tr>
-
-      <th>Claves</th>
-
-      <td></td>
-
-      <td></td>
-
-      <td style="background-color: rgb(85, 3, 3);"></td>
-
-      <td style="background-color: rgb(85, 3, 3);"></td>
-
-      <td style="background-color: rgb(85, 3, 3);"></td>
-
-      <td></td>
-
-      <td></td>
-
-
-    </tr>
-
-    <tr>
-
-      <th>Vocabulario</th>
-
-      <td></td>
-
-      <td></td>
-
-      <td></td>
-
-      <td style="background-color: rgb(85, 3, 3);"></td>
-
-      <td style="background-color: rgb(85, 3, 3);"></td>
-
-      <td style="background-color: rgb(85, 3, 3);"></td>
-
-      <td></td>
-
-
-    </tr>
-    <tr>
-
-      <th>Sucesión de números y letras</th>
-
-      <td></td>
-
-      <td></td>
-
-      <td style="background-color: rgb(85, 3, 3);"></td>
-
-      <td style="background-color: rgb(85, 3, 3);"></td>
-
-      <td></td>
-
-      <td style="background-color: rgb(85, 3, 3);"></td>
-
-      <td></td>
-
-    </tr>
-    <tr>
-
-      <th>Matrices</th>
-
-      <td></td>
-
-      <td></td>
-
-      <td style="background-color: rgb(85, 3, 3);"></td>
-
-      <td></td>
-
-      <td style="background-color: rgb(85, 3, 3);"></td>
-
-      <td style="background-color: rgb(85, 3, 3);"></td>
-
-      <td></td>
-
-    </tr>
-
-    <tr>
-
-      <th>Comprensión</th>
-
-      <td></td>
-
-      <td></td>
-
-      <td></td>
-
-      <td style="background-color: rgb(85, 3, 3);"></td>
-
-      <td style="background-color: rgb(85, 3, 3);"></td>
-
-      <td style="background-color: rgb(85, 3, 3);" ></td>
-
-      <td></td>
-
-    </tr>
-
-    <tr>
-
-      <th>Búsqueda de Símbolos</th>
-
-      <td></td>
-
-      <td></td>
-
-      <td style="background-color: rgb(85, 3, 3);"></td>
-
-      <td style="background-color: rgb(85, 3, 3);"></td>
-
-      <td style="background-color: rgb(85, 3, 3);"></td>
-
-      <td></td>
-
-      <td></td>
-
-    </tr>
-    <tr>
-
-      <th style="background-color: rgb(190, 121, 121);">(Figuras Incompletas)</th>
-
-      <td style="background-color: rgb(190, 121, 121);"></td>
-
-      <td style="background-color: rgb(190, 121, 121);"></td>
-
-      <td style="background-color: rgb(85, 3, 3);"></td>
-
-      <td></td>
-
-      <td style="background-color: rgb(85, 3, 3);"></td>
-
-      <td style="background-color: rgb(85, 3, 3);"></td>
-
-      <td style="background-color: rgb(85, 3, 3);"></td>
-
-    </tr>
-    <tr>
-
-      <th style="background-color: rgb(190, 121, 121);">(Registros)</th>
-
-      <td style="background-color: rgb(190, 121, 121);"></td>
-
-      <td style="background-color: rgb(190, 121, 121);"></td>
-
-      <td style="background-color: rgb(85, 3, 3);"></td>
-
-      <td style="background-color: rgb(85, 3, 3);"></td>
-
-      <td style="background-color: rgb(85, 3, 3);"  ></td>
-
-      <td></td>
-
-      <td style="background-color: rgb(85, 3, 3);"></td>
-
-    </tr>
-    <tr>
-
-      <th style="background-color: rgb(190, 121, 121);">(Información)</th>
-
-      <td style="background-color: rgb(190, 121, 121);"></td>
-
-      <td style="background-color: rgb(190, 121, 121);"></td>
-
-      <td></td>
-
-      <td style="background-color: rgb(85, 3, 3);"></td>
-
-      <td style="background-color: rgb(85, 3, 3);"></td>
-
-      <td style="background-color: rgb(85, 3, 3);"></td>
-
-      <td style="background-color: rgb(85, 3, 3);"></td>
-
-    </tr>
-    <tr>
-
-      <th style="background-color: rgb(190, 121, 121);">(Aritmética)</th>
-
-      <td style="background-color: rgb(190, 121, 121);"></td>
-
-      <td style="background-color: rgb(190, 121, 121);"></td>
-
-      <td style="background-color: rgb(85, 3, 3);"></td>
-
-      <td style="background-color: rgb(85, 3, 3);"></td>
-
-      <td></td>
-
-      <td style="background-color: rgb(85, 3, 3);"></td>
-
-      <td style="background-color: rgb(85, 3, 3);"></td>
-
-    </tr>
-    <tr>
-
-      <th style="background-color: rgb(190, 121, 121);">Palabras en contexto (Pistas)</th>
-
-      <td style="background-color: rgb(190, 121, 121);"></td>
-
-      <td style="background-color: rgb(190, 121, 121);"></td>
-
-      <td></td>
-
-      <td style="background-color: rgb(85, 3, 3);"></td>
-
-      <td style="background-color: rgb(85, 3, 3);"></td>
-
-      <td style="background-color: rgb(85, 3, 3);"></td>
-
-      <td style="background-color: rgb(85, 3, 3);"></td>
-
-    </tr>
-
-  </tbody>
-
-  <tfoot>
-
-    <tr>
-
-      <th style="border: white;" colspan="3">Suma de Puntuaciones Escalares</th>
-
-      <td style="background-color: rgb(190, 121, 121);"></td>
-
-      <td style="background-color: rgb(190, 121, 121);"></td>
-
-      <td style="background-color: rgb(190, 121, 121);"></td>
-
-      <td style="background-color: rgb(190, 121, 121);"></td>
-
-      <td style="background-color: rgb(190, 121, 121);"></td>
-
-    </tr>
-
-    <tr>
-
-      <th style="border: white;" colspan="3">texto extra</th>
-
-      <td></td>
-
-      <td></td>
-
-      <td></td>
-
-      <td></td>
-
-      <td></td>
-
-    </tr>
-
-  </tfoot>
-
-</table>
-
-<br>
-<br>
-<br>
-<br>
-<table>
-
-</table>
-
-<div class="divChart">
-  <canvas id="myChart"></canvas>
-
-</div>
 </div>
