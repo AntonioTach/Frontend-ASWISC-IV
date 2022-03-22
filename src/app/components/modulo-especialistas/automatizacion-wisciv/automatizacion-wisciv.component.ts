@@ -95,7 +95,11 @@ export class AutomatizacionWiscivComponent implements OnInit {
             puntuacionMediaSubprueba: res.data.puntuacionMediaSubprueba,
             puntuacionMediaComprensionVerbal2: res.data.puntuacionMediaComprensionVerbal2,
             nacimiento: res.data.nacimiento,
-            fechaEvaluacion: res.data.fechaEvaluacion
+            fechaEvaluacion: res.data.fechaEvaluacion,
+
+            nombrePaciente: res.data.namePaciente,
+            nombreEspecialista: res.data.nameEspecialista,
+
           };
 
           //console.log(this.dataEntrante)
