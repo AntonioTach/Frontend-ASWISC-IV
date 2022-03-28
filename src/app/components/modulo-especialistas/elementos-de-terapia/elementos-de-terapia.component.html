@@ -78,6 +78,14 @@
               >
                 <mat-icon class="pointer">work </mat-icon>
               </a>
+
+              <a
+                (click)="modificarTarea(element.id_tarea)"
+                style="color: #000000"
+                matTooltip="Modificar Tarea"
+              >
+                <mat-icon class="pointer">folder_shared </mat-icon>
+              </a>
               <a
                 (click)="eliminarTarea(element.id_tarea)"
                 style="color: #ff0022"

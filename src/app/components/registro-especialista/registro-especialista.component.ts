@@ -8,6 +8,7 @@ import { finalize } from 'rxjs/operators';
 //Importar el service
 import { ServiceRegistroEspecialistaService } from '../registro-especialista/service-registro-especialista.service';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-registro-especialista',
@@ -24,7 +25,13 @@ export class RegistroEspecialistaComponent implements OnInit {
   urlCurriculum: any;
   urlCedula: any;
 
-  constructor(private formBuilder: FormBuilder, private especialistaService: ServiceRegistroEspecialistaService, private _snackBar: MatSnackBar, private router: Router, private storage: AngularFireStorage) {
+
+  public fechaMin:any;
+  public fechaMinStr:String;
+  public fechaMax:any;
+  public fechaMaxStr:String;
+
+  constructor(private dp: DatePipe,private formBuilder: FormBuilder, private especialistaService: ServiceRegistroEspecialistaService, private _snackBar: MatSnackBar, private router: Router, private storage: AngularFireStorage) {
 
   }
 
@@ -32,6 +39,12 @@ export class RegistroEspecialistaComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.fechaMin = new Date(new Date().getFullYear()-90, new Date().getMonth(), new Date().getDay());
+    this.fechaMinStr = this.dp.transform(this.fechaMin, "yyyy-MM-dd");
+    this.fechaMax = new Date(new Date().getFullYear()-18, new Date().getMonth(), new Date().getDay());
+    this.fechaMaxStr = this.dp.transform(this.fechaMax, "yyyy-MM-dd");
+
+
     this.formRegistro = this.formBuilder.group({
       foto_profesional: [''], curriculum: [''], cedula: [''],
       nombre: ['',

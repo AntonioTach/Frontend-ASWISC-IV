@@ -14,7 +14,7 @@ import { MatTableDataSource } from '@angular/material/table';
 })
 export class ArticulosEspecialistaComponent implements OnInit {
   lista: any = []
-  displayedColumns: string[] = ['titulo', 'nombre', 'fecha', 'acciones'];//columnas
+  displayedColumns: string[] = ['titulo', 'nombre', 'profesion', 'fecha', 'acciones'];//columnas
   dataSource = new MatTableDataSource(this.lista);
 
   @ViewChild(MatSort) sort!: MatSort;
@@ -41,6 +41,6 @@ export class ArticulosEspecialistaComponent implements OnInit {
   Ver(id:any){
     this.router.navigate(['/modulo-especialistas/ver-articulo/' + id])
   }
-  
+
 
 }

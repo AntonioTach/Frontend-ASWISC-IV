@@ -5,6 +5,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { ServiceRevisarPacienteService } from '../revisar-paciente/service-revisar-paciente.service'
 import { ModificacionExpedienteServiceService } from 'src/app/components/modulo-especialistas/modificacion-expediente/modificacion-expediente-service.service'
 import { AutomatizacionWiscivService } from './automatizacion-wisciv.service';
+import { DatePipe } from '@angular/common';
 @Component({
   selector: 'app-automatizacion-wisciv',
   templateUrl: './automatizacion-wisciv.component.html',
@@ -35,15 +36,25 @@ export class AutomatizacionWiscivComponent implements OnInit {
     Pistas: new FormControl('', [Validators.min(0), Validators.max(24)]),
   }); //Formulario de envio de datos prueba WISC-IV
   //falta service cuando se agregue tambien al constructor
-  constructor(private router:Router, private formBuilder: FormBuilder, private _snackBar: MatSnackBar, private serviceRevisar: ServiceRevisarPacienteService, private modificarExpedienteService: ModificacionExpedienteServiceService, private automatizacion: AutomatizacionWiscivService) { }
+  constructor(private router:Router, private formBuilder: FormBuilder, private _snackBar: MatSnackBar, private serviceRevisar: ServiceRevisarPacienteService, private modificarExpedienteService: ModificacionExpedienteServiceService, private automatizacion: AutomatizacionWiscivService, private dp: DatePipe) { }
 
   hide = true;
   pacientes: any = []
+
+  public fechaMin:any;
+  public fechaMinStr:String;
+  public fechaMax:any;
+  public fechaMaxStr:String;
+
 
   usuario: string = '';
   id: any = null;//este seria la id del paciente
 
   ngOnInit(): void {
+    this.fechaMin = new Date(new Date().getFullYear()-15, new Date().getMonth(), new Date().getDay());
+    this.fechaMinStr = this.dp.transform(this.fechaMin, "yyyy-MM-dd");
+    this.fechaMax = Date.now();
+    this.fechaMaxStr = this.dp.transform(this.fechaMax, "yyyy-MM-dd");
     this.cargarPacientes(); //obtener los pacientes del especialista
   }
 
@@ -53,6 +64,7 @@ export class AutomatizacionWiscivComponent implements OnInit {
     }
     else{
       this.automatizacion.envioDatos(this.FormASWISC.value).subscribe(
+
         (res: {
           success: boolean,
           message: string,
@@ -112,9 +124,12 @@ export class AutomatizacionWiscivComponent implements OnInit {
             })
             this.Automatizacion()
         },
+
         err => {
           console.log(err);
         }
+
+
       )
     }
   }

@@ -14,7 +14,7 @@ import { MatTableDataSource } from '@angular/material/table';
 })
 export class MisArticulosComponent implements OnInit {
   lista: any = []
-  displayedColumns: string[] = ['titulo', 'nombre', 'fecha', 'acciones']; //columnas
+  displayedColumns: string[] = ['titulo', 'nombre', 'profesion', 'fecha', 'acciones']; //columnas
   dataSource: any = [];
 
   @ViewChild(MatSort) sort!: MatSort;
@@ -61,7 +61,7 @@ export class MisArticulosComponent implements OnInit {
         },
         (err) => console.log(err)
       );
-      this._snackBar.open('El atiuculo fue eliminado con exito', '', {
+      this._snackBar.open('El articulo fue eliminado con exito', '', {
         duration: 1500,
         horizontalPosition: 'center',
         verticalPosition: 'bottom',

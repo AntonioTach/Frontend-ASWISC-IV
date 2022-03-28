@@ -1,7 +1,7 @@
 <body>
   <div class="cuadro-registro">
     <h1>Registro Paciente</h1>
-    <form #pacienteForm="ngForm" [formGroup]="formRegistroPaciente" (ngSubmit)="RegistroPaciente()">
+    <form [formGroup]="FormRegistroPaciente" (ngSubmit)="RegistroPaciente()">
     <div class="div-info">
       <!-- INPUTS -->
       <!-- NOMBRE -->
@@ -9,7 +9,7 @@
         <h2>Nombre</h2>
         <mat-form-field class="input" appearance="fill">
           <mat-label>Nombre Completo</mat-label>
-          <input matInput formControlName="nombre">
+          <input matInput formControlName="nombre" required>
           <mat-error>
             Por favor ingrese su nombre completo
           </mat-error>
@@ -31,7 +31,7 @@
       <div>
         <h2>Fecha de Nacimiento</h2>
         <mat-form-field class="input" appearance="fill">
-          <input matInput type="date" formControlName="nacimiento">
+          <input matInput type="date" formControlName="nacimiento"  [max]="fechaMaxStr"  [min]="fechaMinStr" required>
           <mat-error>
             Por favor Ingrese su <strong>Fecha de Nacimiento</strong>
           </mat-error>
@@ -42,7 +42,7 @@
         <h2>Nombre de usuario</h2>
         <mat-form-field class="input" appearance="fill">
           <mat-label>Usuario</mat-label>
-          <input matInput autocomplete="off" formControlName="usuario">
+          <input matInput autocomplete="off" formControlName="usuario" required>
           <mat-error>
             Por favor Ingrese su nombre de <strong>Usuario</strong>
           </mat-error>
@@ -56,7 +56,7 @@
         <h2>Correo electrónico</h2>
         <mat-form-field class="input" appearance="fill">
           <mat-label>Email</mat-label>
-          <input matInput type="email" formControlName="email" placeholder="Ex. pat@example.com">
+          <input matInput type="email" formControlName="email" placeholder="Ex. pat@example.com" required>
           <mat-error>
             Por favor Ingrese su <strong>Correo</strong>
           </mat-error>
@@ -67,7 +67,7 @@
         <h2>Contraseña</h2>
         <mat-form-field class="input" appearance="fill">
           <mat-label>Contraseña</mat-label>
-          <input matInput autocomplete="off" [type]="hide ? 'password' : 'text'" formControlName="contrasena">
+          <input matInput autocomplete="off" [type]="hide ? 'password' : 'text'" formControlName="contrasena" required>
           <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
           [attr.aria-pressed]="hide">
             <mat-icon>
@@ -88,7 +88,7 @@
         <mat-form-field class="input" appearance="fill">
           <mat-label>Teléfono</mat-label>
           <span matPrefix>+55 &nbsp;</span>
-          <input type="tel" matInput placeholder="555-555-1234" formControlName="telefono">
+          <input type="tel" matInput placeholder="555-555-1234" formControlName="telefono" required>
           <mat-error>
             Por favor Ingrese su número de <strong>teléfono</strong> de 10 dígitos
           </mat-error>
@@ -96,11 +96,38 @@
       </div>
 
 
+
+
+    </div>
+       <h2>Si es menor de edad Introduzca estos Datos</h2>
+      <div class="div-info">
+        <!-- Nombre Padre o tutor -->
+        <div>
+          <h2>Nombre del Padre o Tutor</h2>
+          <mat-form-field class="input" appearance="fill">
+            <mat-label>Nombre Padre o Tutor</mat-label>
+            <input matInput formControlName="nombretutor">
+          </mat-form-field>
+        </div>
+
+        <div>
+          <h2>Número de Teléfono del Padre o Tutor</h2>
+          <mat-form-field class="input" appearance="fill">
+            <mat-label>Teléfono</mat-label>
+            <span matPrefix>+55 &nbsp;</span>
+            <input type="tel" matInput placeholder="555-555-1234" formControlName="telefonotutor">
+            <mat-error>
+              Por favor Ingrese su número de <strong>teléfono</strong> de 10 dígitos
+            </mat-error>
+          </mat-form-field>
+        </div>
+
         <div class="div-btn">
           <button  type="submit" mat-raised-button class="btn">Registrarse</button>
         </div>
+      </div>
 
-    </div>
+
   <!-- Termino de formulario -->
    </form>
 
