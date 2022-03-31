@@ -29,6 +29,7 @@ import { ModuloPacientesComponent } from './components/modulo-pacientes/modulo-p
 //Providers
 import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { Navbar3Component } from './components/navbar3/navbar3.component';
+import { DatePipe } from '@angular/common';
 //import { TokenInterceptorService } from './services/token-interceptor.service';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireStorageModule, BUCKET } from '@angular/fire/compat/storage';
@@ -86,6 +87,7 @@ import { VerArticuloComponent } from './components/ver-articulo/ver-articulo.com
       provide: BUCKET, useValue: environment.firebaseConfig.storageBucket
     },
     JwtHelperService,
+    DatePipe,
     //Token interceptor
     //{ provide : HTTP_INTERCEPTORS, useClass : TokenInterceptorService, multi : true }
   ],

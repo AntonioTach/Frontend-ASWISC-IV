@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import  Swal from 'sweetalert2';
 
 //Importar servicio para login
 import { ServiceLoginUsuariosService } from '../login/login.service';
@@ -50,13 +51,12 @@ export class LoginComponent implements OnInit {
         this.direccionar();
 
         if(res == false){
-          this.error2();
+          this.errorRojo1();
         }
 
       },
       (err:any) => {
-        console.log("usuario NO valido");
-        this.error2();
+        this.perdidaConexion();
       }
 
     );
@@ -90,8 +90,8 @@ export class LoginComponent implements OnInit {
 
       }
       else {
-          console.log('Error de token');
-          //this.error2();
+
+          this.perdidaConexion();
       }
   }
 
@@ -104,6 +104,16 @@ export class LoginComponent implements OnInit {
     });
   }
 
+  error3(){
+    this._snackBar.open('Error', '', {
+      duration: 5000, //5s
+      panelClass: "red",
+      horizontalPosition: 'center',
+      verticalPosition: 'bottom',
+    });
+  }
+
+
   correcto(){
     this._snackBar.open('Ingreso Correcto', '', {
       duration: 2000, //5s
@@ -111,6 +121,26 @@ export class LoginComponent implements OnInit {
       verticalPosition: 'bottom'
     }
     );
+  }
+
+  errorRojo1(){
+    Swal.fire({
+      title: 'Usuario o contraseña Incorrecto',
+      icon: 'warning',
+      color: '#f27474',
+      confirmButtonColor: '#B22222',
+      confirmButtonText: 'Ok'
+    })
+  }
+
+  perdidaConexion(){
+    Swal.fire({
+      title: 'Perdida de conexión con el servidor',
+      icon: 'warning',
+      color: '#f27474',
+      confirmButtonColor: '#B22222',
+      confirmButtonText: 'Ok'
+    })
   }
 
 }

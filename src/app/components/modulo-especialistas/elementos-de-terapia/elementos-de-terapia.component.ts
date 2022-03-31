@@ -56,6 +56,10 @@ export class ElementosDeTerapiaComponent implements OnInit {
     })
   }
 
+  modificarTarea(id: number){
+    this.router.navigate(['/modulo-especialistas/modificar-tarea/' + id]);
+  }
+
   eliminarTarea(id: number): void{
     if(
       confirm(
