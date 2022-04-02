@@ -23,6 +23,10 @@ export class SubirPruebaService {
   getTarea(id: any) {
     return this.http.get('http://localhost:4000/tarea/' + id)
   }
+  
+  updateTarea(id: any, tarea: any){
+    return this.http.put('http://localhost:4000/actualizar-tarea/' + id, tarea)
+  }
 
 
 }
