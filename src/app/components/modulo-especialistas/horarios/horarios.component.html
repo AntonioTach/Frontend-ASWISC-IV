@@ -43,8 +43,8 @@
       <div class="modal-body">
         <h4>Día completo (24hrs)</h4>
         <div class="dias-completos">
-          <!-- <form action=""> -->
-            <select name="" id="" class="select-css">
+          <form action="" #formSend="ngForm" (ngSubmit)="UpdateFullDays(formSend.value)">
+            <select name="day" id="" class="select-css" [(ngModel)]="fullDays.day">
               <option value="lunes">Lunes</option>
               <option value="martes">Martes</option>
               <option value="miercoles">Miercoles</option>
@@ -54,7 +54,7 @@
               <option value="dominto">Domingo</option>
             </select>
             <button class="btn-actualizar">Actualizar día(s) completos</button>
-          <!-- </form> -->
+          </form>
         </div>
 
         <h4>Horas especificas por día</h4>
