@@ -1,21 +1,16 @@
-import { Component, Inject, ViewChild, ViewEncapsulation, OnInit } from "@angular/core";
+// importaciones externas
 import * as moment from 'moment';
-import {
-  View,
-  GroupModel,
-  TimeScaleModel,
-  ResourceDetails,
-  TreeViewArgs,
-  PopupOpenEventArgs,
-  EventFieldsMapping,
-  RenderCellEventArgs,
-} from "@syncfusion/ej2-angular-schedule";
-import {
-  EventRenderedArgs, ScheduleComponent, MonthService, DayService, WeekService,
+import { L10n } from '@syncfusion/ej2-base'
+import { Internationalization } from "@syncfusion/ej2-base";
+import { Component, Inject, ViewChild, ViewEncapsulation, OnInit } from "@angular/core";
+import { GroupModel, TimeScaleModel, ResourceDetails, RenderCellEventArgs } from "@syncfusion/ej2-angular-schedule";
+import { EventRenderedArgs, ScheduleComponent, MonthService, DayService, WeekService,
   WorkWeekService, EventSettingsModel, ResizeService, DragAndDropService, ActionEventArgs, AgendaService
 } from '@syncfusion/ej2-angular-schedule';
-import { Internationalization } from "@syncfusion/ej2-base";
-import { L10n } from '@syncfusion/ej2-base'
+
+// importaciones propias
+import { HorariosServiceService } from "../../../../services/horarios/horarios-service.service"
+
 
 @Component({
   selector: 'app-calendario',
@@ -28,6 +23,9 @@ export class CalendarioComponent implements OnInit{
   @ViewChild("scheduleObj", { static: false })
   date = new Date()
   
+  constructor(public horariosServiceService:HorariosServiceService){}
+
+
   public scheduleObj: ScheduleComponent;
 
   public selectedDate: Date = new Date(); //la fecha por default en el calentario es la actual
@@ -44,25 +42,17 @@ export class CalendarioComponent implements OnInit{
     slotCount: 1, // 1 division
   };
 
+
   public data: object [] = [
     {
       Id: 1, // esta cita es para que no se pueda agendar en horas que ya pasaron
-      eventName: 'a',
+      eventName: '',
       startTime: new Date(2021, 0, 0, 0, 0), // inicio del año pasado
       endTime: new Date(), // fecha actual
       isAllDay: false,
       IsBlock: true, // bloquea y no se puede hacer nada
       color: "#e49898", // rojo
-      OwnerId: 2  // para el color rojo
     },
-        // {
-        //   id: 2,
-        //   eventName: '',
-        //   startTime: new Date(2022, 3, 15, 19, 0),
-        //   endTime: new Date(2022, 3, 15, 24, 0),
-        //   IsBlock: true,
-        //   color: "#e49898",
-        // },
     {
       id: 3,
       eventName: 'Meeting',
@@ -73,7 +63,8 @@ export class CalendarioComponent implements OnInit{
       OwnerId: 1
     },
   ];
-            
+         
+  
   public eventSettings: EventSettingsModel = {
     dataSource: this.data,
     fields: {
@@ -88,18 +79,70 @@ export class CalendarioComponent implements OnInit{
 
 
   ngOnInit(): void {
-    console.log(this.date.getDay())
+    let year = this.date.getFullYear();
+    let month = this.date.getMonth();
+    let day = this.date.getDate();
+
+    this.horariosServiceService.TriggerFullDays.subscribe(res => {
+        // console.log(res)
+
+        let today = Date.parse(year + "-" + month + "-" + day) - 3600000
+        console.log(today)  // obtiene la fecha en mlseg al momento en que empezo el dia de hoy
+
+        // let fechaHoy = new Date(year, month, day, 0, 0) 
+        // console.log(fechaHoy)
+
+        let lastDayOfYear = Date.parse("2022-11-31");
+
+        let dayMilliseconds = 86400000;
+        let diff_in_millisenconds = lastDayOfYear - today;
+        let daysToFinishYear = diff_in_millisenconds / dayMilliseconds;
+
+        console.log( daysToFinishYear );
+
+        let weekCounter = 0, changingDay = today
+
+        for (let i = 4; i < daysToFinishYear + 4; i++) {
+          weekCounter++
+          if(weekCounter % 7 == 0){
+              changingDay = changingDay + (dayMilliseconds * 7)
+              // console.log(new Date(changingDay))
+              // console.log( weekCounter + 4)
+
+              let auxObj = {
+                id: i ,
+                eventName: '',
+                startTime: new Date(changingDay),
+                endTime: new Date(changingDay + dayMilliseconds),
+                isAllDay: false,
+                color: "#e49898",
+                IsBlock: true,
+              }
+              
+              this.data.push(auxObj)
+          }
+
+        }
+
+        console.log(this.data)
+      }, err => {
+        console.error("ocurrio algún error", err)
+    })
+
   }
+
+
+  
 
 
   onRenderCell(args: RenderCellEventArgs): void {
     if (args.elementType == 'workCells') { // si es un tipo de celda de hora de trabajo
       (args.element as HTMLElement).style.background = "#89eaa5";     // pinta celdas de verde
       // (args.element as HTMLElement).style.background = "#fe8484";  // rojo
-      // console.log(args)
     }
 
   }
+
 
 
 

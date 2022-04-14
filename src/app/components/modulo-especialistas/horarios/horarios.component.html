@@ -4,6 +4,7 @@
 <br />
 <br />
 <body style="background-color: white">
+
   <div class="cuadro">
     <h1 class="creacion">Horarios Especialista</h1>
     <div class="contenedor-h">
@@ -24,7 +25,7 @@
             <h3>Gris</h3><span class="circulo-gris"></span>
           </div>
           <p>Esa hora ya ha sido asignado a un paciente.</p>
-          <button type="button" class="btn btn-outline-danger" (click)="openM(contenido)">Modificar horarios laborales</button>
+          <button type="button" class="btn btn-outline-danger" (click)="openModal(contenido)">Modificar horarios laborales</button>
         </div>
     </div>
   </div>
@@ -42,17 +43,27 @@
 
       <div class="modal-body">
         <h4>Día completo (24hrs)</h4>
+
         <div class="dias-completos">
+
           <form action="" #formSend="ngForm" (ngSubmit)="UpdateFullDays(formSend.value)">
-            <select name="day" id="" class="select-css" [(ngModel)]="fullDays.day">
-              <option value="lunes">Lunes</option>
-              <option value="martes">Martes</option>
-              <option value="miercoles">Miercoles</option>
-              <option value="jueves">Jueves</option>
-              <option value="viernes">Viernes</option>
-              <option value="sabado">Sabado</option>
-              <option value="dominto">Domingo</option>
-            </select>
+              <div class="multi-selector">
+                <!-- <select name="day" id="" class="select-css"  [(ngModel)]="fullDays.day"></select> -->
+                  <div class="select-field" (click)="showCheckBoxes()">
+                      <input type="text" name="" placeholder="Selecciona los días" id="" class="input-selector" readonly>
+                      <span class="down-arrow">&blacktriangledown;</span>
+                  </div>
+                  <div class="list">
+                    <label for="lunes" class="task"><input type="checkbox" name="lunes" id="lunes" [(ngModel)]="fullDays.lunes">Lunes</label>
+                    <label for="martes" class="task"><input type="checkbox" name="martes" id="martes" [(ngModel)]="fullDays.martes">Martes</label>
+                    <label for="miercoles" class="task"><input type="checkbox" name="miercoles" id="miercoles" [(ngModel)]="fullDays.miercoles">Miercoles</label>
+                    <label for="jueves" class="task"><input type="checkbox" name="jueves" id="jueves" [(ngModel)]="fullDays.jueves">Jueves</label>
+                    <label for="viernes" class="task"><input type="checkbox" name="viernes" id="viernes" [(ngModel)]="fullDays.viernes">Viernes</label>
+                    <label for="sabado" class="task"><input type="checkbox" name="sabado" id="sabado" [(ngModel)]="fullDays.sabado">Sabado</label>
+                    <label for="domingo" class="task"><input type="checkbox" name="domingo" id="domingo" [(ngModel)]="fullDays.domingo">Domingo</label>
+                  </div>
+              </div>
+
             <button class="btn-actualizar">Actualizar día(s) completos</button>
           </form>
         </div>
