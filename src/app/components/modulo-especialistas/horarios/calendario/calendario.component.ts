@@ -1,6 +1,8 @@
 // importaciones externas
 import * as moment from 'moment';
-import { L10n } from '@syncfusion/ej2-base'
+import { Router } from '@angular/router'; 
+import { DOCUMENT } from '@angular/common';
+import { L10n } from '@syncfusion/ej2-base';
 import { Internationalization } from "@syncfusion/ej2-base";
 import { Component, Inject, ViewChild, ViewEncapsulation, OnInit } from "@angular/core";
 import { GroupModel, TimeScaleModel, ResourceDetails, RenderCellEventArgs } from "@syncfusion/ej2-angular-schedule";
@@ -24,7 +26,7 @@ export class CalendarioComponent implements OnInit{
   @ViewChild("scheduleObj", { static: false })
   p = "s"
   
-  constructor(public horariosServiceService:HorariosServiceService){}
+  constructor(public horariosServiceService:HorariosServiceService, private router: Router, @Inject(DOCUMENT) private document: Document){}
 
 
   public scheduleObj: ScheduleComponent;
@@ -44,7 +46,7 @@ export class CalendarioComponent implements OnInit{
   };
 
 
-  public data: object [] =[
+  public data: object[] = [
     {
       Id: 1, // esta cita es para que no se pueda agendar en horas que ya pasaron
       eventName: '',
@@ -55,7 +57,7 @@ export class CalendarioComponent implements OnInit{
       color: "#e49898", // rojo
     },
     {
-      id: 3,
+      id: 2,
       eventName: 'Meeting',
       startTime: new Date(2022, 3, 13, 10, 0),
       endTime: new Date(2022, 3, 13, 11, 0),
@@ -84,12 +86,37 @@ export class CalendarioComponent implements OnInit{
   ngOnInit(): void {
     // this.data = this.dataAux
     this.modifyFullDaysData();
+            
+      this.data = [{
+          Id: 1, 
+          eventName: '',
+          startTime: new Date(2021, 0, 0, 0, 0), 
+          endTime: new Date(), 
+          isAllDay: false,
+          IsBlock: true, 
+          color: "#e49898", 
+      }];
+
+      // this.router.navigate(['/', 'modulo-especialistas/horarios']);
+      // this.router.navigate(['/modulo-especialistas/horarios']);
 
 
     this.horariosServiceService.TriggerFullDays.subscribe(res => {
         // console.log(res)
 
+            this.data = [{
+              Id: 1, 
+              eventName: '',
+              startTime: new Date(2021, 0, 0, 0, 0), 
+              endTime: new Date(), 
+              isAllDay: false,
+              IsBlock: true, 
+              color: "#e49898", 
+            }];
         this.modifyFullDaysData();
+        // this.router.navigate(['/modulo-especialistas/horarios']);
+        // this.ngOnInit();
+        this.document.location.reload();
 
       }, err => {
         console.error("ocurrio algún error", err)
@@ -105,16 +132,12 @@ export class CalendarioComponent implements OnInit{
     let day =  date.getDate();
     let arrayDaysStatus = [ , , , , , , ]
 
-    console.log(year, month, day)
     let today = Date.parse(year + "-" + month + "-" + day)  // obtiene la fecha en mlseg al momento en que empezo el dia de hoy
     // let fechaHoy = new Date(year, month, day, 0, 0) 
 
     console.log(date.getDay())
 
     try {
-      // this.data = []
-      // this.data = this.dataAux
-
       let fullDaysData: any = JSON.parse(localStorage.getItem("fullDaysData"))
       
       if(fullDaysData){          // SI SE ENCUENTRA VARIABLE EN EL LS SE HACE TODO EL PROCESO
@@ -133,15 +156,37 @@ export class CalendarioComponent implements OnInit{
           let daysToFinishYear = diff_in_millisenconds / dayMilliseconds;
       
           let weekCounter = 0, changingDay = today, dayTour = date.getDay()
-      
+
+          // this.data = [{
+          //     Id: 1, 
+          //     eventName: '',
+          //     startTime: new Date(2021, 0, 0, 0, 0), 
+          //     endTime: new Date(), 
+          //     isAllDay: false,
+          //     IsBlock: true, 
+          //     color: "#e49898", 
+          //   }, {
+          //     id: 2,
+          //     eventName: 'Meeting',
+          //     startTime: new Date(2022, 3, 13, 10, 0),
+          //     endTime: new Date(2022, 3, 13, 11, 0),
+          //     isAllDay: false,
+          //     color: "#d6d6d6",
+          //     OwnerId: 1
+          // }];
+
+        console.log(this.data)
+
+       
+        // this.data = []
           for (let i = 4; i < daysToFinishYear + 4; i++) {
-              if(arrayDaysStatus[dayTour]){
+              if(!arrayDaysStatus[dayTour]){
 
                   let auxObj = {
                     id: i ,
                     eventName: '',
                     startTime: new Date(changingDay ),
-                    endTime: new Date(changingDay + dayMilliseconds - 3600000),
+                    endTime: new Date(changingDay + dayMilliseconds),
                     isAllDay: false,
                     color: "#e49898",
                     IsBlock: true,
@@ -156,6 +201,30 @@ export class CalendarioComponent implements OnInit{
               if(dayTour == 7) dayTour = 0
           }
       
+           /*
+          let data1 = {
+              Id: 1, 
+              eventName: '',
+              startTime: new Date(2021, 0, 0, 0, 0), 
+              endTime: new Date(), 
+              isAllDay: false,
+              IsBlock: true, 
+              color: "#e49898", 
+          }
+          let data2 = {
+              id: 2,
+              eventName: 'Meeting',
+              startTime: new Date(2022, 3, 13, 10, 0),
+              endTime: new Date(2022, 3, 13, 11, 0),
+              isAllDay: false,
+              color: "#d6d6d6",
+              OwnerId: 1
+            }
+            
+          this.data.push(data1)
+          this.data.push(data2)
+          */
+
           console.log(this.data)
       }
     } catch (error) {
@@ -165,7 +234,7 @@ export class CalendarioComponent implements OnInit{
   }
 
 
-  onRenderCell(args: RenderCellEventArgs): void {
+  onRenderCell(args: any): void {
     if (args.elementType == 'workCells') { // si es un tipo de celda de hora de trabajo
       (args.element as HTMLElement).style.background = "#89eaa5";     // pinta celdas de verde
       // (args.element as HTMLElement).style.background = "#fe8484";  // rojo

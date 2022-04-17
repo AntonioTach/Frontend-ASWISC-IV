@@ -1,9 +1,11 @@
 // importaciones externas
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Router } from '@angular/router';
 
 // importaciones propias
 import { HorariosServiceService } from "../../../services/horarios/horarios-service.service"
+import {SelectDays} from "./dropDownListsData";
 
 interface RegisterFormDay{
   lunes: string
@@ -13,6 +15,12 @@ interface RegisterFormDay{
   viernes: string
   sabado: string
   domingo: string
+}
+
+interface RegisterFormPartialDay{
+  day: string,
+  startTime: string
+  endTime: string
 }
 
 @Component({
@@ -35,6 +43,22 @@ export class HorariosComponent implements OnInit {
     domingo: "",
   }
 
+  // PartialDays: RegisterFormDay = {
+  //   lunes: "",
+  //   martes: "",
+  //   miercoles: "",
+  //   jueves: "",
+  //   viernes: "",
+  //   sabado: "",
+  //   domingo: "",
+  // }
+
+  PartialDays: RegisterFormPartialDay = {
+    day: "",
+    startTime: "",
+    endTime: ""
+  }
+
   $lunesElement;
   $martesElement;
   $miercolesElement;
@@ -43,9 +67,24 @@ export class HorariosComponent implements OnInit {
   $sabadoElement;
   $domingoElement;
 
-  constructor(private modal: NgbModal, public horariosServiceService:HorariosServiceService) { }
+  constructor(private modal: NgbModal, public horariosServiceService:HorariosServiceService, private router: Router, public selectDays: SelectDays) { }
 
   ngOnInit(): void {
+
+    if(!localStorage.getItem("fullDaysData")){
+      let fullDaysData = [];
+
+        fullDaysData.push({"lunes": false})
+        fullDaysData.push({"martes": false})
+        fullDaysData.push({"miercoles": false})
+        fullDaysData.push({"jueves": false})
+        fullDaysData.push({"viernes": false})
+        fullDaysData.push({"sabado": false})
+        fullDaysData.push({"domingo": false})
+
+        localStorage.setItem("fullDaysData", JSON.stringify(fullDaysData))
+    }
+
 
   }
 
@@ -104,10 +143,6 @@ export class HorariosComponent implements OnInit {
     // console.log(value)
     let fullDaysData = [];
 
-    // olvidate del formulario, checar el checked mediante el dom y eso guardarlo en el localstorage
-    // despues hacer un emit para que llegue al componente del calendario
-    // despues en el calendario ajustar los dias
-
     if(this.$lunesElement != null)
       fullDaysData.push({"lunes": this.$lunesElement.checked})
 
@@ -133,6 +168,13 @@ export class HorariosComponent implements OnInit {
 
       this.horariosServiceService.TriggerFullDays.emit(fullDaysData)
 
+  }
+
+
+  UpdatePartialDays(value: any){
+    this.PartialDays = value
+    console.log(value)
+    console.log(this.PartialDays)
   }
 
 
