@@ -43,7 +43,6 @@ export class RevisarPacienteComponent implements OnInit {
   cargarPacientes() {
     this.pacientesService.getPacientes().subscribe(res => {
       this.lista_pacientes = res;
-      console.log(this.lista_pacientes);
       this.dataSource = new MatTableDataSource(this.lista_pacientes);
     }, err => console.log(err)
     );

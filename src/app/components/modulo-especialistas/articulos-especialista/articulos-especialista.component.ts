@@ -34,7 +34,6 @@ export class ArticulosEspecialistaComponent implements OnInit {
   }
 
   ModificacionExpediente() {
-    console.log('Crear Artículos');
     this.router.navigateByUrl('/modulo-especialistas/crear-articulos')
   }
 

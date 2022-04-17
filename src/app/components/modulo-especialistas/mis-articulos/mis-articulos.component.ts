@@ -42,7 +42,6 @@ export class MisArticulosComponent implements OnInit {
   }
 
   ModificacionExpediente() {
-    console.log('Crear Artículos');
     this.router.navigateByUrl('/modulo-especialistas/crear-articulos');
   }
   modificar(id: any) {
@@ -56,7 +55,6 @@ export class MisArticulosComponent implements OnInit {
     ) {
       this.articulosService.eliminarArticulo(id).subscribe(
         (res) => {
-          console.log(res);
           this.traerArticulos()
         },
         (err) => console.log(err)

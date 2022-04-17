@@ -20,7 +20,6 @@ export class ArticuloComponent implements OnInit {
         this.html = this.articulo.descripcion;
         this.titulo = this.articulo.titulo;
         this.tipo = this.articulo.estado_articulo;
-        console.log(res);
       })
     })
 
