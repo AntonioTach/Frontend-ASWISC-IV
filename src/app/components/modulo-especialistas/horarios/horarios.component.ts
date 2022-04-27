@@ -2,10 +2,13 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 // importaciones propias
 import { HorariosServiceService } from "../../../services/horarios/horarios-service.service"
-import {SelectDays} from "./dropDownListsData";
+import {SelectPartialDaysData, SelectHours} from "./dropDownListsData";
 
 interface RegisterFormDay{
   lunes: string
@@ -17,11 +20,6 @@ interface RegisterFormDay{
   domingo: string
 }
 
-interface RegisterFormPartialDay{
-  day: string,
-  startTime: string
-  endTime: string
-}
 
 @Component({
   selector: 'app-horarios',
@@ -43,21 +41,16 @@ export class HorariosComponent implements OnInit {
     domingo: "",
   }
 
-  // PartialDays: RegisterFormDay = {
-  //   lunes: "",
-  //   martes: "",
-  //   miercoles: "",
-  //   jueves: "",
-  //   viernes: "",
-  //   sabado: "",
-  //   domingo: "",
-  // }
+  // selectPartialDayModel: SelectPartialDaysData;
+  selectedPartialDay: Number;
+  selectedTimeStart: String;
+  selectedTimeEnd: String;
 
-  PartialDays: RegisterFormPartialDay = {
-    day: "",
-    startTime: "",
-    endTime: ""
-  }
+  modifedText: string;
+
+  selectPartialDayModel: { id: number; day: string; }[];
+  selectTimeModel: { id: number; time: string; value: number; }[];
+
 
   $lunesElement;
   $martesElement;
@@ -66,10 +59,16 @@ export class HorariosComponent implements OnInit {
   $viernesElement;
   $sabadoElement;
   $domingoElement;
+  
 
-  constructor(private modal: NgbModal, public horariosServiceService:HorariosServiceService, private router: Router, public selectDays: SelectDays) { }
+  constructor(private modal: NgbModal, public horariosServiceService:HorariosServiceService, private router: Router) { }
 
   ngOnInit(): void {
+
+    this.selectPartialDayModel = SelectPartialDaysData;
+    this.selectTimeModel = SelectHours;
+
+    // this.selectedPartialDay = 1;
 
     if(!localStorage.getItem("fullDaysData")){
       let fullDaysData = [];
@@ -172,9 +171,66 @@ export class HorariosComponent implements OnInit {
 
 
   UpdatePartialDays(value: any){
-    this.PartialDays = value
-    console.log(value)
-    console.log(this.PartialDays)
+    // console.log(value)
+    // console.log(this.selectedPartialDay)
+    // console.log(this.selectedTimeStart)
+    // console.log(this.selectedTimeEnd)
+
+    if(!this.selectedTimeStart){
+      alert("Por favor selecciona la hora de inicio")
+    } else  if(!this.selectedTimeEnd){
+      alert("Por favor selecciona la hora de termino")
+    } if(this.selectedTimeStart >= this.selectedTimeEnd){
+      alert("No puedes ingresar una hora de termino despues de la de inicio")
+    }else{
+      
+      const partialDayData = {
+        day: this.selectedPartialDay,
+        timeStart: this.selectedTimeStart,
+        timeEnd: this.selectedTimeEnd
+      }
+  
+      partialDayData.timeStart = this.selectedTimeStart;
+  
+      // let aux = localStorage.getItem("partialDayData")
+      let aux = JSON.parse(localStorage.getItem("partialDayData"));
+
+      let arrayDaysStatus = [ {}, {}, {}, {}, {}, {}, {}]
+
+      if(aux) arrayDaysStatus = aux
+  
+      if(this.selectedPartialDay == 7)  
+          arrayDaysStatus[0]  =   { day: "Dom", timeStart: this.selectedTimeStart, timeEnd: this.selectedTimeEnd }
+      if(this.selectedPartialDay == 1)  
+          arrayDaysStatus[1]  =   { day: "Lun", timeStart: this.selectedTimeStart, timeEnd: this.selectedTimeEnd }
+      if(this.selectedPartialDay == 2)  
+          arrayDaysStatus[2]  =   { day: "Mar", timeStart: this.selectedTimeStart, timeEnd: this.selectedTimeEnd }
+      if(this.selectedPartialDay == 3)  
+          arrayDaysStatus[3]  =   { day: "Mie", timeStart: this.selectedTimeStart, timeEnd: this.selectedTimeEnd }
+      if(this.selectedPartialDay == 4)  
+          arrayDaysStatus[4]  =   { day: "Jue", timeStart: this.selectedTimeStart, timeEnd: this.selectedTimeEnd }
+      if(this.selectedPartialDay == 5)  
+          arrayDaysStatus[5]  =   { day: "Vie", timeStart: this.selectedTimeStart, timeEnd: this.selectedTimeEnd }
+      if(this.selectedPartialDay == 6)  
+          arrayDaysStatus[6]  =   { day: "Sab", timeStart: this.selectedTimeStart, timeEnd: this.selectedTimeEnd }
+ 
+      localStorage.setItem("partialDayData", JSON.stringify(arrayDaysStatus));
+          
+      // arrayDaysStatus[this.selectedPartialDay!] = partialDayData;
+  
+      // arrayDaysStatus[0] = fullDaysData[6].domingo
+      // arrayDaysStatus[1] = 
+      // arrayDaysStatus[2] = 
+      // arrayDaysStatus[3] = 
+      // arrayDaysStatus[4] = 
+      // arrayDaysStatus[5] = 
+      // arrayDaysStatus[6] = 
+  
+      this.horariosServiceService.TriggerPartialDays.emit(partialDayData)
+
+    }
+
+
   }
 
 

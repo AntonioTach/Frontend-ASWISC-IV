@@ -84,7 +84,6 @@ export class CalendarioComponent implements OnInit{
 
 
   ngOnInit(): void {
-    // this.data = this.dataAux
     this.modifyFullDaysData();
             
       this.data = [{
@@ -97,13 +96,7 @@ export class CalendarioComponent implements OnInit{
           color: "#e49898", 
       }];
 
-      // this.router.navigate(['/', 'modulo-especialistas/horarios']);
-      // this.router.navigate(['/modulo-especialistas/horarios']);
-
-
     this.horariosServiceService.TriggerFullDays.subscribe(res => {
-        // console.log(res)
-
             this.data = [{
               Id: 1, 
               eventName: '',
@@ -114,9 +107,29 @@ export class CalendarioComponent implements OnInit{
               color: "#e49898", 
             }];
         this.modifyFullDaysData();
-        // this.router.navigate(['/modulo-especialistas/horarios']);
-        // this.ngOnInit();
+
         this.document.location.reload();
+
+      }, err => {
+        console.error("ocurrio algún error", err)
+    })
+
+    this.horariosServiceService.TriggerPartialDays.subscribe(res => {
+            this.data = [{
+              Id: 1, 
+              eventName: '',
+              startTime: new Date(2021, 0, 0, 0, 0), 
+              endTime: new Date(), 
+              isAllDay: false,
+              IsBlock: true, 
+              color: "#e49898", 
+            }];
+        this.modifyFullDaysData();
+
+        console.log(res);
+
+        this.document.location.reload();
+
 
       }, err => {
         console.error("ocurrio algún error", err)
@@ -135,10 +148,11 @@ export class CalendarioComponent implements OnInit{
     let today = Date.parse(year + "-" + month + "-" + day)  // obtiene la fecha en mlseg al momento en que empezo el dia de hoy
     // let fechaHoy = new Date(year, month, day, 0, 0) 
 
-    console.log(date.getDay())
 
     try {
       let fullDaysData: any = JSON.parse(localStorage.getItem("fullDaysData"))
+      let partialDaysData: any = JSON.parse(localStorage.getItem("partialDayData"));
+
       
       if(fullDaysData){          // SI SE ENCUENTRA VARIABLE EN EL LS SE HACE TODO EL PROCESO
         arrayDaysStatus[0] = fullDaysData[6].domingo
@@ -148,7 +162,7 @@ export class CalendarioComponent implements OnInit{
         arrayDaysStatus[4] = fullDaysData[3].jueves
         arrayDaysStatus[5] = fullDaysData[4].viernes
         arrayDaysStatus[6] = fullDaysData[5].sabado
-
+      }
           let lastDayOfYear = Date.parse("2022-12-31");
 
           let dayMilliseconds = 86400000;
@@ -157,35 +171,25 @@ export class CalendarioComponent implements OnInit{
       
           let weekCounter = 0, changingDay = today, dayTour = date.getDay()
 
-          // this.data = [{
-          //     Id: 1, 
-          //     eventName: '',
-          //     startTime: new Date(2021, 0, 0, 0, 0), 
-          //     endTime: new Date(), 
-          //     isAllDay: false,
-          //     IsBlock: true, 
-          //     color: "#e49898", 
-          //   }, {
-          //     id: 2,
-          //     eventName: 'Meeting',
-          //     startTime: new Date(2022, 3, 13, 10, 0),
-          //     endTime: new Date(2022, 3, 13, 11, 0),
-          //     isAllDay: false,
-          //     color: "#d6d6d6",
-          //     OwnerId: 1
-          // }];
 
-        console.log(this.data)
-
-       
-        // this.data = []
           for (let i = 4; i < daysToFinishYear + 4; i++) {
-              if(!arrayDaysStatus[dayTour]){
-
+              if(partialDaysData && partialDaysData[dayTour].day){
                   let auxObj = {
                     id: i ,
                     eventName: '',
-                    startTime: new Date(changingDay ),
+                    startTime: new Date(changingDay),
+                    endTime: new Date(changingDay + (partialDaysData[dayTour].timeStart * 1000 * 60 * 60)),
+                    isAllDay: false,
+                    color: "#e49898",
+                    IsBlock: true,
+                  }
+                    
+                  this.data.push(auxObj)
+
+                  auxObj = {
+                    id: i ,
+                    eventName: '',
+                    startTime: new Date(changingDay + (partialDaysData[dayTour].timeEnd * 1000 * 60 * 60)),
                     endTime: new Date(changingDay + dayMilliseconds),
                     isAllDay: false,
                     color: "#e49898",
@@ -193,7 +197,22 @@ export class CalendarioComponent implements OnInit{
                   }
                     
                   this.data.push(auxObj)
+              }else{
+                  if(!arrayDaysStatus[dayTour]){
+                      let auxObj = {
+                        id: i ,
+                        eventName: '',
+                        startTime: new Date(changingDay ),
+                        endTime: new Date(changingDay + dayMilliseconds),
+                        isAllDay: false,
+                        color: "#e49898",
+                        IsBlock: true,
+                      }
+                      
+                      this.data.push(auxObj)
+                  }
               }
+ 
               
               changingDay = changingDay + (dayMilliseconds)
               
@@ -201,37 +220,14 @@ export class CalendarioComponent implements OnInit{
               if(dayTour == 7) dayTour = 0
           }
       
-           /*
-          let data1 = {
-              Id: 1, 
-              eventName: '',
-              startTime: new Date(2021, 0, 0, 0, 0), 
-              endTime: new Date(), 
-              isAllDay: false,
-              IsBlock: true, 
-              color: "#e49898", 
-          }
-          let data2 = {
-              id: 2,
-              eventName: 'Meeting',
-              startTime: new Date(2022, 3, 13, 10, 0),
-              endTime: new Date(2022, 3, 13, 11, 0),
-              isAllDay: false,
-              color: "#d6d6d6",
-              OwnerId: 1
-            }
-            
-          this.data.push(data1)
-          this.data.push(data2)
-          */
-
-          console.log(this.data)
-      }
+          // console.log(this.data)
+      
     } catch (error) {
       console.error("Aun no se ha configurado los horarios", error);
     }
 
   }
+
 
 
   onRenderCell(args: any): void {
