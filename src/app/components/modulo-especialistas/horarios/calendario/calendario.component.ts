@@ -109,6 +109,9 @@ export class CalendarioComponent implements OnInit{
 
   ngOnInit(): void {
     this.modifyFullDaysData();
+    this.getCitas();
+
+    
             
       this.data = [{
           Id: 1, 
@@ -244,7 +247,7 @@ export class CalendarioComponent implements OnInit{
               if(dayTour == 7) dayTour = 0
           }
       
-          // console.log(this.data)
+          console.log(this.data)
       
     } catch (error) {
       console.error("Aun no se ha configurado los horarios", error);
@@ -265,6 +268,39 @@ export class CalendarioComponent implements OnInit{
   }
 
 
+
+  getCitas(){
+    console.log(this.data)
+    this.horariosServiceService.getCitasEspecialista().subscribe(res => {
+      console.log(res);
+      let citas: any
+      citas = res
+
+      console.log(this.data)
+      for (let i = 0; i < citas.length; i++) {
+        let auxObj = {
+          id: 250 + i,
+          eventName: citas[i].titulo,
+          startTime: new Date(citas[i].startTime),
+          endTime: new Date(citas[i].endTime),
+          description: citas[i].descripcion,
+          isAllDay: false,
+          color: "#d6d6d6",
+        }
+    
+          this.data.push(auxObj)
+          // console.log(this.data)
+      }
+
+      console.log(this.data)
+
+      }, err => {
+        console.error("ocurrio algún error", err)
+    })
+
+    console.log(this.data)
+
+  }
   
 
 
