@@ -25,6 +25,7 @@ import { TareaComponent } from './tarea/tarea.component';
 import { ArticuloComponent } from './articulo/articulo.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AngularEditorModule } from '@kolkov/angular-editor';
+import { CalendarioComponentComponent } from './horarios-disponibles/calendario-component/calendario-component.component';
 
 
 @NgModule({
@@ -48,7 +49,8 @@ import { AngularEditorModule } from '@kolkov/angular-editor';
     VerPruebaComponent,
     CarritoComponent,
     TareaComponent,
-    ArticuloComponent
+    ArticuloComponent,
+    CalendarioComponentComponent
   ],
   imports: [
     CommonModule,

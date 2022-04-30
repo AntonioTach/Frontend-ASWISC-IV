@@ -12,6 +12,7 @@ import { Router, RouterLink } from '@angular/router';
 export class NavbarEspecialistaComponent implements OnInit {
 
   usuario = localStorage.getItem('usuario');
+  nameUsuario = JSON.parse(this.usuario);
 
   constructor(private router: Router) { }
 

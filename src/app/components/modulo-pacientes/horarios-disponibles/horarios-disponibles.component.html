@@ -1,6 +1,125 @@
 <app-navbar-pacientes></app-navbar-pacientes>
-<p>horarios-disponibles works!</p>
-<p>horarios-disponibles works!</p>
-<p>horarios-disponibles works!</p>
-<p>horarios-disponibles works!</p>
-<p>horarios-disponibles works!</p>
+<br />
+<br />
+<br />
+<br />
+<body style="background-color: white">
+
+  <div class="cuadro">
+    <h1 class="creacion">Horarios Disponibles</h1>
+    <div class="contenedor-h">
+      <div class="contenedor-calendario">
+        <app-calendario-component></app-calendario-component>
+      </div>
+        <div class="simbologia">
+          <p>Cada espacio es una hora de sesión, cada color representa un estado en el cual se encuentra esta hora.</p>
+          <div class="contenedor-color">
+            <h3>Verde</h3><span class="circulo-verde"></span>
+          </div>
+          <p>La hora esta disponible para agendar una cita.</p>
+          <div class="contenedor-color">
+            <h3>Rojo</h3><span class="circulo-rojo"></span>
+          </div>
+          <p>Durante esa hora no trabaja el especialista.</p>
+          <div class="contenedor-color">
+            <h3>Azul</h3><span class="circulo-azul"></span>
+          </div>
+          <p>Durante esa hora, esta agendada tu cita {{ nameUsuario }}.</p>
+          <div class="contenedor-color">
+            <h3>Gris</h3><span class="circulo-gris"></span>
+          </div>
+          <p>Esa hora ya ha sido asignado a un paciente.</p>
+          <!-- <button type="button" class="btn btn-outline-danger" (click)="openModal(contenido)">Modificar horarios laborales</button> -->
+        </div>
+    </div>
+  </div>
+
+
+  <!-- este elemento es la ventana que se abre para modificar los horarios -->
+  <ng-template #contenido let-modal>
+
+      <div class="modal-header">
+        <h2 class="modal-title">Horarios de trabajo</h2>
+        <button class="close" aria-label="close" type="button" (click)="modal.dismiss()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <h4>Día completo (24hrs)</h4>
+
+        <div class="dias-completos">
+
+          <form action="" #formSend="ngForm" (ngSubmit)="UpdateFullDays(formSend.value)">
+              <div class="multi-selector">
+                <!-- <select name="day" id="" class="select-css"  [(ngModel)]="fullDays.day"></select> -->
+                  <div class="select-field" (click)="showCheckBoxes()">
+                      <input type="text" name="" placeholder="Selecciona los días" id="" class="input-selector" readonly>
+                      <span class="down-arrow">&blacktriangledown;</span>
+                  </div>
+                  <div class="list">
+                    <label for="lunes" class="task"><input type="checkbox" name="lunes" id="lunes" [(ngModel)]="fullDays.lunes">Lunes</label>
+                    <label for="martes" class="task"><input type="checkbox" name="martes" id="martes" [(ngModel)]="fullDays.martes">Martes</label>
+                    <label for="miercoles" class="task"><input type="checkbox" name="miercoles" id="miercoles" [(ngModel)]="fullDays.miercoles">Miercoles</label>
+                    <label for="jueves" class="task"><input type="checkbox" name="jueves" id="jueves" [(ngModel)]="fullDays.jueves">Jueves</label>
+                    <label for="viernes" class="task"><input type="checkbox" name="viernes" id="viernes" [(ngModel)]="fullDays.viernes">Viernes</label>
+                    <label for="sabado" class="task"><input type="checkbox" name="sabado" id="sabado" [(ngModel)]="fullDays.sabado">Sabado</label>
+                    <label for="domingo" class="task"><input type="checkbox" name="domingo" id="domingo" [(ngModel)]="fullDays.domingo">Domingo</label>
+                  </div>
+              </div>
+
+            <button class="btn-actualizar">Actualizar día(s) completos</button>
+          </form>
+        </div>
+
+        <h4>Horas especificas por día</h4>
+        <div class="horas-especificas" >
+          <form action="" #formSend="ngForm" (ngSubmit)="UpdatePartialDays(formSend.value)">
+
+            <!-- <select name="partialDay" id="" class="select-css"  [(ngModel)]="PartialDays.day">
+                <option value="lunes" name="lunes" [(ngModel)]="PartialDays.day">Lunes</option>
+                <option value="martes" name="martes" [(ngModel)]="PartialDays.day">Martes</option>
+                <option value="miercoles" name="miercoles" [(ngModel)]="PartialDays.day" >Miercoles</option>
+                <option value="jueves" name="jueves" [(ngModel)]="PartialDays.day" >Jueves</option>
+                <option value="viernes" name="viernes" [(ngModel)]="PartialDays.day" >Viernes</option>
+                <option value="sabado" name="sabado" [(ngModel)]="PartialDays.day" >Sabado</option>
+                <option value="domingo" name="domingo" [(ngModel)]="PartialDays.day" >Domingo</option>
+              </select> -->
+
+
+              <select class="select-css" [(ngModel)]="selectedPartialDay" name="selectPartialDay"> <!--name="selectDay" ngModel-->   <!-- (change)='UpdatePartialDays($event)'-->
+                <option value="" disabled>Choose a state</option>
+                <option *ngFor="let day of selectPartialDayModel" [ngValue]="day.id">
+                  {{ day.day }}
+                </option>
+              </select>
+              <!-- <p>{{selectedPartialDay}}</p> -->
+
+
+              <select class="select-css" [(ngModel)]="selectedTimeStart" name="selectedTimeStr">
+                <option *ngFor="let hour of selectTimeModel" [ngValue]="hour.value">
+                  {{ hour.time }}
+                </option>
+              </select>
+
+              <select class="select-css" [(ngModel)]="selectedTimeEnd" name="selectedTimeEnd">
+                <option *ngFor="let hour of selectTimeModel" [ngValue]="hour.value">
+                  {{ hour.time }}
+                </option>
+              </select>
+
+
+              <button class="btn-actualizar">Actualizar horas especificas</button>
+          </form>
+
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" (click)="modal.close()">ok!</button>
+      </div>
+
+  </ng-template>
+
+</body>
+
