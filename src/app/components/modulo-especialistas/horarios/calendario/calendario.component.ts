@@ -27,11 +27,11 @@ export class CalendarioComponent implements OnInit{
   p = "s"
 
   @HostListener('document:click', ['$event']) documentClickEvent($event: any) {
-    if($event.target.matches("button.e-event-create.e-text-ellipsis.e-control.e-btn.e-lib.e-flat.e-primary")){
+    if($event.target.matches("button.e-event-create.e-text-ellipsis.e-control.e-btn.e-lib.e-flat.e-primary") || $event.target.matches("button.e-control.e-btn.e-lib.e-primary.e-event-save.e-flat")){
         let lastPosition = this.eventSettings.dataSource.length - 1
         let cita = this.eventSettings.dataSource[lastPosition];
         console.log(cita)
-
+        
         cita.idPaciente = "1";
         cita.precio = 400;
 
@@ -39,24 +39,15 @@ export class CalendarioComponent implements OnInit{
 
           console.log(res);
 
-
-
           }, err => {
             console.error("ocurrio algún error", err)
         })
 
-        // FALTA AGREGAR QUE FUNCIONE CON EL 'SAVE' DE MAS DETALLES
         // QUE SE GUARDE EN LA BD ESTE ELEMENTO
         // TRAERLO DE LA BD CADA QUE SE CARGUE EL MAPA O SE MODIFIQUE EL EVENTSETTINGS
       }
   }
-  
-  // document.addEventListener("click", (e: any) => {
-  //   console.log(e)
-  //   if(e.target.matches("button#iniciarReloj.botonSec1")){
-
-  //   }
-  // });
+ 
 
   constructor(public horariosServiceService:HorariosServiceService, private router: Router, @Inject(DOCUMENT) private document: Document){}
 
