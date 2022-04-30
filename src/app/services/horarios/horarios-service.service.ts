@@ -14,5 +14,10 @@ export class HorariosServiceService {
   constructor(private http: HttpClient) { }
 
 
+  addSession(cita : any) {
+    let id = localStorage.getItem("id_especialista");
+    return this.http.post('http://localhost:4000/horarios/addSession/' + id, cita);
+  }
+
 
 }

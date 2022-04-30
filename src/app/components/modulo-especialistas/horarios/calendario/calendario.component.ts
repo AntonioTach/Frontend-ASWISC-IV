@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { DOCUMENT } from '@angular/common';
 import { L10n } from '@syncfusion/ej2-base';
 import { Internationalization } from "@syncfusion/ej2-base";
-import { Component, Inject, ViewChild, ViewEncapsulation, OnInit } from "@angular/core";
+import { Component, Inject, ViewChild, ViewEncapsulation, OnInit, HostListener} from "@angular/core";
 import { GroupModel, TimeScaleModel, ResourceDetails, RenderCellEventArgs } from "@syncfusion/ej2-angular-schedule";
 import { EventRenderedArgs, ScheduleComponent, MonthService, DayService, WeekService,
   WorkWeekService, EventSettingsModel, ResizeService, DragAndDropService, ActionEventArgs, AgendaService
@@ -25,7 +25,39 @@ export class CalendarioComponent implements OnInit{
   
   @ViewChild("scheduleObj", { static: false })
   p = "s"
+
+  @HostListener('document:click', ['$event']) documentClickEvent($event: any) {
+    if($event.target.matches("button.e-event-create.e-text-ellipsis.e-control.e-btn.e-lib.e-flat.e-primary")){
+        let lastPosition = this.eventSettings.dataSource.length - 1
+        let cita = this.eventSettings.dataSource[lastPosition];
+        console.log(cita)
+
+        cita.idPaciente = "1";
+        cita.precio = 400;
+
+        this.horariosServiceService.addSession(cita).subscribe(res => {
+
+          console.log(res);
+
+
+
+          }, err => {
+            console.error("ocurrio algún error", err)
+        })
+
+        // FALTA AGREGAR QUE FUNCIONE CON EL 'SAVE' DE MAS DETALLES
+        // QUE SE GUARDE EN LA BD ESTE ELEMENTO
+        // TRAERLO DE LA BD CADA QUE SE CARGUE EL MAPA O SE MODIFIQUE EL EVENTSETTINGS
+      }
+  }
   
+  // document.addEventListener("click", (e: any) => {
+  //   console.log(e)
+  //   if(e.target.matches("button#iniciarReloj.botonSec1")){
+
+  //   }
+  // });
+
   constructor(public horariosServiceService:HorariosServiceService, private router: Router, @Inject(DOCUMENT) private document: Document){}
 
 
@@ -70,7 +102,7 @@ export class CalendarioComponent implements OnInit{
 
          
   
-  public eventSettings: EventSettingsModel = {
+  public eventSettings: any = {
     dataSource: this.data,
     fields: {
       id: 'id',
@@ -78,6 +110,7 @@ export class CalendarioComponent implements OnInit{
       isAllDay: { name: 'isAllDay' },
       startTime: { name: 'startTime' },
       endTime: { name: 'endTime' },
+      idPaciente: { name: 'idPaciente' },
     }
   };
 
@@ -231,12 +264,17 @@ export class CalendarioComponent implements OnInit{
 
 
   onRenderCell(args: any): void {
+    
     if (args.elementType == 'workCells') { // si es un tipo de celda de hora de trabajo
       (args.element as HTMLElement).style.background = "#89eaa5";     // pinta celdas de verde
       // (args.element as HTMLElement).style.background = "#fe8484";  // rojo
     }
 
+    // console.log(this.data)
   }
+
+
+  
 
 
 
