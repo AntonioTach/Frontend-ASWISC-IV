@@ -108,7 +108,7 @@ export class CalendarioComponent implements OnInit{
 
 
   ngOnInit(): void {
-    this.modifyFullDaysData();
+    // this.modifyFullDaysData();
     this.getCitas();
 
     
@@ -291,6 +291,10 @@ export class CalendarioComponent implements OnInit{
           this.data.push(auxObj)
           // console.log(this.data)
       }
+
+      console.log(this.data)
+
+      this.modifyFullDaysData();
 
       console.log(this.data)
 
