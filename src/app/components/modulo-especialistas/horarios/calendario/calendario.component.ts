@@ -9,10 +9,24 @@ import { GroupModel, TimeScaleModel, ResourceDetails, RenderCellEventArgs } from
 import { EventRenderedArgs, ScheduleComponent, MonthService, DayService, WeekService,
   WorkWeekService, EventSettingsModel, ResizeService, DragAndDropService, ActionEventArgs, AgendaService
 } from '@syncfusion/ej2-angular-schedule';
+import { extend, isNullOrUndefined } from "@syncfusion/ej2-base";
+import { DropDownList } from "@syncfusion/ej2-dropdowns";
+import { DateTimePicker, ChangeEventArgs } from "@syncfusion/ej2-calendars";
 
 // importaciones propias
 import { HorariosServiceService } from "../../../../services/horarios/horarios-service.service"
+import { ServiceRevisarPacienteService } from "../../revisar-paciente/service-revisar-paciente.service"
 
+L10n.load({
+  'en-US': {
+    'schedule': {
+      'saveButton'    : 'Agendar',
+      'cancelButton'  : 'Cerrar',
+      'deleteButton'  : 'Eliminar',
+      'newEvent'      : 'Agendar cita'
+    }
+  }
+});
 
 @Component({
   selector: 'app-calendario',
@@ -23,6 +37,39 @@ import { HorariosServiceService } from "../../../../services/horarios/horarios-s
 })
 export class CalendarioComponent implements OnInit{  
   
+
+  public pacientesDelEspecialista: Object[] = [
+    // { OwnerText: 'Nancy', Id: 1, OwnerColor: '#ffaa00' },
+    // { OwnerText: 'Steven', Id: 2, OwnerColor: '#f8a398' },
+    // { OwnerText: 'Michael', Id: 3, OwnerColor: '#7499e1' }
+  ];
+  
+  onPopupOpen(args: any): void {
+    if (args.type === 'Editor') {
+      let startTime: HTMLInputElement = args.element.querySelector('#startTime') as HTMLInputElement;
+      if (!startTime.classList.contains('e-datetimepicker')) {
+        new DateTimePicker({ value: new Date(startTime.value) || new Date() }, startTime);
+      }
+
+      let endTime: HTMLInputElement = args.element.querySelector('#endTime') as HTMLInputElement;
+      if (!endTime.classList.contains('e-datetimepicker')) {
+        new DateTimePicker({ value: new Date(endTime.value) || new Date() }, endTime);
+      }
+
+      let ownerElement: HTMLInputElement = args.element.querySelector('#OwnerId');
+      if (!ownerElement.classList.contains('e-dropdownlist')) {
+        let ownerObject: DropDownList = new DropDownList({
+          placeholder: 'Selecciona un paciente',
+          fields: { text: 'OwnerText', value: 'Id' },
+          dataSource: (this.pacientesDelEspecialista as any),
+          value: (((args.data as any).OwnerId instanceof Array) ? (args.data as any).OwnerId : (args.data as any).OwnerId)
+        });
+        ownerObject.appendTo(ownerElement);
+      }
+    }
+  }
+
+
   @ViewChild("scheduleObj", { static: false })
   p = "s"
 
@@ -32,24 +79,22 @@ export class CalendarioComponent implements OnInit{
         let cita = this.eventSettings.dataSource[lastPosition];
         console.log(cita)
         
-        cita.idPaciente = "1";
+        cita.idPaciente = cita.OwnerId;
         cita.precio = 400;
 
         this.horariosServiceService.addSession(cita).subscribe(res => {
-
           console.log(res);
 
           }, err => {
             console.error("ocurrio algún error", err)
         })
-
         // QUE SE GUARDE EN LA BD ESTE ELEMENTO
         // TRAERLO DE LA BD CADA QUE SE CARGUE EL MAPA O SE MODIFIQUE EL EVENTSETTINGS
       }
   }
  
 
-  constructor(public horariosServiceService:HorariosServiceService, private router: Router, @Inject(DOCUMENT) private document: Document){}
+  constructor(public horariosServiceService:HorariosServiceService, public serviceRevisarPacienteService:ServiceRevisarPacienteService, private router: Router, @Inject(DOCUMENT) private document: Document){}
 
 
   public scheduleObj: ScheduleComponent;
@@ -59,7 +104,7 @@ export class CalendarioComponent implements OnInit{
 
   public ownerDataSource: Object[] = [
     { OwnerText: 'Paciente', Id: 1, OwnerColor: '#d6d6d6' }, // gris
-    // { OwnerText: 'PacienteRojo', Id: 2, OwnerColor: '#e49898' }, // rojo
+    { OwnerText: 'PacienteRojo', Id: 2, OwnerColor: '#e49898' }, // rojo
   ];
 
   public timeScale: TimeScaleModel = {
@@ -68,6 +113,23 @@ export class CalendarioComponent implements OnInit{
     slotCount: 1, // 1 division
   };
 
+  public statusFields: Object = { text: "StatusText", value: "StatusText" };
+  public StatusData: Object[] = [
+    { StatusText: "New", Id: 1 },
+    { StatusText: "Requested", Id: 2 },
+    { StatusText: "Confirmed", Id: 3 }
+  ];
+
+  CitaScheme: {
+    id: number,
+    eventName: string,
+    startTime: Date,
+    endTime: Date,
+    description: string,
+    idpaciente: string
+    isAllDay: false,
+    color: "#d6d6d6",
+  }
 
   public data: object[] = [
     {
@@ -108,8 +170,8 @@ export class CalendarioComponent implements OnInit{
 
 
   ngOnInit(): void {
-    // this.modifyFullDaysData();
-    this.getCitas();
+    this.modifyFullDaysData();
+    // this.getCitas();  // comentar este si se descomenta 'modifyFullDays'
 
     
             
@@ -153,14 +215,32 @@ export class CalendarioComponent implements OnInit{
             }];
         this.modifyFullDaysData();
 
-        console.log(res);
-
         this.document.location.reload();
-
 
       }, err => {
         console.error("ocurrio algún error", err)
     })
+
+
+    // public pacientesDelEspecialista: Object[] = [
+    //   { OwnerText: 'Nancy', Id: 1, OwnerColor: '#ffaa00' },
+    //   { OwnerText: 'Steven', Id: 2, OwnerColor: '#f8a398' },
+    //   { OwnerText: 'Michael', Id: 3, OwnerColor: '#7499e1' }
+    // ];
+
+    this.serviceRevisarPacienteService.getPacientes().subscribe(res => {
+        console.log(res)
+        let pacientesDelEspeci: any = []
+        pacientesDelEspeci = res
+
+        for (let i = 0; i < pacientesDelEspeci.length; i++) {
+          this.pacientesDelEspecialista.push({ OwnerText: pacientesDelEspeci[i].nombre, Id: pacientesDelEspeci[i].id_paciente, OwnerColor: '#ffaa00' })
+        }
+
+      }, err => {
+        console.error("ocurrio algún error", err)
+    })
+
 
   }
 

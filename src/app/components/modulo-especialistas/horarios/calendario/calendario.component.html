@@ -1,5 +1,5 @@
 <ejs-schedule width='100%' height='550px'  [selectedDate]='selectedDate'
-[eventSettings]='eventSettings' [allowResizing] = 'false' [timeScale]="timeScale" (renderCell)="onRenderCell($event)"> 
+[eventSettings]='eventSettings' [allowResizing] = 'false' [timeScale]="timeScale" (renderCell)="onRenderCell($event)" (popupOpen)='onPopupOpen($event)'> 
 
     <ng-template #eventSettingsTemplate let-data >
         <div class="elemento-gris" [style.background]="data.color" >
@@ -12,6 +12,89 @@
         [dataSource]="ownerDataSource" textField="OwnerText" idField="Id" colorField="OwnerColor">
         </e-resource>
     </e-resources>
+
+<!-- 
+    <ng-template #editorTemplate let-data>
+        <table *ngIf="data != undefined" class="custom-event-editor" width="100%" cellpadding="5">
+            <tbody>
+                <tr>
+                    <td class="e-textlabel">Titulo</td>
+                    <td colspan="4">
+                        <input id="Subject" class="e-field e-input" type="text" value="{{CitaScheme.eventName}}" name="eventName" style="width: 100%" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="e-textlabel">Paciente</td>
+                    <td colspan="4">
+                        <ejs-dropdownlist id='Status' class="e-field" data-name="paciente" placeholder='Selecciona un paciente'
+                            [dataSource]='StatusData' [fields]='statusFields' value='{{CitaScheme.idPaciente}}'>
+                        </ejs-dropdownlist>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="e-textlabel">From</td>
+                    <td colspan="4">
+                        <ejs-datetimepicker id="StartTime" class="e-field" data-name="StartTime"
+                            format="M/dd/yy h:mm a" (change)="onDateChange($event)"
+                            [value]="startDateParser(data.startTime || data.StartTime)"></ejs-datetimepicker>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="e-textlabel">To</td>
+                    <td colspan="4">
+                        <ejs-datetimepicker id="EndTime" class="e-field" data-name="EndTime" format="M/dd/yy h:mm a"
+                            (change)="onDateChange($event)" [value]='endDateParser(data.endTime || data.EndTime)'></ejs-datetimepicker>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="e-textlabel">Reason</td>
+                    <td colspan="4">
+                        <textarea id="Description" class="e-field e-input" name="Description" rows="3" cols="50" value="{{data.Description}}" style="width: 100%; height: 60px !important; resize: vertical"></textarea>
+                    </td>
+                </tr> 
+            </tbody>
+        </table>
+    </ng-template>
+-->
+
+<!-- pacientesDelEspecialista -->
+    <ng-template #editorTemplate>
+        <table class="custom-event-editor" width="100%" cellpadding="5">
+            <tbody>
+                <tr>
+                    <td class="e-textlabel">Titulo</td>
+                    <td colspan="4">
+                        <input id="eventName" class="e-field e-input" type="text" value="" name="eventName" style="width: 100%" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="e-textlabel">Hora de inicio</td>
+                    <td colspan="4">
+                        <input id="startTime" class="e-field" type="text" name="startTime" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="e-textlabel">Hora de termino</td>
+                    <td colspan="4">
+                        <input id="endTime" class="e-field" type="text" name="endTime" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="e-textlabel">Paciente</td>
+                    <td colspan="4">
+                        <input type="text" id="OwnerId" name="OwnerId" class="e-field" style="width: 100%" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="e-textlabel">Descripcion</td>
+                    <td colspan="4">
+                        <textarea id="Description" class="e-field e-input" name="Description" rows="3" cols="50" style="width: 100%; height: 60px !important; resize: vertical"></textarea>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </ng-template>
+
 
     
 </ejs-schedule> 

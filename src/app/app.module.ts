@@ -30,6 +30,9 @@ import { ModuloPacientesComponent } from './components/modulo-pacientes/modulo-p
 import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { Navbar3Component } from './components/navbar3/navbar3.component';
 import { DatePipe } from '@angular/common';
+import { DropDownListModule } from '@syncfusion/ej2-angular-dropdowns'
+import { DateTimePickerModule } from '@syncfusion/ej2-angular-calendars'
+
 //import { TokenInterceptorService } from './services/token-interceptor.service';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireStorageModule, BUCKET } from '@angular/fire/compat/storage';
@@ -79,6 +82,8 @@ import { VerArticuloComponent } from './components/ver-articulo/ver-articulo.com
     AngularEditorModule,
     // ScheduleModule,
     // RecurrenceEditorModule,
+    DropDownListModule,
+    DateTimePickerModule
   ],
   providers: [
 
