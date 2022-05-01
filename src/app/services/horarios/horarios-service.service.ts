@@ -19,5 +19,10 @@ export class HorariosServiceService {
     return this.http.post('http://localhost:4000/horarios/addSession/' + id, cita);
   }
 
+  getCitasEspecialista() {
+    let id = localStorage.getItem("id_especialista");
+    return this.http.get('http://localhost:4000/horarios/get-citas-especialista/' + id);
+  }
+
 
 }

@@ -27,7 +27,7 @@ export class CalendarioComponent implements OnInit{
   p = "s"
 
   @HostListener('document:click', ['$event']) documentClickEvent($event: any) {
-    if($event.target.matches("button.e-event-create.e-text-ellipsis.e-control.e-btn.e-lib.e-flat.e-primary")){
+    if($event.target.matches("button.e-event-create.e-text-ellipsis.e-control.e-btn.e-lib.e-flat.e-primary") || $event.target.matches("button.e-control.e-btn.e-lib.e-primary.e-event-save.e-flat")){
         let lastPosition = this.eventSettings.dataSource.length - 1
         let cita = this.eventSettings.dataSource[lastPosition];
         console.log(cita)
@@ -39,13 +39,10 @@ export class CalendarioComponent implements OnInit{
 
           console.log(res);
 
-
-
           }, err => {
             console.error("ocurrio algún error", err)
         })
 
-        // FALTA AGREGAR QUE FUNCIONE CON EL 'SAVE' DE MAS DETALLES
         // QUE SE GUARDE EN LA BD ESTE ELEMENTO
         // TRAERLO DE LA BD CADA QUE SE CARGUE EL MAPA O SE MODIFIQUE EL EVENTSETTINGS
       }
@@ -118,6 +115,9 @@ export class CalendarioComponent implements OnInit{
 
   ngOnInit(): void {
     this.modifyFullDaysData();
+    this.getCitas();
+
+
 
       this.data = [{
           Id: 1,
@@ -253,12 +253,12 @@ export class CalendarioComponent implements OnInit{
               if(dayTour == 7) dayTour = 0
           }
 
+
           // console.log(this.data)
 
     } catch (error) {
       console.error("Aun no se ha configurado los horarios", error);
     }
-
   }
 
 
@@ -274,6 +274,39 @@ export class CalendarioComponent implements OnInit{
   }
 
 
+
+  getCitas(){
+    console.log(this.data)
+    this.horariosServiceService.getCitasEspecialista().subscribe(res => {
+      console.log(res);
+      let citas: any
+      citas = res
+
+      console.log(this.data)
+      for (let i = 0; i < citas.length; i++) {
+        let auxObj = {
+          id: 250 + i,
+          eventName: citas[i].titulo,
+          startTime: new Date(citas[i].startTime),
+          endTime: new Date(citas[i].endTime),
+          description: citas[i].descripcion,
+          isAllDay: false,
+          color: "#d6d6d6",
+        }
+
+          this.data.push(auxObj)
+          // console.log(this.data)
+      }
+
+      console.log(this.data)
+
+      }, err => {
+        console.error("ocurrio algún error", err)
+    })
+
+    console.log(this.data)
+
+  }
 
 
 
