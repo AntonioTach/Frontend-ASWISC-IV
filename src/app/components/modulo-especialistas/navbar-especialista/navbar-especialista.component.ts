@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ModuloEspecialistasRoutingModule } from '../modulo-especialistas-routing.module';
 import { Router, RouterLink } from '@angular/router';
+import {MatButtonModule} from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
 
 
 
