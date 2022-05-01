@@ -1,6 +1,6 @@
 // importaciones externas
 import * as moment from 'moment';
-import { Router } from '@angular/router'; 
+import { Router } from '@angular/router';
 import { DOCUMENT } from '@angular/common';
 import { L10n } from '@syncfusion/ej2-base';
 import { Internationalization } from "@syncfusion/ej2-base";
@@ -92,7 +92,13 @@ export class CalendarioComponent implements OnInit{
         // TRAERLO DE LA BD CADA QUE SE CARGUE EL MAPA O SE MODIFIQUE EL EVENTSETTINGS
       }
   }
- 
+
+  // document.addEventListener("click", (e: any) => {
+  //   console.log(e)
+  //   if(e.target.matches("button#iniciarReloj.botonSec1")){
+
+  //   }
+  // });
 
   constructor(public horariosServiceService:HorariosServiceService, public serviceRevisarPacienteService:ServiceRevisarPacienteService, private router: Router, @Inject(DOCUMENT) private document: Document){}
 
@@ -149,12 +155,12 @@ export class CalendarioComponent implements OnInit{
       isAllDay: false,
       color: "#d6d6d6",
       OwnerId: 1
-    }, 
+    },
   ];
-  
 
-         
-  
+
+
+
   public eventSettings: any = {
     dataSource: this.data,
     fields: {
@@ -173,27 +179,27 @@ export class CalendarioComponent implements OnInit{
     this.modifyFullDaysData();
     // this.getCitas();  // comentar este si se descomenta 'modifyFullDays'
 
-    
-            
+
+
       this.data = [{
-          Id: 1, 
+          Id: 1,
           eventName: '',
-          startTime: new Date(2021, 0, 0, 0, 0), 
-          endTime: new Date(), 
+          startTime: new Date(2021, 0, 0, 0, 0),
+          endTime: new Date(),
           isAllDay: false,
-          IsBlock: true, 
-          color: "#e49898", 
+          IsBlock: true,
+          color: "#e49898",
       }];
 
     this.horariosServiceService.TriggerFullDays.subscribe(res => {
             this.data = [{
-              Id: 1, 
+              Id: 1,
               eventName: '',
-              startTime: new Date(2021, 0, 0, 0, 0), 
-              endTime: new Date(), 
+              startTime: new Date(2021, 0, 0, 0, 0),
+              endTime: new Date(),
               isAllDay: false,
-              IsBlock: true, 
-              color: "#e49898", 
+              IsBlock: true,
+              color: "#e49898",
             }];
         this.modifyFullDaysData();
 
@@ -205,13 +211,13 @@ export class CalendarioComponent implements OnInit{
 
     this.horariosServiceService.TriggerPartialDays.subscribe(res => {
             this.data = [{
-              Id: 1, 
+              Id: 1,
               eventName: '',
-              startTime: new Date(2021, 0, 0, 0, 0), 
-              endTime: new Date(), 
+              startTime: new Date(2021, 0, 0, 0, 0),
+              endTime: new Date(),
               isAllDay: false,
-              IsBlock: true, 
-              color: "#e49898", 
+              IsBlock: true,
+              color: "#e49898",
             }];
         this.modifyFullDaysData();
 
@@ -253,14 +259,14 @@ export class CalendarioComponent implements OnInit{
     let arrayDaysStatus = [ , , , , , , ]
 
     let today = Date.parse(year + "-" + month + "-" + day)  // obtiene la fecha en mlseg al momento en que empezo el dia de hoy
-    // let fechaHoy = new Date(year, month, day, 0, 0) 
+    // let fechaHoy = new Date(year, month, day, 0, 0)
 
 
     try {
       let fullDaysData: any = JSON.parse(localStorage.getItem("fullDaysData"))
       let partialDaysData: any = JSON.parse(localStorage.getItem("partialDayData"));
 
-      
+
       if(fullDaysData){          // SI SE ENCUENTRA VARIABLE EN EL LS SE HACE TODO EL PROCESO
         arrayDaysStatus[0] = fullDaysData[6].domingo
         arrayDaysStatus[1] = fullDaysData[0].lunes
@@ -275,7 +281,7 @@ export class CalendarioComponent implements OnInit{
           let dayMilliseconds = 86400000;
           let diff_in_millisenconds = lastDayOfYear - today;
           let daysToFinishYear = diff_in_millisenconds / dayMilliseconds;
-      
+
           let weekCounter = 0, changingDay = today, dayTour = date.getDay()
 
 
@@ -290,7 +296,7 @@ export class CalendarioComponent implements OnInit{
                     color: "#e49898",
                     IsBlock: true,
                   }
-                    
+
                   this.data.push(auxObj)
 
                   auxObj = {
@@ -302,7 +308,7 @@ export class CalendarioComponent implements OnInit{
                     color: "#e49898",
                     IsBlock: true,
                   }
-                    
+
                   this.data.push(auxObj)
               }else{
                   if(!arrayDaysStatus[dayTour]){
@@ -315,30 +321,30 @@ export class CalendarioComponent implements OnInit{
                         color: "#e49898",
                         IsBlock: true,
                       }
-                      
+
                       this.data.push(auxObj)
                   }
               }
- 
-              
+
+
               changingDay = changingDay + (dayMilliseconds)
-              
+
               dayTour++
               if(dayTour == 7) dayTour = 0
           }
-      
-          console.log(this.data)
-      
+
+
+          // console.log(this.data)
+
     } catch (error) {
       console.error("Aun no se ha configurado los horarios", error);
     }
-
   }
 
 
 
   onRenderCell(args: any): void {
-    
+
     if (args.elementType == 'workCells') { // si es un tipo de celda de hora de trabajo
       (args.element as HTMLElement).style.background = "#89eaa5";     // pinta celdas de verde
       // (args.element as HTMLElement).style.background = "#fe8484";  // rojo
@@ -367,7 +373,7 @@ export class CalendarioComponent implements OnInit{
           isAllDay: false,
           color: "#d6d6d6",
         }
-    
+
           this.data.push(auxObj)
           // console.log(this.data)
       }
@@ -385,7 +391,7 @@ export class CalendarioComponent implements OnInit{
     console.log(this.data)
 
   }
-  
+
 
 
 
