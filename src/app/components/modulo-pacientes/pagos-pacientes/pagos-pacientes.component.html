@@ -10,7 +10,7 @@
         <div class="col-md-12 cuadro mt-2" *ngFor="let pago of pagos">
           <h1>Facturacion {{ pago.id_pago }}</h1>
           <h1>Fecha: {{ pago.fecha | date: "dd/MM/yyyy HH:mm:ss" }}</h1>
-          <h2>Monto: {{ pago.precio }} pesos</h2>
+          <h2>Monto: {{ pago.precio_doble }} pesos</h2>
           <hr>
         </div>
       </div>
