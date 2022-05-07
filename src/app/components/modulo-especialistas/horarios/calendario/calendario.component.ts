@@ -38,11 +38,7 @@ L10n.load({
 export class CalendarioComponent implements OnInit{  
   
 
-  public pacientesDelEspecialista: Object[] = [
-    // { OwnerText: 'Nancy', Id: 1, OwnerColor: '#ffaa00' },
-    // { OwnerText: 'Steven', Id: 2, OwnerColor: '#f8a398' },
-    // { OwnerText: 'Michael', Id: 3, OwnerColor: '#7499e1' }
-  ];
+  public pacientesDelEspecialista: Object[] = [ ];
   
   onPopupOpen(args: any): void {
     if (args.type === 'Editor') {
@@ -88,17 +84,10 @@ export class CalendarioComponent implements OnInit{
           }, err => {
             console.error("ocurrio algún error", err)
         })
-        // QUE SE GUARDE EN LA BD ESTE ELEMENTO
         // TRAERLO DE LA BD CADA QUE SE CARGUE EL MAPA O SE MODIFIQUE EL EVENTSETTINGS
       }
   }
 
-  // document.addEventListener("click", (e: any) => {
-  //   console.log(e)
-  //   if(e.target.matches("button#iniciarReloj.botonSec1")){
-
-  //   }
-  // });
 
   constructor(public horariosServiceService:HorariosServiceService, public serviceRevisarPacienteService:ServiceRevisarPacienteService, private router: Router, @Inject(DOCUMENT) private document: Document){}
 
@@ -126,16 +115,16 @@ export class CalendarioComponent implements OnInit{
     { StatusText: "Confirmed", Id: 3 }
   ];
 
-  CitaScheme: {
-    id: number,
-    eventName: string,
-    startTime: Date,
-    endTime: Date,
-    description: string,
-    idpaciente: string
-    isAllDay: false,
-    color: "#d6d6d6",
-  }
+  // CitaScheme: {
+  //   id: number,
+  //   eventName: string,
+  //   startTime: Date,
+  //   endTime: Date,
+  //   description: string,
+  //   idpaciente: string
+  //   isAllDay: false,
+  //   color: "#d6d6d6",
+  // }
 
   public data: object[] = [
     {
@@ -147,18 +136,16 @@ export class CalendarioComponent implements OnInit{
       IsBlock: true, // bloquea y no se puede hacer nada
       color: "#e49898", // rojo
     },
-    {
-      id: 2,
-      eventName: 'Meeting',
-      startTime: new Date(2022, 3, 13, 10, 0),
-      endTime: new Date(2022, 3, 13, 11, 0),
-      isAllDay: false,
-      color: "#d6d6d6",
-      OwnerId: 1
-    },
+    // {
+    //   id: 2,
+    //   eventName: 'Meeting',
+    //   startTime: new Date(2022, 4, 4, 10, 0),
+    //   endTime: new Date(2022, 4, 4, 11, 0),
+    //   isAllDay: false,
+    //   color: "#d6d6d6",
+    //   OwnerId: 1
+    // },
   ];
-
-
 
 
   public eventSettings: any = {
@@ -177,9 +164,7 @@ export class CalendarioComponent implements OnInit{
 
   ngOnInit(): void {
     this.modifyFullDaysData();
-    // this.getCitas();  // comentar este si se descomenta 'modifyFullDays'
-
-
+    this.getCitas();  // comentar este si se descomenta 'modifyFullDays'
 
       this.data = [{
           Id: 1,
@@ -228,14 +213,8 @@ export class CalendarioComponent implements OnInit{
     })
 
 
-    // public pacientesDelEspecialista: Object[] = [
-    //   { OwnerText: 'Nancy', Id: 1, OwnerColor: '#ffaa00' },
-    //   { OwnerText: 'Steven', Id: 2, OwnerColor: '#f8a398' },
-    //   { OwnerText: 'Michael', Id: 3, OwnerColor: '#7499e1' }
-    // ];
-
+    // obtiene todos los pacientes del especialista para agregarlos al dropdownlist del form de la cita
     this.serviceRevisarPacienteService.getPacientes().subscribe(res => {
-        console.log(res)
         let pacientesDelEspeci: any = []
         pacientesDelEspeci = res
 
@@ -326,15 +305,11 @@ export class CalendarioComponent implements OnInit{
                   }
               }
 
-
               changingDay = changingDay + (dayMilliseconds)
 
               dayTour++
               if(dayTour == 7) dayTour = 0
           }
-
-
-          // console.log(this.data)
 
     } catch (error) {
       console.error("Aun no se ha configurado los horarios", error);
@@ -350,45 +325,37 @@ export class CalendarioComponent implements OnInit{
       // (args.element as HTMLElement).style.background = "#fe8484";  // rojo
     }
 
-    // console.log(this.data)
   }
 
 
 
-  getCitas(){
+  // obtiene todas las citas de sus respectivos pacientes
+  async getCitas(){
     console.log(this.data)
-    this.horariosServiceService.getCitasEspecialista().subscribe(res => {
-      console.log(res);
-      let citas: any
-      citas = res
+    let auxData = this.data
 
-      console.log(this.data)
+    // HACER QUE SE GUARDE TAMBIEN EL NOMBRE DEL USUARIO SELECCIONADO PARA QUE DESPUES SEA MAS FACIL DE MOSTRAR
+    const dataCitas = await this.horariosServiceService.getCitasEspecialista().toPromise();
+
+      let citas:any = []
+      citas = dataCitas
+
       for (let i = 0; i < citas.length; i++) {
-        let auxObj = {
-          id: 250 + i,
-          eventName: citas[i].titulo,
-          startTime: new Date(citas[i].startTime),
-          endTime: new Date(citas[i].endTime),
-          description: citas[i].descripcion,
-          isAllDay: false,
-          color: "#d6d6d6",
-        }
-
-          this.data.push(auxObj)
+        auxData.push({
+          Id: 350 + i,
+            eventName: citas[i].titulo,
+            startTime: new Date(citas[i].startTime),
+            endTime: new Date(citas[i].endTime),
+            description: citas[i].descripcion,
+            isAllDay: false,
+            color: "#d6d6d6",
+            OwnerId: 1
+          })
           // console.log(this.data)
       }
 
+      this.data.concat(auxData)
       console.log(this.data)
-
-      this.modifyFullDaysData();
-
-      console.log(this.data)
-
-      }, err => {
-        console.error("ocurrio algún error", err)
-    })
-
-    console.log(this.data)
 
   }
 

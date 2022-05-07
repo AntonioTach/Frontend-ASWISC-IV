@@ -216,16 +216,6 @@ export class HorariosComponent implements OnInit {
  
       localStorage.setItem("partialDayData", JSON.stringify(arrayDaysStatus));
           
-      // arrayDaysStatus[this.selectedPartialDay!] = partialDayData;
-  
-      // arrayDaysStatus[0] = fullDaysData[6].domingo
-      // arrayDaysStatus[1] = 
-      // arrayDaysStatus[2] = 
-      // arrayDaysStatus[3] = 
-      // arrayDaysStatus[4] = 
-      // arrayDaysStatus[5] = 
-      // arrayDaysStatus[6] = 
-  
       this.horariosServiceService.TriggerPartialDays.emit(partialDayData)
 
     }
