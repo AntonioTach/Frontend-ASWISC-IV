@@ -128,9 +128,9 @@ export class RegistroEspecialistaComponent implements OnInit {
     this.formRegistro.value['curriculum'] = this.curriculum.nativeElement.value;
     this.formRegistro.value['foto_profesional'] = this.image.nativeElement.value;//asar la url de lafoto
     this.formRegistro.value['cedula'] = this.cedula.nativeElement.value;
-    console.table(this.formRegistro.value)
-    this.correcto();
-    console.log(this.formRegistro.invalid)
+    // console.table(this.formRegistro.value)
+    // this.correcto();
+    // console.log(this.formRegistro.invalid)
     if (this.formRegistro.invalid) {
       return;
     }
@@ -138,10 +138,16 @@ export class RegistroEspecialistaComponent implements OnInit {
       //Metodo POST
       //console.log(this.formRegistro?.value),
       this.especialistaService.createEspecialista(this.formRegistro.value).subscribe(
-        res => {
-          console.log(res),
-            console.log('correcto');
-          this.correcto();
+        (res:any) => {
+          if (res == false){
+            this.existeUsuario();
+          }
+          else if(res == true){
+            this.correcto();
+          }
+          // console.log(res),
+          //   console.log('correcto');
+          // this.correcto();
         },
         err => {
           console.log('ERROR que no se');
@@ -198,6 +204,14 @@ export class RegistroEspecialistaComponent implements OnInit {
   }
   correcto() {
     this._snackBar.open('Registro Correcto', '', {
+      duration: 3000, //5s
+      horizontalPosition: 'center',
+      verticalPosition: 'bottom'
+    });
+  }
+
+  existeUsuario(){
+    this._snackBar.open('Registro incorrecto, el usuario y/o correo ya existe', '', {
       duration: 3000, //5s
       horizontalPosition: 'center',
       verticalPosition: 'bottom'

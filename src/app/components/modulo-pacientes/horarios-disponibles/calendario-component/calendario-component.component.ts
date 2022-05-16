@@ -1,18 +1,39 @@
-// importaciones externas
 import * as moment from 'moment';
 import { Router } from '@angular/router';
 import { DOCUMENT } from '@angular/common';
 import { L10n } from '@syncfusion/ej2-base';
 import { Internationalization } from "@syncfusion/ej2-base";
-import { Component, Inject, ViewChild, ViewEncapsulation, OnInit } from "@angular/core";
+import { Component, Inject, ViewChild, ViewEncapsulation, OnInit, HostListener} from "@angular/core";
 import { GroupModel, TimeScaleModel, ResourceDetails, RenderCellEventArgs } from "@syncfusion/ej2-angular-schedule";
 import { EventRenderedArgs, ScheduleComponent, MonthService, DayService, WeekService,
   WorkWeekService, EventSettingsModel, ResizeService, DragAndDropService, ActionEventArgs, AgendaService
 } from '@syncfusion/ej2-angular-schedule';
+import { extend, isNullOrUndefined } from "@syncfusion/ej2-base";
+import { DropDownList } from "@syncfusion/ej2-dropdowns";
+import { DateTimePicker, ChangeEventArgs } from "@syncfusion/ej2-calendars";
 
 // importaciones propias
-import { HorariosServiceService } from "../../../../services/horarios/horarios-service.service"
+import { HorariosServiceService } from "../../../../services/horarios/horarios-service.service";
+//import { ServiceRevisarPacienteService } from "../../../modulo-especialistas/revisar-paciente/service-revisar-paciente.service";
+import { EspecialistaService } from "../../vista-especialista/especialista.service";
+import { window } from 'rxjs/operators';
 
+L10n.load({
+  'en-US': {
+    'schedule': {
+      'saveButton'    : 'Agendar',
+      'cancelButton'  : 'Cerrar',
+      'deleteButton'  : 'Eliminar',
+      'newEvent'      : 'Agendar cita'
+    }
+  }
+});
+
+declare global {
+  interface Window{
+    Stripe?: any;
+  }
+}
 
 @Component({
   selector: 'app-calendario-component',
@@ -23,10 +44,63 @@ import { HorariosServiceService } from "../../../../services/horarios/horarios-s
 })
 export class CalendarioComponentComponent implements OnInit {
 
+
+
+
+
+  public pacientesDelEspecialista: Object[] = [ ];
+
+  onPopupOpen(args: any): void {
+    if (args.type === 'Editor') {
+      let startTime: HTMLInputElement = args.element.querySelector('#startTime') as HTMLInputElement;
+      if (!startTime.classList.contains('e-datetimepicker')) {
+        new DateTimePicker({ value: new Date(startTime.value) || new Date() }, startTime);
+      }
+
+      let endTime: HTMLInputElement = args.element.querySelector('#endTime') as HTMLInputElement;
+      if (!endTime.classList.contains('e-datetimepicker')) {
+        new DateTimePicker({ value: new Date(endTime.value) || new Date() }, endTime);
+      }
+
+      let ownerElement: HTMLInputElement = args.element.querySelector('#OwnerId');
+      if (!ownerElement.classList.contains('e-dropdownlist')) {
+        let ownerObject: DropDownList = new DropDownList({
+          placeholder: 'Selecciona un paciente',
+          fields: { text: 'OwnerText', value: 'Id' },
+          dataSource: (this.pacientesDelEspecialista as any),
+          value: (((args.data as any).OwnerId instanceof Array) ? (args.data as any).OwnerId : (args.data as any).OwnerId)
+        });
+        ownerObject.appendTo(ownerElement);
+      }
+    }
+  }
+
+
   @ViewChild("scheduleObj", { static: false })
   p = "s"
 
-  constructor(public horariosServiceService:HorariosServiceService, private router: Router, @Inject(DOCUMENT) private document: Document) { }
+  @HostListener('document:click', ['$event']) documentClickEvent($event: any) {
+    if($event.target.matches("button.e-event-create.e-text-ellipsis.e-control.e-btn.e-lib.e-flat.e-primary") || $event.target.matches("button.e-control.e-btn.e-lib.e-primary.e-event-save.e-flat")){
+        let lastPosition = this.eventSettings.dataSource.length - 1
+        let cita = this.eventSettings.dataSource[lastPosition];
+        console.log(cita)
+
+        cita.idPaciente = cita.OwnerId;
+        cita.precio = 400;
+
+        this.horariosServiceService.addSession(cita).subscribe(res => {
+          console.log(res);
+
+          }, err => {
+            console.error("ocurrio algún error", err)
+        })
+        // TRAERLO DE LA BD CADA QUE SE CARGUE EL MAPA O SE MODIFIQUE EL EVENTSETTINGS
+      }
+  }
+
+
+  constructor(public horariosServiceService:HorariosServiceService, public servicePaciente:EspecialistaService,  private router: Router, @Inject(DOCUMENT) private document: Document){}
+
 
   public scheduleObj: ScheduleComponent;
 
@@ -35,7 +109,7 @@ export class CalendarioComponentComponent implements OnInit {
 
   public ownerDataSource: Object[] = [
     { OwnerText: 'Paciente', Id: 1, OwnerColor: '#d6d6d6' }, // gris
-    // { OwnerText: 'PacienteRojo', Id: 2, OwnerColor: '#e49898' }, // rojo
+    { OwnerText: 'PacienteRojo', Id: 2, OwnerColor: '#e49898' }, // rojo
   ];
 
   public timeScale: TimeScaleModel = {
@@ -44,6 +118,23 @@ export class CalendarioComponentComponent implements OnInit {
     slotCount: 1, // 1 division
   };
 
+  public statusFields: Object = { text: "StatusText", value: "StatusText" };
+  public StatusData: Object[] = [
+    { StatusText: "New", Id: 1 },
+    { StatusText: "Requested", Id: 2 },
+    { StatusText: "Confirmed", Id: 3 }
+  ];
+
+  // CitaScheme: {
+  //   id: number,
+  //   eventName: string,
+  //   startTime: Date,
+  //   endTime: Date,
+  //   description: string,
+  //   idpaciente: string
+  //   isAllDay: false,
+  //   color: "#d6d6d6",
+  // }
 
   public data: object[] = [
     {
@@ -55,21 +146,19 @@ export class CalendarioComponentComponent implements OnInit {
       IsBlock: true, // bloquea y no se puede hacer nada
       color: "#e49898", // rojo
     },
-    {
-      id: 2,
-      eventName: 'Meeting',
-      startTime: new Date(2022, 3, 13, 10, 0),
-      endTime: new Date(2022, 3, 13, 11, 0),
-      isAllDay: false,
-      color: "#d6d6d6",
-      OwnerId: 1
-    },
+    // {
+    //   id: 2,
+    //   eventName: 'Meeting',
+    //   startTime: new Date(2022, 4, 4, 10, 0),
+    //   endTime: new Date(2022, 4, 4, 11, 0),
+    //   isAllDay: false,
+    //   color: "#d6d6d6",
+    //   OwnerId: 1
+    // },
   ];
 
 
-
-
-  public eventSettings: EventSettingsModel = {
+  public eventSettings: any = {
     dataSource: this.data,
     fields: {
       id: 'id',
@@ -77,11 +166,23 @@ export class CalendarioComponentComponent implements OnInit {
       isAllDay: { name: 'isAllDay' },
       startTime: { name: 'startTime' },
       endTime: { name: 'endTime' },
+      idPaciente: { name: 'idPaciente' },
     }
   };
 
+  private readonly STRIPE!: any;
+  private elementStripe!: any;
+  cardNumber: any;
+  cardCvv: any;
+  cardExp: any;
+  id!: string;
+  orderData!: any;
+
+  ///this.STRIPE = window.Stripe('pk_test_51KvYRzEeE5SQU3ghDDAgZUkUx7FC2SsjuGc9hOPBGLjEWiuxV7JthhHzdeFVhHaV5ysn22DMMGj9zXzL3cmCRjhD00sNAmmgH2');
+
   ngOnInit(): void {
     this.modifyFullDaysData();
+    this.getCitas();  // comentar este si se descomenta 'modifyFullDays'
 
       this.data = [{
           Id: 1,
@@ -123,14 +224,31 @@ export class CalendarioComponentComponent implements OnInit {
             }];
         this.modifyFullDaysData();
 
-        console.log(res);
-
         this.document.location.reload();
-
 
       }, err => {
         console.error("ocurrio algún error", err)
     })
+
+
+    //obtiene todos los pacientes del especialista para agregarlos al dropdownlist del form de la cita
+    // this.serviceRevisarPacienteService.getPacientes().subscribe(res => {
+    //     let pacientesDelEspeci: any = []
+    //     pacientesDelEspeci = res
+
+    //     console.log(res);
+
+    //     // for (let i = 0; i < pacientesDelEspeci.length; i++) {
+    //     //   this.pacientesDelEspecialista.push({ OwnerText: pacientesDelEspeci[i].nombre, Id: pacientesDelEspeci[i].id_paciente, OwnerColor: '#ffaa00' })
+    //     // }
+
+    //   }, err => {
+    //     console.error("ocurrio algún error", err)
+    // })
+
+    // this.servicePaciente.getPaciente()
+
+
   }
 
 
@@ -209,24 +327,21 @@ export class CalendarioComponentComponent implements OnInit {
                   }
               }
 
-
               changingDay = changingDay + (dayMilliseconds)
 
               dayTour++
               if(dayTour == 7) dayTour = 0
           }
 
-          // console.log(this.data)
-
     } catch (error) {
       console.error("Aun no se ha configurado los horarios", error);
     }
-
   }
 
 
 
   onRenderCell(args: any): void {
+
     if (args.elementType == 'workCells') { // si es un tipo de celda de hora de trabajo
       (args.element as HTMLElement).style.background = "#89eaa5";     // pinta celdas de verde
       // (args.element as HTMLElement).style.background = "#fe8484";  // rojo
@@ -234,4 +349,35 @@ export class CalendarioComponentComponent implements OnInit {
 
   }
 
+
+
+  // obtiene todas las citas de sus respectivos pacientes
+  async getCitas(){
+    console.log(this.data)
+    let auxData = this.data
+
+    // HACER QUE SE GUARDE TAMBIEN EL NOMBRE DEL USUARIO SELECCIONADO PARA QUE DESPUES SEA MAS FACIL DE MOSTRAR
+    const dataCitas = await this.horariosServiceService.getCitasEspecialista().toPromise();
+
+      let citas:any = []
+      citas = dataCitas
+
+      for (let i = 0; i < citas.length; i++) {
+        auxData.push({
+          Id: 350 + i,
+            eventName: citas[i].titulo,
+            startTime: new Date(citas[i].startTime),
+            endTime: new Date(citas[i].endTime),
+            description: citas[i].descripcion,
+            isAllDay: false,
+            color: "#d6d6d6",
+            OwnerId: 1
+          })
+          // console.log(this.data)
+      }
+
+      this.data.concat(auxData)
+      console.log(this.data)
+
+  }
 }

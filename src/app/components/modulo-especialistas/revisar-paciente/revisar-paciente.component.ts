@@ -7,7 +7,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { threadId } from 'worker_threads';
-
+import  Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-revisar-paciente',
@@ -59,21 +59,62 @@ export class RevisarPacienteComponent implements OnInit {
       }
     )
   }*/
-  eliminarPaciente(id: any) {//aqui lo que abria que pasarle es el id, para borra el dato de la base de datos.
-    if (confirm('Seguro que desea eliminar al paciente?. Dejará de pertenecer a su lista de pacientes.') == true) {
-      this.pacientesService.eliminarPaciente(id.toString()).subscribe(res => {
-        console.log(res)
-      }, err => console.log(err));
-      this._snackBar.open('El usuario fue eliminado con exito', '', {
-        duration: 1500,
-        horizontalPosition: 'center',
-        verticalPosition: 'bottom'
-      })
-      this.cargarPacientes();
-    }
+  // eliminarPaciente(id: any) {//aqui lo que abria que pasarle es el id, para borra el dato de la base de datos.
+  //   Swal.fire({
+  //     title: 'Confirmar baja del sistema',
+  //     icon: 'warning',
+  //     showCancelButton: true,
+  //     confirmButtonColor: '#B22222',
+  //     confirmButtonText: 'Dar de baja'
+  //   }).then((result) => {
+  //     if(result.isConfirmed){
+  //       this.pacientesService.eliminarPaciente(id.toString()).subscribe(res => {
+  //         console.log(res)
+  //       }, err => console.log(err));
+  //       this._snackBar.open('El usuario fue eliminado con exito', '', {
+  //         duration: 1500,
+  //         horizontalPosition: 'center',
+  //         verticalPosition: 'bottom'
+  //       })
+  //       this.cargarPacientes();
+  //     }
+  //   }
 
+
+  //   if (confirm('Seguro que desea eliminar al paciente?. Dejará de pertenecer a su lista de pacientes.') == true) {
+  //     this.pacientesService.eliminarPaciente(id.toString()).subscribe(res => {
+  //       console.log(res)
+  //     }, err => console.log(err));
+  //     this._snackBar.open('El usuario fue eliminado con exito', '', {
+  //       duration: 1500,
+  //       horizontalPosition: 'center',
+  //       verticalPosition: 'bottom'
+  //     })
+  //     this.cargarPacientes();
+  //   }
+  // }
+
+  eliminarPaciente(id: any){
+    Swal.fire({
+      title: 'Confirmar dar de baja Paciente de tu lista de Pacientes',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#B22222',
+      confirmButtonText: 'Dar de baja'
+    }).then((result) => {
+      if (result.isConfirmed){
+        this.pacientesService.eliminarPaciente(id.toString()).subscribe(res => {
+          console.log(res)
+        }, err => console.log(err));
+        this._snackBar.open('El usuario fue eliminado con exito', '', {
+          duration: 1500,
+          horizontalPosition: 'center',
+          verticalPosition: 'bottom'
+        })
+        this.cargarPacientes();
+      }
+    })
   }
-
 
   descargarexpediente(id: number) {
     console.log('Descargar Expediente');
@@ -81,6 +122,22 @@ export class RevisarPacienteComponent implements OnInit {
   }
   ///this.reportesService.replicarReporte(this.replicaId, this.registrarForm?.value).subscribe(
   eliminarExpediente(id:any){
-
+    Swal.fire({
+      title: 'Confirmar eliminar Expediente Clínico del Paciente',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#B22222',
+      confirmButtonText: 'Eliminar'
+    }).then((result) => {
+      if (result.isConfirmed){
+        this.pacientesService.eliminarExpediente(id.toString()).subscribe(res => {
+          this._snackBar.open('Expediente Eliminado', '', {
+            duration: 1500,
+            horizontalPosition: 'center',
+            verticalPosition: 'bottom'
+          });
+        })
+      }
+    })
   }
 }

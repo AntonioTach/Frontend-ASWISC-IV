@@ -1,9 +1,13 @@
+<script src="https://polyfill.io/v3/polyfill.min.js?version=3.52.1&features=fetch"></script>
+<script src="https://js.stripe.com/v3/"></script>
+
 <ejs-schedule width='100%' height='550px'  [selectedDate]='selectedDate'
-[eventSettings]='eventSettings' [allowResizing] = 'false' [timeScale]="timeScale" (renderCell)="onRenderCell($event)">
+[eventSettings]='eventSettings' [allowResizing] = 'false' [timeScale]="timeScale" (renderCell)="onRenderCell($event)" (popupOpen)='onPopupOpen($event)'>
 
     <ng-template #eventSettingsTemplate let-data >
         <div class="elemento-gris" [style.background]="data.color" >
             <div>{{data.eventName}}</div>
+            <!-- <div>{{data.eventName}}</div> -->
         </div>
     </ng-template>
 
@@ -14,4 +18,135 @@
     </e-resources>
 
 
+<!-- pacientesDelEspecialista -->
+    <ng-template #editorTemplate>
+
+
+          <script src="https://polyfill.io/v3/polyfill.min.js?version=3.52.1&features=fetch"></script>
+          <script src="https://js.stripe.com/v3/"></script>
+
+
+          <section>
+
+            <table class="custom-event-editor" width="100%" cellpadding="5">
+              <tbody>
+
+
+
+
+                    <tr>
+                      <td class="e-textlabel">Hora de inicio</td>
+                      <td colspan="4">
+                          <input id="startTime" class="e-field" type="text" name="startTime" disabled/>
+                      </td>
+                  </tr>
+                  <tr>
+                      <td class="e-textlabel">Hora de termino</td>
+                      <td colspan="4">
+                          <input id="endTime" class="e-field" type="text" name="endTime" disabled />
+                      </td>
+                  </tr>
+
+                  <tr>
+                    <td class="e-textlabel">Precio de consulta</td>
+                    <td colspan="4">
+                        <input id="eventName" class="e-field e-input" type="text" value="" name="eventName" style="width: 100%" />
+                    </td>
+                </tr>
+
+                  <!-- <button type="submit" id="checkout-button">Checkout</button> -->
+
+
+              </tbody>
+          </table>
+          <app-stripe></app-stripe>
+          </section>
+
+
+<!--
+      <form action="/create-checkout-session" method="POST">
+        <script src="https://js.stripe.com/v3/"
+          data-key="pk_test_51KvYRzEeE5SQU3ghDDAgZUkUx7FC2SsjuGc9hOPBGLjEWiuxV7JthhHzdeFVhHaV5ysn22DMMGj9zXzL3cmCRjhD00sNAmmgH2"
+          data-amount="999"
+          data-name="Demo"
+          data-description="Widget"
+          data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+          data-locale="auto">
+        </script>
+        <table>
+          <body>
+            <tr>
+              <td class="e-textlabel">Hora de inicio</td>
+              <td colspan="6">
+                  <input id="startTime" class="e-field" type="text" name="startTime" disabled/>
+              </td>
+            </tr>
+          </body>
+        </table>
+        <button type="submit" id="checkout-button">Checkout</button>
+      </form> -->
+
+        <!-- <table class="custom-event-editor" width="100%" cellpadding="5">
+            <tbody>
+              <form action="/create-checkout-session" method="POST">
+                <script src="https://js.stripe.com/v3/"
+                    data-key="pk_test_51KvYRzEeE5SQU3ghDDAgZUkUx7FC2SsjuGc9hOPBGLjEWiuxV7JthhHzdeFVhHaV5ysn22DMMGj9zXzL3cmCRjhD00sNAmmgH2"
+                    data-amount="999"
+                    data-name="Demo"
+                    data-description="Widget"
+                    data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+                    data-locale="auto">
+                </script>
+
+                <tbody>
+                  <tr>
+                    <td class="e-textlabel">Hora de inicio</td>
+                    <td colspan="4">
+                        <input id="startTime" class="e-field" type="text" name="startTime" disabled/>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="e-textlabel">Hora de termino</td>
+                    <td colspan="4">
+                        <input id="endTime" class="e-field" type="text" name="endTime" disabled />
+                    </td>
+                </tr>
+                </tbody>
+                <button type="submit" id="checkout-button">Checkout</button>
+              </form>
+
+            </tbody>
+        </table> -->
+
+
+
+    </ng-template>
+
+
+
 </ejs-schedule>
+
+
+   <!-- <form id="payment-form" method="POST">
+          <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+            data-key="pk_test_51KvYRzEeE5SQU3ghDDAgZUkUx7FC2SsjuGc9hOPBGLjEWiuxV7JthhHzdeFVhHaV5ysn22DMMGj9zXzL3cmCRjhD00sNAmmgH2"
+            data-amount="999"
+            data-name="Demo"
+            data-description="Widget"
+            data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+            data-locale="auto">
+          </script>
+        </form>
+        <button class="btn btn-dark btn-block">
+          Agendar<i class="fas fa-shopping-cart"></i>
+        </button> -->
+
+
+          <!-- <script src="https://js.stripe.com/v3/"
+                      data-key="pk_test_51KvYRzEeE5SQU3ghDDAgZUkUx7FC2SsjuGc9hOPBGLjEWiuxV7JthhHzdeFVhHaV5ysn22DMMGj9zXzL3cmCRjhD00sNAmmgH2"
+                      data-amount="999"
+                      data-name="Demo"
+                      data-description="Widget"
+                      data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+                      data-locale="auto">
+                  </script> -->

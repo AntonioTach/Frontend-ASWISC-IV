@@ -58,6 +58,13 @@ export class RegistrarPacienteComponent implements OnInit {
     });
   }
 
+  existeUsuario() {
+    this._snackBar.open('Registro incorrecto, el usuario y/o correo ya existe', '', {
+      duration: 3000, //5s
+      horizontalPosition: 'center',
+      verticalPosition: 'bottom'
+    });
+  }
   direccionamiento(){
     this.router.navigateByUrl('/modulo-especialistas');
   }
@@ -67,12 +74,18 @@ export class RegistrarPacienteComponent implements OnInit {
       return
     }
     else {
-      console.log(this.FormRegistrarPaciente?.value);
-      this.RegistradoMensaje();
-      this.direccionamiento();
+      // console.log(this.FormRegistrarPaciente?.value);
+
+
       this.registrarPacienteService.registrarPaciente(this.FormRegistrarPaciente.value).subscribe(
-        res => {
-          console.log(res)
+        (res:any) => {
+          if(res == false){
+            this.existeUsuario();
+          }
+          else if(res == true){
+            this.RegistradoMensaje();
+            this.direccionamiento();
+          }
 
         },
         err => {

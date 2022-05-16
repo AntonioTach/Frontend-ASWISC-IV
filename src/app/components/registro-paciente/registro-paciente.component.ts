@@ -73,15 +73,20 @@ export class RegistroPacienteComponent implements OnInit {
 
       this.diff = this.yearNow2 - this.year;
 
-      if (this.diff < 18){
-          this.correcto();
-      }
-      else {
-        this.mayorEdad();
-      }
+      // if (this.diff < 18){
+      //     this.correcto();
+      // }
+      // else {
+      //   this.mayorEdad();
+      // }
       this.pacienteService.createPaciente(this.FormRegistroPaciente.value).subscribe(
-        res => {
-          this.mayorEdad();
+        (res:any) => {
+          if(res == false){
+            this.incorrecto();
+          }
+          else if(res == true){
+            this.correcto();
+          }
         },
         err => {
           console.log(err);
@@ -98,15 +103,15 @@ export class RegistroPacienteComponent implements OnInit {
   };
 
   correcto(){
-    this._snackBar.open('Registro Correcto Menor de Edad', '', {
+    this._snackBar.open('Registro Correcto', '', {
       duration: 3000, //5s
       horizontalPosition: 'center',
       verticalPosition: 'bottom'
     });
   }
 
-  mayorEdad(){
-    this._snackBar.open('Registro Correcto Mayor de Edad', '', {
+  incorrecto(){
+    this._snackBar.open('Registro incorrecto, el usuario y/o correo ya existe', '', {
       duration: 3000, //5s
       horizontalPosition: 'center',
       verticalPosition: 'bottom'
