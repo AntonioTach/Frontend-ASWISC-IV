@@ -72,17 +72,6 @@
         <div class="horas-especificas" >
           <form action="" #formSend="ngForm" (ngSubmit)="UpdatePartialDays(formSend.value)">
 
-            <!-- <select name="partialDay" id="" class="select-css"  [(ngModel)]="PartialDays.day"> 
-                <option value="lunes" name="lunes" [(ngModel)]="PartialDays.day">Lunes</option> 
-                <option value="martes" name="martes" [(ngModel)]="PartialDays.day">Martes</option>  
-                <option value="miercoles" name="miercoles" [(ngModel)]="PartialDays.day" >Miercoles</option> 
-                <option value="jueves" name="jueves" [(ngModel)]="PartialDays.day" >Jueves</option> 
-                <option value="viernes" name="viernes" [(ngModel)]="PartialDays.day" >Viernes</option> 
-                <option value="sabado" name="sabado" [(ngModel)]="PartialDays.day" >Sabado</option>
-                <option value="domingo" name="domingo" [(ngModel)]="PartialDays.day" >Domingo</option> 
-              </select> -->
-
-              
               <select class="select-css" [(ngModel)]="selectedPartialDay" name="selectPartialDay"> <!--name="selectDay" ngModel-->   <!-- (change)='UpdatePartialDays($event)'-->
                 <option value="" disabled>Choose a state</option>
                 <option *ngFor="let day of selectPartialDayModel" [ngValue]="day.id">
@@ -90,7 +79,6 @@
                 </option>
               </select> 
               <!-- <p>{{selectedPartialDay}}</p> -->
-   
    
               <select class="select-css" [(ngModel)]="selectedTimeStart" name="selectedTimeStr"> 
                 <option *ngFor="let hour of selectTimeModel" [ngValue]="hour.value">
@@ -104,7 +92,6 @@
                 </option>
               </select> 
 
-    
               <button class="btn-actualizar">Actualizar horas especificas</button>
           </form>
           

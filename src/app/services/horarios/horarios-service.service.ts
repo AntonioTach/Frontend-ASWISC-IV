@@ -15,8 +15,15 @@ export class HorariosServiceService {
 
 
   addSession(cita : any) {
+    console.log(cita)
     let id = localStorage.getItem("id_especialista");
     return this.http.post('http://localhost:4000/horarios/addSession/' + id, cita);
+  }
+
+  deleteSession(endTimeDate : any) {
+    console.log(endTimeDate)
+    let id = localStorage.getItem("id_especialista");
+    return this.http.delete('http://localhost:4000/horarios/deleteSession/' + id + "$" + endTimeDate, endTimeDate);
   }
 
   getCitasEspecialista() {

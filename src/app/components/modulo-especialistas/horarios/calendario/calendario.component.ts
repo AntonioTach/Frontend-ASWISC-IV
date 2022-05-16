@@ -16,6 +16,7 @@ import { DateTimePicker, ChangeEventArgs } from "@syncfusion/ej2-calendars";
 // importaciones propias
 import { HorariosServiceService } from "../../../../services/horarios/horarios-service.service"
 import { ServiceRevisarPacienteService } from "../../revisar-paciente/service-revisar-paciente.service"
+import { timeLog } from 'console';
 
 L10n.load({
   'en-US': {
@@ -38,6 +39,9 @@ L10n.load({
 export class CalendarioComponent implements OnInit{  
   
 
+  endTimeDate: {
+    time: string
+  }
   public pacientesDelEspecialista: Object[] = [ ];
   
   onPopupOpen(args: any): void {
@@ -56,16 +60,19 @@ export class CalendarioComponent implements OnInit{
       if (!ownerElement.classList.contains('e-dropdownlist')) {
         let ownerObject: DropDownList = new DropDownList({
           placeholder: 'Selecciona un paciente',
-          fields: { text: 'OwnerText', value: 'Id' },
+          fields: { text: 'OwnerName', value: 'Id' },
           dataSource: (this.pacientesDelEspecialista as any),
-          value: (((args.data as any).OwnerId instanceof Array) ? (args.data as any).OwnerId : (args.data as any).OwnerId)
+          value: (((args.data as any).OwnerId instanceof Array) ? (args.data as any).OwnerId : (args.data as any).OwnerName)
         });
         ownerObject.appendTo(ownerElement);
+        console.log(ownerObject)
+        console.log(ownerElement)
       }
     }
   }
 
 
+  time: any;
   @ViewChild("scheduleObj", { static: false })
   p = "s"
 
@@ -74,18 +81,43 @@ export class CalendarioComponent implements OnInit{
         let lastPosition = this.eventSettings.dataSource.length - 1
         let cita = this.eventSettings.dataSource[lastPosition];
         console.log(cita)
-        
+
         cita.idPaciente = cita.OwnerId;
+        // cita.nombrePaciente = cita.Owner;
         cita.precio = 400;
+
+        let pacienteName;
+        
+        this.pacientesDelEspecialista.forEach((e:any) => {
+          if(e.Id == cita.idPaciente){
+            cita.nombrePaciente = e.OwnerName
+            console.log(cita.nombrePaciente)
+          }
+        });
+
+        // for (let i = 0; i < this.pacientesDelEspecialista.length; i++) {
+        //   if(this.pacientesDelEspecialista[i].Id == cita.idPaciente)
+        // }
 
         this.horariosServiceService.addSession(cita).subscribe(res => {
           console.log(res);
-
           }, err => {
             console.error("ocurrio algún error", err)
         })
         // TRAERLO DE LA BD CADA QUE SE CARGUE EL MAPA O SE MODIFIQUE EL EVENTSETTINGS
-      }
+    }else if($event.target.matches("div.cita")){
+      let timeElement = $event.target.id
+
+      this.time = new Date(timeElement).toISOString()
+
+    }else if($event.target.matches("button.e-control.e-btn.e-lib.e-quick-alertok.e-flat.e-primary.e-quick-dialog-delete")) {
+        this.horariosServiceService.deleteSession(this.time).subscribe(res => {
+          console.log(res);
+          this.document.location.reload();
+          }, err => {
+            console.error("ocurrio algún error", err)
+        })
+    }
   }
 
 
@@ -99,7 +131,7 @@ export class CalendarioComponent implements OnInit{
 
   public ownerDataSource: Object[] = [
     { OwnerText: 'Paciente', Id: 1, OwnerColor: '#d6d6d6' }, // gris
-    { OwnerText: 'PacienteRojo', Id: 2, OwnerColor: '#e49898' }, // rojo
+    // { OwnerText: 'PacienteRojo', Id: 2, OwnerColor: '#e49898' }, // rojo
   ];
 
   public timeScale: TimeScaleModel = {
@@ -135,6 +167,7 @@ export class CalendarioComponent implements OnInit{
       isAllDay: false,
       IsBlock: true, // bloquea y no se puede hacer nada
       color: "#e49898", // rojo
+      //link: "https://calendar.google.com/calendar/"
     },
     // {
     //   id: 2,
@@ -174,6 +207,7 @@ export class CalendarioComponent implements OnInit{
           isAllDay: false,
           IsBlock: true,
           color: "#e49898",
+          link: ""
       }];
 
     this.horariosServiceService.TriggerFullDays.subscribe(res => {
@@ -185,11 +219,11 @@ export class CalendarioComponent implements OnInit{
               isAllDay: false,
               IsBlock: true,
               color: "#e49898",
+              link: ""
             }];
         this.modifyFullDaysData();
 
         this.document.location.reload();
-
       }, err => {
         console.error("ocurrio algún error", err)
     })
@@ -203,11 +237,11 @@ export class CalendarioComponent implements OnInit{
               isAllDay: false,
               IsBlock: true,
               color: "#e49898",
+              link: ""
             }];
         this.modifyFullDaysData();
 
         this.document.location.reload();
-
       }, err => {
         console.error("ocurrio algún error", err)
     })
@@ -219,13 +253,12 @@ export class CalendarioComponent implements OnInit{
         pacientesDelEspeci = res
 
         for (let i = 0; i < pacientesDelEspeci.length; i++) {
-          this.pacientesDelEspecialista.push({ OwnerText: pacientesDelEspeci[i].nombre, Id: pacientesDelEspeci[i].id_paciente, OwnerColor: '#ffaa00' })
+          this.pacientesDelEspecialista.push({ OwnerName: pacientesDelEspeci[i].nombre, Id: pacientesDelEspeci[i].id_paciente, OwnerColor: '#d6d6d6' })
         }
 
       }, err => {
         console.error("ocurrio algún error", err)
     })
-
 
   }
 
@@ -239,7 +272,6 @@ export class CalendarioComponent implements OnInit{
 
     let today = Date.parse(year + "-" + month + "-" + day)  // obtiene la fecha en mlseg al momento en que empezo el dia de hoy
     // let fechaHoy = new Date(year, month, day, 0, 0)
-
 
     try {
       let fullDaysData: any = JSON.parse(localStorage.getItem("fullDaysData"))
@@ -349,9 +381,10 @@ export class CalendarioComponent implements OnInit{
             description: citas[i].descripcion,
             isAllDay: false,
             color: "#d6d6d6",
-            OwnerId: 1
+            OwnerId: 1,
+            link: "https://calendar.google.com/calendar/",
+            nombrePaciente: citas[i].nombrePaciente
           })
-          // console.log(this.data)
       }
 
       this.data.concat(auxData)
