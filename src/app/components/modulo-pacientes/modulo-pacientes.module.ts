@@ -26,6 +26,7 @@ import { ArticuloComponent } from './articulo/articulo.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AngularEditorModule } from '@kolkov/angular-editor';
 import { CalendarioComponentComponent } from './horarios-disponibles/calendario-component/calendario-component.component';
+import { StripeComponent } from './horarios-disponibles/stripe/stripe.component';
 
 
 @NgModule({
@@ -50,7 +51,8 @@ import { CalendarioComponentComponent } from './horarios-disponibles/calendario-
     CarritoComponent,
     TareaComponent,
     ArticuloComponent,
-    CalendarioComponentComponent
+    CalendarioComponentComponent,
+    StripeComponent
   ],
   imports: [
     CommonModule,
