@@ -27,7 +27,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AngularEditorModule } from '@kolkov/angular-editor';
 import { CalendarioComponentComponent } from './horarios-disponibles/calendario-component/calendario-component.component';
 import { StripeComponent } from './horarios-disponibles/stripe/stripe.component';
-
+import { NgxStripeModule } from 'ngx-stripe';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import { StripeComponent } from './horarios-disponibles/stripe/stripe.component'
     SharedModule,
     FormsModule,
     ReactiveFormsModule,
-    AngularEditorModule
+    AngularEditorModule,
+	NgxStripeModule.forRoot(environment.stripePublicKey),
   ]
 })
 export class ModuloPacientesModule { }
