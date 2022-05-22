@@ -34,11 +34,11 @@ L10n.load({
 	}
 });
 
-declare global {
-	interface Window {
-		Stripe?: any;
-	}
-}
+// declare global {
+// 	interface Window {
+// 		Stripe?: any;
+// 	}
+// }
 
 @Component({
 	selector: 'app-calendario-component',
