@@ -5,11 +5,11 @@ import { ActivatedRoute } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { MyServiceNombrePacienteService } from '../../nombre-paciente/my-service-NombrePaciente.service';
 
-declare global {
-  interface Window{
-    Stripe?: any;
-  }
-}
+// declare global {
+//   interface Window{
+//     Stripe?: any;
+//   }
+// }
 
 @Component({
   selector: 'app-stripe',
@@ -17,16 +17,16 @@ declare global {
   styleUrls: ['./stripe.component.css']
 })
 export class StripeComponent implements OnInit {
-  id_usuario = localStorage.getItem('id_usuario');
-  private readonly STRIPE!: any;
-  private elementStripe!: any;
-  amount: any;
-  cardNumber: any;
-  cardCvv: any;
-  cardExp: any;
-  id!: string;
-  form: FormGroup = new FormGroup({});
-  orderData!: any;
+  // id_usuario = localStorage.getItem('id_usuario');
+  // private readonly STRIPE!: any;
+  // private elementStripe!: any;
+  // amount: any;
+  // cardNumber: any;
+  // cardCvv: any;
+  // cardExp: any;
+  // id!: string;
+  // form: FormGroup = new FormGroup({});
+  // orderData!: any;
 
   constructor(
     // private fb: FormBuilder,

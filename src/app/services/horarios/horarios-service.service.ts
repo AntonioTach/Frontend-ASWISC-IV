@@ -20,6 +20,11 @@ export class HorariosServiceService {
     return this.http.post('http://localhost:4000/horarios/addSession/' + id, cita);
   }
 
+  addSessionPaciente(cita: any){
+    let id = localStorage.getItem("id_usuario");
+    return this.http.post('http://localhost:4000/horarios/addSessionPaciente/' + id, cita);
+  }
+
   deleteSession(endTimeDate : any) {
     console.log(endTimeDate)
     let id = localStorage.getItem("id_especialista");
@@ -30,6 +35,11 @@ export class HorariosServiceService {
     let id = localStorage.getItem("id_especialista");
     return this.http.get('http://localhost:4000/horarios/get-citas-especialista/' + id);
   }
+
+  // paymentIntent(precio: any){
+  //   let id = localStorage.getItem("id_especialista");
+  //   return this.http.post('http://localhost:4000/horarios/paymentIntent/' + id, precio);
+  // }
 
 
 }
