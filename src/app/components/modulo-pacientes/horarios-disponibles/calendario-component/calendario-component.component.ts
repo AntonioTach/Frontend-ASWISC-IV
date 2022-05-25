@@ -36,12 +36,6 @@ L10n.load({
 	}
 });
 
-// declare global {
-// 	interface Window {
-// 		Stripe?: any;
-// 	}
-// }
-
 @Component({
 	selector: 'app-calendario-component',
 	templateUrl: './calendario-component.component.html',
@@ -364,7 +358,6 @@ export class CalendarioComponentComponent implements OnInit, OnDestroy {
 	id!: string;
 	orderData!: any;
 
-	///this.STRIPE = window.Stripe('pk_test_51KvYRzEeE5SQU3ghDDAgZUkUx7FC2SsjuGc9hOPBGLjEWiuxV7JthhHzdeFVhHaV5ysn22DMMGj9zXzL3cmCRjhD00sNAmmgH2');
 
 	modifyFullDaysData() {
 		let date = new Date()
