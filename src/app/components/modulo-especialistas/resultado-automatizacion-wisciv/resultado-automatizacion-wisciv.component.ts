@@ -41,8 +41,42 @@ export class ResultadoAutomatizacionWiscivComponent implements OnInit {
   velocidad_de_procesamiento: any;
   vocabulario: any;
 
-  fechaEvaluacionDate: any;
   fechaEvaluacionMonth: any;
+  fechaEvaluacionYear: any;
+  fechaEvaluacionday: any;
+  fechaEvaluacionYearInt: any;
+  fechaEvaluacionMonthInt: any;
+  fechaEvaluaciondayInt: any;
+
+  fechaPacienteYear: any;
+  fechaPacienteYearInt: any;
+  fechaPacienteMonth: any;
+  fechaPacienteMonthInt: any;
+  fechaPacienteDayInt: any;
+  fechaPacienteDay: any;
+
+  indiceCubos: any;
+  indiceSemejanzas: any;
+  indiceDigitos: any;
+  indiceConceptos: any;
+  indiceClaves: any;
+  indiceVocabulario: any;
+  indiceLetrasNumeros: any;
+  indiceMatrices: any;
+  indiceComprension: any;
+  indiceBusquedaSimbolos: any;
+  indiceFigurasIncompletas: any;
+  indiceRegistros: any;
+  indiceInformacion: any;
+  indiceAritmetica: any;
+  indicePistas: any;
+
+  sumaCol1: any;
+  sumaCol2: any;
+  sumaCol3: any;
+  sumaCol4: any;
+  sumaCol5: any;
+
   constructor(private automatizacion : AutomatizacionWiscivService, private router: ActivatedRoute) { }
   public dataWISC:Array<any> = [];
   keys: any;
@@ -87,8 +121,70 @@ export class ResultadoAutomatizacionWiscivComponent implements OnInit {
         this.vocabulario = obj.vocabulario;
         this.cubos = obj.cubos;
 
-        this.fechaEvaluacionDate = new Date(this.fecha_evaluacion);
-        this.fechaEvaluacionMonth = this.fechaEvaluacionDate.getMonth();
+        this.fechaEvaluacionYear = (this.fecha_evaluacion.substring(0, 4))
+        this.fechaEvaluacionYearInt = 1 * this.fechaEvaluacionYear;
+
+        this.fechaEvaluacionMonth = (this.fecha_evaluacion.substring(5, 7))
+        this.fechaEvaluacionMonthInt = 1 * this.fechaEvaluacionMonth;
+
+        this.fechaEvaluacionday = (this.fecha_evaluacion.substring(8, 10))
+        this.fechaEvaluaciondayInt = 1 * this.fechaEvaluacionday;
+
+        this.fechaPacienteYear = (this.PacienteNacimiento.substring(0, 4))
+        this.fechaPacienteYearInt = 1 * this.fechaPacienteYear;
+
+        this.fechaPacienteMonth = (this.PacienteNacimiento.substring(5, 7))
+        this.fechaPacienteMonthInt = 1 * this.fechaPacienteMonth;
+
+        this.fechaPacienteDay = (this.PacienteNacimiento.substring(8, 10))
+        this.fechaPacienteDayInt = 1 * this.fechaPacienteDay;
+
+        this.indiceCubos = obj.indiceCubos;
+        this.indiceSemejanzas = obj.indiceSemejanzas;
+        this.indiceDigitos = obj.indiceDigitos;
+        this.indiceConceptos = obj.indiceConceptos;
+        this.indiceClaves = obj.indiceClaves;
+        this.indiceVocabulario = obj.indiceVocabulario;
+        this.indiceLetrasNumeros = obj.indiceLetrasNumeros;
+        this.indiceMatrices = obj.indiceMatrices;
+        this.indiceComprension = obj.indiceComprension;
+        this.indiceBusquedaSimbolos = obj.indiceBusquedaSimbolos;
+        this.indiceFigurasIncompletas = obj.indiceFigurasIncompletas;
+        this.indiceRegistros = obj.indiceRegistros;
+        this.indiceInformacion = obj.indiceInformacion;
+        this.indiceAritmetica = obj.indiceAritmetica;
+        this.indicePistas = obj.indicePistas;
+
+
+        if (this.indiceFigurasIncompletas == 1){
+          this.indiceFigurasIncompletas = 0;
+        }
+
+        if (this.indiceRegistros == 1){
+          this.indiceRegistros = 0;
+        }
+
+        if (this.indiceInformacion == 1){
+          this.indiceInformacion = 0;
+        }
+
+        if (this.indiceAritmetica == 1){
+          this.indiceAritmetica = 0;
+        }
+
+        if (this.indicePistas == 1){
+          this.indicePistas = 0;
+        }
+
+        this.sumaCol1 = this.indiceSemejanzas + this.indiceVocabulario + this.indiceComprension + this.indiceInformacion + this.indicePistas;
+
+        this.sumaCol2 = this.indiceCubos + this.indiceConceptos + this.indiceMatrices + this.indiceFigurasIncompletas;
+
+        this.sumaCol3 = this.indiceDigitos + this.indiceLetrasNumeros + this.indiceAritmetica;
+
+        this.sumaCol4 = this.indiceClaves + this.indiceBusquedaSimbolos + this.indiceRegistros;
+
+        this.sumaCol5 = this.indiceCubos + this.indiceSemejanzas + this.indiceDigitos + this.indiceConceptos + this.indiceClaves + this.indiceVocabulario + this.indiceLetrasNumeros + this.indiceMatrices + this.indiceComprension + this.indiceBusquedaSimbolos;
 
         // this.fechaEvaluacionDate = new Date(this.fecha_evaluacion, "YYYY-MM-DD");
       })
