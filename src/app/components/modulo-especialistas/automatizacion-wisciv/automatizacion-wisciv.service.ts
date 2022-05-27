@@ -13,4 +13,11 @@ constructor(private http: HttpClient) { }
     return this.http.post('http://localhost:4000/aswisc/aswisc/', datos);
   }
 
+  getDatos(id_ASWISC: string){
+    return this.http.get(`http://localhost:4000/aswisc/obtenerWISC/${id_ASWISC}`)
+  }
+
+
+
+
 }

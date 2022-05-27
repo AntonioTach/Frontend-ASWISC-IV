@@ -70,6 +70,9 @@ export class AutomatizacionWiscivComponent implements OnInit {
           message: string,
           data: any
         }) => {
+          // console.log(res);
+          //Guardar el id en el localstorage
+          localStorage.setItem('id_ASWISC', res.data.id_ASWISC);
           // console.log('Resultados prueba Comprension Verbal: ', res.data.comprensionVerbal)
           // console.log('Resultados prueba Escala total: ', res.data.escalaTotal)
           // console.log('Resultados prueba Razonamiento Perceptual: ', res.data.razonamientoPerceptual)
@@ -81,38 +84,38 @@ export class AutomatizacionWiscivComponent implements OnInit {
           // console.log('Puntuacion Media Subprueba: ', res.data.puntuacionMediaSubprueba)
           // console.log('Puntuacion Media Comprension Verbal 2: ', res.data.puntuacionMediaComprensionVerbal2)
 
-          this.dataEntrante = { //Envio de Datos al componente de resultados
-            Cubos: this.FormASWISC.value.Cubos,
-            Semenjanzas: this.FormASWISC.value.Semejanzas,
-            Digitos: this.FormASWISC.value.Digitos,
-            Conceptos: this.FormASWISC.value.Conceptos,
-            Claves: this.FormASWISC.value.Claves,
-            Vocabulario: this.FormASWISC.value.Vocabulario,
-            LetrasNumeros: this.FormASWISC.value.LetrasNumeros,
-            Matrices: this.FormASWISC.value.Matrices,
-            Comprension: this.FormASWISC.value.Comprension,
-            BusquedaSimbolos: this.FormASWISC.value.BusquedaSimbolos,
-            FigurasIncompletas: this.FormASWISC.value.FigurasIncompletas,
-            Registros: this.FormASWISC.value.Registros,
-            Informacion: this.FormASWISC.value.Informacion,
-            Aritmetica: this.FormASWISC.value.Aritmetica,
-            Pistas: this.FormASWISC.value.Pistas,
+          // this.dataEntrante = { //Envio de Datos al componente de resultados
+          //   Cubos: this.FormASWISC.value.Cubos,
+          //   Semenjanzas: this.FormASWISC.value.Semejanzas,
+          //   Digitos: this.FormASWISC.value.Digitos,
+          //   Conceptos: this.FormASWISC.value.Conceptos,
+          //   Claves: this.FormASWISC.value.Claves,
+          //   Vocabulario: this.FormASWISC.value.Vocabulario,
+          //   LetrasNumeros: this.FormASWISC.value.LetrasNumeros,
+          //   Matrices: this.FormASWISC.value.Matrices,
+          //   Comprension: this.FormASWISC.value.Comprension,
+          //   BusquedaSimbolos: this.FormASWISC.value.BusquedaSimbolos,
+          //   FigurasIncompletas: this.FormASWISC.value.FigurasIncompletas,
+          //   Registros: this.FormASWISC.value.Registros,
+          //   Informacion: this.FormASWISC.value.Informacion,
+          //   Aritmetica: this.FormASWISC.value.Aritmetica,
+          //   Pistas: this.FormASWISC.value.Pistas,
 
-            comprensionVerbal: res.data.comprensionVerbal,
-            escalaTotal: res.data.escalaTotal,
-            razonamientoPerceptual: res.data.razonamientoPerceptual,
-            velociedadDeProcesamiento: res.data.velociedadDeProcesamiento,
-            memoriaDeTrabajo: res.data.memoriaDeTrabajo,
-            puntuacionMediaCompresionVerbal: res.data.puntuacionMediaCompresionVerbal,
-            puntuacionMediaSubprueba: res.data.puntuacionMediaSubprueba,
-            puntuacionMediaComprensionVerbal2: res.data.puntuacionMediaComprensionVerbal2,
-            nacimiento: res.data.nacimiento,
-            fechaEvaluacion: res.data.fechaEvaluacion,
+          //   comprensionVerbal: res.data.comprensionVerbal,
+          //   escalaTotal: res.data.escalaTotal,
+          //   razonamientoPerceptual: res.data.razonamientoPerceptual,
+          //   velociedadDeProcesamiento: res.data.velociedadDeProcesamiento,
+          //   memoriaDeTrabajo: res.data.memoriaDeTrabajo,
+          //   puntuacionMediaCompresionVerbal: res.data.puntuacionMediaCompresionVerbal,
+          //   puntuacionMediaSubprueba: res.data.puntuacionMediaSubprueba,
+          //   puntuacionMediaComprensionVerbal2: res.data.puntuacionMediaComprensionVerbal2,
+          //   nacimiento: res.data.nacimiento,
+          //   fechaEvaluacion: res.data.fechaEvaluacion,
 
-            nombrePaciente: res.data.namePaciente,
-            nombreEspecialista: res.data.nameEspecialista,
+          //   nombrePaciente: res.data.namePaciente,
+          //   nombreEspecialista: res.data.nameEspecialista,
 
-          };
+          // };
 
           //console.log(this.dataEntrante)
           // @TODO: Descomentar cuando quieras que te mande a la tabla

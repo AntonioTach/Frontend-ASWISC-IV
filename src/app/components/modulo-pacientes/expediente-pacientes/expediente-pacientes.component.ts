@@ -37,7 +37,7 @@ export class ExpedientePacientesComponent implements OnInit {
     let id = localStorage.getItem('id_usuario')
     this.expedientePacientesService.getPaciente(id)
     .subscribe((res:any) => {
-      console.log('resp: ', res)
+      // console.log('resp: ', res)
       this.formulario.patchValue(res[0])
     })
   }

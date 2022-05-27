@@ -15,6 +15,7 @@ import { DateTimePicker, ChangeEventArgs } from "@syncfusion/ej2-calendars";
 
 // importaciones propias
 import { HorariosServiceService } from "../../../../services/horarios/horarios-service.service";
+import { MyServiceNombrePacienteService } from "../../nombre-paciente/my-service-NombrePaciente.service";
 //import { ServiceRevisarPacienteService } from "../../../modulo-especialistas/revisar-paciente/service-revisar-paciente.service";
 import { EspecialistaService } from "../../vista-especialista/especialista.service";
 import { switchMap, window } from 'rxjs/operators';
@@ -23,6 +24,7 @@ import { StripeCardElementOptions, StripeElementsOptions } from '@stripe/stripe-
 import { defer, of, Subscription } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import Swal from 'sweetalert2';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 L10n.load({
 	'en-US': {
@@ -50,18 +52,21 @@ L10n.load({
 })
 export class CalendarioComponentComponent implements OnInit, OnDestroy {
 
+  id_usuario = localStorage.getItem('id_usuario');
+  precio: any;
+
 	public pacientesDelEspecialista: Object[] = [];
 	@ViewChild(StripeCardComponent) card: StripeCardComponent;
 	cardOptions: StripeCardElementOptions = {
         style: {
             base: {
-                iconColor: '#dadada',
-                color: '#dadada',
+                iconColor: '#2E4053',
+                color: '#2E4053',
                 fontWeight: '300',
                 fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
                 fontSize: '18px',
                 '::placeholder': {
-                    color: '#fdfdfd'
+                    color: '#D6DBDF'
                 }
             }
         }
@@ -73,18 +78,21 @@ export class CalendarioComponentComponent implements OnInit, OnDestroy {
     validCard: boolean = false;
 
 	constructor(
-		public horariosServiceService: HorariosServiceService, 
-		public servicePaciente: EspecialistaService, 
-		private router: Router, 
-		@Inject(DOCUMENT) 
+		public horariosServiceService: HorariosServiceService,
+		public servicePaciente: EspecialistaService,
+		private router: Router,
+		@Inject(DOCUMENT)
 		private document: Document,
 		private stripeService: StripeService,
 		private http: HttpClient,
+    public getServicePaciente : MyServiceNombrePacienteService,
+    private _snackBar: MatSnackBar
 	) { }
 
 	ngOnInit(): void {
 		this.modifyFullDaysData();
 		this.getCitas();  // comentar este si se descomenta 'modifyFullDays'
+    this.cargarPaciente();
 
 		this.data = [{
 			Id: 1,
@@ -151,6 +159,25 @@ export class CalendarioComponentComponent implements OnInit, OnDestroy {
 		// this.servicePaciente.getPaciente()
 	}
 
+  cargarPaciente() {
+    this.getServicePaciente.getPaciente(this.id_usuario).subscribe(
+      (res: any) => {
+        var obj = res[0];
+        this.precio = obj.precio_consulta;
+      },
+      (err) => console.log(err)
+    );
+  }
+
+  error(){
+    this._snackBar.open('Error en Pago de Sesión', '', {
+      duration: 5000, //5s
+      panelClass: "red",
+      horizontalPosition: 'center',
+      verticalPosition: 'bottom',
+    });
+  }
+
 	ngOnDestroy(): void {
 		if (this.cardSubs)
 			this.cardSubs.unsubscribe()
@@ -162,12 +189,14 @@ export class CalendarioComponentComponent implements OnInit, OnDestroy {
 	 */
 	onPayConsulta(): void {
 		defer(() => {
-			return this.http.post('tu-endpoint-que-genera-un-client-secret', {
-				amount: 5000 // TODO: Poner el amount del pago en CENTAVOS -> cifra_normal * 1000
+			return this.http.post('http://localhost:4000/horarios/paymentIntent/', {
+				amount: this.precio * 1000// TODO: Poner el amount del pago en CENTAVOS -> cifra_normal * 1000
 			})
 		})
 		.pipe(
 			switchMap((data: any) => {
+        // console.log('data client?', data);
+        // console.log('card', this.card.element)
 				return data.client_secret ?
 					this.stripeService.confirmCardPayment(data.client_secret, {
 						payment_method: {
@@ -175,16 +204,27 @@ export class CalendarioComponentComponent implements OnInit, OnDestroy {
 						}
 					}) :
 					of(null)
+
 			}),
 			switchMap((data: any) => {
 				if (!data) return of(null)
 				if (data.error) {
 					// TODO: Hacer manejo de cuando el pago NO ES exitoso
+          this.error();
 					return of(null)
 				}
 				// HACER MANEJO DE CUANDO EL PAGO SI ES EXITOSO
-				return this.http.post('tu-endpoint-que-hace-la-cita', {
-					data: null // TODO: Agregar los datos de la cita YA PAGADA
+        let lastPosition = this.eventSettings.dataSource.length - 1
+        let cita = this.eventSettings.dataSource[lastPosition];
+        let id_usuario = this.id_usuario;
+        cita.idPaciente = cita.OwnerId;
+
+				return this.http.post('http://localhost:4000/horarios/addSessionPaciente/', {
+          //Data de la cita asi como timeStart, timeEnd etc.
+          id_usuario,
+          cita
+					//data: null // TODO: Agregar los datos de la cita YA PAGADA
+
 				})
 			})
 		)
@@ -230,19 +270,19 @@ export class CalendarioComponentComponent implements OnInit, OnDestroy {
 
 	@HostListener('document:click', ['$event']) documentClickEvent($event: any) {
 		if ($event.target.matches("button.e-event-create.e-text-ellipsis.e-control.e-btn.e-lib.e-flat.e-primary") || $event.target.matches("button.e-control.e-btn.e-lib.e-primary.e-event-save.e-flat")) {
-			let lastPosition = this.eventSettings.dataSource.length - 1
-			let cita = this.eventSettings.dataSource[lastPosition];
-			console.log(cita)
+      this.onPayConsulta();
+      //console.log('button pressed')
+      //al presionar agendar primero hacer proceso de createPaymentIntent para verificar pago correcto
+			// let lastPosition = this.eventSettings.dataSource.length - 1
+			// let cita = this.eventSettings.dataSource[lastPosition];
 
-			cita.idPaciente = cita.OwnerId;
-			cita.precio = 400;
+			// cita.idPaciente = cita.OwnerId;
 
-			this.horariosServiceService.addSession(cita).subscribe(res => {
-				console.log(res);
+			// this.horariosServiceService.addSession(cita).subscribe(res => {
 
-			}, err => {
-				console.error("ocurrio algún error", err)
-			})
+			// }, err => {
+			// 	console.error("ocurrio algún error", err)
+			// })
 			// TRAERLO DE LA BD CADA QUE SE CARGUE EL MAPA O SE MODIFIQUE EL EVENTSETTINGS
 		}else if($event.target.matches("div.cita")){
 			let timeElement = $event.target.id
@@ -367,7 +407,6 @@ export class CalendarioComponentComponent implements OnInit, OnDestroy {
 	id!: string;
 	orderData!: any;
 
-	///this.STRIPE = window.Stripe('pk_test_51KvYRzEeE5SQU3ghDDAgZUkUx7FC2SsjuGc9hOPBGLjEWiuxV7JthhHzdeFVhHaV5ysn22DMMGj9zXzL3cmCRjhD00sNAmmgH2');
 
 	modifyFullDaysData() {
 		let date = new Date()
