@@ -6,7 +6,10 @@
 <body style="background-color: white">
 
   <div class="cuadro">
-    <h1 class="creacion">Horarios Disponibles</h1>
+    <div class="container-fila">
+      <h1 class="creacion">Horarios Especialista</h1>
+      <button style="height: min-content; margin-top: 20px;" type="button" (click)="redirectToCalendar()" class="btn btn-outline-secondary">Conectate a tus citas</button>
+    </div>
     <div class="contenedor-h">
       <div class="contenedor-calendario">
         <app-calendario-component></app-calendario-component>

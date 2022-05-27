@@ -22,6 +22,7 @@ import { StripeCardComponent, StripeService } from 'ngx-stripe';
 import { StripeCardElementOptions, StripeElementsOptions } from '@stripe/stripe-js';
 import { defer, of, Subscription } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import Swal from 'sweetalert2';
 
 L10n.load({
 	'en-US': {
@@ -223,6 +224,7 @@ export class CalendarioComponentComponent implements OnInit, OnDestroy {
 	}
 
 
+	time: any;
 	@ViewChild("scheduleObj", { static: false })
 	p = "s"
 
@@ -242,7 +244,48 @@ export class CalendarioComponentComponent implements OnInit, OnDestroy {
 				console.error("ocurrio algún error", err)
 			})
 			// TRAERLO DE LA BD CADA QUE SE CARGUE EL MAPA O SE MODIFIQUE EL EVENTSETTINGS
-		}
+		}else if($event.target.matches("div.cita")){
+			let timeElement = $event.target.id
+	  
+			this.time = new Date(timeElement).toISOString()
+			console.log("entro a un delete")
+	  
+		}else if($event.target.matches("button.e-control.e-btn.e-lib.e-quick-alertok.e-flat.e-primary.e-quick-dialog-delete")) {
+			  console.log("entro a el otro")
+
+		/*	Swal.fire({
+				title: 'Seguro?',
+				text: 'Estas por eliminar la consulta',
+				icon: 'warning',
+				showCancelButton: true,
+				confirmButtonColor: '#3085d6',
+				cancelButtonColor: '#d33',
+				confirmButtonText: 'Si, eliminar consulta!'
+					}).then((result => {
+						if (result.isConfirmed){
+						this.horariosServiceService.deleteSession(this.time).subscribe(res => {
+							console.log(res);
+							this.document.location.reload();
+							}, err => {
+							console.error("ocurrio algún error", err)
+						})
+							console.log("TRUE")
+							return true
+						}else{
+							console.log("FALSE")
+							return false
+						}
+					})); */
+
+					this.horariosServiceService.deleteSessionPaciente(this.time).subscribe(res => {
+						console.log(res);
+						this.document.location.reload();
+						}, err => {
+						console.error("ocurrio algún error", err)
+					})
+
+        
+    	}
 	}
 
 
@@ -255,7 +298,7 @@ export class CalendarioComponentComponent implements OnInit, OnDestroy {
 
 	public ownerDataSource: Object[] = [
 		{ OwnerText: 'Paciente', Id: 1, OwnerColor: '#d6d6d6' }, // gris
-		{ OwnerText: 'PacienteRojo', Id: 2, OwnerColor: '#e49898' }, // rojo
+		{ OwnerText: 'Paciente', Id: 2, OwnerColor: '#5DADE2' }, // azul
 	];
 
 	public timeScale: TimeScaleModel = {
@@ -430,13 +473,26 @@ export class CalendarioComponentComponent implements OnInit, OnDestroy {
 		console.log(this.data)
 		let auxData = this.data
 
-		// HACER QUE SE GUARDE TAMBIEN EL NOMBRE DEL USUARIO SELECCIONADO PARA QUE DESPUES SEA MAS FACIL DE MOSTRAR
-		const dataCitas = await this.horariosServiceService.getCitasEspecialista().toPromise();
+		const dataCitas = await this.horariosServiceService.getCitasEspecialistaPaciente().toPromise();
+
+		console.log(dataCitas)
 
 		let citas: any = []
 		citas = dataCitas
 
+		let colorCita = "", auxOwnerId = 0, isBlockAux;
+		let currentId = localStorage.getItem('id_usuario')
+
 		for (let i = 0; i < citas.length; i++) {
+			if(citas[i].id_paciente == currentId){
+				colorCita = "#5DADE2"
+				auxOwnerId = 2
+				isBlockAux = false
+			}else{
+				colorCita = "#d6d6d6"
+				auxOwnerId = 1
+				isBlockAux = true
+			}
 			auxData.push({
 				Id: 350 + i,
 				eventName: citas[i].titulo,
@@ -444,8 +500,9 @@ export class CalendarioComponentComponent implements OnInit, OnDestroy {
 				endTime: new Date(citas[i].endTime),
 				description: citas[i].descripcion,
 				isAllDay: false,
-				color: "#d6d6d6",
-				OwnerId: 1
+				color: colorCita,
+				OwnerId: auxOwnerId,
+				IsBlock: isBlockAux,
 			})
 			// console.log(this.data)
 		}

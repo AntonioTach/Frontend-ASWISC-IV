@@ -111,6 +111,7 @@ export class CalendarioComponent implements OnInit{
       this.time = new Date(timeElement).toISOString()
 
     }else if($event.target.matches("button.e-control.e-btn.e-lib.e-quick-alertok.e-flat.e-primary.e-quick-dialog-delete")) {
+
         this.horariosServiceService.deleteSession(this.time).subscribe(res => {
           console.log(res);
           this.document.location.reload();
@@ -207,7 +208,7 @@ export class CalendarioComponent implements OnInit{
           isAllDay: false,
           IsBlock: true,
           color: "#e49898",
-          link: ""
+          link: "https://calendar.google.com/calendar/",
       }];
 
     this.horariosServiceService.TriggerFullDays.subscribe(res => {

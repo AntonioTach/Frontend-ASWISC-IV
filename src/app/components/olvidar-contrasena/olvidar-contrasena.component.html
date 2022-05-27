@@ -5,7 +5,11 @@
       #recuperacionForm="ngForm"
       [formGroup]="formRecuperacion"
       (ngSubmit)="BuscarCorreo()"
-    >
+      id="form-correo" 
+      action="https://formspree.io/f/xbjworba" 
+      method="POST"
+    > 
+    <!-- checha el action arriba  -->
     <div class="div-info">
       <div>
         <h2>Ingrese su correo para recuperar su Contraseña</h2>

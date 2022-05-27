@@ -4,7 +4,7 @@
 	(popupOpen)='onPopupOpen($event)'>
 	<ng-template #eventSettingsTemplate let-data>
 		<div class="elemento-gris" [style.background]="data.color">
-			<div>{{data.eventName}}</div>
+      <div id={{data.startTime}} class="cita">{{data.eventName}}</div>
 			<!-- <div>{{data.eventName}}</div> -->
 		</div>
 	</ng-template>

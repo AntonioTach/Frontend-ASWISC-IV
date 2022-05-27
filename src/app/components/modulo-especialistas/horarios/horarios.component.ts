@@ -88,6 +88,11 @@ export class HorariosComponent implements OnInit {
   }
 
 
+  redirectToCalendar(){
+    // window.location.href="https://calendar.google.com/calendar/"
+    window.open("https://calendar.google.com/calendar/", "_blank");
+  }
+
   openModal(contenido){
     this.modal.open(contenido, {size:'lg', centered:true});
   }

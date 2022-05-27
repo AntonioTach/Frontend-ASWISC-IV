@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
+import { NavbarPacienteService } from './navbar-paciente.service'
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-navbar-pacientes',
@@ -11,7 +13,7 @@ export class NavbarPacientesComponent implements OnInit {
   usuario = localStorage.getItem('usuario');
   nameUsuario = JSON.parse(this.usuario);
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, public navbarPacienteService:NavbarPacienteService, private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
   }
@@ -32,7 +34,25 @@ export class NavbarPacientesComponent implements OnInit {
   }
 
   HorariosDisponibles() {
-    this.router.navigateByUrl('/modulo-pacientes/horarios-disponibles');
+    localStorage.getItem("id_usuario")
+
+    this.navbarPacienteService.watchPacienteEspecialista().subscribe(
+      (res:any) => {
+        console.log(res)
+
+        if(res.idEspecialista != null)
+          this.router.navigateByUrl('/modulo-pacientes/horarios-disponibles');
+        else
+        this._snackBar.open('Primero debes tener asignado un especilista', '', {
+          duration: 5000, //5s
+          panelClass: "red",
+          horizontalPosition: 'center',
+          verticalPosition: 'bottom',
+        });
+
+      }, err => console.log(err)
+    )
+    
   }
 
   Pruebas() {

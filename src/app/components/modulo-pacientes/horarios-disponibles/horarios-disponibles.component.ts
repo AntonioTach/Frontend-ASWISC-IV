@@ -88,6 +88,11 @@ export class HorariosDisponiblesComponent implements OnInit {
     this.modal.open(contenido, {size:'lg', centered:true});
   }
 
+  redirectToCalendar(){
+    // window.location.href="https://calendar.google.com/calendar/"
+    window.open("https://calendar.google.com/calendar/", "_blank");
+  }
+
   // se llama cuando se presiona cualquier parte del input de "selecciona los dias" en modificar dias completos
   // carga todos los estados de las checkbox de los dias conforme se guardaron la ultima ocasion
   showCheckBoxes(){
