@@ -54,6 +54,7 @@ export class CalendarioComponentComponent implements OnInit, OnDestroy {
 
   id_usuario = localStorage.getItem('id_usuario');
   precio: any;
+  id_paciente: any;
 
 	public pacientesDelEspecialista: Object[] = [];
 	@ViewChild(StripeCardComponent) card: StripeCardComponent;
@@ -91,8 +92,9 @@ export class CalendarioComponentComponent implements OnInit, OnDestroy {
 
 	ngOnInit(): void {
 		this.modifyFullDaysData();
-		this.getCitas();  // comentar este si se descomenta 'modifyFullDays'
     this.cargarPaciente();
+		this.getCitas();  // comentar este si se descomenta 'modifyFullDays'
+
 
 		this.data = [{
 			Id: 1,
@@ -164,6 +166,7 @@ export class CalendarioComponentComponent implements OnInit, OnDestroy {
       (res: any) => {
         var obj = res[0];
         this.precio = obj.precio_consulta;
+        this.id_paciente = obj.id_paciente;
       },
       (err) => console.log(err)
     );
@@ -286,10 +289,10 @@ export class CalendarioComponentComponent implements OnInit, OnDestroy {
 			// TRAERLO DE LA BD CADA QUE SE CARGUE EL MAPA O SE MODIFIQUE EL EVENTSETTINGS
 		}else if($event.target.matches("div.cita")){
 			let timeElement = $event.target.id
-	  
+
 			this.time = new Date(timeElement).toISOString()
 			console.log("entro a un delete")
-	  
+
 		}else if($event.target.matches("button.e-control.e-btn.e-lib.e-quick-alertok.e-flat.e-primary.e-quick-dialog-delete")) {
 			  console.log("entro a el otro")
 
@@ -324,7 +327,7 @@ export class CalendarioComponentComponent implements OnInit, OnDestroy {
 						console.error("ocurrio algún error", err)
 					})
 
-        
+
     	}
 	}
 
@@ -509,12 +512,11 @@ export class CalendarioComponentComponent implements OnInit, OnDestroy {
 
 	// obtiene todas las citas de sus respectivos pacientes
 	async getCitas() {
-		console.log(this.data)
+		// console.log('cita: ', this.data);
 		let auxData = this.data
 
 		const dataCitas = await this.horariosServiceService.getCitasEspecialistaPaciente().toPromise();
-
-		console.log(dataCitas)
+		console.log('datacitas', dataCitas)
 
 		let citas: any = []
 		citas = dataCitas
@@ -523,7 +525,7 @@ export class CalendarioComponentComponent implements OnInit, OnDestroy {
 		let currentId = localStorage.getItem('id_usuario')
 
 		for (let i = 0; i < citas.length; i++) {
-			if(citas[i].id_paciente == currentId){
+			if(citas[i].id_paciente == this.id_paciente){
 				colorCita = "#5DADE2"
 				auxOwnerId = 2
 				isBlockAux = false
@@ -532,6 +534,7 @@ export class CalendarioComponentComponent implements OnInit, OnDestroy {
 				auxOwnerId = 1
 				isBlockAux = true
 			}
+      console.log(citas[i]);
 			auxData.push({
 				Id: 350 + i,
 				eventName: citas[i].titulo,

@@ -12,6 +12,8 @@ import { MyServiceNombrePacienteService } from '../../nombre-paciente/my-service
 
 
 @Component({
+  selector: 'app-stripe-component',
+	templateUrl: './stripe.component.html',
   styleUrls: ['./stripe.component.css']
 })
 export class StripeComponent implements OnInit {
