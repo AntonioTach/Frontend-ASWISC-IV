@@ -94,7 +94,7 @@ export class CalendarioComponentComponent implements OnInit, OnDestroy {
 		private renderer: Renderer2
 	) { }
 
-	
+
 
 	ngOnInit(): void {
 		this.modifyFullDaysData();
@@ -211,8 +211,8 @@ export class CalendarioComponentComponent implements OnInit, OnDestroy {
 		})
 		.pipe(
 			switchMap((data: any) => {
-				console.log('card', this.card)
-				console.log('data client?', data);
+				// console.log('card', this.card)
+				// console.log('data client?', data);
 				return data.client_secret ?
 					this.stripeService.confirmCardPayment(data.client_secret, {
 						payment_method: {
@@ -235,23 +235,26 @@ export class CalendarioComponentComponent implements OnInit, OnDestroy {
 					let id_usuario = this.id_usuario;
 					cita.idPaciente = cita.OwnerId;
 
-					console.log("entro a guardar la cita")
-					console.log(cita)
-				return this.http.post('http://localhost:4000/horarios/addSessionPaciente/' + id_usuario, {
+					// console.log("entro a guardar la cita")
+					// console.log(cita)
+
+				return this.http.post('http://localhost:4000/horarios/addSessionPaciente/' + id_usuario, cita, {
 					//Data de la cita asi como timeStart, timeEnd etc.
-					id_usuario,
-					cita
 							//data: null // TODO: Agregar los datos de la cita YA PAGADA
 
 					})
+
 				})
 		)
 		.subscribe((data: any) => {
 			if (data) {
 				// AQUI HACES MANEJO PARA CUANDO YA SE HIZO LA CITA
+        this.dismissModalPagos();
 			}
 		}, (error) => {
 			// TODO: Hacer manejo de cualquier error catastrofico en el proceso de pago
+      this.dismissModalPagos();
+      this.error2();
 			console.log('error: ', error)
 		})
 	}
@@ -287,17 +290,17 @@ export class CalendarioComponentComponent implements OnInit, OnDestroy {
 		let modalPagosBackgroud = document.getElementById("modalPagosBackgroud")
 
 		console.log(modalPagosBackgroud.className)
-		
+
 		if(modalPagosBackgroud.classList.contains("background-pagos")){
 			modalPagosBackgroud.className = "background-pagos-oculto"
 		}
 		console.log(modalPagosBackgroud.className)
 	}
-	
+
 	openModalPagos(){
 		let modalPagos = document.getElementById("modalPagos")
 		let modalPagosBackgroud = document.getElementById("modalPagosBackgroud")
-		
+
 		console.log(modalPagosBackgroud.className)
 		if(modalPagosBackgroud.classList.contains("background-pagos-oculto")){
 			modalPagosBackgroud.className = "background-pagos"
@@ -523,7 +526,14 @@ export class CalendarioComponentComponent implements OnInit, OnDestroy {
 
 	}
 
-
+  error2(){
+    this._snackBar.open('Fallo en realización de pago', '', {
+      duration: 5000, //5s
+      panelClass: "red",
+      horizontalPosition: 'center',
+      verticalPosition: 'bottom',
+    });
+  }
 
 	// obtiene todas las citas de sus respectivos pacientes
 	async getCitas() {
