@@ -170,6 +170,7 @@ export class CalendarioComponentComponent implements OnInit, OnDestroy {
   cargarPaciente() {
     this.getServicePaciente.getPaciente(this.id_usuario).subscribe(
       (res: any) => {
+		  console.log(res[0])
         var obj = res[0];
         this.precio = obj.precio_consulta;
         this.id_paciente = obj.id_paciente;
@@ -219,31 +220,31 @@ export class CalendarioComponentComponent implements OnInit, OnDestroy {
 						}
 					}) :
 					of(null)
-
 			}),
 			switchMap((data: any) => {
 				if (!data) return of(null)
 				if (data.error) {
+					console.error("el pago no fue exitoso")
 					// TODO: Hacer manejo de cuando el pago NO ES exitoso
-          this.error();
+          			this.error();
 					return of(null)
 				}
 				// HACER MANEJO DE CUANDO EL PAGO SI ES EXITOSO
-			let lastPosition = this.eventSettings.dataSource.length - 1
-			let cita = this.eventSettings.dataSource[lastPosition];
-			let id_usuario = this.id_usuario;
-			cita.idPaciente = cita.OwnerId;
+					let lastPosition = this.eventSettings.dataSource.length - 1
+					let cita = this.eventSettings.dataSource[lastPosition];
+					let id_usuario = this.id_usuario;
+					cita.idPaciente = cita.OwnerId;
 
-			console.log("entro a guardar la cita")
-			console.log(cita)
-					return this.http.post('http://localhost:4000/horarios/addSessionPaciente/', {
-			//Data de la cita asi como timeStart, timeEnd etc.
-			id_usuario,
-			cita
-					//data: null // TODO: Agregar los datos de la cita YA PAGADA
+					console.log("entro a guardar la cita")
+					console.log(cita)
+				return this.http.post('http://localhost:4000/horarios/addSessionPaciente/' + id_usuario, {
+					//Data de la cita asi como timeStart, timeEnd etc.
+					id_usuario,
+					cita
+							//data: null // TODO: Agregar los datos de la cita YA PAGADA
 
+					})
 				})
-			})
 		)
 		.subscribe((data: any) => {
 			if (data) {
@@ -281,6 +282,30 @@ export class CalendarioComponentComponent implements OnInit, OnDestroy {
 	}
 
 
+	dismissModalPagos(){
+		let modalPagos = document.getElementById("modalPagos")
+		let modalPagosBackgroud = document.getElementById("modalPagosBackgroud")
+
+		console.log(modalPagosBackgroud.className)
+		
+		if(modalPagosBackgroud.classList.contains("background-pagos")){
+			modalPagosBackgroud.className = "background-pagos-oculto"
+		}
+		console.log(modalPagosBackgroud.className)
+	}
+	
+	openModalPagos(){
+		let modalPagos = document.getElementById("modalPagos")
+		let modalPagosBackgroud = document.getElementById("modalPagosBackgroud")
+		
+		console.log(modalPagosBackgroud.className)
+		if(modalPagosBackgroud.classList.contains("background-pagos-oculto")){
+			modalPagosBackgroud.className = "background-pagos"
+		}
+		console.log(modalPagosBackgroud.className)
+	}
+
+
 	time: any;
 	@ViewChild("scheduleObj", { static: false })
 	p = "s"
@@ -292,11 +317,12 @@ export class CalendarioComponentComponent implements OnInit, OnDestroy {
 		// let aux:any = this.document.getElementsByClassName("e-control e-btn e-lib e-primary e-event-save e-flat")
 		// 	if(aux)	aux.setAttribute("(click)","openModal(contenido)")
 
-
 		if ($event.target.matches("button.e-event-create.e-text-ellipsis.e-control.e-btn.e-lib.e-flat.e-primary") || $event.target.matches("button.e-control.e-btn.e-lib.e-primary.e-event-save.e-flat")) {
 			// let contenido = document.getElementById("contenido")
-			console.log(this.contenido)
-			this.openModal(this.contenido)
+			// console.log(this.contenido)
+			// this.openModal(this.contenido)
+
+			this.openModalPagos();
 
 		}else if($event.target.matches("div.cita")){
 			let timeElement = $event.target.id
@@ -314,6 +340,9 @@ export class CalendarioComponentComponent implements OnInit, OnDestroy {
 						console.error("ocurrio algún error", err)
 					})
     	}
+		// else if($event.target.matches("div#modalPagosBackground.background-pagos")){
+		// 	this.dismissModalPagos();
+		// }
 
 	}
 
@@ -510,6 +539,8 @@ export class CalendarioComponentComponent implements OnInit, OnDestroy {
 		let colorCita = "", auxOwnerId = 0, isBlockAux;
 		let currentId = localStorage.getItem('id_usuario')
 
+		console.log(this.id_paciente)
+
 		for (let i = 0; i < citas.length; i++) {
 			if(citas[i].id_paciente == this.id_paciente){
 				colorCita = "#5DADE2"
@@ -520,7 +551,7 @@ export class CalendarioComponentComponent implements OnInit, OnDestroy {
 				auxOwnerId = 1
 				isBlockAux = true
 			}
-      console.log(citas[i]);
+      		console.log(citas[i]);
 			auxData.push({
 				Id: 350 + i,
 				eventName: citas[i].titulo,

@@ -17,3 +17,35 @@
     width: 100%;
     color: black;
 }
+
+
+.background-pagos{
+    width:100%;
+   height:100%;
+   position:absolute;
+   top:0;
+   bottom:0;
+   left: -5px;
+   background:rgba(196, 196, 196, 0.397);
+   /* opacity: 0.5; */
+   z-index: 999;
+   display: block;
+  /* background: transparent 0.2; */
+  display: flex;
+  align-items: center;
+}
+.container-pagos{
+  width:500px;
+  height:200px;
+  margin: auto;
+  /* position:absolute; */
+  background: beige;
+  border-radius: 20px;
+  /* opacity: 1; */
+  padding: 20px;
+}
+
+
+.background-pagos-oculto{
+  display: none;
+}
