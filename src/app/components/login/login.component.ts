@@ -45,13 +45,13 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('usuario', res.usuario); //usuario
         localStorage.setItem('id_tipo', res.id_tipo); //id tipo
         localStorage.setItem('id_usuario', res.id_usuario);
-        console.log(res)
+        // console.log(res)
 
 
         // localStorage.setItem('token', res.token); //Se guarda el Token en el localStorage
         this.direccionar();
 
-        if(res == false){
+        if(res.status == 1){
           this.errorRojo1();
         }
 

@@ -18,7 +18,7 @@ export class RecuperarEspecialistaComponent implements OnInit {
 
   ngOnInit() {
     this.formActualizar = this.formBuilder.group({
-      token: ['', [Validators.required, Validators.minLength(11), Validators.maxLength(11)]],
+      token: ['', [Validators.required, Validators.minLength(7), Validators.maxLength(14)]],
       contrasena: ['', [Validators.required, Validators.minLength(8)]]
     })
   }
