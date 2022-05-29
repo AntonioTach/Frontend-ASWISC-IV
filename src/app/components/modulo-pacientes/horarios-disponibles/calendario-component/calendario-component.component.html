@@ -42,12 +42,45 @@
 				</tbody>
 			</table>
       <hr>
-			<div id="stripe-container">
+			<!-- <div id="stripe-container">
 				<ngx-stripe-card
 					[options]="cardOptions"
 					[elementsOptions]="elementsOptions"
 				></ngx-stripe-card>
-			</div>
+			</div> -->
 		</section>
 	</ng-template>
 </ejs-schedule>
+
+          <!-- <button type="button" class="btn btn-outline-danger" (click)="openModal(contenido)">Modificar horarios laborales</button> -->
+
+		  <!-- #contenido -->
+		  <div id="contenido">
+				<ng-template #contenido let-modal>
+
+					<div class="modal-header">
+					<h2 class="modal-title">Carrito de videolladas</h2>
+					<button class="close" aria-label="close" type="button" (click)="modal.dismiss()">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					</div>
+			
+					<div class="modal-body">
+						<h3>Ingresa los datos de tu tarjeta para realizar el pago y agendar tu cita</h3>
+						<div id="stripe-container">
+							<ngx-stripe-card
+								[options]="cardOptions"
+								[elementsOptions]="elementsOptions"
+							></ngx-stripe-card>
+						</div>
+					
+					</div>
+			
+					<div class="modal-footer">
+					<button type="button" class="btn btn-success" (click)="onPayConsulta()">Listo</button>
+					</div>
+			
+				</ng-template>
+		  </div>
+		  
+
