@@ -40,7 +40,7 @@ export class ResultadoAutomatizacionWiscivComponent implements OnInit {
   semejanzas: any;
   velocidad_de_procesamiento: any;
   vocabulario: any;
-
+  //FECHAS
   fechaEvaluacionMonth: any;
   fechaEvaluacionYear: any;
   fechaEvaluacionday: any;
@@ -54,7 +54,7 @@ export class ResultadoAutomatizacionWiscivComponent implements OnInit {
   fechaPacienteMonthInt: any;
   fechaPacienteDayInt: any;
   fechaPacienteDay: any;
-
+  //INDICES
   indiceCubos: any;
   indiceSemejanzas: any;
   indiceDigitos: any;
@@ -70,13 +70,30 @@ export class ResultadoAutomatizacionWiscivComponent implements OnInit {
   indiceInformacion: any;
   indiceAritmetica: any;
   indicePistas: any;
-
+  //SUMA DE INDICES
   sumaCol1: any;
   sumaCol2: any;
   sumaCol3: any;
   sumaCol4: any;
   sumaCol5: any;
-
+  //INDICES COMPUESTOS
+  ICC: any;
+  ICR: any;
+  ICM: any;
+  ICV: any;
+  ICE: any;
+  //RANGOS PERCEPTIL
+  RPC: any;
+  RPR: any;
+  RPM: any;
+  RPV: any;
+  RPE: any;
+  //INTERVALOS DE CONFIANZA
+  IDCC: any;
+  IDCR: any;
+  IDCM: any;
+  IDCV: any;
+  IDCE: any;
   constructor(private automatizacion : AutomatizacionWiscivService, private router: ActivatedRoute) { }
   public dataWISC:Array<any> = [];
   keys: any;
@@ -155,27 +172,6 @@ export class ResultadoAutomatizacionWiscivComponent implements OnInit {
         this.indiceAritmetica = obj.indiceAritmetica;
         this.indicePistas = obj.indicePistas;
 
-
-        if (this.indiceFigurasIncompletas == 1){
-          this.indiceFigurasIncompletas = 0;
-        }
-
-        if (this.indiceRegistros == 1){
-          this.indiceRegistros = 0;
-        }
-
-        if (this.indiceInformacion == 1){
-          this.indiceInformacion = 0;
-        }
-
-        if (this.indiceAritmetica == 1){
-          this.indiceAritmetica = 0;
-        }
-
-        if (this.indicePistas == 1){
-          this.indicePistas = 0;
-        }
-
         this.sumaCol1 = this.indiceSemejanzas + this.indiceVocabulario + this.indiceComprension + this.indiceInformacion + this.indicePistas;
 
         this.sumaCol2 = this.indiceCubos + this.indiceConceptos + this.indiceMatrices + this.indiceFigurasIncompletas;
@@ -186,6 +182,8 @@ export class ResultadoAutomatizacionWiscivComponent implements OnInit {
 
         this.sumaCol5 = this.indiceCubos + this.indiceSemejanzas + this.indiceDigitos + this.indiceConceptos + this.indiceClaves + this.indiceVocabulario + this.indiceLetrasNumeros + this.indiceMatrices + this.indiceComprension + this.indiceBusquedaSimbolos;
 
+
+        this.ICC = Math.floor(Math.random() * (88 - 55 + 1)) + 55;
         // this.fechaEvaluacionDate = new Date(this.fecha_evaluacion, "YYYY-MM-DD");
       })
       // this.service.getTarea(id).subscribe(res => {
@@ -216,11 +214,22 @@ export class ResultadoAutomatizacionWiscivComponent implements OnInit {
       google.charts.load('current', {'packages':['corechart']});
       google.charts.setOnLoadCallback(() =>{
           var data = google.visualization.arrayToDataTable([
-            ['Year', 'puntos1', 'puntos2'],
-            ['2004',  1000,      400],
-            ['2005',  1170,      460],
-            ['2006',  660,       1120],
-            ['2007',  1030,      540]
+            ['Puntuaciones', 'Puntuaciones Escalares'],
+            ['SE',  this.indiceSemejanzas],
+            ['VB',  this.indiceVocabulario],
+            ['CM',  this.indiceComprension],
+            ['(IN)',  this.indiceInformacion],
+            ['(PC)',  this.indicePistas],
+            ['DC',  this.indiceCubos],
+            ['CD',  this.indiceConceptos],
+            ['MT',  this.indiceMatrices],
+            ['(FI)',  this.indiceFigurasIncompletas],
+            ['RD',  this.indiceDigitos],
+            ['NL',  this.indiceLetrasNumeros],
+            ['(AR)',  this.indiceAritmetica],
+            ['CL',  this.indiceClaves],
+            ['BS',  this.indiceBusquedaSimbolos],
+            ['(RG)',  this.indiceRegistros]
           ]);
 
           var options = {
@@ -244,7 +253,7 @@ export class ResultadoAutomatizacionWiscivComponent implements OnInit {
       google.charts.setOnLoadCallback(() =>{
           var data = google.visualization.arrayToDataTable([
             ['Year', 'Sales'],
-            ['2004',  1000],
+            ['2004',  1200],
             ['2005',  1170],
             ['2006',  660],
             ['2007',  1030]
