@@ -35,7 +35,7 @@ export class NombreComponent implements OnInit {
       (res: any) => {
         var obj = res[0];
         this.formEspecialista.patchValue(obj);
-        console.log('data: ', this.formEspecialista.getRawValue())
+        //console.log('data: ', this.formEspecialista.getRawValue())
       },
       (err) => console.log(err)
     );
@@ -49,9 +49,9 @@ export class NombreComponent implements OnInit {
     if (this.formEspecialista.invalid) {
       return;
     } else {
-      console.log(this.formEspecialista?.value);
+      //console.log(this.formEspecialista?.value);
       // this.RegistradoMensaje();
-      console.log(this.formEspecialista.value);
+      //console.log(this.formEspecialista.value);
       this.NombreService.updateEspecilista(
         this.id_especialista,
         this.formEspecialista.getRawValue()

@@ -6,6 +6,17 @@
 <div class="cuadro-registro">
   <h1 class="titulo">Artículos</h1>
 
+  <mat-form-field appearance="standard">
+    <mat-label>Búsqueda</mat-label>
+    <input
+      matInput
+      autocomplete="off"
+      (keyup)="applyFilter($event)"
+      #input
+      autocomplete="off"
+    />
+  </mat-form-field>
+
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
     <!--- Note that these columns can be defined in any order.
           The actual rendered columns are set as a property on the row definition" -->
@@ -34,9 +45,6 @@
     <ng-container matColumnDef="acciones">
       <th mat-header-cell *matHeaderCellDef></th>
       <td mat-cell *matCellDef="let element">
-        <a>
-          <mat-icon class="pointer">folder_shared</mat-icon>
-        </a>
         <a
         matTooltip="VER ARTÍCULO"
         >

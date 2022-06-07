@@ -35,8 +35,8 @@ export class AsignarTareaComponent implements OnInit {
     this.cargarPacientes(); //obtener los pacientes del especialista
     this.FormTarea = this.formBuilder.group({
       id_paciente: [''],
-      titulo: ['', [Validators.required]],
-      descripcion: ['', [Validators.required]],
+      titulo: ['', [Validators.required, Validators.maxLength(20)]],
+      descripcion: ['', [Validators.required, Validators.maxLength(100)]],
       documento: [''],
     })
 
@@ -85,11 +85,12 @@ export class AsignarTareaComponent implements OnInit {
     else {
       this.subirservice.postTarea(this.FormTarea.value).subscribe(res => { console.log(res); }, err => { console.log(err); });
       this.RegistradoMensaje();
+      this.router.navigateByUrl('/modulo-especialistas/elementos-de-terapia');
     }
   }
 
   RegistradoMensaje() {
-    this._snackBar.open('Registro Correcto', '', {
+    this._snackBar.open('Tarea Registrada Correctamente', '', {
       duration: 3000, //5s
       horizontalPosition: 'center',
       verticalPosition: 'bottom'

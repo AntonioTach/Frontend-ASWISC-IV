@@ -2,6 +2,8 @@ import { Component, Injectable, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import  Swal from 'sweetalert2';
 
 //Importar servicio para login
 import { ServiceLoginUsuariosService } from '../login/login.service';
@@ -43,19 +45,19 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('usuario', res.usuario); //usuario
         localStorage.setItem('id_tipo', res.id_tipo); //id tipo
         localStorage.setItem('id_usuario', res.id_usuario);
+        // console.log(res)
 
 
-        //localStorage.setItem('token', res.headers.get('token')); //Se guarda el Token en el localStorage
+        // localStorage.setItem('token', res.token); //Se guarda el Token en el localStorage
         this.direccionar();
 
-        if(res == false){
-          this.error2();
+        if(res.status == 1){
+          this.errorRojo1();
         }
 
       },
       (err:any) => {
-        console.log("usuario NO valido");
-        this.error2();
+        this.perdidaConexion();
       }
 
     );
@@ -89,18 +91,29 @@ export class LoginComponent implements OnInit {
 
       }
       else {
-          console.log('Error de token');
-          //this.error2();
+
+          this.perdidaConexion();
       }
   }
 
   error2(){
     this._snackBar.open('Usuario o contraseña Incorrecto', '', {
       duration: 5000, //5s
+      panelClass: "red",
       horizontalPosition: 'center',
-      verticalPosition: 'bottom'
+      verticalPosition: 'bottom',
     });
   }
+
+  error3(){
+    this._snackBar.open('Error', '', {
+      duration: 5000, //5s
+      panelClass: "red",
+      horizontalPosition: 'center',
+      verticalPosition: 'bottom',
+    });
+  }
+
 
   correcto(){
     this._snackBar.open('Ingreso Correcto', '', {
@@ -109,6 +122,26 @@ export class LoginComponent implements OnInit {
       verticalPosition: 'bottom'
     }
     );
+  }
+
+  errorRojo1(){
+    Swal.fire({
+      title: 'Usuario o contraseña Incorrecto',
+      icon: 'warning',
+      color: '#f27474',
+      confirmButtonColor: '#B22222',
+      confirmButtonText: 'Ok'
+    })
+  }
+
+  perdidaConexion(){
+    Swal.fire({
+      title: 'Perdida de conexión con el servidor',
+      icon: 'warning',
+      color: '#f27474',
+      confirmButtonColor: '#B22222',
+      confirmButtonText: 'Ok'
+    })
   }
 
 }

@@ -61,16 +61,22 @@
         <li><a (click)="ElementosTerapia();">Elementos de Terapia</a></li>
         <li><a (click)="Horarios();">Horarios</a></li>
         <li><a (click)="Baja();">Baja</a></li>
-        <li><a (click)="Nombre();"> {{usuario}} </a></li>
+        <li><a (click)="Nombre();"> {{nameUsuario}} </a></li>
         <!-- Aqui deberia mostrar un icono de logout -->
 
-        <li >
-          <button class="logout" (click)="btnLogout(); ">
+        <!-- <button mat-icon-button color="primary" aria-label="Example icon button with a home icon">
+          <mat-icon>home</mat-icon>
+        </button> -->
+          <!-- <button class="logout" (click)="btnLogout(); ">
+            <mat-icon>home</mat-icon>
+          </button> -->
 
-            <i class='bx bxs-log-out' ></i>
 
-          </button>
-        </li>
+            <button class="bx bxs-log-out" (click)="btnLogout()">
+
+            </button>
+
+
       </ul>
     </div>
 

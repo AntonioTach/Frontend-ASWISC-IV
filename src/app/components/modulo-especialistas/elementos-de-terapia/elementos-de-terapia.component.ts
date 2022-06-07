@@ -5,6 +5,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { SubirPruebaService } from '../subir-prueba/subir-prueba.service';
+import { EliminarTareaService } from '../elementos-de-terapia/eliminar-tarea.service';
 
 @Component({
   selector: 'app-elementos-de-terapia',
@@ -33,15 +34,10 @@ export class ElementosDeTerapiaComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  constructor(private router: Router, private service: SubirPruebaService) { }
+  constructor(private router: Router, private service: SubirPruebaService, private DeleteTarea: EliminarTareaService) { }
 
   ngOnInit(): void {
-    const id = localStorage.getItem('id_especialista')
-    this.service.getTareasEspecialista(id.toString()).subscribe(res => {
-      this.lista_tareas = res;
-      this.dataSource = new MatTableDataSource(this.lista_tareas);
-
-    })
+    this.ObtenerTareas();
   }
 
   CrearTarea() {
@@ -52,8 +48,33 @@ export class ElementosDeTerapiaComponent implements OnInit {
     this.router.navigate(['/modulo-especialistas/ver-tarea/' + id.toString()]);
   }
 
-  eliminarTarea(id:number){
-    
+  ObtenerTareas(){
+    const id = localStorage.getItem('id_especialista')
+    this.service.getTareasEspecialista(id.toString()).subscribe(res => {
+      this.lista_tareas = res;
+      this.dataSource = new MatTableDataSource(this.lista_tareas);
+    })
+  }
+
+  modificarTarea(id: number){
+    this.router.navigate(['/modulo-especialistas/modificar-tarea/' + id]);
+  }
+
+  eliminarTarea(id: number): void{
+    if(
+      confirm(
+        'Seguro que desea eliminar la tarea?. Dejará de pertenecer a su lista de Tareas.'
+      ) == true
+    ) {
+      this.DeleteTarea.eliminarTarea(id).subscribe(
+        (res) => {
+          this.ObtenerTareas();
+        },
+        err => {
+          console.log(err);
+        }
+      )
+    }
   }
 
 }

@@ -33,6 +33,8 @@
               type="date"
               autocomplete="off"
               formControlName="Fecha"
+              [max]="fechaMaxStr"
+              [min]="fechaMinStr"
               required
             />
             <mat-error>
