@@ -8,7 +8,6 @@ import { finalize } from 'rxjs/operators';
 //Importar el service
 import { ServiceRegistroEspecialistaService } from '../registro-especialista/service-registro-especialista.service';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
-import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-registro-especialista',
@@ -25,13 +24,7 @@ export class RegistroEspecialistaComponent implements OnInit {
   urlCurriculum: any;
   urlCedula: any;
 
-
-  public fechaMin:any;
-  public fechaMinStr:String;
-  public fechaMax:any;
-  public fechaMaxStr:String;
-
-  constructor(private dp: DatePipe,private formBuilder: FormBuilder, private especialistaService: ServiceRegistroEspecialistaService, private _snackBar: MatSnackBar, private router: Router, private storage: AngularFireStorage) {
+  constructor(private formBuilder: FormBuilder, private especialistaService: ServiceRegistroEspecialistaService, private _snackBar: MatSnackBar, private router: Router, private storage: AngularFireStorage) {
 
   }
 
@@ -39,17 +32,11 @@ export class RegistroEspecialistaComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.fechaMin = new Date(new Date().getFullYear()-90, new Date().getMonth(), new Date().getDay());
-    this.fechaMinStr = this.dp.transform(this.fechaMin, "yyyy-MM-dd");
-    this.fechaMax = new Date(new Date().getFullYear()-18, new Date().getMonth(), new Date().getDay());
-    this.fechaMaxStr = this.dp.transform(this.fechaMax, "yyyy-MM-dd");
-
-
     this.formRegistro = this.formBuilder.group({
       foto_profesional: [''], curriculum: [''], cedula: [''],
       nombre: ['',
         [
-          Validators.required, Validators.maxLength(70)
+          Validators.required
         ]
       ],
 
@@ -126,11 +113,11 @@ export class RegistroEspecialistaComponent implements OnInit {
   RegistroEspecialista() {
 
     this.formRegistro.value['curriculum'] = this.curriculum.nativeElement.value;
-    this.formRegistro.value['foto_profesional'] = this.image.nativeElement.value;//asar la url de lafoto
+    this.formRegistro.value['foto_profesional'] = this.image.nativeElement.value;//asar la url de lafoto 
     this.formRegistro.value['cedula'] = this.cedula.nativeElement.value;
-    // console.table(this.formRegistro.value)
-    // this.correcto();
-    // console.log(this.formRegistro.invalid)
+    console.table(this.formRegistro.value)
+    this.correcto();
+    console.log(this.formRegistro.invalid)
     if (this.formRegistro.invalid) {
       return;
     }
@@ -138,16 +125,10 @@ export class RegistroEspecialistaComponent implements OnInit {
       //Metodo POST
       //console.log(this.formRegistro?.value),
       this.especialistaService.createEspecialista(this.formRegistro.value).subscribe(
-        (res:any) => {
-          if (res == false){
-            this.existeUsuario();
-          }
-          else if(res == true){
-            this.correcto();
-          }
-          // console.log(res),
-          //   console.log('correcto');
-          // this.correcto();
+        res => {
+          console.log(res),
+            console.log('correcto');
+          this.correcto();
         },
         err => {
           console.log('ERROR que no se');
@@ -181,7 +162,7 @@ export class RegistroEspecialistaComponent implements OnInit {
     const file = e.target.files[0];//toma el primer archivo que encuentre
     const filePath = `Imagen/usuario${id}`;////se genera la ruta
     const ref = this.storage.ref(filePath);//le mando la ruta al servidor
-    const task = this.storage.upload(filePath, file);//mandar la imagen al servidor
+    const task = this.storage.upload(filePath, file);//mandar la imagen al servidor 
     task.snapshotChanges().pipe(finalize(() => this.urlImage = ref.getDownloadURL())).subscribe();//tomar la url
   }
   ingresarCurriculum(e: any) {
@@ -204,14 +185,6 @@ export class RegistroEspecialistaComponent implements OnInit {
   }
   correcto() {
     this._snackBar.open('Registro Correcto', '', {
-      duration: 3000, //5s
-      horizontalPosition: 'center',
-      verticalPosition: 'bottom'
-    });
-  }
-
-  existeUsuario(){
-    this._snackBar.open('Registro incorrecto, el usuario y/o correo ya existe', '', {
       duration: 3000, //5s
       horizontalPosition: 'center',
       verticalPosition: 'bottom'

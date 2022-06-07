@@ -5,72 +5,51 @@
 <br />
 <div class="cuadro-registro">
   <h1 class="titulo">Mis Artículos</h1>
-  <mat-form-field appearance="standard">
-    <mat-label>Búsqueda</mat-label>
-    <input
-      matInput
-      autocomplete="off"
-      (keyup)="applyFilter($event)"
-      #input
-      autocomplete="off"
-    />
-  </mat-form-field>
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
 
-  <div *ngIf="lista.length > 0">
-    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-      <!--- Note that these columns can be defined in any order.
-            The actual rendered columns are set as a property on the row definition" -->
+    <!-- titulo Column -->
+    <ng-container matColumnDef="titulo">
+      <th mat-header-cell *matHeaderCellDef>Título del Artículo</th>
+      <td mat-cell *matCellDef="let element">{{ element.titulo }}</td>
+    </ng-container>
 
-      <!-- titulo Column -->
-      <ng-container matColumnDef="titulo">
-        <th mat-header-cell *matHeaderCellDef>Título del Artículo</th>
-        <td mat-cell *matCellDef="let element">{{ element.titulo }}</td>
-      </ng-container>
+    <!-- nombre Column -->
+    <ng-container matColumnDef="nombre">
+      <th mat-header-cell *matHeaderCellDef>Nombre del Autor</th>
+      <td mat-cell *matCellDef="let element">{{ element.nombre }}</td>
+    </ng-container>
 
-      <!-- nombre Column -->
-      <ng-container matColumnDef="nombre">
-        <th mat-header-cell *matHeaderCellDef>Nombre del Autor</th>
-        <td mat-cell *matCellDef="let element">{{ element.nombre }}</td>
-      </ng-container>
+    <!--  fecha Column -->
+    <ng-container matColumnDef="fecha">
+      <th mat-header-cell *matHeaderCellDef>Fecha de publicación</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.fecha_publicacion | date: "dd/MM/yyyy" }}
+      </td>
+    </ng-container>
 
-        <!-- EspecialidadColumn -->
-        <ng-container matColumnDef="profesion">
-          <th mat-header-cell *matHeaderCellDef>Especialidad del Autor</th>
-          <td mat-cell *matCellDef="let element">{{ element.profesion }}</td>
-        </ng-container>
-
-      <!--  fecha Column -->
-      <ng-container matColumnDef="fecha">
-        <th mat-header-cell *matHeaderCellDef>Fecha de publicación</th>
-        <td mat-cell *matCellDef="let element">
-          {{ element.fecha_publicacion | date: "dd/MM/yyyy" }}
-        </td>
-      </ng-container>
-
-      <!--  acciones Column -->
-      <ng-container matColumnDef="acciones">
-        <th mat-header-cell *matHeaderCellDef>Modificar o Publicar Artículo</th>
-        <td mat-cell *matCellDef="let element">
-          <a
-            style="color: #000000"
-            matTooltip="Modificar Articulo"
+    <!--  acciones Column -->
+    <ng-container matColumnDef="acciones">
+      <th mat-header-cell *matHeaderCellDef>Modificar o Publicar Artículo</th>
+      <td mat-cell *matCellDef="let element">
+        <a
+          style="color: #000000"
+          matTooltip="Modificar Articulo"
+        >
+          <mat-icon (click)="modificar(element.id_articulo)" class="pointer"
+            >folder_shared</mat-icon
           >
-            <mat-icon (click)="modificar(element.id_articulo)" class="pointer"
-              >folder_shared</mat-icon
-            >
-          </a>
-          <a
-          matTooltip="ELIMINAR ARTÍCULO"
-          >
-          <mat-icon (click)="eliminarArticulo(element.id_articulo)" class="pointer">delete_forever</mat-icon>
-          </a>
-        </td>
-      </ng-container>
+        </a>
+        <a
+        matTooltip="ELIMINAR ARTÍCULO"
+        >
+        <mat-icon (click)="eliminarArticulo(element.id_articulo)" class="pointer">delete_forever</mat-icon>
+        </a>
+      </td>
+    </ng-container>
 
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-    </table>
-  </div>
-  <h2 class="error" *ngIf="lista.length == 0">No tiene ningún artículo creado</h2>
-
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
 </div>

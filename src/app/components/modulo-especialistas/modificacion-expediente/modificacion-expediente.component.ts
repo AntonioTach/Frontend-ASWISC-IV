@@ -41,7 +41,7 @@ export class ModificacionExpedienteComponent implements OnInit {
       ocupacion: [this.pacientes.ocupacion, [Validators.required]],
       estudios: [this.pacientes.estudios, [Validators.required]],
       origen: [this.pacientes.origen, [Validators.required]],
-      observaciones: [this.pacientes.observaciones, [Validators.required, Validators.maxLength(100)]],
+      observaciones: [this.pacientes.observaciones, [Validators.required]],
     });
   }
   cargarInformacion() {

@@ -15,7 +15,6 @@ export class OlvidarContrasenaComponent implements OnInit {
 
 
   public formRecuperacion!: FormGroup;
-  form = document.getElementById("form-correo");
   constructor(private formBuilder: FormBuilder, private router: Router, private ServiceOlvidar:OlvidarContrasenaService, private _snackBar: MatSnackBar) { }
 
   ngOnInit() {
@@ -24,7 +23,6 @@ export class OlvidarContrasenaComponent implements OnInit {
     })
     this.EnvioCorreo();
   }
-  
 
   BuscarCorreo(){
     if (this.formRecuperacion.invalid){

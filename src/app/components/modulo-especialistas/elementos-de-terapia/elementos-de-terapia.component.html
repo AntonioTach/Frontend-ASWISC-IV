@@ -35,7 +35,8 @@
     </div>
 
     <!-- Tabla -->
-    <div *ngIf="lista_tareas.length > 0">
+    <!-- <div *ngIf="lista_tareas.length > 0"> -->
+    <div>
       <div class="mat-elevation-z5">
         <table mat-table [dataSource]="dataSource" matSort>
           <!--- Note that these columns can be defined in any order.
@@ -78,14 +79,6 @@
               >
                 <mat-icon class="pointer">work </mat-icon>
               </a>
-
-              <a
-                (click)="modificarTarea(element.id_tarea)"
-                style="color: #000000"
-                matTooltip="Modificar Tarea"
-              >
-                <mat-icon class="pointer">folder_shared </mat-icon>
-              </a>
               <a
                 (click)="eliminarTarea(element.id_tarea)"
                 style="color: #ff0022"
@@ -105,6 +98,6 @@
         aria-label="Selecciona página de Tareas"
       ></mat-paginator>
     </div>
-    <h2 class="error" *ngIf="lista_tareas.length == 0">No hay Tareas para mostrar</h2>
+    <!-- <h2 class="error" *ngIf="lista_tareas.length == 0">No hay Tareas para mostrar</h2> -->
   </div>
 </body>
