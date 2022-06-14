@@ -411,6 +411,75 @@
   
 </table>
 
+
+            <table class="estimacion-edad">
+              <thead>
+                <tr >
+                  <th colspan="5" style="text-align: center;" >Cálculo de puntuaciones índice</th>
+                </tr>
+                <tr>
+                  <th scope="col" style="text-align: center; font-size: 12px;">Escala</th>
+                  <th scope="col" style="font-size: 12px;">Suma Puntuaciones Escalares</th>
+                  <th scope="col" style="font-size: 12px;">Índice compuesto</th>
+                  <th scope="col" style="font-size: 12px;">Rango Perceptil</th>
+                  <th scope="col" style="font-size: 12px;">Intervalo Confianza %</th>
+                </tr>
+
+              </thead>
+              <tbody>
+                <tr>
+                  <th style="font-size: 12px;">Comprensión Verbal</th>
+                  <td style="background-color: rgb(190, 121, 121); font-size: 12px;"> {{ puntuacion_media_comprension_verbal }}</td>
+                  <td style="font-size: 12px;"> {{ICC}} </td>
+                  <td style="font-size: 12px;"> 98 </td>
+                  <td style="font-size: 12px;"> 123-134 </td>
+                </tr>
+
+                <tr>
+                  <th style="font-size: 12px;">Razonamiento Perceptual</th>
+                  <th style="background-color: rgb(190, 121, 121); font-size: 12px;"> {{razonamiento_perceptual}} </th>
+                  <th style="font-size: 12px;"> {{ICR}} </th>
+                  <th style="font-size: 12px;"> 99.9 </th>
+                  <th style="font-size: 12px;"> 107-115 </th>
+                </tr>
+
+                <tr>
+                  <th style="font-size: 12px;">Memoria de Trabajo</th>
+                  <th style="background-color: rgb(190, 121, 121); font-size: 12px;"> {{memoria_de_trabajo}} </th>
+                  <th style="font-size: 12px;"> {{ICM}} </th>
+                  <th style="font-size: 12px;"> 70 </th>
+                  <th style="font-size: 12px;"> 136-147 </th>
+                </tr>
+
+                <tr>
+                  <th style="font-size: 12px;">Velocidad de Procesamiento</th>
+                  <th style="background-color: rgb(190, 121, 121); font-size: 12px;"> {{velocidad_de_procesamiento}} </th>
+                  <th style="font-size: 12px;"> {{ICV}} </th>
+                  <th style="font-size: 12px;"> 24 </th>
+                  <th style="font-size: 12px;"> 102-113 </th>
+                </tr>
+
+                <tr>
+                  <th style="font-size: 12px;">Escala Total</th>
+                  <th style="background-color: rgb(190, 121, 121); font-size: 12px;"> {{ escala_total }} </th>
+                  <th style="font-size: 12px;">{{ICE}}</th>
+                  <th style="font-size: 12px;"> 77 </th>
+                  <th style="font-size: 12px;"> 84-95 </th>
+                </tr>
+              </tbody>
+              <tfoot>
+
+              </tfoot>
+            </table>
+        </div>
+
+    <div class="graficas">
+      <div id="grafica1" class="grafica"></div>
+      <div id="grafica2" class="grafica"></div>
+    </div>
+
+  </div>
+
 <div class="divChart">
   <canvas id="myChart"></canvas>
 
