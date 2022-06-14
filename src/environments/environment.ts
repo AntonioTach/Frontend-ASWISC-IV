@@ -11,8 +11,7 @@ export const environment = {
     storageBucket: "aswisc-iv.appspot.com",
     messagingSenderId: "567552386623",
     appId: "1:567552386623:web:f8bbde8de6f289bb347a8a"
-  },
-  stripePublicKey: 'pk_test_51KvYRzEeE5SQU3ghDDAgZUkUx7FC2SsjuGc9hOPBGLjEWiuxV7JthhHzdeFVhHaV5ysn22DMMGj9zXzL3cmCRjhD00sNAmmgH2'
+  }
 };
 
 /*

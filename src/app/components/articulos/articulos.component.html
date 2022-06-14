@@ -1,55 +1,31 @@
 <app-navbar></app-navbar>
 
-<div class="cuadro-registro">
-  <h1 class="titulo">Artículos</h1>
-  <mat-form-field appearance="standard">
-    <mat-label>Búsqueda</mat-label>
-    <input
-      matInput
-      autocomplete="off"
-      (keyup)="applyFilter($event)"
-      #input
-      autocomplete="off"
-    />
-  </mat-form-field>
-
-  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-    <!--- Note that these columns can be defined in any order.
-          The actual rendered columns are set as a property on the row definition" -->
-
-    <!-- titulo Column -->
-    <ng-container matColumnDef="titulo">
-      <th mat-header-cell *matHeaderCellDef>Título del Artículo</th>
-      <td mat-cell *matCellDef="let element">{{ element.titulo }}</td>
-    </ng-container>
-
-    <!-- nombre Column -->
-    <ng-container matColumnDef="nombre">
-      <th mat-header-cell *matHeaderCellDef>Nombre del Autor</th>
-      <td mat-cell *matCellDef="let element">{{ element.nombre }}</td>
-    </ng-container>
-
-    <!--  fecha Column -->
-    <ng-container matColumnDef="fecha">
-      <th mat-header-cell *matHeaderCellDef>Fecha de publicación</th>
-      <td mat-cell *matCellDef="let element">
-        {{ element.fecha_publicacion | date: "dd/MM/yyyy" }}
-      </td>
-    </ng-container>
-
-    <!--  acciones Column -->
-    <ng-container matColumnDef="acciones">
-      <th mat-header-cell *matHeaderCellDef></th>
-      <td mat-cell *matCellDef="let element">
-        <a
-        matTooltip="VER ARTÍCULO"
-        >
-          <mat-icon (click)="Ver(element.id_articulo)" class="pointer">assignment</mat-icon>
-        </a>
-      </td>
-    </ng-container>
-
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-  </table>
-</div>
+<body>
+    <div class="cuadro-info">
+  
+      <h1>Artículos</h1>
+  
+  
+        <br>
+        <br>
+      <h2>Artículos Hechos Por Especialistas</h2>
+      <div class="div-info">
+        <div class="imagen">
+          <img class="img" src="../../../assets/img/articulos.jpg" alt="analytics process image">
+        </div>
+        <div class="text">
+          <p style="font-weight: bold;">Profesionalidad</p>
+          <p>Es un test neuropsicológico dirigido a niños y adolescentes de edades comprendidas entre 6 años 0 meses y 16 años 11 meses. Abarca los niveles educativos de Primaria (6 a 11), Secundaria (12-15) y Bachillerato (primer curso, 16 años). Ampliamente utilizado para el cribado y diagnóstico de patologías del neurodesarrollo y aprendizaje (altas capacidades; grados de discapacidad intelectual, dificultades del aprendizaje, disfunciones del neurodesarrollo y/o neuropsicológicas. </p>
+          <p>Permitiendo evaluar la calidad de la atención. Los índices de razonamiento perceptivo y de velocidad de procesamiento</p>
+          <p style="font-weight: bold;">Practicidad</p>
+          <p>Evalúa las capacidades intelectuales, su visión  de inteligencia defiende que las capacidades cognitivas se organizan de forma jerárquica, con aptitudes específicas vinculadas a distintos ámbitos cognitivos que representan las habilidades intelectuales generales (Comprensión verbal y Razonamiento perceptivo) y habilidades de procesamiento cognitivo (Memoria de Trabajo y Velocidad del Procesamiento), y que están en estrecha relación con las actuales teorías de la inteligencia de razonamiento fluido y cristalizado y de Memoria de Trabajo. </p>
+        </div>
+      </div>
+      <hr>
+  
+  
+  
+  
+    </div>
+  </body>
+  

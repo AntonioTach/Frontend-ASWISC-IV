@@ -17,7 +17,6 @@ import { TareaComponent } from './tarea/tarea.component';
 import { VerPruebaComponent } from './ver-prueba/ver-prueba.component';
 import { VistaEspecialistaComponent } from './vista-especialista/vista-especialista.component';
 import { ArticuloComponent } from './articulo/articulo.component';
-import { StripeComponent } from './horarios-disponibles/stripe/stripe.component';
 
 const routes: Routes = [
   {

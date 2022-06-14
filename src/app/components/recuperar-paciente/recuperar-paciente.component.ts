@@ -43,7 +43,6 @@ export class RecuperarPacienteComponent implements OnInit {
       horizontalPosition: 'center',
       verticalPosition: 'bottom'
     });
-    this.router.navigate(["/"]);
   }
   MensajeNoCorrecto(){
     this._snackBar.open('El token es incorrecto', '', {

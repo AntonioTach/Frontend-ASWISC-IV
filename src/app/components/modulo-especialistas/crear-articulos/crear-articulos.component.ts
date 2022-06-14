@@ -19,7 +19,7 @@ export class CrearArticulosComponent implements OnInit {
   @ViewChild('view') lucas: ElementRef | any;
   @ViewChild('image') image: ElementRef | any;
   ngOnInit(): void {
-    // console.log(new Date());
+    console.log(new Date());
   }
   editorConfig: AngularEditorConfig = {
     editable: true,
@@ -71,6 +71,7 @@ export class CrearArticulosComponent implements OnInit {
     ]
   };
   click(numero: number) {
+    console.log(this.titulo.length);
     const articulo = {
       titulo: this.titulo,
       descripcion: this.html,
@@ -84,6 +85,7 @@ export class CrearArticulosComponent implements OnInit {
         this.servicio.guardarArticulo(articulo).subscribe(res => { console.log(res) }, err => { console.log(err) })
         this.router.navigate(['/modulo-especialistas']);
       } else if (numero == 2) {//publicado
+        console.log('object');
         this.servicio.publicarArticulo(articulo).subscribe(res => { console.log(res) }, err => { console.log(err) })
         this.router.navigate(['/modulo-especialistas']);
       }

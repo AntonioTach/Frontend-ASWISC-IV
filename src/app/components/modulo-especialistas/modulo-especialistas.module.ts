@@ -34,8 +34,7 @@ import { ModificarArticuloComponent } from './modificar-articulo/modificar-artic
 import { DescargarExpedienteComponent } from './descargar-expediente/descargar-expediente.component';
 import { AsignarTareaComponent } from './asignar-tarea/asignar-tarea.component';
 import { VerTareaComponent } from './ver-tarea/ver-tarea.component';
-import { ArticuloComponent } from './articulo/articulo.component';
-import { ModificarTareaComponent } from './modificar-tarea/modificar-tarea.component';
+import { ArticuloComponent } from './articulo/articulo.component'
 //import { ScheduleModule, AgendaService, DayService, DragAndDropService, ResizeService, WeekService, WorkWeekService, MonthService } from '@syncfusion/ej2-angular-schedule';
 
 
@@ -67,8 +66,7 @@ import { ModificarTareaComponent } from './modificar-tarea/modificar-tarea.compo
     DescargarExpedienteComponent,
     AsignarTareaComponent,
     VerTareaComponent,
-    ArticuloComponent,
-    ModificarTareaComponent
+    ArticuloComponent
 
   ],
   imports: [

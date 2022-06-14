@@ -29,18 +29,11 @@ import { ModuloPacientesComponent } from './components/modulo-pacientes/modulo-p
 //Providers
 import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { Navbar3Component } from './components/navbar3/navbar3.component';
-import { DatePipe } from '@angular/common';
-import { DropDownListModule } from '@syncfusion/ej2-angular-dropdowns'
-import { DateTimePickerModule } from '@syncfusion/ej2-angular-calendars'
-
 //import { TokenInterceptorService } from './services/token-interceptor.service';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireStorageModule, BUCKET } from '@angular/fire/compat/storage';
 import { WiscIvComponent } from './components/wisc-iv/wisc-iv.component';
 import { AswiscIvComponent } from './components/aswisc-iv/aswisc-iv.component';
-import { VerArticuloComponent } from './components/ver-articulo/ver-articulo.component';
-// Horarios
-///import { ScheduleModule, RecurrenceEditorModule, DayService, WeekService, WorkWeekService, MonthService, MonthAgendaService } from '@syncfusion/ej2-angular-schedule';
 
 
 @NgModule({
@@ -60,7 +53,6 @@ import { VerArticuloComponent } from './components/ver-articulo/ver-articulo.com
     OlvidarContrasenaComponent,
     RecuperarPacienteComponent,
     RecuperarEspecialistaComponent,
-    VerArticuloComponent,
   ],
   imports: [
     BrowserModule,
@@ -70,8 +62,7 @@ import { VerArticuloComponent } from './components/ver-articulo/ver-articulo.com
       // Register the ServiceWorker as soon as the app is stable
       // or after 30 seconds (whichever comes first).
       registrationStrategy: 'registerWhenStable:30000'
-    }), 
-    FormsModule,
+    }), FormsModule,
     BrowserAnimationsModule,
     FormsModule,
     SharedModule,
@@ -79,21 +70,15 @@ import { VerArticuloComponent } from './components/ver-articulo/ver-articulo.com
     HttpClientModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireStorageModule,
-    AngularEditorModule,
-    // ScheduleModule,
-    // RecurrenceEditorModule,
-    DropDownListModule,
-    DateTimePickerModule
+    AngularEditorModule
   ],
   providers: [
 
     ServiceRegistroEspecialistaService,
-    // DayService, WeekService, WorkWeekService, MonthService, MonthAgendaService,
     { provide: JWT_OPTIONS, useValue: JWT_OPTIONS }, {
       provide: BUCKET, useValue: environment.firebaseConfig.storageBucket
     },
     JwtHelperService,
-    DatePipe,
     //Token interceptor
     //{ provide : HTTP_INTERCEPTORS, useClass : TokenInterceptorService, multi : true }
   ],
