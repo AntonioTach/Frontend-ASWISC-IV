@@ -28,7 +28,7 @@ export class SubirPruebaComponent implements OnInit {
 
   usuario: string = '';
   correo: string = '';
-  telefono: any = null;//este seria la id des paciente
+  telefono: any = null;//este seria la id des paciente 
 
   id_usuario = localStorage.getItem('id_usuario');
   id_paciente;
@@ -37,8 +37,8 @@ export class SubirPruebaComponent implements OnInit {
     this.cargarPacientes();
     this.FormModificarExpediente = this.formBuilder.group({
       id_paciente: [''],
-      nombre_prueba: ['', [Validators.required, Validators.maxLength(20)]],
-      comentarios: ['', [Validators.required, Validators.maxLength(100)]],
+      nombre_prueba: ['', [Validators.required]],
+      comentarios: ['', [Validators.required]],
       documento: [''],
     });
   }
@@ -57,7 +57,7 @@ export class SubirPruebaComponent implements OnInit {
     }, err => console.log(err))
   }
   RegistradoMensaje() {
-    this._snackBar.open('Subida de Prueba Correcta', '', {
+    this._snackBar.open('Registro Correcto', '', {
       duration: 3000, //5s
       horizontalPosition: 'center',
       verticalPosition: 'bottom'
@@ -80,7 +80,6 @@ export class SubirPruebaComponent implements OnInit {
     }
     else {
       this.subirservice.postPrueba(this.FormModificarExpediente.value).subscribe(res => { console.log(res); }, err => { console.log(err); });
-      this.router.navigateByUrl('/modulo-especialistas');
       this.RegistradoMensaje();
     }
   }
@@ -97,7 +96,7 @@ export class SubirPruebaComponent implements OnInit {
     const file = this.file;//toma el primer archivo que encuentre
     const filePath = `pruebas/${id}`;////se genera la ruta
     const ref = this.firebase.ref(filePath);//le mando la ruta al servidor
-    const task = this.firebase.upload(filePath, file);//mandar la imagen al servidor
+    const task = this.firebase.upload(filePath, file);//mandar la imagen al servidor 
     task.snapshotChanges().pipe(finalize(() => this.urlImage = ref.getDownloadURL())).subscribe();//tomar la url
   }
 

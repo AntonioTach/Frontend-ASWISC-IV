@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { MatSnackBar } from '@angular/material/snack-bar';
+
 //Services
 import { ServiceRevisarPacienteService } from '../revisar-paciente/service-revisar-paciente.service'
 import { ModificacionPrecioServiceService } from './modificacion-precio-service.service';
@@ -23,7 +23,7 @@ export class ModificacionDePreciosComponent implements OnInit {
   id_paciente = 0
   pacientes: any = []
 
-  constructor(private formBuilder: FormBuilder, private _snackBar: MatSnackBar, private router: Router, private serviceRevisar: ServiceRevisarPacienteService, private serviceModificacionPrecion: ModificacionPrecioServiceService, private modificarExpedienteService: ModificacionExpedienteServiceService) { }
+  constructor(private formBuilder: FormBuilder, private router: Router, private serviceRevisar: ServiceRevisarPacienteService, private serviceModificacionPrecion: ModificacionPrecioServiceService, private modificarExpedienteService: ModificacionExpedienteServiceService) { }
 
   ngOnInit(): void {
     this.cargarPrecioEspecialista();
@@ -56,14 +56,6 @@ export class ModificacionDePreciosComponent implements OnInit {
     }, err => console.log(err))
   }
 
-  RegistradoMensaje() {
-    this._snackBar.open('Cambios guardados con éxito', '', {
-      duration: 3000, //5s
-      horizontalPosition: 'center',
-      verticalPosition: 'bottom'
-    });
-  }
-
   capturar() {
     console.table(this.FormModificarPrecio.value);
     console.log(this.id_paciente);
@@ -78,30 +70,25 @@ export class ModificacionDePreciosComponent implements OnInit {
     }
     else if (this.FormModificarPrecio.value['precio_paciente'] == '' && this.id_paciente == 0) {
       this.serviceModificacionPrecion.capturar(paquete).subscribe((res: any) => {
-        this.RegistradoMensaje();
-        this.router.navigateByUrl('/modulo-especialistas/revisar-pacientes');
-        //console.log(res);
+
+        console.log(res);
       })
-      //console.log("precio_general");
-      //console.log('object');
+      console.log("precio_general");
+      console.log('object');
     } else if (this.FormModificarPrecio.value['precio_general'] == "") {
 
       this.serviceModificacionPrecion.paciente(paquete).subscribe((res: any) => {
-        this.RegistradoMensaje();
-        this.router.navigateByUrl('/modulo-especialistas/revisar-pacientes');
-        //console.log(res);
+        console.log(res);
       }, err => { console.log(err); })
     } else {
       this.serviceModificacionPrecion.capturar(paquete).subscribe((res: any) => {
         this.serviceModificacionPrecion.paciente(paquete).subscribe((res: any) => {
-          this.RegistradoMensaje();
-          this.router.navigateByUrl('/modulo-especialistas/revisar-pacientes');
-          //console.log(res);
+          console.log(res);
         }, err => { console.log(err); })
-        //console.log(res);
+        console.log(res);
       })
 
-
+      console.log("precio de todo");
     }
   }
 

@@ -20,6 +20,7 @@ export class ModificarArticuloComponent implements OnInit {
         this.html = this.articulo.descripcion;
         this.titulo = this.articulo.titulo;
         this.tipo = this.articulo.estado_articulo;
+        console.log(res);
       })
     })
   }
@@ -71,7 +72,7 @@ export class ModificarArticuloComponent implements OnInit {
       },
     ],
     //no se bien que onda con eso
-    /*
+    /* 
     uploadUrl: 'v1/image',
     upload: (file: File) => { ... }
     uploadWithCredentials: false,

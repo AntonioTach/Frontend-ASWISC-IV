@@ -23,7 +23,6 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatSelectModule } from '@angular/material/select';
-import { ScheduleModule, RecurrenceEditorModule, DayService, WeekService, WorkWeekService, MonthService, MonthAgendaService } from '@syncfusion/ej2-angular-schedule';
 //import { ScheduleModule, AgendaService, DayService, DragAndDropService, ResizeService, WeekService, WorkWeekService, MonthService } from '@syncfusion/ej2-angular-schedule';
 
 
@@ -50,6 +49,7 @@ import { ScheduleModule, RecurrenceEditorModule, DayService, WeekService, WorkWe
     MatSortModule,
     MatSelectModule,
     FormsModule,
+    //ScheduleModule
   ],
   exports: [
     MatSliderModule,
@@ -70,9 +70,8 @@ import { ScheduleModule, RecurrenceEditorModule, DayService, WeekService, WorkWe
     MatPaginatorModule,
     MatSortModule,
     MatSelectModule,
-    ScheduleModule,
-    RecurrenceEditorModule
+   // ScheduleModule
 
-  ], providers: [DayService, WeekService, WorkWeekService, MonthService, MonthAgendaService]
+  ]//,providers: [AgendaService, DayService, WeekService, WorkWeekService, MonthService, DragAndDropService, ResizeService]
 })
 export class SharedModule { }

@@ -6,465 +6,411 @@
 <br>
 <div class="cuadro-registro">
 
-<h1>WISC-IV</h1>
-<h2>Escala Wechsler de inteligencia para Niños-IV</h2>
-
-  <div class="contenedor">
-
-      <div class="bloque-izquierda">
-
-          <table class="datos">
-          <tbody>
-            <tr>
-              <td>Nombre del niño</td>
-              <td> {{PacienteNombre}} </td>
-            </tr>
-            <tr>
-              <td>Examinador</td>
-              <td> {{EspecialistaNombre}} </td>
-            </tr>
-            <!-- <tr>
-              <td> <iframe src="https://www.educima.com/wordsearches/programas_para_manejo_de_image-b296ffe473f164e126f63b13dd1b3901/embed" title="wordsearch - Programas para manejo de imáge" height="500px" width="100%"></iframe></td>
-            </tr> -->
-          </tbody>
-          </table>
-          <br>
-          <br>
-          <table class="estimacion-edad"  >
-            <thead>
-              <tr >
-                <th colspan="4" style="text-align: center;" >Estimación de la Edad del Niño</th>
-              </tr>
-              <tr>
-                <th  style="border: white;"></th>
-                <th scope="col">Año</th>
-                <th scope="col">Mes</th>
-                <th scope="col">Día</th>
-              </tr>
 
-            </thead>
-            <tbody>
-              <tr>
-                <th>Fecha de evaluación</th>
-                <td> {{ fechaEvaluacionYearInt }}</td>
-                <td> {{fechaEvaluacionMonthInt}} </td>
-                <td> {{fechaEvaluaciondayInt}}</td>
-              </tr>
+<table class="estimacion-edad" >
+  <thead>
+    <tr>
+      <th colspan="4" style="text-align: center;" >Estimación de la Edad del Niño</th>
+    </tr>
+    <tr>
+      <th  style="border: white;"></th>
+      <th scope="col">Año</th>
+      <th scope="col">Mes</th>
+      <th scope="col">Día</th>
+    </tr>
 
-              <tr>
-                <th>Fecha de nacimiento</th>
-                <th> {{fechaPacienteYearInt}} </th>
-                <th> {{fechaPacienteMonthInt}} </th>
-                <th> {{fechaPacienteDayInt}} </th>
-              </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Fecha de evaluación</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
 
-              <tr>
-                <th>Edad de evaluación</th>
-                <th style="background-color: rgb(190, 121, 121);"> {{fechaEvaluacionYearInt - fechaPacienteYearInt + 2000}} </th>
-                <th style="background-color: rgb(190, 121, 121);"> {{fechaEvaluacionMonthInt - fechaPacienteMonthInt}} </th>
-                <th style="background-color: rgb(190, 121, 121);"> {{fechaEvaluaciondayInt - fechaPacienteDayInt}} </th>
-              </tr>
-            </tbody>
-            <tfoot>
+    <tr>
+      <th>Fecha de nacimiento</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
 
-            </tfoot>
-          </table>
-          <br>
-          <br>
-          <br>
+    <tr>
+      <th>Edad de evaluación</th>
+      <th style="background-color: rgb(190, 121, 121);"></th>
+      <th style="background-color: rgb(190, 121, 121);"></th>
+      <th style="background-color: rgb(190, 121, 121);"></th>
+    </tr>
+  </tbody>
+  <tfoot>
 
-          <table class="puntuaciones-escalares">
+  </tfoot>
+</table>
+<br>
+<br>
+<br>
 
-            <thead>
+<table class="puntuaciones-escalares">
 
-              <tr>
+  <thead>
 
-                <th scope="col">Subprueba</th>
+    <tr>
 
-                <th scope="col">PN</th>
+      <th scope="col">Subprueba</th>
 
-                <th colspan="6"  scope="col">Puntuaciones Escalares</th>
+      <th scope="col">PN</th>
 
-              </tr>
-            </thead>
+      <th colspan="6"  scope="col">Puntuaciones Escalares</th>
 
-            <tbody>
-              <tr>
+    </tr>
+  </thead>
 
-                <th>Cubos</th>
+  <tbody>
+    <tr>
 
-                <td> {{ cubos }} </td>
+      <th>Cubos</th>
 
-                <td> {{indiceCubos}} </td>
+      <td></td>
 
-                <td style="background-color: rgb(85, 3, 3);"></td>
+      <td></td>
 
-                <td>{{indiceCubos}}</td>
+      <td style="background-color: rgb(85, 3, 3);"></td>
+      
+      <td></td>
 
-                <td style="background-color: rgb(85, 3, 3);"></td>
+      <td style="background-color: rgb(85, 3, 3);"></td>
+      
+      <td style="background-color: rgb(85, 3, 3);"></td>
 
-                <td style="background-color: rgb(85, 3, 3);"></td>
+      <td></td>
 
-                <td>{{indiceCubos}}</td>
+    </tr>
 
-              </tr>
+    <tr>
 
-              <tr>
+      <th>Semejanzas</th>
 
-                <th>Semejanzas</th>
+      <td></td>
 
-                <td> {{semejanzas}} </td>
+      <td></td>
 
-                <td> {{indiceSemejanzas}} </td>
+      <td></td>
+      
+      <td style="background-color: rgb(85, 3, 3);"></td>
 
-                <td>{{indiceSemejanzas}}</td>
+      <td style="background-color: rgb(85, 3, 3);"></td>
+      
+      <td style="background-color: rgb(85, 3, 3);" ></td>
 
-                <td style="background-color: rgb(85, 3, 3);"></td>
+      <td></td>
 
-                <td style="background-color: rgb(85, 3, 3);"></td>
+    </tr>
 
-                <td style="background-color: rgb(85, 3, 3);" ></td>
+    <tr>
 
-                <td>{{indiceSemejanzas}}</td>
+      <th>Retención de Dígitos</th>
 
-              </tr>
+      <td></td>
 
-              <tr>
+      <td></td>
 
-                <th>Retención de Dígitos</th>
+      <td style="background-color: rgb(85, 3, 3);"></td>
+      
+      <td style="background-color: rgb(85, 3, 3);"></td>
 
-                <td> {{digitos}} </td>
+      <td></td>
+      
+      <td style="background-color: rgb(85, 3, 3);"></td>
 
-                <td> {{indiceDigitos}} </td>
+      <td></td>
 
-                <td style="background-color: rgb(85, 3, 3);"></td>
 
-                <td style="background-color: rgb(85, 3, 3);"></td>
+    </tr>
 
-                <td>{{indiceDigitos}}</td>
+    <tr>
 
-                <td style="background-color: rgb(85, 3, 3);"></td>
+      <th>Conceptos con dibujos</th>
 
-                <td>{{indiceDigitos}}</td>
+      <td></td>
 
+      <td></td>
 
-              </tr>
+      <td style="background-color: rgb(85, 3, 3);"></td>
+      
+      <td></td>
 
-              <tr>
+      <td style="background-color: rgb(85, 3, 3);"></td>
+      
+      <td style="background-color: rgb(85, 3, 3);"></td>
 
-                <th>Conceptos con dibujos</th>
+      <td></td>
 
-                <td> {{conceptos}} </td>
 
-                <td>{{indiceConceptos}}</td>
+    </tr>
 
-                <td style="background-color: rgb(85, 3, 3);"></td>
+    <tr>
 
-                <td>{{indiceConceptos}}</td>
+      <th>Claves</th>
 
-                <td style="background-color: rgb(85, 3, 3);"></td>
+      <td></td>
 
-                <td style="background-color: rgb(85, 3, 3);"></td>
+      <td></td>
 
-                <td>{{indiceConceptos}}</td>
+      <td style="background-color: rgb(85, 3, 3);"></td>
+      
+      <td style="background-color: rgb(85, 3, 3);"></td>
 
+      <td style="background-color: rgb(85, 3, 3);"></td>
+      
+      <td></td>
 
-              </tr>
+      <td></td>
 
-              <tr>
 
-                <th>Claves</th>
+    </tr>
 
-                <td> {{claves}} </td>
+    <tr>
 
-                <td> {{indiceClaves}} </td>
+      <th>Vocabulario</th>
 
-                <td style="background-color: rgb(85, 3, 3);"></td>
+      <td></td>
 
-                <td style="background-color: rgb(85, 3, 3);"></td>
+      <td></td>
 
-                <td style="background-color: rgb(85, 3, 3);"></td>
+      <td></td>
+      
+      <td style="background-color: rgb(85, 3, 3);"></td>
 
-                <td>{{indiceClaves}} </td>
+      <td style="background-color: rgb(85, 3, 3);"></td>
+      
+      <td style="background-color: rgb(85, 3, 3);"></td>
 
-                <td>{{indiceClaves}} </td>
+      <td></td>
 
 
-              </tr>
+    </tr>
+    <tr>
 
-              <tr>
+      <th>Sucesión de números y letras</th>
 
-                <th>Vocabulario</th>
+      <td></td>
 
-                <td> {{vocabulario}} </td>
+      <td></td>
 
-                <td>{{indiceVocabulario}}</td>
+      <td style="background-color: rgb(85, 3, 3);"></td>
+      
+      <td style="background-color: rgb(85, 3, 3);"></td>
 
-                <td>{{indiceVocabulario}}</td>
+      <td></td>
+      
+      <td style="background-color: rgb(85, 3, 3);"></td>
 
-                <td style="background-color: rgb(85, 3, 3);"></td>
+      <td></td>
 
-                <td style="background-color: rgb(85, 3, 3);"></td>
+    </tr>
+    <tr>
 
-                <td style="background-color: rgb(85, 3, 3);"></td>
+      <th>Matrices</th>
 
-                <td>{{indiceVocabulario}}</td>
+      <td></td>
 
+      <td></td>
 
-              </tr>
-              <tr>
+      <td style="background-color: rgb(85, 3, 3);"></td>
+      
+      <td></td>
 
-                <th>Sucesión de números y letras</th>
+      <td style="background-color: rgb(85, 3, 3);"></td>
+      
+      <td style="background-color: rgb(85, 3, 3);"></td>
 
-                <td> {{letras_numeros}} </td>
+      <td></td>
 
-                <td> {{indiceLetrasNumeros}} </td>
+    </tr>
 
-                <td style="background-color: rgb(85, 3, 3);"></td>
+    <tr>
 
-                <td style="background-color: rgb(85, 3, 3);"></td>
+      <th>Comprensión</th>
 
-                <td>{{indiceLetrasNumeros}}</td>
+      <td></td>
 
-                <td style="background-color: rgb(85, 3, 3);"></td>
+      <td></td>
 
-                <td>{{indiceLetrasNumeros}}</td>
+      <td></td>
+      
+      <td style="background-color: rgb(85, 3, 3);"></td>
 
-              </tr>
-              <tr>
+      <td style="background-color: rgb(85, 3, 3);"></td>
+      
+      <td style="background-color: rgb(85, 3, 3);" ></td>
 
-                <th>Matrices</th>
+      <td></td>
 
-                <td> {{matrices}} </td>
+    </tr>
 
-                <td> {{indiceMatrices}} </td>
+    <tr>
 
-                <td style="background-color: rgb(85, 3, 3);"></td>
+      <th>Búsqueda de Símbolos</th>
 
-                <td>{{indiceMatrices}}</td>
+      <td></td>
 
-                <td style="background-color: rgb(85, 3, 3);"></td>
+      <td></td>
 
-                <td style="background-color: rgb(85, 3, 3);"></td>
+      <td style="background-color: rgb(85, 3, 3);"></td>
+      
+      <td style="background-color: rgb(85, 3, 3);"></td>
 
-                <td>{{indiceMatrices}}</td>
+      <td style="background-color: rgb(85, 3, 3);"></td>
+      
+      <td></td>
 
-              </tr>
+      <td></td>
 
-              <tr>
+    </tr>
+    <tr>
 
-                <th>Comprensión</th>
+      <th style="background-color: rgb(190, 121, 121);">(Figuras Incompletas)</th>
 
-                <td> {{comprension}} </td>
+      <td style="background-color: rgb(190, 121, 121);"></td>
 
-                <td> {{indiceComprension}} </td>
+      <td style="background-color: rgb(190, 121, 121);"></td>
 
-                <td>{{indiceComprension}}</td>
+      <td style="background-color: rgb(85, 3, 3);"></td>
+      
+      <td></td>
 
-                <td style="background-color: rgb(85, 3, 3);"></td>
+      <td style="background-color: rgb(85, 3, 3);"></td>
+      
+      <td style="background-color: rgb(85, 3, 3);"></td>
 
-                <td style="background-color: rgb(85, 3, 3);"></td>
+      <td style="background-color: rgb(85, 3, 3);"></td>
 
-                <td style="background-color: rgb(85, 3, 3);" ></td>
+    </tr>
+    <tr>
 
-                <td>{{indiceComprension}}</td>
+      <th style="background-color: rgb(190, 121, 121);">(Registros)</th>
 
-              </tr>
+      <td style="background-color: rgb(190, 121, 121);"></td>
 
-              <tr>
+      <td style="background-color: rgb(190, 121, 121);"></td>
 
-                <th>Búsqueda de Símbolos</th>
+      <td style="background-color: rgb(85, 3, 3);"></td>
+      
+      <td style="background-color: rgb(85, 3, 3);"></td>
 
-                <td> {{busqueda_simbolos}} </td>
+      <td style="background-color: rgb(85, 3, 3);"  ></td>
+      
+      <td></td>
 
-                <td> {{indiceBusquedaSimbolos}} </td>
+      <td style="background-color: rgb(85, 3, 3);"></td>
 
-                <td style="background-color: rgb(85, 3, 3);"></td>
+    </tr>
+    <tr>
 
-                <td style="background-color: rgb(85, 3, 3);"></td>
+      <th style="background-color: rgb(190, 121, 121);">(Información)</th>
 
-                <td style="background-color: rgb(85, 3, 3);"></td>
+      <td style="background-color: rgb(190, 121, 121);"></td>
 
-                <td> {{indiceBusquedaSimbolos}} </td>
+      <td style="background-color: rgb(190, 121, 121);"></td>
 
-                <td>{{indiceBusquedaSimbolos}}</td>
+      <td></td>
+      
+      <td style="background-color: rgb(85, 3, 3);"></td>
 
-              </tr>
-              <tr>
+      <td style="background-color: rgb(85, 3, 3);"></td>
+      
+      <td style="background-color: rgb(85, 3, 3);"></td>
 
-                <th style="background-color: rgb(190, 121, 121);">(Figuras Incompletas)</th>
+      <td style="background-color: rgb(85, 3, 3);"></td>
 
-                <td style="background-color: rgb(190, 121, 121);"> {{figuras_incompletas}} </td>
+    </tr>
+    <tr>
 
-                <td style="background-color: rgb(190, 121, 121);">{{indiceFigurasIncompletas}}</td>
+      <th style="background-color: rgb(190, 121, 121);">(Aritmética)</th>
 
-                <td style="background-color: rgb(85, 3, 3);"></td>
+      <td style="background-color: rgb(190, 121, 121);"></td>
 
-                <td>{{indiceFigurasIncompletas}}</td>
+      <td style="background-color: rgb(190, 121, 121);"></td>
 
-                <td style="background-color: rgb(85, 3, 3);"></td>
+      <td style="background-color: rgb(85, 3, 3);"></td>
+      
+      <td style="background-color: rgb(85, 3, 3);"></td>
 
-                <td style="background-color: rgb(85, 3, 3);"></td>
+      <td></td>
+      
+      <td style="background-color: rgb(85, 3, 3);"></td>
 
-                <td style="background-color: rgb(85, 3, 3);"></td>
+      <td style="background-color: rgb(85, 3, 3);"></td>
 
-              </tr>
-              <tr>
+    </tr>
+    <tr>
 
-                <th style="background-color: rgb(190, 121, 121);">(Registros)</th>
+      <th style="background-color: rgb(190, 121, 121);">Palabras en contexto (Pistas)</th>
 
-                <td style="background-color: rgb(190, 121, 121);"> {{registros}} </td>
+      <td style="background-color: rgb(190, 121, 121);"></td>
 
-                <td style="background-color: rgb(190, 121, 121);"> {{indiceRegistros}} </td>
+      <td style="background-color: rgb(190, 121, 121);"></td>
 
-                <td style="background-color: rgb(85, 3, 3);"></td>
+      <td></td>
+      
+      <td style="background-color: rgb(85, 3, 3);"></td>
 
-                <td style="background-color: rgb(85, 3, 3);"></td>
+      <td style="background-color: rgb(85, 3, 3);"></td>
+      
+      <td style="background-color: rgb(85, 3, 3);"></td>
 
-                <td style="background-color: rgb(85, 3, 3);"  ></td>
+      <td style="background-color: rgb(85, 3, 3);"></td>
 
-                <td>{{indiceRegistros}}</td>
+    </tr>
 
-                <td style="background-color: rgb(85, 3, 3);"></td>
+  </tbody>
 
-              </tr>
-              <tr>
+  <tfoot>
 
-                <th style="background-color: rgb(190, 121, 121);">(Información)</th>
+    <tr>
 
-                <td style="background-color: rgb(190, 121, 121);"> {{informacion}} </td>
+      <th style="border: white;" colspan="3">Suma de Puntuaciones Escalares</th>
 
-                <td style="background-color: rgb(190, 121, 121);"> {{indiceInformacion}} </td>
+      <td style="background-color: rgb(190, 121, 121);"></td>
 
-                <td>{{indiceInformacion}}</td>
+      <td style="background-color: rgb(190, 121, 121);"></td>
 
-                <td style="background-color: rgb(85, 3, 3);"></td>
+      <td style="background-color: rgb(190, 121, 121);"></td>
+      
+      <td style="background-color: rgb(190, 121, 121);"></td>
 
-                <td style="background-color: rgb(85, 3, 3);"></td>
+      <td style="background-color: rgb(190, 121, 121);"></td>
+      
+    </tr>
 
-                <td style="background-color: rgb(85, 3, 3);"></td>
+    <tr>
 
-                <td style="background-color: rgb(85, 3, 3);"></td>
+      <th style="border: white;" colspan="3">texto extra</th>
 
-              </tr>
-              <tr>
+      <td></td>
 
-                <th style="background-color: rgb(190, 121, 121);">(Aritmética)</th>
+      <td></td>
 
-                <td style="background-color: rgb(190, 121, 121);"> {{aritmetica}} </td>
+      <td></td>
+      
+      <td></td>
 
-                <td style="background-color: rgb(190, 121, 121);">{{indiceAritmetica}}</td>
+      <td></td>
+      
+    </tr>
 
-                <td style="background-color: rgb(85, 3, 3);"></td>
+  </tfoot>
 
-                <td style="background-color: rgb(85, 3, 3);"></td>
+</table>
 
-                <td> {{indiceAritmetica}} </td>
+<br>
+<br>
+<br>
+<br>
+<table>
+  
+</table>
 
-                <td style="background-color: rgb(85, 3, 3);"></td>
-
-                <td style="background-color: rgb(85, 3, 3);"></td>
-
-              </tr>
-              <tr>
-
-                <th style="background-color: rgb(190, 121, 121);">Palabras en contexto (Pistas)</th>
-
-                <td style="background-color: rgb(190, 121, 121);"> {{pistas}} </td>
-
-                <td style="background-color: rgb(190, 121, 121);">{{indicePistas}}</td>
-
-                <td> {{indicePistas}} </td>
-
-                <td style="background-color: rgb(85, 3, 3);"></td>
-
-                <td style="background-color: rgb(85, 3, 3);"></td>
-
-                <td style="background-color: rgb(85, 3, 3);"></td>
-
-                <td style="background-color: rgb(85, 3, 3);"></td>
-
-              </tr>
-
-            </tbody>
-
-            <tfoot>
-
-              <tr>
-
-                <th style="border: white;" colspan="3">Suma de Puntuaciones Escalares</th>
-
-                <td style="background-color: rgb(190, 121, 121);"> {{sumaCol1}} </td>
-
-                <td style="background-color: rgb(190, 121, 121);"> {{sumaCol2}} </td>
-
-                <td style="background-color: rgb(190, 121, 121);"> {{sumaCol3}} </td>
-
-                <td style="background-color: rgb(190, 121, 121);"> {{sumaCol4}} </td>
-
-                <td style="background-color: rgb(190, 121, 121);"> {{sumaCol5}} </td>
-
-              </tr>
-
-              <!-- <tr>
-
-                <th style="border: white;" colspan="3">texto extra</th>
-
-                <td></td>
-
-                <td></td>
-
-                <td></td>
-
-                <td></td>
-
-                <td></td>
-
-              </tr> -->
-
-            </tfoot>
-
-          </table>
-
-          <!-- <br> -->
-          <table class="datos">
-
-            </table>
-            <br>
-            <br>
-            <table class="estimacion-edad"  >
-              <thead>
-                <tr>
-                  <th  style="border: white;"></th>
-                  <th scope="col" style="font-size: 12px;">Todas las 10 Subpruebas</th>
-                  <th scope="col" style="font-size: 12px;">3 de Comprension Verbal</th>
-                  <th scope="col" style="font-size: 12px;">3 de Razonamiento Perceptual</th>
-                </tr>
-
-              </thead>
-              <tbody>
-                <tr>
-                  <th style="font-size: 12px;">Suma de Puntuaciones Escalares</th>
-                  <td style="font-size: 12px;"> {{ escala_total }} </td>
-                  <td style="font-size: 12px;"> {{ puntuacion_media_comprension_verbal }} </td>
-                  <td style="font-size: 12px;"> {{razonamiento_perceptual}} </td>
-                </tr>
-
-                <tr>
-                  <th style="font-size: 12px;">Número de Subpruebas</th>
-                  <th style="font-size: 12px;"> ÷ 10 </th>
-                  <th style="font-size: 12px;"> ÷ 3 </th>
-                  <th style="font-size: 12px;"> ÷ 3 </th>
-                </tr>
-
-                <tr>
-                  <th style="font-size: 12px;">Puntuación media</th>
-                  <th>  </th>
-                  <th>  </th>
-                  <th>  </th>
-                </tr>
-              </tbody>
-            </table>
 
             <table class="estimacion-edad">
               <thead>
@@ -485,40 +431,40 @@
                   <th style="font-size: 12px;">Comprensión Verbal</th>
                   <td style="background-color: rgb(190, 121, 121); font-size: 12px;"> {{ puntuacion_media_comprension_verbal }}</td>
                   <td style="font-size: 12px;"> {{ICC}} </td>
-                  <td style="font-size: 12px;"> </td>
-                  <td style="font-size: 12px;"> </td>
+                  <td style="font-size: 12px;"> 98 </td>
+                  <td style="font-size: 12px;"> 123-134 </td>
                 </tr>
 
                 <tr>
                   <th style="font-size: 12px;">Razonamiento Perceptual</th>
                   <th style="background-color: rgb(190, 121, 121); font-size: 12px;"> {{razonamiento_perceptual}} </th>
-                  <th style="font-size: 12px;">  </th>
-                  <th style="font-size: 12px;">  </th>
-                  <th style="font-size: 12px;">  </th>
+                  <th style="font-size: 12px;"> {{ICR}} </th>
+                  <th style="font-size: 12px;"> 99.9 </th>
+                  <th style="font-size: 12px;"> 107-115 </th>
                 </tr>
 
                 <tr>
                   <th style="font-size: 12px;">Memoria de Trabajo</th>
                   <th style="background-color: rgb(190, 121, 121); font-size: 12px;"> {{memoria_de_trabajo}} </th>
-                  <th style="font-size: 12px;">  </th>
-                  <th style="font-size: 12px;">  </th>
-                  <th style="font-size: 12px;">  </th>
+                  <th style="font-size: 12px;"> {{ICM}} </th>
+                  <th style="font-size: 12px;"> 70 </th>
+                  <th style="font-size: 12px;"> 136-147 </th>
                 </tr>
 
                 <tr>
                   <th style="font-size: 12px;">Velocidad de Procesamiento</th>
                   <th style="background-color: rgb(190, 121, 121); font-size: 12px;"> {{velocidad_de_procesamiento}} </th>
-                  <th style="font-size: 12px;">  </th>
-                  <th style="font-size: 12px;">  </th>
-                  <th style="font-size: 12px;">  </th>
+                  <th style="font-size: 12px;"> {{ICV}} </th>
+                  <th style="font-size: 12px;"> 24 </th>
+                  <th style="font-size: 12px;"> 102-113 </th>
                 </tr>
 
                 <tr>
                   <th style="font-size: 12px;">Escala Total</th>
                   <th style="background-color: rgb(190, 121, 121); font-size: 12px;"> {{ escala_total }} </th>
-                  <th style="font-size: 12px;"> </th>
-                  <th style="font-size: 12px;">  </th>
-                  <th style="font-size: 12px;">  </th>
+                  <th style="font-size: 12px;">{{ICE}}</th>
+                  <th style="font-size: 12px;"> 77 </th>
+                  <th style="font-size: 12px;"> 84-95 </th>
                 </tr>
               </tbody>
               <tfoot>
@@ -534,4 +480,8 @@
 
   </div>
 
+<div class="divChart">
+  <canvas id="myChart"></canvas>
+
+</div>
 </div>

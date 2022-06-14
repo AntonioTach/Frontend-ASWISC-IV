@@ -5,7 +5,6 @@ import { Router } from '@angular/router';
 import { ThisReceiver } from '@angular/compiler';
 
 import { ServiceRegistrarPacienteService } from './service-registrar-paciente.service';
-import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-registrar-paciente',
@@ -17,25 +16,14 @@ export class RegistrarPacienteComponent implements OnInit {
   // public FormRegistrarPaciente!: FormGroup;
   public FormRegistrarPaciente!: FormGroup;
 
-  constructor(private dp: DatePipe,private formBuilder: FormBuilder, private registrarPacienteService: ServiceRegistrarPacienteService, private _snackBar: MatSnackBar, private router: Router) { }
+  constructor(private formBuilder: FormBuilder, private registrarPacienteService: ServiceRegistrarPacienteService, private _snackBar: MatSnackBar, private router: Router) { }
 
   hide = true;
   sexo: string | undefined;
   sexos: string[] = ['Masculino', 'Femenino'];
   id_usuario = localStorage.getItem('id_especialista');
   precio = localStorage.getItem('precio')
-
-  public fechaMin:any;
-  public fechaMinStr:String;
-  public fechaMax:any;
-  public fechaMaxStr:String;
-
   ngOnInit(): void {
-
-    this.fechaMin = new Date(new Date().getFullYear()-30, new Date().getMonth(), new Date().getDay());
-    this.fechaMinStr = this.dp.transform(this.fechaMin, "yyyy-MM-dd");
-    this.fechaMax = new Date(new Date().getFullYear()-5, new Date().getMonth(), new Date().getDay());
-    this.fechaMaxStr = this.dp.transform(this.fechaMax, "yyyy-MM-dd");
 
 
     this.FormRegistrarPaciente = this.formBuilder.group({
@@ -58,35 +46,17 @@ export class RegistrarPacienteComponent implements OnInit {
     });
   }
 
-  existeUsuario() {
-    this._snackBar.open('Registro incorrecto, el usuario y/o correo ya existe', '', {
-      duration: 3000, //5s
-      horizontalPosition: 'center',
-      verticalPosition: 'bottom'
-    });
-  }
-  direccionamiento(){
-    this.router.navigateByUrl('/modulo-especialistas');
-  }
-
   RegistrarPaciente() {
     if (this.FormRegistrarPaciente.invalid) {
       return
     }
     else {
-      // console.log(this.FormRegistrarPaciente?.value);
-
+      console.log(this.FormRegistrarPaciente?.value);
+      this.RegistradoMensaje();
 
       this.registrarPacienteService.registrarPaciente(this.FormRegistrarPaciente.value).subscribe(
-        (res:any) => {
-          if(res == false){
-            this.existeUsuario();
-          }
-          else if(res == true){
-            this.RegistradoMensaje();
-            this.direccionamiento();
-          }
-
+        res => {
+          console.log(res)
         },
         err => {
           console.log(err);

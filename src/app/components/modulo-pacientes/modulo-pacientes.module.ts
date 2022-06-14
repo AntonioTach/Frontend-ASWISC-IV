@@ -25,10 +25,7 @@ import { TareaComponent } from './tarea/tarea.component';
 import { ArticuloComponent } from './articulo/articulo.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AngularEditorModule } from '@kolkov/angular-editor';
-import { CalendarioComponentComponent } from './horarios-disponibles/calendario-component/calendario-component.component';
-import { StripeComponent } from './horarios-disponibles/stripe/stripe.component';
-import { NgxStripeModule } from 'ngx-stripe';
-import { environment } from 'src/environments/environment';
+
 
 @NgModule({
   declarations: [
@@ -51,9 +48,7 @@ import { environment } from 'src/environments/environment';
     VerPruebaComponent,
     CarritoComponent,
     TareaComponent,
-    ArticuloComponent,
-    CalendarioComponentComponent,
-    StripeComponent
+    ArticuloComponent
   ],
   imports: [
     CommonModule,
@@ -61,8 +56,7 @@ import { environment } from 'src/environments/environment';
     SharedModule,
     FormsModule,
     ReactiveFormsModule,
-    AngularEditorModule,
-	NgxStripeModule.forRoot(environment.stripePublicKey),
+    AngularEditorModule
   ]
 })
 export class ModuloPacientesModule { }
