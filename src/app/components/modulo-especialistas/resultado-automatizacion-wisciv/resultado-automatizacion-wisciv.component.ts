@@ -183,8 +183,12 @@ export class ResultadoAutomatizacionWiscivComponent implements OnInit {
         this.sumaCol5 = this.indiceCubos + this.indiceSemejanzas + this.indiceDigitos + this.indiceConceptos + this.indiceClaves + this.indiceVocabulario + this.indiceLetrasNumeros + this.indiceMatrices + this.indiceComprension + this.indiceBusquedaSimbolos;
 
 
-        this.ICC = Math.floor(Math.random() * (88 - 55 + 1)) + 55;
-        // this.fechaEvaluacionDate = new Date(this.fecha_evaluacion, "YYYY-MM-DD");
+        this.ICC = Math.floor(Math.random() * (130 - 55 + 1)) + 55;
+        this.ICR = Math.floor(Math.random() * (144 - 70 + 1)) + 70;
+        this.ICM = Math.floor(Math.random() * (110 - 60 + 1)) + 60;
+        this.ICV = Math.floor(Math.random() * (90 - 55 + 1)) + 55;
+        this.ICE = Math.floor(Math.random() * (120 - 55 + 1)) + 55;
+        // // this.fechaEvaluacionDate = new Date(this.fecha_evaluacion, "YYYY-MM-DD");
       })
       // this.service.getTarea(id).subscribe(res => {
       //   const obj = res[0];
@@ -252,11 +256,12 @@ export class ResultadoAutomatizacionWiscivComponent implements OnInit {
       google.charts.load('current', {'packages':['corechart']});
       google.charts.setOnLoadCallback(() =>{
           var data = google.visualization.arrayToDataTable([
-            ['Year', 'Sales'],
-            ['2004',  1200],
-            ['2005',  1170],
-            ['2006',  660],
-            ['2007',  1030]
+            ['Puntuaciones', 'Puntuaciones Compuestas'],
+            ['ICV',  this.ICC],
+            ['IRP',  this.ICR],
+            ['IMT',  this.ICM],
+            ['IVP',  this.ICV],
+            ['CIT',  this.ICE]
           ]);
 
           var options = {
